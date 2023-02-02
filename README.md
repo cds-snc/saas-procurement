@@ -8,3 +8,4 @@ CDS. Plan is to create more project template for specific technologies:
 - project-template-nodejs
 
 Note that default community health files are maintained at https://github.com/cds-snc/.github 
+Project written in Django
