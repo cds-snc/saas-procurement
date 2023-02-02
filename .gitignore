@@ -1,0 +1,17 @@
+.idea
+.vscode
+.git
+.DS_Store
+db.sqlite3
+.env
+*styles.css
+!/config/terraform/aws/maintenance_mode/styles.css
+/staticfiles/*
+!/staticfiles/.gitkeep
+__pycache__
+*.tfstate*
+secrets*.tfvars
+.terraform/
+*.tfplan
+.coverage
+node_modules
