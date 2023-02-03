@@ -24,4 +24,3 @@ USER appuser
 # During debugging, this entry point will be overridden. For more information, please refer to https://aka.ms/vscode-docker-python-debug
 # File wsgi.py was not found. Please enter the Python path to wsgi file.
 CMD ["gunicorn", "--bind", "0.0.0.0:8000", "wsgi.py"]
-#CMD ["manage.py", "runserver", "0.0.0.0:8000"]
