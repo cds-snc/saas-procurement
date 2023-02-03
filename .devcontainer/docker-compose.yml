@@ -1,22 +1,26 @@
 version: '3.4'
-
 services:
   saas_app:
     image: saas
     build:
-      context: .
+      context: ../saas_app
       dockerfile: ./Dockerfile
     ports:
       - 8000:8000
+    volumes:
+      - .:/workspace:cached
     depends_on:
       - postgresdb
   postgresdb:
     image: postgres
     volumes:
-      - ./pgdata:/var/lib/postgresql/data
+      - ../pgdata:/var/lib/postgresql/data
     ports:
       - 5432:5432
     environment:
       - POSTGRES_DB=saas
       - POSTGRES_USER=dev
       - POSTGRES_PASSWORD=dev
+   
+    # Overrides default command so things don't shut down after the process ends.
+    command: /bin/sh -c "while sleep 1000; do :; done"

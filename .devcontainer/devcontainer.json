@@ -1,0 +1,32 @@
+{
+	"name": "Saas Procurement App",
+	"dockerComposeFile": "docker-compose.yml",
+	"service": "saas_app",
+	"workspaceFolder": "/workspace",
+
+	"settings": {
+		"python.pythonPath": "/usr/local/bin/python",
+		"python.languageServer": "Pylance",
+		"python.linting.enabled": true,
+		"python.linting.pylintEnabled": true,
+		"sqltools.connections": [
+		  {
+			"name": "Container database",
+			"driver": "PostgreSQL",
+			"previewLimit": 50,
+			"server": "db",
+			"port": 5432,
+			"database": "saas",
+			"username": "dev",
+			"password": "dev"
+		  }
+	},
+
+	"extensions": [
+		"ms-python.python",
+		"eamodio.gitlens",
+		"editorconfig.editorconfig"
+	],
+
+	
+}
