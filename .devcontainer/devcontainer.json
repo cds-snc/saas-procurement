@@ -9,12 +9,24 @@
 		"python.languageServer": "Pylance",
 		"python.linting.enabled": true,
 		"python.linting.pylintEnabled": true,
+		"sqltools.connections": [
+		  {
+			"name": "Saas DB",
+			"driver": "PostgreSQL",
+			"previewLimit": 50,
+			"server": "postgresdb",
+			"port": 5432,
+			"database": "saas",
+			"username": "dev",
+			"password": "dev"
+		  }
+		 ]
 	},
-
 	"extensions": [
 		"ms-python.python",
 		"eamodio.gitlens",
 		"editorconfig.editorconfig"
 	],
-	"remoteUser": "vscode"
+	
+	 "remoteUser": "vscode"
 }

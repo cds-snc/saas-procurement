@@ -9,19 +9,27 @@ services:
       - 8000:8000
     volumes:
       - .:/workspace:cached
+    environment:
+      - POSTGRES_DB=saas
+      - POSTGRES_USER=dev
+      - POSTGRES_PASSWORD=dev
+      - DB_HOST=postgresdb
     depends_on:
       - postgresdb
   postgresdb:
-    image: postgres
+    image: postgres:14.6@sha256:2481115cad236897774fa13fef07ceb0e5fdc0a75457a047c441aada670cdfaf
     volumes:
-      - /var/lib/postgresql/data
+       - ../pgdata:/var/lib/postgresql/data
+    restart: unless-stopped
+    command:
+      - "postgres"
+      - "-c"
+      - "listen_addresses=*"
     ports:
       - 5432:5432
     environment:
       - POSTGRES_DB=saas
       - POSTGRES_USER=dev
       - POSTGRES_PASSWORD=dev
-      - DB_HOST=postgresdb
-   
-    # Overrides default command so things don't shut down after the process ends.
-    command: /bin/sh -c "while sleep 1000; do :; done"
+    expose:
+      - 5432
