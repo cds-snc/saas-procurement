@@ -1,35 +1,35 @@
-version: '3.4'
+version: '3.8'
+
 services:
-  saas_app:
-    image: saas
+  app:
     build:
-      context: ../saas_app
-      dockerfile: ./Dockerfile
-    ports:
-      - 8000:8000
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+
     volumes:
-      - .:/workspace:cached
-    environment:
-      - POSTGRES_DB=saas
-      - POSTGRES_USER=dev
-      - POSTGRES_PASSWORD=dev
-      - DB_HOST=postgresdb
-    depends_on:
-      - postgresdb
-  postgresdb:
-    image: postgres:14.6@sha256:2481115cad236897774fa13fef07ceb0e5fdc0a75457a047c441aada670cdfaf
-    volumes:
-       - ../pgdata:/var/lib/postgresql/data
+      - ../..:/workspaces:cached
+
+    # Overrides default command so things don't shut down after the process ends.
+    command: sleep infinity
+
+    # Runs app on the same network as the database container, allows "forwardPorts" in devcontainer.json function.
+    network_mode: service:db
+
+    # Use "forwardPorts" in **devcontainer.json** to forward an app port locally.
+    # (Adding the "ports" property to this file will not forward from a Codespace.)
+
+  db:
+    image: postgres:latest
     restart: unless-stopped
-    command:
-      - "postgres"
-      - "-c"
-      - "listen_addresses=*"
-    ports:
-      - 5432:5432
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
     environment:
-      - POSTGRES_DB=saas
-      - POSTGRES_USER=dev
-      - POSTGRES_PASSWORD=dev
-    expose:
-      - 5432
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
+      POSTGRES_PASSWORD: postgres
+
+    # Add "forwardPorts": ["5432"] to **devcontainer.json** to forward PostgreSQL locally.
+    # (Adding the "ports" property to this file will not forward from a Codespace.)
+
+volumes:
+  postgres-data:
