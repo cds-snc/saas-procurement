@@ -57,7 +57,7 @@ print (new_site.id)
 ```
     Provider: Google
     Name: [choose a name]
-    Client id: [client id from google developer api consule]
-    Secret key: [key from google developer api consule]
+    Client id: [client id from google developer api console]
+    Secret key: [key from google developer api console]
     Chosen site: Pick the 127.0.0.1:8000 site 
 ```
