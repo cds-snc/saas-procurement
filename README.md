@@ -1,4 +1,4 @@
-# Generic Project Template
+# SAAS Procurement App 
 
 The SAAS Procurement app is a Python django project that will aide with the procurement process
 
@@ -31,7 +31,8 @@ make migration
 ```
 
 7. Migrate the migrations
-``` make migrate
+``` 
+make migrate
 ```
 
 8. Create a superuser to access the Django admin dashoard
