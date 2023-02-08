@@ -8,12 +8,13 @@ This project uses [Visual Studio Code Remote - Containers](https://code.visualst
 
 Here are the instructions to get started with developing locally.
 
-Requirements:
+### Requirements:
 
 - Docker installed and running
 - VS Code
 
-Steps:
+
+### Steps:
 
 1. Clone the repo
 2. Open VS Code with Dev Container (see [Quick start: Open an existing folder in a container](https://code.visualstudio.com/docs/remote/containers#_quick-start-open-an-existing-folder-in-a-container))
