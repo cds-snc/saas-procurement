@@ -44,3 +44,18 @@ make superuser
 ``` 
 make run
 ``` 
+
+10. Log into Django admin (http://127.0.0.1:8000/admin) using the credentials you created in 8. 
+11. Open up a new python shell ```python manage.py shell``` and type:
+```
+from django.contrib.sites.models import Site
+new_site = Site.objects.create(domain='127.0.0.1:8000', name='127.0.0.1:8000')
+print (new_site.id)
+```
+12. Take the site id that is generated and update the settings.py file with the site_id generated above in the SITE_ID variable.
+13. Go to the Social applications table in Django admin and add a new Social application:
+    Provider: Google
+    Name: [choose a name]
+    Client id: [client id from google developer api consule]
+    Secret key: [key from google developer api consule]
+    Chosen site: Pick the 127.0.0.1:8000 site 
