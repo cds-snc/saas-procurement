@@ -54,8 +54,10 @@ print (new_site.id)
 ```
 12. Take the site id that is generated and update the settings.py file with the site_id generated above in the SITE_ID variable.
 13. Go to the Social applications table in Django admin and add a new Social application:
+```
     Provider: Google
     Name: [choose a name]
     Client id: [client id from google developer api consule]
     Secret key: [key from google developer api consule]
     Chosen site: Pick the 127.0.0.1:8000 site 
+```
