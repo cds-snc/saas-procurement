@@ -32,9 +32,9 @@
 	"customizations": {
 		"vscode": {
 			"extensions": [
+				"ms-python.vscode-pylance",
 				"ms-python.python",
 				"ms-python.python3",
-				"ms-python.vscode-pylance",
 				"mtxr.sqltools",
 				"mtxr.sqltools-driver-pg",
 				"redhat.vscode-yaml",
