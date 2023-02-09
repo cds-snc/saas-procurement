@@ -14,3 +14,4 @@ secrets*.tfvars
 *.tfplan
 .coverage
 node_modules
+postgres-data/

@@ -1,0 +1,26 @@
+version: '3.4'
+
+services:
+  saasprocurement:
+    image: saasprocurement
+    command: sleep infinity
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - 8000:8000
+    depends_on:
+      - postgresdb
+    volumes:
+      - .:/app
+  postgresdb:
+    image: postgres:latest
+    restart: unless-stopped
+    ports:
+      - 5432:5432
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: saas_app
