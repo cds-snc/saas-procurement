@@ -3,7 +3,7 @@
 .git
 .DS_Store
 db.sqlite3
-.env
+.env*
 /pgdata
 /staticfiles/*
 !/staticfiles/.gitkeep

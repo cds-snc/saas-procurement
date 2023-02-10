@@ -11,8 +11,6 @@ services:
       - 8000:8000
     depends_on:
       - postgresdb
-    volumes:
-      - .:/app
   postgresdb:
     image: postgres:latest
     restart: unless-stopped
@@ -24,3 +22,6 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: saas_app
+
+volumes:
+  postgres-data:

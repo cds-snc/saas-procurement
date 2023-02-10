@@ -41,24 +41,24 @@
 				"timonwong.shellcheck",
 				"hashicorp.terraform",
 				"github.copilot"
-			],
-			"settings": {
-				"sqltools.connections": [
-					{
-						"name": "Container database",
-						"driver": "PostgreSQL",
-						"previewLimit": 50,
-						"server": "db",
-						"port": 5432,
-						"database": "saas_app",
-						"username": "postgres",
-						"password": "postgres"
-					}
-				]
-			}
+			]
+			// "settings": {
+			// 	"sqltools.connections": [
+			// 		{
+			// 			"name": "Container database",
+			// 			"driver": "PostgreSQL",
+			// 			"previewLimit": 50,
+			// 			"server": "db",
+			// 			"port": 5432,
+			// 			"database": "saas_app",
+			// 			"username": "postgres",
+			// 			"password": "postgres"
+			// 		}
+			// 	]
+			// }
 		}
 	},
-	"containerEnv": {
+	"remoteEnv": {
 		"POSTGRES_DB": "saas_app",
 		"POSTGRES_USER": "postgres",
 		"POSTGRES_PASSWORD": "postgres",
