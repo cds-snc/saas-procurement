@@ -5,8 +5,8 @@
 	// Update the 'dockerComposeFile' list if you have more compose files or use different names.
 	// The .devcontainer/docker-compose.yml file contains any overrides you need/want to make.
 	"dockerComposeFile": [
-		"../docker-compose.yml",
-		"docker-compose.yml"
+		"../docker-compose.yml"
+		// "docker-compose.yml"
 	],
 	// The 'service' property is the name of the service for the container that VS Code should
 	// use. Update this value and .devcontainer/docker-compose.yml to the real service name.
@@ -14,14 +14,15 @@
 	// The optional 'workspaceFolder' property is the path VS Code should open by default when
 	// connected. This is typically a file mount in .devcontainer/docker-compose.yml
 	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+	// Features to add to the dev container. More info: https://containers.dev/features.
 	"features": {
 		"ghcr.io/devcontainers/features/git:1": {},
 		"ghcr.io/devcontainers/features/github-cli:1": {}
 	},
-	// Features to add to the dev container. More info: https://containers.dev/features.
-	// "features": {},
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [],
+	"forwardPorts": [
+		8000, 8080, 5432
+	],
 	// Uncomment the next line if you want start specific services in your Docker Compose config.
 	// "runServices": [],
 	// Uncomment the next line if you want to keep your containers running after VS Code shuts down.
@@ -45,12 +46,13 @@
 		}
 	},
 	"remoteEnv": {
-		"POSTGRES_DB": "saas_app",
+		"POSTGRES_DB": "postgres",
 		"POSTGRES_USER": "postgres",
 		"POSTGRES_PASSWORD": "postgres",
 		"DB_HOST": "postgresdb",
 		"DJANGO_SECRET_KEY": "foo",
-		"DJANGO_ALLOWED_HOSTS": "0.0.0.0,127.0.0.1,localhost"
+		"DJANGO_ALLOWED_HOSTS": "0.0.0.0,127.0.0.1,localhost",
+		"LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}"
 	}
 	// Uncomment to connect as an existing user other than the container default. More info: https://aka.ms/dev-containers-non-root.
 	// "remoteUser": "devcontainer"

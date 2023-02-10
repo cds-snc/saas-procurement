@@ -7,12 +7,14 @@ services:
     build:
       context: .
       dockerfile: ./Dockerfile
-    ports:
-      - 8000:8000
+    # ports:
+    #   - 8000:8000
     depends_on:
       - postgresdb
+    network_mode: service:postgresdb
   postgresdb:
     image: postgres:latest
+    hostname: postgresdb
     restart: unless-stopped
     ports:
       - 5432:5432
@@ -21,7 +23,7 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: saas_app
+      POSTGRES_DB: postgres
 
 volumes:
   postgres-data:
