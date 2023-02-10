@@ -49,7 +49,8 @@
 		"POSTGRES_USER": "postgres",
 		"POSTGRES_PASSWORD": "postgres",
 		"DB_HOST": "postgresdb",
-		"DJANGO_SECRET_KEY": "foo"
+		"DJANGO_SECRET_KEY": "foo",
+		"DJANGO_ALLOWED_HOSTS": "0.0.0.0,127.0.0.1,localhost"
 	}
 	// Uncomment to connect as an existing user other than the container default. More info: https://aka.ms/dev-containers-non-root.
 	// "remoteUser": "devcontainer"
