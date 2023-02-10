@@ -18,6 +18,9 @@ migration:
 superuser:
 	python3 manage.py createsuperuser
 
+shell:
+	python3 manage.py shell
+
 run:
 	python manage.py runserver
 
