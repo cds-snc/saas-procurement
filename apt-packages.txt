@@ -1,0 +1,9 @@
+ca-certificates 
+curl
+git
+jq
+make
+openssh-client
+python3-pip
+vim
+zsh
