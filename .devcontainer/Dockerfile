@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/devcontainers/python:0-3.11
+FROM mcr.microsoft.com/devcontainers/python:0-3.11@sha256:dfd5864946d7ec1c598b5421e9da47c85c7585808c500707a8b11906bceb423b
 
 ENV PYTHONUNBUFFERED 1
 
