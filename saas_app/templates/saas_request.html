@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load socialaccount %}
+{% load i18n %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block head_title %}{% trans "Software as a Service form Request" %}{% endblock %}
+
+{% block content %}
+<h1>{% trans "Software as a Service Request Form" %}</h1>
+<p>{% blocktrans %}Please fill out this form if you would like to request the purchase of an unclassified software subscription service.
+
+    Software subscription services are online tools, paid for on a monthly or annual basis. Many of these tools can help people collaborate, build software, monitor and troubleshoot systems, etc. Some examples include Github, Trello, AirTable, Harvest, Sentry etc. 
+    
+    In this form, you may select your current supervisor to approve of this purchase. Internal Ops will then get fund centre manager financial approval.
+    
+    For further information or guidance on subscription services, please talk to the Internal Operations team. {% endblocktrans %}</p>
+<p><a href="https://docs.google.com/document/d/1Vc3cKhlCvakHylmKQQEHc44tffLO7lozQ74aHHRQq2o/edit#heading=h.49a16cu36wcw">Guide to requesting low-dollar value unclassified software subscription services</a></p>   
+<a href="https://docs.google.com/spreadsheets/d/1IfwCl6IkeD4v-OfB90XpeoS26IOdYW_sfQxRhvavc1E/edit#gid=0">CDS Subscription Services - Billing and Admin</a></p>
+<form method="post" novalidate>
+        {% csrf_token %}
+        {% crispy form %}
+</form>
+{% endblock %}

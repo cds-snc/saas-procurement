@@ -8,17 +8,17 @@
 {% block content %}
 {% if user.is_authenticated %}
     <h1> Welcome {{user}}!</h1>
-    What do you want to do today?
-    <form>
-      <div class="mb-3">
-        <select class="form-select form-select-sm" aria-label="Default workflow">
-          <option selected>Open this select menu</option>
-          <option value="1">Fill out a Saas Request</option>
-          <option value="2">Approve a Saas Request</option>
-          <option value="3">Three</option>
-        </select>
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+    <p>What do you want to do today?</p></br>
+    <div class="card">
+      <div class="card-header">
+        Submit a SAAS Request
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Software as a Service Request Form</h5>
+        <p class="card-text">Please fill out this form if you would like to request the purchase of an unclassified software subscription service.</p>
+        <a href="submit_request" class="btn btn-primary">Start</a>
+      </div>
+    </div>
 {% else %}
     <h1>{% trans "Sass Procurement App" %}</h1>
     <p>{% blocktrans %}You are about to use your Google account to login to
