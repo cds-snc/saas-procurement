@@ -8,7 +8,8 @@ def process_requets(request):
     if request.method == "POST":
         form = SubmitRequestForm(request.POST)
         if form.is_valid():
-            # process the data in form.cleaned_data as required
+            # Save the data to the database
+            form.save()
             # redirect to a new URL:
             return render(request, "thanks.html")
     else:

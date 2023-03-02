@@ -25,8 +25,7 @@ lint:
 	flake8 .
 
 test:
-	coverage run -m pytest -s -vv tests &&\
-	coverage report -m
+	python manage.py test
 
 lint-ci:
 	flake8 .
