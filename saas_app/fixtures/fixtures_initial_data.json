@@ -1,0 +1,72 @@
+[
+  {
+    "model": "user.roles",
+    "pk": 1,
+    "fields": {
+      "name": "Approver",
+      "description": "Approver Group that can approve a SAAS request"
+    }
+  },
+  {
+    "model": "user.users",
+    "pk": 1,
+    "fields": {
+      "user": 2,
+      "first_name": "Approver First Name",
+      "last_name": "Approver Last Name",
+      "title": "S32 Approver",
+      "business_unit": "Business unit of Approver",
+      "user_roles": [
+        1
+      ]
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 2,
+    "fields": {
+      "password": "",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "Approver",
+      "first_name": "Approver First Name",
+      "last_name": "Approver Last Name",
+      "email": "approver@cds-snc.ca",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-03-02T20:49:30Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "sites.site",
+    "pk": 8,
+    "fields": {
+      "domain": "example.com",
+      "name": "example.com"
+    }
+  },
+  {
+    "model": "sites.site",
+    "pk": 9,
+    "fields": {
+      "domain": "127.0.0.1:8000",
+      "name": "127.0.0.1:8000"
+    }
+  },
+  {
+    "model": "socialaccount.socialapp",
+    "pk": 1,
+    "fields": {
+      "provider": "google",
+      "name": "OAuth Saas App",
+      "client_id": "SOCIAL_APPLICATION_CLIENT_ID",
+      "secret": "SOCIAL_APPLICATION_SECRET_KEY",
+      "key": "",
+      "sites": [
+        9
+      ]
+    }
+  }
+]
