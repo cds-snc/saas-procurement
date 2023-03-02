@@ -15,7 +15,8 @@
 				"redhat.vscode-yaml",
 				"timonwong.shellcheck",
 				"hashicorp.terraform",
-				"github.copilot"
+				"github.copilot",
+				"ms-vsliveshare.vsliveshare"
 			],
 			"settings": {
 				"sqltools.connections": [
@@ -42,6 +43,12 @@
 			"version": "1.0.3",
 			"terragrunt": "0.31.1"
 		}
+	},
+	"containerEnv": {
+		"DB_HOST": "localhost",
+		"POSTGRES_DB": "postgres",
+		"POSTGRES_USER": "postgres",
+		"POSTGRES_PASSWORD": "postgres"
 	},
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// This can be used to network with other containers or the host.
