@@ -10,6 +10,7 @@ django_installed=$(pip3 list  | grep -c django)
 if [ "${django_installed}" -eq 0 ]; then
     echo "Django is not installed"
     echo  "Installing requirements_dev.txt"
+    python -m pip install -r requirements.txt
     python -m pip install -r requirements_dev.txt
 else
     echo "Django is installed, skipping requirements_dev.txt"
