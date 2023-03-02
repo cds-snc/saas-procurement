@@ -9,7 +9,10 @@ def process_requets(request):
         form = SubmitRequestForm(request.POST)
         if form.is_valid():
             # Save the data to the database
-            form.save()
+            saas_object = form.save(commit = False)
+            # get the logged in user (ie the one submitting the request) and save it to the database 
+            saas_object.submitted_by = request.user
+            saas_object.save()
             # redirect to a new URL:
             return render(request, "thanks.html")
     else:

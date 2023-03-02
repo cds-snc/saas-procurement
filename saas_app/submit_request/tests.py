@@ -9,12 +9,14 @@ class SubmitRequestTestCase(TestCase):
         auth_user = User.objects.create_user(username="Test User", password="Test Password")
         approver = Users.objects.create(user=auth_user, first_name="Test First Name", last_name="Test Last Name", title="Test Title", business_unit="Test Business Unit")
         approver.user_roles.add(role)
-        SaasRequest.objects.create(name="Test Name", url="http://www.testurl.com", description="Test Description", cost="Test Cost", level_of_subscription="Test Level of Subscription", number_of_users=1, names_of_users="Test Names of Users", account_administrator="Test Account Administrator", backup_administrator="Test Backup Administrator", approver=approver)
+        logged_user = User.objects.create_user(username="Test User 2", password="Test Password 2")
+        SaasRequest.objects.create(name="Test Name", url="http://www.testurl.com", description="Test Description", cost="Test Cost", level_of_subscription="Test Level of Subscription", number_of_users=1, names_of_users="Test Names of Users", account_administrator="Test Account Administrator", backup_administrator="Test Backup Administrator", approver=approver, submitted_by=logged_user)
     
     # test that the model was created correctly    
     def test_saas_request(self):
         auth_user = User.objects.get(username="Test User")
         approver = Users.objects.get(user=auth_user)
+        logged_user = User.objects.get(username="Test User 2")
         saas_request = SaasRequest.objects.get(name="Test Name")
         self.assertEqual(saas_request.url, "http://www.testurl.com")
         self.assertEqual(saas_request.description, "Test Description")
@@ -25,4 +27,5 @@ class SubmitRequestTestCase(TestCase):
         self.assertEqual(saas_request.account_administrator, "Test Account Administrator")
         self.assertEqual(saas_request.backup_administrator, "Test Backup Administrator")
         self.assertEqual(saas_request.approver, approver)
+        self.assertEqual(saas_request.submitted_by, logged_user)
         
