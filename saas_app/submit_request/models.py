@@ -15,7 +15,7 @@ class SaasRequest(models.Model):
     backup_administrator = models.CharField(max_length=100)
     approver = models.ForeignKey(Users, on_delete=models.CASCADE)
     submitted_by = models.ForeignKey(User, on_delete=models.CASCADE)
-    
 
+    # return the string representation of the model
     def __str__(self):
         return self.name

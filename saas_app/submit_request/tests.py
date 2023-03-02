@@ -29,3 +29,21 @@ class SubmitRequestTestCase(TestCase):
         self.assertEqual(saas_request.approver, approver)
         self.assertEqual(saas_request.submitted_by, logged_user)
         
+        
+    # Test the lengths of the fields in the models
+    def test_saas_request_max_length_fields(self):
+        saas_request = SaasRequest.objects.get(name="Test Name")
+        self.assertEqual(saas_request._meta.get_field('name').max_length, 100)
+        self.assertEqual(saas_request._meta.get_field('url').max_length, 100)
+        self.assertEqual(saas_request._meta.get_field('description').max_length, 500)
+        self.assertEqual(saas_request._meta.get_field('cost').max_length, 100)
+        self.assertEqual(saas_request._meta.get_field('level_of_subscription').max_length, 100)
+        self.assertEqual(saas_request._meta.get_field('names_of_users').max_length, 500)
+        self.assertEqual(saas_request._meta.get_field('number_of_users').max_length, None)
+        self.assertEqual(saas_request._meta.get_field('account_administrator').max_length, 100)
+        self.assertEqual(saas_request._meta.get_field('backup_administrator').max_length, 100)
+        
+    # Test that the string representation of the model is correctly returned
+    def test_saas_request_string_representation(self):
+        saas_request = SaasRequest.objects.get(name="Test Name")
+        self.assertEqual(str(saas_request), "Test Name")
