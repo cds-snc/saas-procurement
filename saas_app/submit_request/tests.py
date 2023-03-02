@@ -1,8 +1,11 @@
 from django.test import TestCase
 from .models import SaasRequest, User, Users, Roles
+from .forms import SubmitRequestForm
 
 # Unit tests to test the models and views of the saas_app application.
-class SubmitRequestTestCase(TestCase):
+
+# Test class to test the SaasRequest model
+class SubmitRequestModelTestCase(TestCase):
     # Set up a model with the required fields.
     def setUp(self):
         role = Roles.objects.create(name="Test Name", description="Test Description")
@@ -47,3 +50,52 @@ class SubmitRequestTestCase(TestCase):
     def test_saas_request_string_representation(self):
         saas_request = SaasRequest.objects.get(name="Test Name")
         self.assertEqual(str(saas_request), "Test Name")
+
+# Test class to test out the submit request form
+class SubmitRequestFormTest(TestCase):
+   # Test the name label of the form 
+    def test_name_label(self):
+       form = SubmitRequestForm()
+       self.assertTrue(form.fields['name'].label == None or form.fields['name'].label == 'Name')
+       
+       
+    # Test the url label of the form
+    def test_url_label(self):
+        form = SubmitRequestForm()
+        self.assertTrue(form.fields['url'].label == None or form.fields['url'].label == 'Url')
+        
+        
+    # Test the description label of the form
+    def test_description_label(self):
+        form = SubmitRequestForm()
+        self.assertTrue(form.fields['description'].label == None or form.fields['description'].label == 'Description') 
+        
+    # Test the cost label of the form
+    def test_cost_label(self):
+        form = SubmitRequestForm()
+        self.assertTrue(form.fields['cost'].label == None or form.fields['cost'].label == 'Cost')
+        
+    # Test the level of subscription label of the form
+    def test_level_of_subscription_label(self):
+        form = SubmitRequestForm()
+        self.assertTrue(form.fields['level_of_subscription'].label == None or form.fields['level_of_subscription'].label == 'Level of subscription')
+        
+    # Test the number of users label of the form
+    def test_number_of_users_label(self):
+        form = SubmitRequestForm()
+        self.assertTrue(form.fields['number_of_users'].label == None or form.fields['number_of_users'].label == 'Number of users')
+        
+    # Test the names of users label of the form
+    def test_names_of_users_label(self):
+        form = SubmitRequestForm()
+        self.assertTrue(form.fields['names_of_users'].label == None or form.fields['names_of_users'].label == 'Names of users')
+        
+    # Test the account administrator label of the form
+    def test_account_administrator_label(self):
+        form = SubmitRequestForm()
+        self.assertTrue(form.fields['account_administrator'].label == None or form.fields['account_administrator'].label == 'Account administrator')
+    
+    # Test the backup administrator label of the form
+    def test_backup_administrator_label(self):
+        form = SubmitRequestForm()
+        self.assertTrue(form.fields['backup_administrator'].label == None or form.fields['backup_administrator'].label == 'Backup administrator')
