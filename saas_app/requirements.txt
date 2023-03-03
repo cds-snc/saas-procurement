@@ -8,3 +8,4 @@ django-allauth==0.52.0
 django-bootstrap-form==3.4
 django-crispy-forms==2.0
 crispy-bootstrap4==2022.1
+notifications-python-client==8.0.0
