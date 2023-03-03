@@ -16,50 +16,15 @@ Here are the instructions to get started with developing locally.
 
 ### Steps:
 
-1. Clone the repo
-2. Open VS Code with Dev Container (see [Quick start: Open an existing folder in a container](https://code.visualstudio.com/docs/remote/containers#_quick-start-open-an-existing-folder-in-a-container))
-3. Go to the saas_app folder ```cd saas_app```
-4. Add a ``.env`` file to the ``/workspace/app`` folder (Contact SRE team for the project specific .env setup)
-5. Install Python dependencies
+The easiest way to get started is to use codespaces. 
 
+1. Clone the repo
+2. Spin up a codespace
+3. Or in Visual studio, having the Codespaces extension open up a new codespace and connect to it.
+4. The container should run and the initialize.sh script will populate the database with all the required data.
+5. If there is an issue with the database, you can manually run the initialize script. 
+6.  Run the application
 ```
-make install-dev
-```
-6. Generate migrations
-``` 
-make migration
-```
-7. Migrate the migrations
-``` 
-make migrate
-```
-8. Create a superuser to access the Django admin dashboard
-``` 
-make superuser
-```
-9. Open up a new python shell ```python manage.py shell``` and type:
-```
-from django.contrib.sites.models import Site
-new_site = Site.objects.create(domain='127.0.0.1:8000', name='127.0.0.1:8000')
-print (new_site.id)
-```
-10. Take the site id that is generated and update the settings.py file with the site_id generated above in the SITE_ID variable.
-``` 
 cd saas_app
-vim settings.py
-SITE_ID = [site id from step 8]
-```
-11. Run the application
-```
-cd ..
 make run
-```
-12. Log into Django admin dashboard (http://127.0.0.1:8000/admin) using the credentials you created in 8.
-13. Go to the Social applications table in Django admin and add a new Social application:
-```
-    Provider: Google
-    Name: [choose a name]
-    Client id: [client id from google developer api console]
-    Secret key: [key from google developer api console]
-    Chosen site: Pick the 127.0.0.1:8000 site 
-```
+``` 
