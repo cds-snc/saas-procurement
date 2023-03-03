@@ -45,14 +45,21 @@ fi
 # check to see if Soial account is installed
 social_account=$(python manage.py shell -c "from allauth.socialaccount.models import SocialApp; print(len(SocialApp.objects.all()))")
 if [ "${social_account}" -eq 0 ]; then
-    echo "Installing initial database data"
     # get the environment variables and replaces them in the fixtures file for the google social account
-    jq '.[5].fields.client_id=env.SOCIAL_APPLICATION_CLIENT_ID | .[5].fields.secret=env.SOCIAL_APPLICATION_SECRET_KEY' fixtures/fixtures_initial_data.json >> tmp.json && mv tmp.json fixtures/fixtures_initial_data.json
-    # Run the loaddata command
-    python manage.py loaddata fixtures/fixtures_initial_data.json
-    # Now revert the file to its original state so that we don't accidentally commit the changes or leak the secrets
-    jq '.[5].fields.client_id="SOCIAL_APPLICATION_CLIENT_ID" | .[5].fields.secret="SOCIAL_APPLICATION_SECRET_KEY"' fixtures/fixtures_initial_data.json >> tmp.json && mv tmp.json fixtures/fixtures_initial_data.json
-
+    # An extra precaution so that we don't leak the secrets
+    social_app_model=$(jq '.[4].model' -r fixtures/fixtures_initial_data.json)
+    if [ "${social_app_model}" = "socialaccount.socialapp" ]; then
+        # Make a copy of file temporarily so that we can modify it
+        cp fixtures/fixtures_initial_data.json fixtures/original_fixtures_initial_data.json
+        jq '.[4].fields.client_id=env.SOCIAL_APPLICATION_CLIENT_ID | .[4].fields.secret=env.SOCIAL_APPLICATION_SECRET_KEY' fixtures/fixtures_initial_data.json >> tmp.json && mv tmp.json fixtures/fixtures_initial_data.json
+        # Run the loaddata command
+        echo "Installing initial database data"
+        python manage.py loaddata fixtures/fixtures_initial_data.json
+        # Now revert the file to its original state so that we don't accidentally commit the changes or leak the secrets
+        mv fixtures/original_fixtures_initial_data.json fixtures/fixtures_initial_data.json
+    else
+        echo "Failed - check that the fixtures file is in the correct format and that the model is 'socialaccount.socialapp' at index 4"
+    fi
 else
     echo "Initial data is already installed"
 fi

@@ -41,14 +41,6 @@
   },
   {
     "model": "sites.site",
-    "pk": 8,
-    "fields": {
-      "domain": "example.com",
-      "name": "example.com"
-    }
-  },
-  {
-    "model": "sites.site",
     "pk": 9,
     "fields": {
       "domain": "127.0.0.1:8000",
