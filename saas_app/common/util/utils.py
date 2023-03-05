@@ -4,7 +4,7 @@ import os
 
 # This contains common utility functions used by the application
 
-# Initialize the Notify client
+# Initialize the Notify client and create an instance
 def get_notify_client():
     return NotificationsAPIClient(
         os.getenv("NOTIFY_API_KEY"), base_url=os.getenv("NOTIFY_URL")

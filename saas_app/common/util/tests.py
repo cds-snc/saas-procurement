@@ -1,11 +1,11 @@
 import os
 import pytest
-from unittest.mock import MagicMock, patch, Mock
+from unittest.mock import MagicMock, patch
 from django.test import TestCase
 import common.util.utils as utils
 
-# Tests to test the utility functions
 
+# Tests to test the utility functions
 class UtilsTestCase(TestCase):    
     # Test that the get_current_site function returns the correct domain
     def test_get_current_site(self):
@@ -37,7 +37,7 @@ class UtilsTestCase(TestCase):
             os.getenv("NOTIFY_API_KEY"), base_url=os.getenv("NOTIFY_URL")
         )
     
-    # Test that the send_email function calls the correct function on the notify client    
+    # Test that the send_email function calls the correct function on the notify clientgit     
     @patch("common.util.utils.get_notify_client")
     def test_send_email(self, mock_get_notify_client):
         client = MagicMock()
