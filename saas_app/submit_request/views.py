@@ -41,7 +41,7 @@ def process_requets(request):
                 os.getenv("APPROVAL_REQUEST_TEMPLATE_ID"),
                 {
                     "saas_name": saas_name,
-                    "requestor": request.user.first_name,
+                    "requestor": requestor_name,
                     "name": approver_name,
                     "url": url,
                 },

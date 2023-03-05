@@ -4,12 +4,15 @@ import os
 
 # This contains common utility functions used by the application
 
-
-# Use Notify to send emails
-def send_email(email_address, template_id, details):
-    notifications_client = NotificationsAPIClient(
+# Initialize the Notify client
+def get_notify_client():
+    return NotificationsAPIClient(
         os.getenv("NOTIFY_API_KEY"), base_url=os.getenv("NOTIFY_URL")
     )
+    
+# Use Notify to send emails
+def send_email(email_address, template_id, details):
+    notifications_client = get_notify_client()
     notifications_client.send_email_notification(
         email_address=email_address, template_id=template_id, personalisation=details
     )
