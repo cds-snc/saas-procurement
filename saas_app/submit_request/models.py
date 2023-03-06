@@ -1,8 +1,9 @@
 from django.db import models
 from user.models import Users, Roles
 from django.contrib.auth.models import User
-    
-# Model to store the request information    
+
+
+# Model to store the request information
 class SaasRequest(models.Model):
     name = models.CharField(max_length=100)
     url = models.URLField(max_length=100)
