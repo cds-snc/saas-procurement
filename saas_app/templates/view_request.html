@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load socialaccount %}
+{% load i18n %}
+{% load static %}
+
+{% block head_title %}{% trans "Saas Procurement App" %}{% endblock %}
+
+{% block content %}
+    <h1>Submitted Requests</h1>
+    <p>This is the list of requests that you have submitted. Click on a request to view more information.</p><br>
+    <table class="table table-hover table-bordered">
+        <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Description</th>
+              <th scope="col">Url</th>
+              <th scope="col">Cost</th>
+              <th scope="col">Date Submitted</th>
+              <th scope="col">Approved?</th>
+              <tbody class="table-group-divider"></tbody>
+            </tr>
+          </thead>
+          <tbody>
+            {% for request in submitted_requests %}
+            <tr>
+                <td>{{ request.name}} </td>
+                <td>{{ request.description }}</td>
+                <td>{{ request.url }}</td>
+                <td>{{ request.cost }}</td>
+                <td>{{ request.date_submitted }}</td>
+                <td>{{ request.approved}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+    </table>
+{% endblock %}

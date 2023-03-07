@@ -1,6 +1,8 @@
 from django.test import TestCase
+from unittest.mock import MagicMock
 from .models import SaasRequest, User, Users, Roles
 from .forms import SubmitRequestForm
+import datetime
 
 # Unit tests to test the models and views of the saas_app application.
 
@@ -23,7 +25,7 @@ class SubmitRequestModelTestCase(TestCase):
         approver.user_roles.add(role)
         logged_user = User.objects.create_user(
             username="Test User 2", password="Test Password 2"
-        )
+        )        
         SaasRequest.objects.create(
             name="Test Name",
             url="http://www.testurl.com",
@@ -36,6 +38,7 @@ class SubmitRequestModelTestCase(TestCase):
             backup_administrator="Test Backup Administrator",
             approver=approver,
             submitted_by=logged_user,
+            approved=False,
         )
 
     # test that the model was created correctly
@@ -58,6 +61,10 @@ class SubmitRequestModelTestCase(TestCase):
         self.assertEqual(saas_request.backup_administrator, "Test Backup Administrator")
         self.assertEqual(saas_request.approver, approver)
         self.assertEqual(saas_request.submitted_by, logged_user)
+        mocked_date = datetime.datetime(2020, 1, 1, 0, 0, 0)
+        saas_request.date_submitted = mocked_date
+        self.assertEqual(saas_request.date_submitted, mocked_date)
+        self.assertEqual(saas_request.approved, False)
 
     # Test the lengths of the fields in the models
     def test_saas_request_max_length_fields(self):
@@ -78,6 +85,12 @@ class SubmitRequestModelTestCase(TestCase):
         )
         self.assertEqual(
             saas_request._meta.get_field("backup_administrator").max_length, 100
+        )
+        self.assertEqual(
+            saas_request._meta.get_field("date_submitted").max_length, None
+        )
+        self.assertEqual(
+            saas_request._meta.get_field("approved").max_length, None
         )
 
     # Test that the string representation of the model is correctly returned
@@ -156,3 +169,15 @@ class SubmitRequestFormTest(TestCase):
             form.fields["backup_administrator"].label == None
             or form.fields["backup_administrator"].label == "Backup administrator"
         )
+
+class TestSubmitRequestViews(TestCase):
+    # Test that the submit request page is accessible
+    def test_submit_request_page(self):
+        response = self.client.get("/submit_request")
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, "saas_request.html")
+
+    # Test that the view request page is accessible
+    def test_view_request_page(self):
+        response = self.client.get("/view_request")
+        self.assertEqual(response.status_code, 301)
