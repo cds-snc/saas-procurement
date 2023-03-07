@@ -17,6 +17,8 @@ class SaasRequestAdmin(admin.ModelAdmin):
         "backup_administrator",
         "approver",
         "submitted_by",
+        "date_submitted",
+        "approved",
     )
     list_filter = (
         "name",
@@ -30,6 +32,8 @@ class SaasRequestAdmin(admin.ModelAdmin):
         "backup_administrator",
         "approver",
         "submitted_by",
+        "date_submitted",
+        "approved",
     )
     search_fields = (
         "name",
@@ -43,6 +47,8 @@ class SaasRequestAdmin(admin.ModelAdmin):
         "backup_administrator",
         "approver",
         "submitted_by",
+        "date_submitted",
+        "approved",
     )
     ordering = (
         "name",
@@ -56,4 +62,6 @@ class SaasRequestAdmin(admin.ModelAdmin):
         "backup_administrator",
         "approver",
         "submitted_by",
+        "date_submitted",
+        "approved",
     )

@@ -17,6 +17,8 @@ from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import TemplateView
 from django.contrib.auth.views import LogoutView
+from submit_request import views
+
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -24,4 +26,5 @@ urlpatterns = [
     path("accounts/", include("allauth.urls")),
     path("logout", LogoutView.as_view()),
     path("submit_request", include("submit_request.urls")),
+    path("view_request/", views.view_request, name="view_request")
 ]

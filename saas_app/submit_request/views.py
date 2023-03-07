@@ -1,11 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from .forms import SubmitRequestForm
+from .models import SaasRequest
 import os
 import common.util.utils as utils
 
 
-def process_requets(request):
+def process_requests(request):
     if request.method == "POST":
         form = SubmitRequestForm(request.POST)
         if form.is_valid():
@@ -52,3 +53,14 @@ def process_requets(request):
     else:
         form = SubmitRequestForm()
     return render(request, "saas_request.html", {"form": form})
+
+
+# function to return the list of submitted requests for the logged in user
+def view_request(request):
+        if request.method == "GET":
+            # search fro all the requests submitted by the logged in user
+            submitted_requests = SaasRequest.objects.filter(submitted_by=request.user)
+            # render the requests in a table
+            return render(request, "view_request.html", {"submitted_requests": submitted_requests})
+
+        
