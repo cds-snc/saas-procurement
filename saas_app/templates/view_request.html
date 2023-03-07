@@ -28,7 +28,11 @@
                 <td>{{ request.url }}</td>
                 <td>{{ request.cost }}</td>
                 <td>{{ request.date_submitted }}</td>
-                <td>{{ request.approved}}</td>
+                {% if request.approved == True %}
+                	<td>Yes</td>
+                {% else %}
+                	<td>No</td>
+                {% endif %}
             </tr>
             {% endfor %}
           </tbody>
