@@ -12,23 +12,6 @@ class UtilsTestCase(TestCase):
         request.get_host.return_value = "example.com"
         self.assertEqual(utils.get_current_site(request), "example.com")
 
-    # Test that the get_notify_client function is called once
-    @patch("common.util.utils.get_notify_client")
-    def test_notify_client_environment_variables(self, mock_get_notify_client):
-        mock_get_notify_client.return_value = MagicMock()
-        utils.get_notify_client()
-        mock_get_notify_client.assert_called_once()
-
-    # # Test that the get_notify_client function returns the correct instance
-    # def test_notify_client_correct_instance(self):
-    #     notify_client = utils.get_notify_client()
-    #     self.assertIsInstance(notify_client, utils.NotificationsAPIClient)
-
-    # # Test that the correct base_url is set for the Notify client
-    # def test_notify_client_correct_url(self):
-    #     notify_client = utils.get_notify_client()
-    #     self.assertEqual(notify_client.base_url, os.getenv("NOTIFY_URL"))
-
     # Test that the notify client is initialized and is called once
     @patch("common.util.utils.NotificationsAPIClient")
     def test_get_notify_client(self, mock_notify_client):

@@ -169,6 +169,7 @@ SOCIALACCOUNT_PROVIDERS = {
         },
     }
 }
+# Set up a test database if the test command is used
 if "test" in sys.argv:
     DATABASES["default"]["ENGINE"] = "django.db.backends.sqlite3"
     DATABASES["default"]["NAME"] = ":memory:"
