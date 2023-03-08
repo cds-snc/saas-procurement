@@ -48,7 +48,8 @@
 		"DB_HOST": "localhost",
 		"POSTGRES_DB": "postgres",
 		"POSTGRES_USER": "postgres",
-		"POSTGRES_PASSWORD": "postgres"
+		"POSTGRES_PASSWORD": "postgres",
+		"NAME": "postgres"
 	},
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// This can be used to network with other containers or the host.
