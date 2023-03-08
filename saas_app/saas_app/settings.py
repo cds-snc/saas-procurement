@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 import os
+import sys
 from pathlib import Path
 from dotenv import load_dotenv
 from socket import gethostname
@@ -41,7 +42,6 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
-    "login",
     "submit_request",
     "user",
     "django.contrib.admin",
@@ -169,6 +169,10 @@ SOCIALACCOUNT_PROVIDERS = {
         },
     }
 }
+# Set up a test database if the test command is used
+if "test" in sys.argv:
+    DATABASES["default"]["ENGINE"] = "django.db.backends.sqlite3"
+    DATABASES["default"]["NAME"] = ":memory:"
 
 SITE_ID = 9
 

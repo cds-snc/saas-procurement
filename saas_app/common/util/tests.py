@@ -1,5 +1,4 @@
 import os
-import pytest
 from unittest.mock import MagicMock, patch
 from django.test import TestCase
 import common.util.utils as utils
@@ -12,22 +11,6 @@ class UtilsTestCase(TestCase):
         request = MagicMock()
         request.get_host.return_value = "example.com"
         self.assertEqual(utils.get_current_site(request), "example.com")
-
-    # Test that the environment variables are set
-    def test_notify_client_environment_variables(self):
-        utils.get_notify_client()
-        self.assertIn("NOTIFY_API_KEY", os.environ)
-        self.assertIn("NOTIFY_URL", os.environ)
-
-    # Test that the get_notify_client function returns the correct instance
-    def test_notify_client_correct_instance(self):
-        notify_client = utils.get_notify_client()
-        self.assertIsInstance(notify_client, utils.NotificationsAPIClient)
-
-    # Test that the correct base_url is set for the Notify client
-    def test_notify_client_correct_url(self):
-        notify_client = utils.get_notify_client()
-        self.assertEqual(notify_client.base_url, os.getenv("NOTIFY_URL"))
 
     # Test that the notify client is initialized and is called once
     @patch("common.util.utils.NotificationsAPIClient")

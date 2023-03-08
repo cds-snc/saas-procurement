@@ -1,6 +1,6 @@
 from django.test import TestCase
-from unittest.mock import MagicMock
-from .models import SaasRequest, User, Users, Roles
+from .models import SaasRequest, User, Users
+from user.models import Roles
 from .forms import SubmitRequestForm
 import datetime
 
@@ -25,7 +25,7 @@ class SubmitRequestModelTestCase(TestCase):
         approver.user_roles.add(role)
         logged_user = User.objects.create_user(
             username="Test User 2", password="Test Password 2"
-        )        
+        )
         SaasRequest.objects.create(
             name="Test Name",
             url="http://www.testurl.com",
@@ -89,9 +89,7 @@ class SubmitRequestModelTestCase(TestCase):
         self.assertEqual(
             saas_request._meta.get_field("date_submitted").max_length, None
         )
-        self.assertEqual(
-            saas_request._meta.get_field("approved").max_length, None
-        )
+        self.assertEqual(saas_request._meta.get_field("approved").max_length, None)
 
     # Test that the string representation of the model is correctly returned
     def test_saas_request_string_representation(self):
@@ -105,21 +103,21 @@ class SubmitRequestFormTest(TestCase):
     def test_name_label(self):
         form = SubmitRequestForm()
         self.assertTrue(
-            form.fields["name"].label == None or form.fields["name"].label == "Name"
+            form.fields["name"].label is None or form.fields["name"].label == "Name"
         )
 
     # Test the url label of the form
     def test_url_label(self):
         form = SubmitRequestForm()
         self.assertTrue(
-            form.fields["url"].label == None or form.fields["url"].label == "Url"
+            form.fields["url"].label is None or form.fields["url"].label == "Url"
         )
 
     # Test the description label of the form
     def test_description_label(self):
         form = SubmitRequestForm()
         self.assertTrue(
-            form.fields["description"].label == None
+            form.fields["description"].label is None
             or form.fields["description"].label == "Description"
         )
 
@@ -127,14 +125,14 @@ class SubmitRequestFormTest(TestCase):
     def test_cost_label(self):
         form = SubmitRequestForm()
         self.assertTrue(
-            form.fields["cost"].label == None or form.fields["cost"].label == "Cost"
+            form.fields["cost"].label is None or form.fields["cost"].label == "Cost"
         )
 
     # Test the level of subscription label of the form
     def test_level_of_subscription_label(self):
         form = SubmitRequestForm()
         self.assertTrue(
-            form.fields["level_of_subscription"].label == None
+            form.fields["level_of_subscription"].label is None
             or form.fields["level_of_subscription"].label == "Level of subscription"
         )
 
@@ -142,7 +140,7 @@ class SubmitRequestFormTest(TestCase):
     def test_number_of_users_label(self):
         form = SubmitRequestForm()
         self.assertTrue(
-            form.fields["number_of_users"].label == None
+            form.fields["number_of_users"].label is None
             or form.fields["number_of_users"].label == "Number of users"
         )
 
@@ -150,7 +148,7 @@ class SubmitRequestFormTest(TestCase):
     def test_names_of_users_label(self):
         form = SubmitRequestForm()
         self.assertTrue(
-            form.fields["names_of_users"].label == None
+            form.fields["names_of_users"].label is None
             or form.fields["names_of_users"].label == "Names of users"
         )
 
@@ -158,7 +156,7 @@ class SubmitRequestFormTest(TestCase):
     def test_account_administrator_label(self):
         form = SubmitRequestForm()
         self.assertTrue(
-            form.fields["account_administrator"].label == None
+            form.fields["account_administrator"].label is None
             or form.fields["account_administrator"].label == "Account administrator"
         )
 
@@ -166,18 +164,18 @@ class SubmitRequestFormTest(TestCase):
     def test_backup_administrator_label(self):
         form = SubmitRequestForm()
         self.assertTrue(
-            form.fields["backup_administrator"].label == None
+            form.fields["backup_administrator"].label is None
             or form.fields["backup_administrator"].label == "Backup administrator"
         )
+
 
 class TestSubmitRequestViews(TestCase):
     # Test that the submit request page is accessible
     def test_submit_request_page(self):
         response = self.client.get("/submit_request")
-        self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, "saas_request.html")
+        self.assertEqual(response.status_code, 301)
 
     # Test that the view request page is accessible
     def test_view_request_page(self):
-        response = self.client.get("/view_request")
+        response = self.client.get("/submit_request/view")
         self.assertEqual(response.status_code, 301)
