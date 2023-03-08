@@ -1,5 +1,4 @@
 import os
-import pytest
 from unittest.mock import MagicMock, patch
 from django.test import TestCase
 import common.util.utils as utils

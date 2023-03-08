@@ -22,7 +22,7 @@
           </thead>
           <tbody>
             {% for request in submitted_requests %}
-            <tr>
+            <tr class="clickable-row" data-href="http://google.com'">
                 <td>{{ request.name}} </td>
                 <td>{{ request.description }}</td>
                 <td>{{ request.url }}</td>
@@ -38,3 +38,11 @@
           </tbody>
     </table>
 {% endblock %}
+
+<script>
+  jQuery(document).ready(function($) {
+      $(".clickable-row").click(function() {
+          window.location = $(this).data("href");
+      });
+  });
+</script>

@@ -1,5 +1,5 @@
 from django.db import models
-from user.models import Users, Roles
+from user.models import Users
 from django.contrib.auth.models import User
 
 
