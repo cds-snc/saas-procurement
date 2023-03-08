@@ -169,9 +169,9 @@ SOCIALACCOUNT_PROVIDERS = {
         },
     }
 }
-if 'test' in sys.argv or 'test' in sys.argv:
-    DATABASES['default']['ENGINE'] = 'django.db.backends.sqlite3'
-    DATABASES['default']['NAME'] = ':memory:'
+if "test" in sys.argv:
+    DATABASES["default"]["ENGINE"] = "django.db.backends.sqlite3"
+    DATABASES["default"]["NAME"] = ":memory:"
 
 SITE_ID = 9
 
