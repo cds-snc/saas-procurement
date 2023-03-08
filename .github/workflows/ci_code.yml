@@ -50,5 +50,3 @@ jobs:
       - name: Test
         working-directory: ./saas_app
         run: make test
-        env:
-          DATABASE_URL: postgres://postgres:postgres@localhost:5432/postgres
