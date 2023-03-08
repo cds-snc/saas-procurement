@@ -19,6 +19,7 @@ jobs:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
           POSTGRES_DB: postgres
+          NAME: postgres
         ports:
         - 5432:5432
     steps:
