@@ -9,7 +9,8 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
-import os, sys
+import os
+import sys
 from pathlib import Path
 from dotenv import load_dotenv
 from socket import gethostname
@@ -168,10 +169,10 @@ SOCIALACCOUNT_PROVIDERS = {
         },
     }
 }
-if 'test' in sys.argv or 'test\_coverage' in sys.argv: #Covers regular testing and django-coverage
- DATABASES['default']['ENGINE'] = 'django.db.backends.sqlite3'
- DATABASES['default']['NAME'] = ':memory:'
- 
+if 'test' in sys.argv or 'test' in sys.argv:
+    DATABASES['default']['ENGINE'] = 'django.db.backends.sqlite3'
+    DATABASES['default']['NAME'] = ':memory:'
+
 SITE_ID = 9
 
 LOGIN_REDIRECT_URL = "/"
