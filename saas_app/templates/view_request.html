@@ -2,39 +2,16 @@
 {% load socialaccount %}
 {% load i18n %}
 {% load static %}
+{% load crispy_forms_tags %}
 
-{% block head_title %}{% trans "Saas Procurement App" %}{% endblock %}
+
+{% block head_title %}{% trans "Software as a Service form Request" %}{% endblock %}
 
 {% block content %}
-    <h1>Submitted Requests</h1>
-    <p>This is the list of requests that you have submitted. Click on a request to view more information.</p><br>
-    <table class="table table-hover table-bordered">
-        <thead>
-            <tr>
-              <th scope="col">Name</th>
-              <th scope="col">Description</th>
-              <th scope="col">Url</th>
-              <th scope="col">Cost</th>
-              <th scope="col">Date Submitted</th>
-              <th scope="col">Approved?</th>
-              <tbody class="table-group-divider"></tbody>
-            </tr>
-          </thead>
-          <tbody>
-            {% for request in submitted_requests %}
-            <tr>
-                <td>{{ request.name}} </td>
-                <td>{{ request.description }}</td>
-                <td>{{ request.url }}</td>
-                <td>{{ request.cost }}</td>
-                <td>{{ request.date_submitted }}</td>
-                {% if request.approved == True %}
-                	<td>Yes</td>
-                {% else %}
-                	<td>No</td>
-                {% endif %}
-            </tr>
-            {% endfor %}
-          </tbody>
-    </table>
+<h1>{% trans "Software as a Service Request Form" %}</h1>
+<p>{% blocktrans %} To overwrite any changes, make your changes and then press the Save Changes Button. To delete, the Saas Request, press the Delete button {% endblocktrans %}</p>
+<form method="post" novalidate>
+        {% csrf_token %}
+        {% crispy form %}
+</form>
 {% endblock %}

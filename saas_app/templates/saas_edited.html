@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load socialaccount %}
+{% load i18n %}
+{% load static %}
+
+{% block head_title %}{% trans "Saas Procurement App" %}{% endblock %}
+
+{% block content %}
+    <h1>Thank you for editing your Software as a Service Request Form!</h1>
+    <p>The request has been upated and the approver will be notified.</p>
+    <button type="button" class="btn btn-primary btn-lg" name="home" onclick="location.href='{% url 'home' %}'">Home</button>
+{% endblock %}

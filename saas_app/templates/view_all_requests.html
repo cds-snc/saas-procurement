@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load socialaccount %}
+{% load i18n %}
+{% load static %}
+
+{% block head_title %}{% trans "Saas Procurement App" %}{% endblock %}
+
+{% block content %}
+    <h1>Submitted Requests</h1>
+    <p>This is the list of requests that you have submitted. Click on the request name to view more information.</p>
+    <p>Note: You can only modify requests that have not been approved.</p><br>
+    <table class="table table-hover table-bordered">
+        <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Description</th>
+              <th scope="col">Url</th>
+              <th scope="col">Cost</th>
+              <th scope="col">Date Submitted</th>
+              <th scope="col">Approved?</th>
+              <tbody class="table-group-divider"></tbody>
+            </tr>
+          </thead>
+          <tbody>
+            {% for request in submitted_requests %}
+            <tr>
+                {% if request.approved == False %}
+                	<td><a href="/submit_request/view/{{request.pk}}">{{ request.name}} </a></td>
+                {% else %}
+                	<td>{{ request.name}}</td>
+                {% endif %}
+                <td>{{ request.description }}</td>
+                <td>{{ request.url }}</td>
+                <td>{{ request.cost }}</td>
+                <td>{{ request.date_submitted }}</td>
+                {% if request.approved == True %}
+                	<td>Yes</td>
+                {% else %}
+                	<td>No</td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+          </tbody>
+    </table>
+{% endblock %}
