@@ -10,6 +10,7 @@ def send_requestor_email(request, saas_object, template_id):
     # get the requester's email address
     requestor_email = request.user.email
     # get the requestors's name
+    request.user
     requestor_name = request.user.first_name
     # get the saas_name
     saas_name = saas_object.name
@@ -72,10 +73,10 @@ def process_requests(request):
             )
 
             # redirect to a new URL:
-            return render(request, "thanks.html")
+            return render(request, "request/thanks.html")
     else:
         form = SubmitRequestForm()
-    return render(request, "saas_request.html", {"form": form})
+    return render(request, "request/saas_request.html", {"form": form})
 
 
 # function to return the list of submitted requests for the logged in user
@@ -86,7 +87,7 @@ def view_all_requests(request):
         # render the requests in a table
         return render(
             request,
-            "view_all_requests.html",
+            "request/view_all_requests.html",
             {"submitted_requests": submitted_requests},
         )
 
@@ -97,7 +98,7 @@ def view_request(request, pk):
         # search for the request with the given primary key
         saas_request = SaasRequest.objects.get(pk=pk)
         form = ViewRequestForm(instance=saas_request)
-        return render(request, "view_request.html", {"form": form})
+        return render(request, "request/view_request.html", {"form": form})
     elif request.method == "POST":
         form = ViewRequestForm(request.POST)
         # if the save button was clicked
@@ -132,7 +133,7 @@ def view_request(request, pk):
                     request, saas_object, os.getenv("EDIT_REQUEST_TEMPLATE_ID")
                 )
                 # redirect to a new URL:
-                return render(request, "saas_edited.html")
+                return render(request, "request/saas_edited.html")
         # else if the delete button was clicked
         elif request.POST.get("delete"):
             # obtain the saas object since we need to pass it for sending emails
@@ -147,4 +148,4 @@ def view_request(request, pk):
                 request, saas_object, os.getenv("APPROVER_DELETE_TEMPLATE_ID")
             )
             # redirect to a new URL:
-            return render(request, "saas_deleted.html")
+            return render(request, "request/saas_deleted.html")
