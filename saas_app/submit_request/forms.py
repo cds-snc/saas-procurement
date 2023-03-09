@@ -30,9 +30,17 @@ class SubmitRequestForm(ModelForm):
         self.helper.form_method = "post"
         self.helper.form_action = "submit_saas_form"
         self.helper.add_input(Submit("submit", "Submit", css_class="btn btn-primary"))
-        self.helper.add_input(Button('cancel', 'Cancel', css_id="submit", css_class='btn btn-primary btn-lg', onclick="history.back()"))
+        self.helper.add_input(
+            Button(
+                "cancel",
+                "Cancel",
+                css_id="submit",
+                css_class="btn btn-primary btn-lg",
+                onclick="history.back()",
+            )
+        )
 
-        
+
 # Submit Saas Request Form
 class ViewRequestForm(ModelForm):
     # Form is generated from the database fields.
@@ -67,7 +75,17 @@ class ViewRequestForm(ModelForm):
             "account_administrator",
             "backup_administrator",
             "approver",
-            Submit('save', 'Save changes'),
-            Submit('delete', 'Delete', onclick="return confirm('Are you sure you want to delete this saas request?');"),
-            Button('cancel', 'Cancel', css_id="submit", css_class='btn btn-primary btn-lg', onclick="history.back()")
+            Submit("save", "Save changes"),
+            Submit(
+                "delete",
+                "Delete",
+                onclick="return confirm('Are you sure you want to delete this saas request?');",
+            ),
+            Button(
+                "cancel",
+                "Cancel",
+                css_id="submit",
+                css_class="btn btn-primary btn-lg",
+                onclick="history.back()",
+            ),
         )

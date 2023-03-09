@@ -4,9 +4,10 @@ from .models import SaasRequest
 import os
 import common.util.utils as utils
 
+
 # Send an email to the requestor
 def send_requestor_email(request, saas_object, template_id):
-     # get the requester's email address
+    # get the requester's email address
     requestor_email = request.user.email
     # get the requestors's name
     requestor_name = request.user.first_name
@@ -22,7 +23,8 @@ def send_requestor_email(request, saas_object, template_id):
         {"saas_name": saas_name, "name": requestor_name, "url": url},
     )
 
-# send an email to the approver    
+
+# send an email to the approver
 def send_approver_email(request, saas_object, template_id):
     # get the requestors's name
     requestor_name = request.user.first_name
@@ -47,6 +49,7 @@ def send_approver_email(request, saas_object, template_id):
         },
     )
 
+
 # Process the request form
 def process_requests(request):
     if request.method == "POST":
@@ -59,10 +62,14 @@ def process_requests(request):
             saas_object.save()
 
             # send an email to the requestor and the approver
-            send_requestor_email(request, saas_object, os.getenv("SAAS_SUBMISSION_TEMPLATE_ID"))
-            
+            send_requestor_email(
+                request, saas_object, os.getenv("SAAS_SUBMISSION_TEMPLATE_ID")
+            )
+
             # send an email to the approver
-            send_approver_email(request, saas_object, os.getenv("APPROVAL_REQUEST_TEMPLATE_ID"))
+            send_approver_email(
+                request, saas_object, os.getenv("APPROVAL_REQUEST_TEMPLATE_ID")
+            )
 
             # redirect to a new URL:
             return render(request, "thanks.html")
@@ -78,15 +85,18 @@ def view_all_requests(request):
         submitted_requests = SaasRequest.objects.filter(submitted_by=request.user)
         # render the requests in a table
         return render(
-            request, "view_all_requests.html", {"submitted_requests": submitted_requests}
+            request,
+            "view_all_requests.html",
+            {"submitted_requests": submitted_requests},
         )
+
 
 # function to view a single request and save or delete it
 def view_request(request, pk):
     if request.method == "GET":
         # search for the request with the given primary key
         saas_request = SaasRequest.objects.get(pk=pk)
-        form = ViewRequestForm(instance = saas_request)
+        form = ViewRequestForm(instance=saas_request)
         return render(request, "view_request.html", {"form": form})
     elif request.method == "POST":
         form = ViewRequestForm(request.POST)
@@ -96,21 +106,31 @@ def view_request(request, pk):
                 # get the request object by its primary key
                 saas_object = SaasRequest.objects.get(pk=pk)
                 # update all the fields
-                saas_object.name = form.cleaned_data['name']
-                saas_object.url = form.cleaned_data['url']
-                saas_object.description = form.cleaned_data['description']
-                saas_object.cost = form.cleaned_data['cost']
-                saas_object.level_of_subscription = form.cleaned_data['level_of_subscription']
-                saas_object.number_of_users = form.cleaned_data['number_of_users']
-                saas_object.names_of_users = form.cleaned_data['names_of_users']
-                saas_object.account_administrator = form.cleaned_data['account_administrator']
-                saas_object.backup_administrator = form.cleaned_data['backup_administrator']
-                saas_object.approver = form.cleaned_data['approver']
+                saas_object.name = form.cleaned_data["name"]
+                saas_object.url = form.cleaned_data["url"]
+                saas_object.description = form.cleaned_data["description"]
+                saas_object.cost = form.cleaned_data["cost"]
+                saas_object.level_of_subscription = form.cleaned_data[
+                    "level_of_subscription"
+                ]
+                saas_object.number_of_users = form.cleaned_data["number_of_users"]
+                saas_object.names_of_users = form.cleaned_data["names_of_users"]
+                saas_object.account_administrator = form.cleaned_data[
+                    "account_administrator"
+                ]
+                saas_object.backup_administrator = form.cleaned_data[
+                    "backup_administrator"
+                ]
+                saas_object.approver = form.cleaned_data["approver"]
                 # Save the data to the database
-                saas_object.save()  
+                saas_object.save()
                 # send emails to the requestor and approver that a change to the SaaS request has been made
-                send_requestor_email(request, saas_object, os.getenv("SAAS_SUBMISSION_EDIT_TEMPLATE_ID"))
-                send_approver_email(request, saas_object, os.getenv("EDIT_REQUEST_TEMPLATE_ID"))
+                send_requestor_email(
+                    request, saas_object, os.getenv("SAAS_SUBMISSION_EDIT_TEMPLATE_ID")
+                )
+                send_approver_email(
+                    request, saas_object, os.getenv("EDIT_REQUEST_TEMPLATE_ID")
+                )
                 # redirect to a new URL:
                 return render(request, "saas_edited.html")
         # else if the delete button was clicked
@@ -120,7 +140,11 @@ def view_request(request, pk):
             # delete the saas request
             SaasRequest.objects.get(pk=pk).delete()
             # send an email to the requestor that the request has been deleted
-            send_requestor_email(request, saas_object, os.getenv("DELETE_SAAS_REQUEST_TEMPLATE_ID"))
-            send_approver_email(request, saas_object, os.getenv("APPROVER_DELETE_TEMPLATE_ID"))
+            send_requestor_email(
+                request, saas_object, os.getenv("DELETE_SAAS_REQUEST_TEMPLATE_ID")
+            )
+            send_approver_email(
+                request, saas_object, os.getenv("APPROVER_DELETE_TEMPLATE_ID")
+            )
             # redirect to a new URL:
             return render(request, "saas_deleted.html")
