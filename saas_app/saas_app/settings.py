@@ -44,6 +44,7 @@ ALLOWED_HOSTS = [
 INSTALLED_APPS = [
     "submit_request",
     "user",
+    "approve",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
