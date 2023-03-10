@@ -10,7 +10,6 @@ def send_requestor_email(request, saas_object, template_id):
     # get the requester's email address
     requestor_email = request.user.email
     # get the requestors's name
-    request.user
     requestor_name = request.user.first_name
     # get the saas_name
     saas_name = saas_object.name
@@ -83,7 +82,7 @@ def process_requests(request):
 def view_all_requests(request):
     if request.method == "GET":
         # search fro all the requests submitted by the logged in user
-        submitted_requests = SaasRequest.objects.filter(submitted_by=request.user)
+        submitted_requests = SaasRequest.objects.filter(submitted_by=request.user).order_by('-date_reviewed')
         # render the requests in a table
         return render(
             request,

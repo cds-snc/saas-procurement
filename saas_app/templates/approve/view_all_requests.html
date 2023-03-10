@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% load socialaccount %}
+{% load i18n %}
+{% load static %}
+
+{% block head_title %}{% trans "Saas Procurement App" %}{% endblock %}
+
+{% block content %}
+    <h1>SAAS requests awaiting approval</h1>
+    <p> List of requests awaiting approval</p>
+    <h3>Requests where you flagged as the approver</h2>
+    <table class="table table-hover table-bordered">
+      <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Url</th>
+            <th scope="col">Cost</th>
+            <th scope="col">Date Submitted</th>
+            <th scope="col">Approver</th>
+            <th scope="col">Status</th>
+            <tbody class="table-group-divider"></tbody>
+          </tr>
+        </thead>
+        <tbody>
+        {% for saas_request in user_approval_needed_requests %}
+             <tr>
+              <td><a href="/approve/view/{{saas_request.pk}}">{{ saas_request.name}} </a></td>
+              <td>{{ saas_request.description }}</td>
+              <td>{{ saas_request.url }}</td>
+              <td>{{ saas_request.cost }}</td>
+              <td>{{ saas_request.date_submitted }}</td>
+              <td>{{ saas_request.approver }}</td>
+              {% if saas_request.approved == True %}
+                <td>Approved</td>
+              {% elif saas_request.denied == True %}
+                <td>Denied</td>
+              {% elif saas_request.date_reviewed == None %}
+                <td>Review pending</td>
+              {% else %}
+                <td>Status unknown</td>
+              {% endif %}
+          </tr>
+          {% endfor %}
+        </tbody>
+  </table>
+  <br>
+  <h3>Requests where you are not the approver</h2>
+  <table class="table table-hover table-bordered">
+    <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Description</th>
+          <th scope="col">Url</th>
+          <th scope="col">Cost</th>
+          <th scope="col">Date Submitted</th>
+          <th scope="col">Approver</th>
+          <th scope="col">Status</th>
+          <tbody class="table-group-divider"></tbody>
+        </tr>
+      </thead>
+      <tbody>
+        {% for saas_request in all_approval_needed_requests %}
+            <tr>
+            <td><a href="/approve/view/{{saas_request.pk}}">{{ saas_request.name}} </a></td>
+            <td>{{ saas_request.description }}</td>
+            <td>{{ saas_request.url }}</td>
+            <td>{{ saas_request.cost }}</td>
+            <td>{{ saas_request.date_submitted }}</td>
+            <td>{{ saas_request.approver }}</td>
+            {% if saas_request.approved == True %}
+              <td>Approved</td>
+            {% elif saas_request.denied == True %}
+              <td>Denied</td>
+            {% elif saas_request.date_reviewed == None %}
+              <td>Review pending</td>
+            {% else %}
+              <td>Status unknown</td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+      </tbody>
+</table>
+    <button type="button" class="btn btn-primary btn-lg" name="home" onclick="location.href='{% url 'home' %}'">Cancel</button>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load socialaccount %}
+{% load i18n %}
+{% load static %}
+
+{% block head_title %}{% trans "Saas Procurement App" %}{% endblock %}
+
+{% block content %}
+{% if status == 'approved' %}
+    <h1>The Software as a Service Request has been successfully approved</h1>
+{% elif status == 'denied' %}
+    <h1>The Software as a Service Request has been succesfully denied!</h1>
+{% endif %}
+    <p>The person who has submitted the request will be notified.</p>
+    <button type="button" class="btn btn-primary btn-lg" name="home" onclick="location.href='{% url 'home' %}'">Home</button>
+
+
+{% endblock %}
