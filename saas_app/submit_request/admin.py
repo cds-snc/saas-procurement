@@ -21,8 +21,7 @@ class SaasRequestAdmin(admin.ModelAdmin):
         "approved",
         "approved_by",
         "date_reviewed",
-        "denied"
-        
+        "denied",
     )
     list_filter = (
         "name",
@@ -40,7 +39,7 @@ class SaasRequestAdmin(admin.ModelAdmin):
         "approved_by",
         "date_reviewed",
         "approved",
-        "denied"
+        "denied",
     )
     search_fields = (
         "name",
@@ -58,7 +57,7 @@ class SaasRequestAdmin(admin.ModelAdmin):
         "approved",
         "approved_by",
         "date_reviewed",
-        "denied"
+        "denied",
     )
     ordering = (
         "name",
@@ -76,5 +75,5 @@ class SaasRequestAdmin(admin.ModelAdmin):
         "approved",
         "approved_by",
         "date_reviewed",
-        "denied"
+        "denied",
     )

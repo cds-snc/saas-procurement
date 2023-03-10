@@ -38,8 +38,16 @@ class ViewRequestForm(ModelForm):
             Field("names_of_users", disabled=True),
             Field("account_administrator", disabled=True),
             Field("backup_administrator", disabled=True),
-            Field("approver", disabled=True, style="color:black; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;"),
-            Field("submitted_by", disabled=True, style="color:black; background-color:#e9ecef; opacity:1; font-weight: inherit; font-color: inherit;"),
+            Field(
+                "approver",
+                disabled=True,
+                style="color:black; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
+            ),
+            Field(
+                "submitted_by",
+                disabled=True,
+                style="color:black; background-color:#e9ecef; opacity:1; font-weight: inherit; font-color: inherit;",
+            ),
             Submit("approve", "Approve"),
             Submit(
                 "deny",
@@ -58,4 +66,3 @@ class ViewRequestForm(ModelForm):
                 onclick="history.back()",
             ),
         )
-

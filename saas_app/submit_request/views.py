@@ -82,7 +82,9 @@ def process_requests(request):
 def view_all_requests(request):
     if request.method == "GET":
         # search fro all the requests submitted by the logged in user
-        submitted_requests = SaasRequest.objects.filter(submitted_by=request.user).order_by('-date_reviewed')
+        submitted_requests = SaasRequest.objects.filter(
+            submitted_by=request.user
+        ).order_by("-date_reviewed")
         # render the requests in a table
         return render(
             request,

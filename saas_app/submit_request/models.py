@@ -17,11 +17,16 @@ class SaasRequest(models.Model):
     approver = models.ForeignKey(Users, on_delete=models.CASCADE)
     submitted_by = models.ForeignKey(User, on_delete=models.CASCADE)
     date_submitted = models.DateTimeField(auto_now_add=True)
-    approved_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name="approved_by", null=True, blank=True)
+    approved_by = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name="approved_by",
+        null=True,
+        blank=True,
+    )
     date_reviewed = models.DateTimeField(null=True, blank=True)
     approved = models.BooleanField(default=False)
     denied = models.BooleanField(default=False)
-    
 
     # return the string representation of the model
     def __str__(self):
