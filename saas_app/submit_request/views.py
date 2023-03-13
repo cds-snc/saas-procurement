@@ -24,27 +24,27 @@ def send_requestor_email(request, saas_object, template_id):
     )
 
 
-# send an email to the approver
-def send_approver_email(request, saas_object, template_id):
+# send an email to the manager
+def send_manager_email(request, saas_object, template_id):
     # get the requestors's name
     requestor_name = request.user.first_name
     # get the saas_name
     saas_name = saas_object.name
-    # get thea approver's email address
-    approver_email = saas_object.approver.user.email
-    # get the approver's name
-    approver_name = saas_object.approver.user.first_name
+    # get the manager's email address
+    manager_email = saas_object.manager.user.email
+    # get the manager's name
+    manager_name = saas_object.manager.user.first_name
     # get the url
     url = utils.get_current_site(request)
 
-    # send an email to the approver
+    # send an email to the manager
     utils.send_email(
-        approver_email,
+        manager_email,
         template_id,
         {
             "saas_name": saas_name,
             "requestor": requestor_name,
-            "name": approver_name,
+            "name": manager_name,
             "url": url,
         },
     )
@@ -61,13 +61,13 @@ def process_requests(request):
             saas_object.submitted_by = request.user
             saas_object.save()
 
-            # send an email to the requestor and the approver
+            # send an email to the requestor and the manager
             send_requestor_email(
                 request, saas_object, os.getenv("SAAS_SUBMISSION_TEMPLATE_ID")
             )
 
-            # send an email to the approver
-            send_approver_email(
+            # send an email to the manager
+            send_manager_email(
                 request, saas_object, os.getenv("APPROVAL_REQUEST_TEMPLATE_ID")
             )
 
@@ -123,14 +123,14 @@ def view_request(request, pk):
                 saas_object.backup_administrator = form.cleaned_data[
                     "backup_administrator"
                 ]
-                saas_object.approver = form.cleaned_data["approver"]
+                saas_object.manager = form.cleaned_data["manager"]
                 # Save the data to the database
                 saas_object.save()
-                # send emails to the requestor and approver that a change to the SaaS request has been made
+                # send emails to the requestor and manager that a change to the SaaS request has been made
                 send_requestor_email(
                     request, saas_object, os.getenv("SAAS_SUBMISSION_EDIT_TEMPLATE_ID")
                 )
-                send_approver_email(
+                send_manager_email(
                     request, saas_object, os.getenv("EDIT_REQUEST_TEMPLATE_ID")
                 )
                 # redirect to a new URL:
@@ -145,7 +145,7 @@ def view_request(request, pk):
             send_requestor_email(
                 request, saas_object, os.getenv("DELETE_SAAS_REQUEST_TEMPLATE_ID")
             )
-            send_approver_email(
+            send_manager_email(
                 request, saas_object, os.getenv("APPROVER_DELETE_TEMPLATE_ID")
             )
             # redirect to a new URL:

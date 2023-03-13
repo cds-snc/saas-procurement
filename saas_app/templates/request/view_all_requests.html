@@ -34,11 +34,11 @@
                 <td>{{ request.cost }}</td>
                 <td>{{ request.date_submitted }}</td>
                 {% if request.approved == True %}
-                	<td>Approved</td>
+                	<td>Manager approved</td>
                 {% elif request.denied == True %}
-                	<td>Denied</td>
+                	<td>Manager denied</td>
                 {% elif request.date_reviewed == None %}
-                	<td>Review pending</td>
+                	<td>Manager review pending</td>
                 {% else %}
                   <td>Status unknown</td>
 
