@@ -21,6 +21,20 @@
       ]
     }
   },
+ {
+    "model":"user.users",
+      "pk":2,
+      "fields":{
+         "user":4,
+         "first_name":"Manager First Name",
+         "last_name":"Manager Last Name",
+         "title":"Manager title",
+         "business_unit":"Manager business unit",
+         "user_roles":[
+            1
+         ]
+      }
+   },
   {
     "model": "auth.user",
     "pk": 2,
@@ -39,6 +53,27 @@
       "user_permissions": []
     }
   },
+  {"model":"auth.user",
+      "pk":4,
+      "fields":{
+         "password":"",
+         "last_login":null,
+         "is_superuser":true,
+         "username":"manager",
+         "first_name":"Manager First Name",
+         "last_name":"Manager Last Name",
+         "email":"sylvia.mclaughlin@cds-snc.ca",
+         "is_staff":true,
+         "is_active":true,
+         "date_joined":"2023-03-14T17:16:33Z",
+         "groups":[
+            
+         ],
+         "user_permissions":[
+            
+         ]
+      }
+   },
   {
     "model": "sites.site",
     "pk": 9,
