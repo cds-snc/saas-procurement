@@ -19,7 +19,7 @@ class SubmitRequestForm(ModelForm):
             "names_of_users",
             "account_administrator",
             "backup_administrator",
-            "approver",
+            "manager",
         ]
 
     def __init__(self, *args, **kwargs):
@@ -56,7 +56,7 @@ class ViewRequestForm(ModelForm):
             "names_of_users",
             "account_administrator",
             "backup_administrator",
-            "approver",
+            "manager",
         ]
 
     def __init__(self, *args, **kwargs):
@@ -74,7 +74,7 @@ class ViewRequestForm(ModelForm):
             "names_of_users",
             "account_administrator",
             "backup_administrator",
-            "approver",
+            "manager",
             Submit("save", "Save changes"),
             Submit(
                 "delete",

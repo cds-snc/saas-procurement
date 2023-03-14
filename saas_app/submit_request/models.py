@@ -14,7 +14,7 @@ class SaasRequest(models.Model):
     names_of_users = models.CharField(max_length=500)
     account_administrator = models.CharField(max_length=100)
     backup_administrator = models.CharField(max_length=100)
-    approver = models.ForeignKey(Users, on_delete=models.CASCADE)
+    manager = models.ForeignKey(Users, on_delete=models.CASCADE)
     submitted_by = models.ForeignKey(User, on_delete=models.CASCADE)
     date_submitted = models.DateTimeField(auto_now_add=True)
     approved_by = models.ForeignKey(
@@ -24,9 +24,9 @@ class SaasRequest(models.Model):
         null=True,
         blank=True,
     )
-    date_reviewed = models.DateTimeField(null=True, blank=True)
-    approved = models.BooleanField(default=False)
-    denied = models.BooleanField(default=False)
+    date_manager_reviewed = models.DateTimeField(null=True, blank=True)
+    manager_approved = models.BooleanField(default=False)
+    manager_denied = models.BooleanField(default=False)
 
     # return the string representation of the model
     def __str__(self):

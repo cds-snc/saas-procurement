@@ -19,7 +19,7 @@ class ViewRequestForm(ModelForm):
             "names_of_users",
             "account_administrator",
             "backup_administrator",
-            "approver",
+            "manager",
             "submitted_by",
         ]
 
@@ -39,7 +39,7 @@ class ViewRequestForm(ModelForm):
             Field("account_administrator", disabled=True),
             Field("backup_administrator", disabled=True),
             Field(
-                "approver",
+                "manager",
                 disabled=True,
                 style="color:black; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
             ),
@@ -54,9 +54,14 @@ class ViewRequestForm(ModelForm):
                 "Deny",
                 onclick="return confirm('Are you sure you want to deny this saas request?');",
             ),
-            Submit(
+            Button(
                 "request_info",
                 "Request Additional Information",
+                css_id="submit",
+                css_class="btn btn-primary btn-lg",
+                data_toggle="modal",
+                data_target="#request_info_modal",
+                data_dismiss="modal",
             ),
             Button(
                 "cancel",

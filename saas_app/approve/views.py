@@ -10,20 +10,25 @@ import datetime
 
 def view_all_requests(request):
     # get all the objects that need to be approved
-    current_user = Users.objects.get(user=request.user)
+    try:
+        current_user = Users.objects.get(user=request.user)
+    except Exception:
+        current_user = None
+
     user_approval_needed_requests = SaasRequest.objects.filter(
-        approver=current_user, date_reviewed=None
+        manager=current_user, date_manager_reviewed=None
     )
-    all_approval_needed_requests = SaasRequest.objects.filter(
-        date_reviewed=None
-    ).exclude(approver=current_user)
+    all_old_requests = SaasRequest.objects.filter(manager=current_user).exclude(
+        date_manager_reviewed=None
+    )
+
     # render the requests in a table
     return render(
         request,
         "approve/view_all_requests.html",
         {
             "user_approval_needed_requests": user_approval_needed_requests,
-            "all_approval_needed_requests": all_approval_needed_requests,
+            "all_approval_needed_requests": all_old_requests,
         },
     )
 
@@ -40,8 +45,8 @@ def view_request(request, pk):
             # get the request object by its primary key
             saas_object = SaasRequest.objects.get(pk=pk)
             # update the approve field and notify the requestor
-            saas_object.approved = True
-            saas_object.date_reviewed = datetime.datetime.now()
+            saas_object.manager_approved = True
+            saas_object.date_manager_reviewed = datetime.datetime.now()
             # Save the data to the database
             saas_object.save()
             # send emails to the requestor that an approval has been made
@@ -54,8 +59,8 @@ def view_request(request, pk):
         elif request.POST.get("deny"):
             saas_object = SaasRequest.objects.get(pk=pk)
             # update the approve field and notify the requestor
-            saas_object.denied = True
-            saas_object.date_reviewed = datetime.datetime.now()
+            saas_object.manager_denied = True
+            saas_object.date_manager_reviewed = datetime.datetime.now()
             # Save the data to the database
             saas_object.save()
             # send emails to the requestor that an approval has been made
@@ -67,3 +72,10 @@ def view_request(request, pk):
         elif request.POST.get("request_info"):
             # TO DO: send an email to the requestor asking for more information
             pass
+
+
+def send_email(request):
+    print("send email")
+    if request.method == "POST":
+        print("post")
+        pass

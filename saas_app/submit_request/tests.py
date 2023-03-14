@@ -15,14 +15,14 @@ class SubmitRequestModelTestCase(TestCase):
         auth_user = User.objects.create_user(
             username="Test User", password="Test Password"
         )
-        approver = Users.objects.create(
+        manager = Users.objects.create(
             user=auth_user,
             first_name="Test First Name",
             last_name="Test Last Name",
             title="Test Title",
             business_unit="Test Business Unit",
         )
-        approver.user_roles.add(role)
+        manager.user_roles.add(role)
         logged_user = User.objects.create_user(
             username="Test User 2", password="Test Password 2"
         )
@@ -36,15 +36,15 @@ class SubmitRequestModelTestCase(TestCase):
             names_of_users="Test Names of Users",
             account_administrator="Test Account Administrator",
             backup_administrator="Test Backup Administrator",
-            approver=approver,
+            manager=manager,
             submitted_by=logged_user,
-            approved=False,
+            manager_approved=False,
         )
 
     # test that the model was created correctly
     def test_saas_request(self):
         auth_user = User.objects.get(username="Test User")
-        approver = Users.objects.get(user=auth_user)
+        manager = Users.objects.get(user=auth_user)
         logged_user = User.objects.get(username="Test User 2")
         saas_request = SaasRequest.objects.get(name="Test Name")
         self.assertEqual(saas_request.url, "http://www.testurl.com")
@@ -59,12 +59,12 @@ class SubmitRequestModelTestCase(TestCase):
             saas_request.account_administrator, "Test Account Administrator"
         )
         self.assertEqual(saas_request.backup_administrator, "Test Backup Administrator")
-        self.assertEqual(saas_request.approver, approver)
+        self.assertEqual(saas_request.manager, manager)
         self.assertEqual(saas_request.submitted_by, logged_user)
         mocked_date = datetime.datetime(2020, 1, 1, 0, 0, 0)
         saas_request.date_submitted = mocked_date
         self.assertEqual(saas_request.date_submitted, mocked_date)
-        self.assertEqual(saas_request.approved, False)
+        self.assertEqual(saas_request.manager_approved, False)
 
     # Test the lengths of the fields in the models
     def test_saas_request_max_length_fields(self):
@@ -89,7 +89,9 @@ class SubmitRequestModelTestCase(TestCase):
         self.assertEqual(
             saas_request._meta.get_field("date_submitted").max_length, None
         )
-        self.assertEqual(saas_request._meta.get_field("approved").max_length, None)
+        self.assertEqual(
+            saas_request._meta.get_field("manager_approved").max_length, None
+        )
 
     # Test that the string representation of the model is correctly returned
     def test_saas_request_string_representation(self):

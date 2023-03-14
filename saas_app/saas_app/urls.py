@@ -25,5 +25,5 @@ urlpatterns = [
     path("accounts/", include("allauth.urls")),
     path("logout", LogoutView.as_view()),
     path("submit_request/", include("submit_request.urls")),
-    path("approve/", include("approve.urls")),
+    path("approve/", include("approve.urls"), name="approve"),
 ]
