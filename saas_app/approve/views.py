@@ -10,7 +10,11 @@ import datetime
 
 def view_all_requests(request):
     # get all the objects that need to be approved
-    current_user = Users.objects.get(user=request.user)
+    try:
+        current_user = Users.objects.get(user=request.user)
+    except:
+        current_user = None
+        
     user_approval_needed_requests = SaasRequest.objects.filter(
         manager=current_user, date_manager_reviewed=None
     )
