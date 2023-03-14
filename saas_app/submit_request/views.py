@@ -84,7 +84,7 @@ def view_all_requests(request):
         # search fro all the requests submitted by the logged in user
         submitted_requests = SaasRequest.objects.filter(
             submitted_by=request.user
-        ).order_by("-date_reviewed")
+        ).order_by("-date_manager_reviewed")
         # render the requests in a table
         return render(
             request,
