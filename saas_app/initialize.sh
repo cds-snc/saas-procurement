@@ -57,7 +57,7 @@ if [ "${social_account}" -eq 0 ]; then
     if [ "${social_app_model}" = "socialaccount.socialapp" ]; then
         # Make a copy of file temporarily so that we can modify it
         cp fixtures/fixtures_initial_data.json fixtures/original_fixtures_initial_data.json
-        jq '.[6].fields.client_id=env.SOCIAL_APPLICATION_CLIENT_ID | .[6].fields.secret=env.SOCIAL_APPLICATION_SECRET_KEY' fixtures/fixtures_initial_data.json >> tmp.json && mv tmp.json fixtures/fixtures_initial_data.json
+        jq '.[6].fields.client_id=env.SOCIAL_APPLICATION_CLIENT_ID | .[6].fields.secret=env.SOCIAL_APPLICATION_SECRET_KEY | .[4].fields.password = env.MANAGER_PASSWORD' fixtures/fixtures_initial_data.json >> tmp.json && mv tmp.json fixtures/fixtures_initial_data.json
         # Run the loaddata command
         echo "Installing initial database data"
         python manage.py loaddata fixtures/fixtures_initial_data.json

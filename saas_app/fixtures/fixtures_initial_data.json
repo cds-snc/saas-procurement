@@ -53,10 +53,11 @@
       "user_permissions": []
     }
   },
-  {"model":"auth.user",
+  {
+    "model":"auth.user",
       "pk":4,
       "fields":{
-         "password":"",
+         "password":"MANAGER_PASSWORD",
          "last_login":null,
          "is_superuser":true,
          "username":"manager",
