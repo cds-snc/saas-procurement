@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "submit_request",
     "user",
     "approve",
+    "internal_ops",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",

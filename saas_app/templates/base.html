@@ -59,19 +59,7 @@
         <div class="page--container"></div>
        </nav>
        <div class="page--container" id="page--content" tabindex="-1">
-        <div class="content--container">
-         {% block page_content %} {% endblock %}
-         {% if messages %}
-          <div>
-            <strong>Messages:</strong>
-            <ul>
-              {% for message in messages %}
-               <li>{{message}}</li>
-              {% endfor %}
-            </ul>
-          </div>
-         {% endif %}
-     
+        <div class="content--container">        
           {% if user.is_authenticated %}
           <div>
             <strong>Menu:</strong>
@@ -81,6 +69,26 @@
           {% endif %}
            </ul>
          </div>
+         {% block page_content %} {% endblock %}
+         {% if messages %}
+            {% for message in messages %}
+              {% if message.tags == 'error' %}
+                <div class="alert alert-danger alert-dismissable fade show" role="alert">
+              {% elif message.tags == 'success' %}
+                <div class="alert alert-success alert-dismissable fade show" role="alert">
+              {% elif message.tags == 'info' %}
+                <div class="alert alert-info alert-dismissable fade show" role="alert">
+              {% elif message.tags == 'warning' %}
+                <div class="alert alert-warning alert-dismissable fade show" role="alert">
+              {% endif %}
+                <strong>Messages:</strong>
+                <ul>
+                  <li>{{message}}</li>
+                </ul>
+              </div>
+            {% endfor %}
+         {% endif %}
+    
          {% block content %} {% endblock %}
         </div>
        </div>

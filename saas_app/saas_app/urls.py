@@ -26,4 +26,5 @@ urlpatterns = [
     path("logout", LogoutView.as_view()),
     path("submit_request/", include("submit_request.urls")),
     path("approve/", include("approve.urls"), name="approve"),
+    path("internal_ops/", include("internal_ops.urls"), name="internal_ops"),
 ]

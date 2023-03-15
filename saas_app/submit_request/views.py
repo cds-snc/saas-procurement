@@ -3,6 +3,8 @@ from .forms import SubmitRequestForm, ViewRequestForm
 from .models import SaasRequest
 import os
 import common.util.utils as utils
+import django.contrib.messages as messages
+
 
 
 # Send an email to the requestor
@@ -59,8 +61,9 @@ def process_requests(request):
             saas_object = form.save(commit=False)
             # get the logged in user (ie the one submitting the request) and save it to the database
             saas_object.submitted_by = request.user
+            saas_object.status = "Request submitted"
             saas_object.save()
-
+            messages.info(request, "Your form was submitted successfully!")
             # send an email to the requestor and the manager
             send_requestor_email(
                 request, saas_object, os.getenv("SAAS_SUBMISSION_TEMPLATE_ID")

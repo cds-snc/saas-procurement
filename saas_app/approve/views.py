@@ -5,8 +5,6 @@ from submit_request.views import send_requestor_email
 from .forms import ViewRequestForm
 import datetime
 
-# Create your views here.
-
 
 def view_all_requests(request):
     # get all the objects that need to be approved
@@ -41,12 +39,13 @@ def view_request(request, pk):
         return render(request, "approve/view_request.html", {"form": form})
     elif request.method == "POST":
         # if the save button was clicked
-        if request.POST.get("approve"):
+        if request.POST.get("save"):
             # get the request object by its primary key
             saas_object = SaasRequest.objects.get(pk=pk)
             # update the approve field and notify the requestor
             saas_object.manager_approved = True
             saas_object.date_manager_reviewed = datetime.datetime.now()
+            saas_object.status= "Manager approved"
             # Save the data to the database
             saas_object.save()
             # send emails to the requestor that an approval has been made
@@ -61,6 +60,7 @@ def view_request(request, pk):
             # update the approve field and notify the requestor
             saas_object.manager_denied = True
             saas_object.date_manager_reviewed = datetime.datetime.now()
+            saas_object.status= "Manager denied"
             # Save the data to the database
             saas_object.save()
             # send emails to the requestor that an approval has been made
