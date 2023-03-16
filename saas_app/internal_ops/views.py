@@ -4,8 +4,32 @@ from .forms import ViewS32RequestForm
 import datetime
 import os
 import django.contrib.messages as messages
+import common.util.utils as utils
 from submit_request.views import send_requestor_email
 
+# Send an email to the requestor
+def send_s32_approval_email(request, saas_object, template_id):
+    # get the requester's email address, name, the saas_name, who submitted the request, the desciption, cost, subsciption level,
+    # number of users, manager and the url
+    requestor_email = request.user.email
+    requestor_name = request.user.first_name
+    saas_name = saas_object.name
+    url = utils.get_current_site(request)
+    submitted_by = saas_object.submitted_by
+    s32_approver = saas_object.s_32_approver
+    cost = saas_object.cost
+    description = saas_object.description
+    subsciption_level = saas_object.subsciption_level
+    number_of_users = saas_object.number_of_users
+    manager = saas_object.manager
+    s32_approver_email = saas_object.s_32_approver.user.email
+
+    # send an email to the s32 approver
+    utils.send_email(
+        s32_approver_email,
+        template_id,
+        {"saas_name": saas_name, "name": s32_approver, "cost": cost, "description": description, "submitted_by" :submitted_by, "subscription_level": subsciption_level, "number_of_users": number_of_users, "manager": manager, "url": url},
+    )
 
 def view_all_requests(request):
     s32_approval_needed_requests = SaasRequest.objects.filter(s_32_review_date=None, manager_approved=True).exclude(date_manager_reviewed=None)
@@ -51,9 +75,10 @@ def view_request(request, pk):
             # Email the S32 approver to review the form and the requestor that the form has been sent for s32 approval
             # email to requestor notifying them that the requst is under s32 review
             send_requestor_email(
-                request, saas_object, os.getenv("REQUESTOR_S32APPROVAL_PENDING_REVIEW")
+                request, saas_object, os.getenv("REQUESTOR_S32APPROVAL_PENDING_REVIEW_TEMPLATE_ID")
             )
-            
+            # send an email to the s32 approver
+            send_s32_approval_email(request, saas_object, os.getenv("S32_APPROVAL_REQUESTED_TEMPLATE_ID"))
 
 
             # send an email to the requestor and the manager
