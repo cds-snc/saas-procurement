@@ -69,9 +69,8 @@ def view_all_requests(request):
         purchase_date=None, s_32_approved=True
     ).exclude(s_32_review_date=None, date_manager_reviewed=None)
     s32_approval_waiting_requests = SaasRequest.objects.filter(
-        s_32_review_date=None, manager_approved=True
-    ).exclude(date_manager_reviewed=None, date_sent_to_s_32_approver=None)
-    # render the requests in a table
+        s_32_review_date__isnull=True, manager_approved=True, date_sent_to_s_32_approver__isnull=False)
+    
     return render(
         request,
         "internal_ops/view_all_requests.html",
