@@ -24,7 +24,7 @@
           <tbody>
             {% for request in submitted_requests %}
             <tr>
-                {% if request.date_reviewed == None %}
+                {% if request.status == "Request submitted" %}
                 	<td><a href="/submit_request/view/{{request.pk}}">{{ request.name}} </a></td>
                 {% else %}
                 	<td>{{ request.name}}</td>
@@ -33,16 +33,7 @@
                 <td>{{ request.url }}</td>
                 <td>{{ request.cost }}</td>
                 <td>{{ request.date_submitted }}</td>
-                {% if request.approved == True %}
-                	<td>Manager approved</td>
-                {% elif request.denied == True %}
-                	<td>Manager denied</td>
-                {% elif request.date_reviewed == None %}
-                	<td>Manager review pending</td>
-                {% else %}
-                  <td>Status unknown</td>
-
-                {% endif %}
+                <td>{{ request.status }}</td>
             </tr>
             {% endfor %}
           </tbody>

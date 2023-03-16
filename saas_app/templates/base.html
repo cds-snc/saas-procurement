@@ -53,34 +53,58 @@
             <div class="page--container">
             </div>
       </header>
-
      <main id="content">
        <nav class="nav--main anonymous" aria-label="Product navigation">
         <div class="page--container"></div>
        </nav>
        <div class="page--container" id="page--content" tabindex="-1">
-        <div class="content--container">
-         {% block page_content %} {% endblock %}
-         {% if messages %}
-          <div>
-            <strong>Messages:</strong>
-            <ul>
-              {% for message in messages %}
-               <li>{{message}}</li>
-              {% endfor %}
-            </ul>
-          </div>
-         {% endif %}
-     
-          {% if user.is_authenticated %}
-          <div>
-            <strong>Menu:</strong>
-          <ul>
-            <li><a href="{% url 'socialaccount_connections' %}">Google Accounts</a></li>
-            <li><a href="{% url 'account_logout' %}">Sign Out</a></li>
+        <div class="content--container">        
+         </div> 
+         {% block page_content %}
+           {% if user.is_authenticated %}
+             <nav class="navbar navbar-expand-lg navbar-light bg-light">
+             <a class="navbar-brand" href="{% url 'home' %}">Home</a>
+             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+             </button>
+
+             <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'socialaccount_connections' %}">Google Accounts <span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'account_logout' %}">Sign Out</a>
+                  </li>
+                </ul>
+              <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
+              </form>
+            </div>
+           </nav>
+           <br>
           {% endif %}
-           </ul>
-         </div>
+          {% endblock %}
+         {% if messages %}
+            {% for message in messages %}
+              {% if message.tags == 'error' %}
+                <div class="alert alert-danger alert-dismissable fade show" role="alert">
+              {% elif message.tags == 'success' %}
+                <div class="alert alert-success alert-dismissable fade show" role="alert">
+              {% elif message.tags == 'info' %}
+                <div class="alert alert-info alert-dismissable fade show" role="alert">
+              {% elif message.tags == 'warning' %}
+                <div class="alert alert-warning alert-dismissable fade show" role="alert">
+              {% endif %}
+                <strong>Messages:</strong>
+                <ul>
+                  <li>{{message}}</li>
+                </ul>
+              </div>
+            {% endfor %}
+         {% endif %}
+    
          {% block content %} {% endblock %}
         </div>
        </div>

@@ -84,6 +84,14 @@
     }
   },
   {
+    "model":"internal_ops.fundcenter",
+    "pk":1,
+    "fields":{
+       "name":"123456",
+       "number":"123456"
+    }
+ },
+  {
     "model": "socialaccount.socialapp",
     "pk": 1,
     "fields": {

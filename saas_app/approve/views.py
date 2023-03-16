@@ -1,11 +1,10 @@
 from django.shortcuts import render
+import django.contrib.messages as messages
 import os
 from submit_request.models import SaasRequest, Users
 from submit_request.views import send_requestor_email
 from .forms import ViewRequestForm
 import datetime
-
-# Create your views here.
 
 
 def view_all_requests(request):
@@ -42,31 +41,44 @@ def view_request(request, pk):
     elif request.method == "POST":
         # if the save button was clicked
         if request.POST.get("approve"):
-            # get the request object by its primary key
-            saas_object = SaasRequest.objects.get(pk=pk)
-            # update the approve field and notify the requestor
-            saas_object.manager_approved = True
-            saas_object.date_manager_reviewed = datetime.datetime.now()
-            # Save the data to the database
-            saas_object.save()
-            # send emails to the requestor that an approval has been made
-            send_requestor_email(
-                request, saas_object, os.getenv("APPROVED_REQUEST_TEMPLATE_ID")
-            )
+            try:
+                # get the request object by its primary key
+                saas_object = SaasRequest.objects.get(pk=pk)
+                # update the approve field and notify the requestor
+                saas_object.manager_approved = True
+                saas_object.date_manager_reviewed = datetime.datetime.now()
+                saas_object.status = "Manager approved"
+                # Save the data to the database
+                saas_object.save()
+                # send emails to the requestor that an approval has been made
+                send_requestor_email(
+                    request, saas_object, os.getenv("APPROVED_REQUEST_TEMPLATE_ID")
+                )
+                messages.success(request, "Request has been successfully approved")
+            except Exception as e:
+                print(e)
+                messages.error(request, "An error occurred while approving the request")
             # redirect to a new URL
             return render(request, "approve/saas_status.html", {"status": "approved"})
         # else if the deny button was clicked
         elif request.POST.get("deny"):
-            saas_object = SaasRequest.objects.get(pk=pk)
-            # update the approve field and notify the requestor
-            saas_object.manager_denied = True
-            saas_object.date_manager_reviewed = datetime.datetime.now()
-            # Save the data to the database
-            saas_object.save()
-            # send emails to the requestor that an approval has been made
-            send_requestor_email(
-                request, saas_object, os.getenv("DENIED_REQUEST_TEMPLATE_ID")
-            )
+            try:
+                saas_object = SaasRequest.objects.get(pk=pk)
+                # update the approve field and notify the requestor
+                saas_object.manager_denied = True
+                saas_object.date_manager_reviewed = datetime.datetime.now()
+                saas_object.status = "Manager denied"
+                # Save the data to the database
+                saas_object.save()
+                # send emails to the requestor that an approval has been made
+                send_requestor_email(
+                    request, saas_object, os.getenv("DENIED_REQUEST_TEMPLATE_ID")
+                )
+                messages.success(request, "Request has been successfully denied")
+            except Exception as e:
+                print(e)
+                messages.error(request, "An error occurred while denying the request")
+
             # redirect to a new URL
             return render(request, "approve/saas_status.html", {"status": "denied"})
         elif request.POST.get("request_info"):
