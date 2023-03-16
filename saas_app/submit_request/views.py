@@ -126,7 +126,6 @@ def view_request(request, pk):
                     "backup_administrator"
                 ]
                 saas_object.manager = form.cleaned_data["manager"]
-                saas_object.status = "Form submitted by user"
                 try:
                     # Save the data to the database
                     saas_object.save()

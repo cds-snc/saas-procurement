@@ -24,7 +24,7 @@
           <tbody>
             {% for request in submitted_requests %}
             <tr>
-                {% if request.status == "Form submitted by user" %}
+                {% if request.status == "Request submitted" %}
                 	<td><a href="/submit_request/view/{{request.pk}}">{{ request.name}} </a></td>
                 {% else %}
                 	<td>{{ request.name}}</td>
