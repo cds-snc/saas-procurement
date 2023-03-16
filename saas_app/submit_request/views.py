@@ -6,7 +6,6 @@ import common.util.utils as utils
 import django.contrib.messages as messages
 
 
-
 # Send an email to the requestor
 def send_requestor_email(request, saas_object, template_id):
     # get the requester's email address
@@ -63,7 +62,7 @@ def process_requests(request):
             saas_object.submitted_by = request.user
             saas_object.status = "Request submitted"
             saas_object.save()
-            messages.info(request, "Your form was submitted successfully!")
+            messages.success(request, "Your form was submitted successfully!")
             # send an email to the requestor and the manager
             send_requestor_email(
                 request, saas_object, os.getenv("SAAS_SUBMISSION_TEMPLATE_ID")
@@ -127,8 +126,13 @@ def view_request(request, pk):
                     "backup_administrator"
                 ]
                 saas_object.manager = form.cleaned_data["manager"]
-                # Save the data to the database
-                saas_object.save()
+                saas_object.status = "Form submitted by user"
+                try:
+                    # Save the data to the database
+                    saas_object.save()
+                    messages.success(request, "Your form was saved successfully!")
+                except Exception:
+                    messages.error(request, "Your form was not saved successfully!")
                 # send emails to the requestor and manager that a change to the SaaS request has been made
                 send_requestor_email(
                     request, saas_object, os.getenv("SAAS_SUBMISSION_EDIT_TEMPLATE_ID")
@@ -143,7 +147,12 @@ def view_request(request, pk):
             # obtain the saas object since we need to pass it for sending emails
             saas_object = SaasRequest.objects.get(pk=pk)
             # delete the saas request
-            SaasRequest.objects.get(pk=pk).delete()
+            try:
+                SaasRequest.objects.get(pk=pk).delete()
+                messages.success(request, "Your form was deleted successfully!")
+
+            except Exception:
+                messages.error(request, "There was an error deleting the request")
             # send an email to the requestor that the request has been deleted
             send_requestor_email(
                 request, saas_object, os.getenv("DELETE_SAAS_REQUEST_TEMPLATE_ID")

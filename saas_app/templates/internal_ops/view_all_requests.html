@@ -8,7 +8,7 @@
 {% block content %}
   <h1>SAAS requests awaiting s32 approval</h1>
     {% if s32_approval_needed_requests %}
-      <p> List of requests awaiting s32 approval</p>
+      <p> List of requests waiting to be sent for s32 approval</p>
       <table class="table table-hover table-bordered">
         <thead>
           <tr>
@@ -31,15 +31,7 @@
               <td>{{ saas_request.cost }}</td>
               <td>{{ saas_request.date_submitted }}</td>
               <td>{{ saas_request.manager }}</td>
-              {% if saas_request.manager_approved == True %}
-                <td>Manager approved</td>
-              {% elif saas_request.manager_denied == True %}
-                <td>Manager denied</td>
-              {% elif saas_request.date_manager_reviewed == None %}
-                <td>Manager review pending</td>
-              {% else %}
-                <td>Status unknown</td>
-              {% endif %}
+              <td>{{ saas_request.status }}</td>
           </tr>
           {% endfor %}
         </tbody>
@@ -72,21 +64,45 @@
             <td>{{ saas_request.cost }}</td>
             <td>{{ saas_request.date_submitted }}</td>
             <td>{{ saas_request.manager }}</td>
-            {% if saas_request.manager_approved == True %}
-              <td>Manager approved</td>
-            {% elif saas_request.manager_denied == True %}
-              <td>Manager denied</td>
-            {% elif saas_request.date_manager_reviewed == None %}
-              <td>Manager review pending</td>
-            {% else %}
-              <td>Status unknown</td>
-            {% endif %}
+            <td>{{ saas_request.status }}</td>
         </tr>
         {% endfor %}
       </tbody> 
 </table>
 {% else %}
   <h4> You have no requests awaiting purchase</h4><br>
+{% endif %}
+{% if s32_approval_waiting_requests %}
+ <h4>Requests that have been sent to the S32 approver and are awaiting approval</h4>
+  <table class="table table-hover table-bordered">
+    <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Description</th>
+          <th scope="col">Url</th>
+          <th scope="col">Cost</th>
+          <th scope="col">Date Submitted</th>
+          <th scope="col">Manager</th>
+          <th scope="col">Status</th>
+          <tbody class="table-group-divider"></tbody>
+        </tr>
+      </thead>
+      <tbody>
+        {% for saas_request in s32_approval_waiting_requests %}
+            <tr>
+            <td>{{ saas_request.name}} </td>
+            <td>{{ saas_request.description }}</td>
+            <td>{{ saas_request.url }}</td>
+            <td>{{ saas_request.cost }}</td>
+            <td>{{ saas_request.date_submitted }}</td>
+            <td>{{ saas_request.manager }}</td>
+            <td>{{ saas_request.status }}</td>
+        </tr>
+        {% endfor %}
+      </tbody> 
+</table>
+{% else %}
+  <h4> You have no requests that are awaiting to be approved by the S32 approver</h4><br>
 {% endif %}
     <button type="button" class="btn btn-primary btn-lg" name="home" onclick="location.href='{% url 'home' %}'">Cancel</button>
 {% endblock %}

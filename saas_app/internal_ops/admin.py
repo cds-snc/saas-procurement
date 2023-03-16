@@ -3,6 +3,7 @@ from .models import FundCenter
 
 # Register the Fund center model with the Admin menu
 
+
 # Register the SaasRequest model to the admin page so that it can be viewed and edited.
 @admin.register(FundCenter)
 class FundCenterAdmin(admin.ModelAdmin):
@@ -12,7 +13,7 @@ class FundCenterAdmin(admin.ModelAdmin):
     )
     list_filter = (
         "name",
-      "number",
+        "number",
     )
     search_fields = (
         "name",
@@ -20,6 +21,5 @@ class FundCenterAdmin(admin.ModelAdmin):
     )
     ordering = (
         "name",
-       "number",
+        "number",
     )
-

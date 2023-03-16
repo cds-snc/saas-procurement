@@ -14,10 +14,24 @@ def get_notify_client():
 
 # Use Notify to send emails
 def send_email(email_address, template_id, details):
-    notifications_client = get_notify_client()
-    notifications_client.send_email_notification(
-        email_address=email_address, template_id=template_id, personalisation=details
+    print(
+        "email_address: ",
+        email_address,
+        "template_id: ",
+        template_id,
+        "details: ",
+        details,
     )
+    try:
+        notifications_client = get_notify_client()
+        notifications_client.send_email_notification(
+            email_address=email_address,
+            template_id=template_id,
+            personalisation=details,
+        )
+    except Exception as e:
+        print(e)
+        raise Exception("There was an error sending the email.")
 
 
 # Get the current site domain

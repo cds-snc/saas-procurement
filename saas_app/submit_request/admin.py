@@ -18,6 +18,7 @@ class SaasRequestAdmin(admin.ModelAdmin):
         "manager",
         "submitted_by",
         "date_submitted",
+        "status",
         "manager_approved",
         "approved_by",
         "date_manager_reviewed",
@@ -26,7 +27,7 @@ class SaasRequestAdmin(admin.ModelAdmin):
         "s_32_review_date",
         "date_sent_to_s_32_approver",
         "purchase_date",
-        "purchased"
+        "purchased",
     )
     list_filter = (
         "name",
@@ -41,6 +42,7 @@ class SaasRequestAdmin(admin.ModelAdmin):
         "manager",
         "submitted_by",
         "date_submitted",
+        "status",
         "approved_by",
         "date_manager_reviewed",
         "manager_approved",
@@ -49,7 +51,7 @@ class SaasRequestAdmin(admin.ModelAdmin):
         "s_32_review_date",
         "date_sent_to_s_32_approver",
         "purchase_date",
-        "purchased"
+        "purchased",
     )
     search_fields = (
         "name",
@@ -64,6 +66,7 @@ class SaasRequestAdmin(admin.ModelAdmin):
         "manager",
         "submitted_by",
         "date_submitted",
+        "status",
         "manager_approved",
         "approved_by",
         "date_manager_reviewed",
@@ -72,7 +75,7 @@ class SaasRequestAdmin(admin.ModelAdmin):
         "s_32_review_date",
         "date_sent_to_s_32_approver",
         "purchase_date",
-        "purchased"
+        "purchased",
     )
     ordering = (
         "name",
@@ -87,6 +90,7 @@ class SaasRequestAdmin(admin.ModelAdmin):
         "manager",
         "submitted_by",
         "date_submitted",
+        "status",
         "manager_approved",
         "approved_by",
         "date_manager_reviewed",

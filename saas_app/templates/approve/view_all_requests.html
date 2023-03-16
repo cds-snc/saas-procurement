@@ -31,15 +31,7 @@
               <td>{{ saas_request.cost }}</td>
               <td>{{ saas_request.date_submitted }}</td>
               <td>{{ saas_request.manager }}</td>
-              {% if saas_request.manager_approved == True %}
-                <td>Manager approved</td>
-              {% elif saas_request.manager_denied == True %}
-                <td>Manager denied</td>
-              {% elif saas_request.date_manager_reviewed == None %}
-                <td>Manager review pending</td>
-              {% else %}
-                <td>Status unknown</td>
-              {% endif %}
+              <td>{{ saas_request.status }}</td>
           </tr>
           {% endfor %}
         </tbody>
@@ -71,15 +63,7 @@
             <td>{{ saas_request.cost }}</td>
             <td>{{ saas_request.date_submitted }}</td>
             <td>{{ saas_request.manager }}</td>
-            {% if saas_request.manager_approved == True %}
-              <td>Manager approved</td>
-            {% elif saas_request.manager_denied == True %}
-              <td>Manager denied</td>
-            {% elif saas_request.date_manager_reviewed == None %}
-              <td>Manager review pending</td>
-            {% else %}
-              <td>Status unknown</td>
-            {% endif %}
+            <td>{{ saas_request.status }}</td>
         </tr>
         {% endfor %}
       </tbody> 

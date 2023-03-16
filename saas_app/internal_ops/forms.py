@@ -25,7 +25,22 @@ class ViewS32RequestForm(ModelForm):
             "fund_center",
             "approved_by",
         ]
-        labels = {"name": "Name", "url": "URL", "description": "Description", "cost": "Cost", "level_of_subscription": "Level of Subscription", "number_of_users": "Number of Users", "names_of_users": "Names of Users", "account_administrator": "Account Administrator", "backup_administrator": "Backup Administrator", "manager": "Manager", "date_manager_reviewed": "Date Manager Approved the request", "submitted_by": "Submitted By", "fund_center": "Fund Center", "approved_by": "S32 Approver"}
+        labels = {
+            "name": "Name",
+            "url": "URL",
+            "description": "Description",
+            "cost": "Cost",
+            "level_of_subscription": "Level of Subscription",
+            "number_of_users": "Number of Users",
+            "names_of_users": "Names of Users",
+            "account_administrator": "Account Administrator",
+            "backup_administrator": "Backup Administrator",
+            "manager": "Manager",
+            "date_manager_reviewed": "Date Manager Approved the request",
+            "submitted_by": "Submitted By",
+            "fund_center": "Fund Center",
+            "approved_by": "S32 Approver",
+        }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -60,19 +75,20 @@ class ViewS32RequestForm(ModelForm):
                 "Save",
             ),
             Submit("send_for_s32_approval", "Send for S32 Approval"),
-            Button(
-                "request_info",
-                "Request Additional Information",
-                css_id="submit",
-                css_class="btn btn-primary btn-lg",
-                data_toggle="modal",
-                data_target="#request_info_modal",
-                data_dismiss="modal",
-            ),
-            Submit(
-                "purchase",
-                "Record Purchase Information",
-            ),
+            # place holder for now
+            # Button(
+            #     "request_info",
+            #     "Request Additional Information",
+            #     css_id="submit",
+            #     css_class="btn btn-primary btn-lg",
+            #     data_toggle="modal",
+            #     data_target="#request_info_modal",
+            #     data_dismiss="modal",
+            # ),
+            # Submit(
+            #     "purchase",
+            #     "Record Purchase Information",
+            # ),
             Button(
                 "cancel",
                 "Cancel",
