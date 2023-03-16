@@ -139,10 +139,16 @@ def view_request(request, pk):
             # Email the S32 approver to review the form and the requestor that the form has been sent for s32 approval
             try:
                 send_requestor_email(
-                    request, saas_object, os.getenv("REQUESTOR_S32APPROVAL_PENDING_REVIEW_TEMPLATE_ID")
+                    request,
+                    saas_object,
+                    os.getenv("REQUESTOR_S32APPROVAL_PENDING_REVIEW_TEMPLATE_ID"),
                 )
                 # send an email to the s32 approver
-                send_s32_approval_email(request, saas_object, os.getenv("S32_APPROVAL_REQUESTED_TEMPLATE_ID"))
+                send_s32_approval_email(
+                    request,
+                    saas_object,
+                    os.getenv("S32_APPROVAL_REQUESTED_TEMPLATE_ID"),
+                )
                 messages.success(
                     request, "We have successfully emailed the S32 approver."
                 )
