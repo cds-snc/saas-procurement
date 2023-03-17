@@ -25,7 +25,7 @@
         <tbody>
         {% for saas_request in user_approval_needed_requests %}
              <tr>
-              <td><a href="/approve/view/{{saas_request.pk}}">{{ saas_request.name}} </a></td>
+              <td><a href="/approve/view_s32/{{saas_request.pk}}">{{ saas_request.name}} </a></td>
               <td>{{ saas_request.description }}</td>
               <td>{{ saas_request.url }}</td>
               <td>{{ saas_request.cost }}</td>
@@ -40,9 +40,10 @@
     {% else %}
       <h4> You have no requests awaiting approval</h4><br>
     {% endif %}
- <h4>Requests that have been previously reviewed by you</h4>
-  <table class="table table-hover table-bordered">
-    <thead>
+ {% if all_approval_needed_requests %}
+  <h4>Requests that have been previously reviewed by you</h4>
+    <table class="table table-hover table-bordered">
+      <thead>
         <tr>
           <th scope="col">Name</th>
           <th scope="col">Description</th>
@@ -67,6 +68,9 @@
         </tr>
         {% endfor %}
       </tbody> 
-</table>
+  </table>
+  {% else %}
+    <h4> You have no requests that have been previously reviewed by you</h4><br>
+  {% endif %}
     <button type="button" class="btn btn-primary btn-lg" name="home" onclick="location.href='{% url 'home' %}'">Cancel</button>
 {% endblock %}
