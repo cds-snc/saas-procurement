@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load socialaccount %}
+{% load i18n %}
+{% load static %}
+
+{% block head_title %}{% trans "Saas Procurement App" %}{% endblock %}
+
+{% block content %}
+    <h1> Search Results</h1>
+    {% if results %}
+        {% for result in results %} 
+            <div class="list-group">
+                <a href="/search/{{result.pk}}" class="list-group-item list-group-item-action">{{ result.name }}</a>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p> No results found </p>
+    {% endif %}
+
+{% endblock %}
