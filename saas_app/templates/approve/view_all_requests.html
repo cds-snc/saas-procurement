@@ -25,7 +25,11 @@
         <tbody>
         {% for saas_request in user_approval_needed_requests %}
              <tr>
-              <td><a href="/approve/view_s32/{{saas_request.pk}}">{{ saas_request.name}} </a></td>
+             {% if saas_request.status == 'Request submitted' %}
+                <td><a href="/approve/view/{{saas_request.pk}}">{{ saas_request.name}} </a></td>
+              {% else %}
+                <td><a href="/approve/view_s32/{{saas_request.pk}}">{{ saas_request.name}} </a> </td>
+              {% endif %}
               <td>{{ saas_request.description }}</td>
               <td>{{ saas_request.url }}</td>
               <td>{{ saas_request.cost }}</td>
