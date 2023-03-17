@@ -109,7 +109,7 @@ def view_request(request, pk):
                     saas_object.internal_ops = SaasRequest.objects.get(
                         user=request.user
                     )
-        
+
                     try:
                         # Save the data to the database
                         saas_object.save()
