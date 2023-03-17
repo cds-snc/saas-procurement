@@ -210,3 +210,6 @@ def view_request_s32_approver(request, pk):
             # redirect to a new URL
             return render(request, "approve/saas_status.html", {"status": "denied"})
 
+# Placeholder for now
+def send_email(request):
+    pass
