@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import TemplateView
 from django.contrib.auth.views import LogoutView
+from . import views
 
 
 urlpatterns = [
@@ -27,4 +28,6 @@ urlpatterns = [
     path("submit_request/", include("submit_request.urls")),
     path("approve/", include("approve.urls"), name="approve"),
     path("internal_ops/", include("internal_ops.urls"), name="internal_ops"),
+    path("search/", views.search, name="search"),
+    path("search/<int:pk>/", views.view_request, name="view_request"),
 ]
