@@ -7,15 +7,22 @@ from .forms import ViewRequestForm
 import datetime
 import common.util.utils as utils
 
+
 def send_internal_ops_email(request, saas_object, template_id):
     # get the internal ops's email address
     internal_ops_email = saas_object.internal_ops.user.email
     # get the requestors's name
-    requestor = saas_object.submitted_by.user.first_name + " " + saas_object.submitted_by.user.last_name
+    requestor = (
+        saas_object.submitted_by.first_name + " " + saas_object.submitted_by.last_name
+    )
     # get the internal ops name
     internal_ops_name = request.user.first_name + " " + request.user.last_name
     # get the s32 approver
-    s_32_approver = saas_object.s_32_approver.user.first_name + " " + saas_object.s_32_approver.user.last_name
+    s_32_approver = (
+        saas_object.approved_by.user.first_name
+        + " "
+        + saas_object.approved_by.user.last_name
+    )
     # get the saas_name
     saas_name = saas_object.name
     # get the url
@@ -25,9 +32,16 @@ def send_internal_ops_email(request, saas_object, template_id):
     utils.send_email(
         internal_ops_email,
         template_id,
-        {"saas_name": saas_name, "name": internal_ops_name, "requestor": requestor, "s32_approver": s_32_approver, "url": url},
+        {
+            "saas_name": saas_name,
+            "name": internal_ops_name,
+            "requestor": requestor,
+            "s32_approver": s_32_approver,
+            "url": url,
+        },
     )
-    
+
+
 def view_all_requests(request):
     # get all the objects that need to be approved
     try:
@@ -115,7 +129,9 @@ def view_all_requests_s32_approver(request):
         current_user = None
 
     s32_approval_needed_requests = SaasRequest.objects.filter(
-        approved_by=current_user, s_32_review_date=None, date_sent_to_s_32_approver__isnull=False
+        approved_by=current_user,
+        s_32_review_date=None,
+        date_sent_to_s_32_approver__isnull=False,
     )
     all_old_requests = SaasRequest.objects.filter(approved_by=current_user).exclude(
         s_32_review_date=None
@@ -130,6 +146,7 @@ def view_all_requests_s32_approver(request):
             "all_approval_needed_requests": all_old_requests,
         },
     )
+
 
 def view_request_s32_approver(request, pk):
     if request.method == "GET":
@@ -154,7 +171,11 @@ def view_request_s32_approver(request, pk):
                     request, saas_object, os.getenv("REQUEST_S32_APPROVED_TEMPLATE_ID")
                 )
                 # send internal ops an email that the request has been approved
-                send_internal_ops_email(request, saas_object, os.getenv("REQUEST_S32_APPROVED_INTERNAL_OPS_TEMPLATE_ID"))
+                send_internal_ops_email(
+                    request,
+                    saas_object,
+                    os.getenv("REQUEST_S32_APPROVED_INTERNAL_OPS_TEMPLATE_ID"),
+                )
                 messages.success(request, "Request has been successfully approved")
             except Exception as e:
                 print(e)
@@ -176,7 +197,11 @@ def view_request_s32_approver(request, pk):
                     request, saas_object, os.getenv("REQUEST_S32_DENIED_TEMPLATE_ID")
                 )
                 # send internal ops email to notify that a request has been d
-                send_internal_ops_email(request, saas_object, os.getenv("REQUEST_S32_DENIED_INTERNAL_OPS_TEMPLATE_ID"))
+                send_internal_ops_email(
+                    request,
+                    saas_object,
+                    os.getenv("REQUEST_S32_DENIED_INTERNAL_OPS_TEMPLATE_ID"),
+                )
                 messages.success(request, "Request has been successfully denied")
             except Exception as e:
                 print(e)
@@ -184,6 +209,7 @@ def view_request_s32_approver(request, pk):
 
             # redirect to a new URL
             return render(request, "approve/saas_status.html", {"status": "denied"})
-    
+
+
 def send_email(request):
-        pass
+    pass
