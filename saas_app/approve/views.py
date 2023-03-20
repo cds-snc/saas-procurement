@@ -83,7 +83,7 @@ def view_request(request, pk):
             return render(request, "approve/saas_status.html", {"status": "denied"})
         elif request.POST.get("request_info"):
             # TO DO: send an email to the requestor asking for more information
-            pass
+            return render(request, "approve/view_request.html", {"form": form})
 
 
 def send_email(request):
@@ -91,3 +91,5 @@ def send_email(request):
     if request.method == "POST":
         print("post")
         pass
+    return render(request, "approve/view_request.html", {"form": form})
+
