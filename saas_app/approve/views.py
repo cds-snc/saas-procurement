@@ -81,15 +81,16 @@ def view_request(request, pk):
 
             # redirect to a new URL
             return render(request, "approve/saas_status.html", {"status": "denied"})
-        elif request.POST.get("request_info"):
-            # TO DO: send an email to the requestor asking for more information
-            return render(request, "approve/view_request.html", {"form": form})
+        # elif request.POST.get("request_info"):
+        #     print("request info")
+        #     # TO DO: send an email to the requestor asking for more information
+        #     return render(request, "approve/view_request.html", {"form": form})
 
 
-def send_email(request):
-    print("send email")
-    if request.method == "POST":
-        print("post")
-        pass
-    return render(request, "approve/view_request.html", {"form": form})
+# def send_email(request):
+#     print("send email")
+#     if request.method == "POST":
+#         print("post")
+#         pass
+#     return render(request, "approve/view_request.html", {"form": form})
 

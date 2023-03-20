@@ -15,7 +15,7 @@
         {% crispy form %}
 </form>
 
-<div class="modal fade" id="request_info_modal" tabindex="-1" aria-labelledby="request_info_label" aria-hidden="true">
+{% comment %} <div class="modal fade" id="request_info_modal" tabindex="-1" aria-labelledby="request_info_label" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -25,7 +25,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form action="/approve/send_email/" method="post" novalidate>
+        <form action="internal_ops/send_mail" method="post" novalidate>
           <div class="form-group">
             {% csrf_token %}
             <label for="message-text" class="col-form-label">Message:</label>
@@ -50,5 +50,5 @@
     modal.find('.modal-title').text('New message to requestor')
     modal.find('.modal-body input').val(recipient)
   })
-  </script>
+  </script> {% endcomment %}
 {% endblock %}
