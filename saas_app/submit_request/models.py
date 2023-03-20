@@ -30,6 +30,13 @@ class SaasRequest(models.Model):
     manager_denied = models.BooleanField(default=False)
     s_32_approved = models.BooleanField(default=False)
     s_32_review_date = models.DateTimeField(null=True, blank=True)
+    internal_ops = models.ForeignKey(
+        Users,
+        on_delete=models.CASCADE,
+        related_name="internal_ops",
+        null=True,
+        blank=True,
+    )
     date_sent_to_s_32_approver = models.DateTimeField(null=True, blank=True)
     purchase_date = models.DateTimeField(null=True, blank=True)
     purchased = models.BooleanField(default=False)
