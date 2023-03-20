@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.utils import timezone
 from submit_request.models import SaasRequest
+from user.models import Users
 from .forms import ViewS32RequestForm
 import os
 import django.contrib.messages as messages
@@ -106,6 +107,8 @@ def view_request(request, pk):
                     saas_object.approved_by = form.cleaned_data["approved_by"]
                     saas_object.date_sent_to_s_32_approver = timezone.now()
                     saas_object.status = "Waiting to be sent for S32 Approval"
+                    saas_object.internal_ops = Users.objects.get(user=request.user)
+
                     try:
                         # Save the data to the database
                         saas_object.save()
