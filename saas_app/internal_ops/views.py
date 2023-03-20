@@ -10,7 +10,6 @@ from submit_request.views import send_requestor_email
 from django.views.decorators.csrf import csrf_exempt
 
 
-
 # Send an email to the requestor
 def send_s32_approval_email(request, saas_object, template_id):
     try:
@@ -63,7 +62,8 @@ def send_s32_approval_email(request, saas_object, template_id):
             request, "There was an error sending the email to the S32 approver."
         )
 
-def send_requestor_email(request, saas_object, info_requested, template_id):
+
+def send_requestor_email_more_info(request, saas_object, info_requested, template_id):
     try:
         # get the requester's name, the saas_name, who submitted the request, the desciption, cost, subsciption level,
         # number of users, manager and the url
@@ -74,10 +74,14 @@ def send_requestor_email(request, saas_object, info_requested, template_id):
             + " "
             + saas_object.submitted_by.last_name
         )
-        internal_ops_name = saas_object.internal_ops.user.first_name + " " + saas_object.internal_ops.user.last_name
+        internal_ops_name = (
+            saas_object.internal_ops.user.first_name
+            + " "
+            + saas_object.internal_ops.user.last_name
+        )
         internal_ops_email = saas_object.internal_ops.user.email
         info_requested = info_requested
-       
+
         # send an email to the requestor
         utils.send_email(
             internal_ops_email,
@@ -96,8 +100,8 @@ def send_requestor_email(request, saas_object, info_requested, template_id):
         messages.error(
             request, "There was an error sending the email to the requestor."
         )
-        
-        
+
+
 def view_all_requests(request):
     s32_approval_needed_requests = SaasRequest.objects.filter(
         date_sent_to_s_32_approver=None, manager_approved=True
@@ -200,19 +204,27 @@ def view_request(request, pk):
                     "There was an error sending the notification emails to the S32 approver or requestor.",
                 )
             return render(request, "internal_ops/view_request.html", {"form": form})
-       
+
 
 @csrf_exempt
-def send_email(request,pk):
+def send_email(request, pk):
     saas_object = SaasRequest.objects.get(pk=pk)
     form = ViewS32RequestForm(instance=saas_object)
     if request.method == "POST":
         try:
             # send an email to the requestor
             info_requested = request.POST.get("info_requested")
-            send_requestor_email(request, saas_object, info_requested,os.getenv("INTERNAL_OPS_REQUEST_MORE_INFO_TEMPLATE_ID"))
+            send_requestor_email_more_info(
+                request,
+                saas_object,
+                info_requested,
+                os.getenv("INTERNAL_OPS_REQUEST_MORE_INFO_TEMPLATE_ID"),
+            )
             messages.success(request, "We have successfully emailed the requestor.")
         except Exception as e:
             print(e)
-            messages.error(request, "There was an error sending the notification email to the requestor.")
+            messages.error(
+                request,
+                "There was an error sending the notification email to the requestor.",
+            )
     return render(request, "internal_ops/view_request.html", {"form": form})
