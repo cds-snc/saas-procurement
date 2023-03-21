@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.utils import timezone
 from submit_request.models import SaasRequest
 from user.models import Users
@@ -232,20 +232,24 @@ def send_email(request, pk):
             )
     return render(request, "internal_ops/view_request.html", {"form": form})
 
+
 def purchase(request, pk):
     saas_object = SaasRequest.objects.get(pk=pk)
-    form = ViewS32RequestForm(instance=saas_object)
     if request.method == "POST":
         try:
             saas_object.purchase_date = request.POST.get("purchase-date")
             saas_object.purchase_method = request.POST.get("purchase-method")
-            saas_object.purchase_amount = request.POST.get("purchase-amount")
+            saas_object.purchse_amount = request.POST.get("purchase-amount")
             saas_object.confirmation_number = request.POST.get("confirmation-number")
             saas_object.purchase_notes = request.POST.get("purchase-notes")
             saas_object.purcased = True
             saas_object.save()
-            messages.success(request, "We have successfully recorded the purchase information")
+            messages.success(
+                request, "We have successfully recorded the purchase information"
+            )
         except Exception as e:
             print(e)
-            messages.error(request, "There was an error recording the purchase information")
-    return render(request, "internal_ops/view_request.html", {"form": form})
+            messages.error(
+                request, "There was an error recording the purchase information"
+            )
+        return redirect("/internal_ops/view/" + str(pk))

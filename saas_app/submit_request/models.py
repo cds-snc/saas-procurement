@@ -49,7 +49,7 @@ class SaasRequest(models.Model):
     purchase_method = models.CharField(max_length=100, null=True, blank=True)
     confirmation_number = models.CharField(max_length=100, null=True, blank=True)
     purchase_notes = models.CharField(max_length=500, null=True, blank=True)
-    
+
     # return the string representation of the model
     def __str__(self):
         return self.name
