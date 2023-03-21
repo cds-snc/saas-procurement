@@ -54,16 +54,6 @@ class ViewRequestForm(ModelForm):
                 "Deny",
                 onclick="return confirm('Are you sure you want to deny this saas request?');",
             ),
-            # place holder for now
-            # Button(
-            #     "request_info",
-            #     "Request Additional Information",
-            #     css_id="submit",
-            #     css_class="btn btn-primary btn-lg",
-            #     data_toggle="modal",
-            #     data_target="#request_info_modal",
-            #     data_dismiss="modal",
-            # ),
             Button(
                 "cancel",
                 "Cancel",
