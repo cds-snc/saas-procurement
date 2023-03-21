@@ -76,7 +76,6 @@ class ViewS32RequestForm(ModelForm):
                 css_class="btn btn-primary btn-lg",
             ),
             Submit("send_for_s32_approval", "Send for S32 Approval"),
-            # place holder for now
             Button(
                 "request_info",
                 "Request Additional Information",
@@ -84,6 +83,15 @@ class ViewS32RequestForm(ModelForm):
                 css_class="btn btn-primary btn-lg",
                 data_toggle="modal",
                 data_target="#request_info_modal",
+                data_dismiss="modal",
+            ),
+            Button(
+                "purchase",
+                "Record Purchase Information",
+                css_id="submit",
+                css_class="btn btn-primary btn-lg",
+                data_toggle="modal",
+                data_target="#purchase_modal",
                 data_dismiss="modal",
             ),
             # Submit(

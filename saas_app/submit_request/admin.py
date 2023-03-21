@@ -28,6 +28,12 @@ class SaasRequestAdmin(admin.ModelAdmin):
         "date_sent_to_s_32_approver",
         "purchase_date",
         "purchased",
+        "date_info_requested",
+        "fund_center",
+        "purchse_amount",
+        "purchase_method",
+        "confirmation_number",
+        "purchase_notes",
     )
     list_filter = (
         "name",
@@ -52,6 +58,12 @@ class SaasRequestAdmin(admin.ModelAdmin):
         "date_sent_to_s_32_approver",
         "purchase_date",
         "purchased",
+         "date_info_requested",
+        "fund_center",
+        "purchse_amount",
+        "purchase_method",
+        "confirmation_number",
+        "purchase_notes",
     )
     search_fields = (
         "name",
@@ -76,6 +88,12 @@ class SaasRequestAdmin(admin.ModelAdmin):
         "date_sent_to_s_32_approver",
         "purchase_date",
         "purchased",
+         "date_info_requested",
+        "fund_center",
+        "purchse_amount",
+        "purchase_method",
+        "confirmation_number",
+        "purchase_notes",
     )
     ordering = (
         "name",
@@ -99,4 +117,10 @@ class SaasRequestAdmin(admin.ModelAdmin):
         "s_32_review_date",
         "date_sent_to_s_32_approver",
         "purchase_date",
+         "date_info_requested",
+        "fund_center",
+        "purchse_amount",
+        "purchase_method",
+        "confirmation_number",
+        "purchase_notes",
     )

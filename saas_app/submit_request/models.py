@@ -44,7 +44,12 @@ class SaasRequest(models.Model):
         FundCenter, on_delete=models.CASCADE, null=True, blank=True
     )
     status = models.CharField(max_length=100, null=True, blank=True)
-
+    date_info_requested = models.DateTimeField(null=True, blank=True)
+    purchse_amount = models.FloatField(null=True, blank=True)
+    purchase_method = models.CharField(max_length=100, null=True, blank=True)
+    confirmation_number = models.CharField(max_length=100, null=True, blank=True)
+    purchase_notes = models.CharField(max_length=500, null=True, blank=True)
+    
     # return the string representation of the model
     def __str__(self):
         return self.name
