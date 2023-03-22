@@ -2,6 +2,8 @@ from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit, Layout, Button, Field
 from django.forms import ModelForm
 from submit_request.models import SaasRequest
+from django.utils.translation import gettext as _
+
 
 
 # View a Saas Request Form
@@ -52,7 +54,7 @@ class ViewRequestForm(ModelForm):
             Submit(
                 "deny",
                 "Deny",
-                onclick="return confirm('Are you sure you want to deny this saas request?');",
+                onclick="return confirm(_('Are you sure you want to deny this saas request?'));",
             ),
             Button(
                 "cancel",

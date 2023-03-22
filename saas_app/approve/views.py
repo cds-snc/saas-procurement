@@ -6,6 +6,8 @@ from submit_request.views import send_requestor_email
 from .forms import ViewRequestForm
 import datetime
 import common.util.utils as utils
+from django.utils.translation import gettext as _
+
 
 
 def send_internal_ops_email(request, saas_object, template_id):
@@ -82,7 +84,7 @@ def view_request(request, pk):
                 # update the approve field and notify the requestor
                 saas_object.manager_approved = True
                 saas_object.date_manager_reviewed = datetime.datetime.now()
-                saas_object.status = "Manager approved"
+                saas_object.status = _("Manager approved")
                 # Save the data to the database
                 saas_object.save()
                 # send emails to the requestor that an approval has been made
