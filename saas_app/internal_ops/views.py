@@ -235,7 +235,10 @@ def send_mail(request, pk):
                 request,
                 "There was an error sending the notification email to the requestor.",
             )
-    return render(request, "internal_ops/view_request.html", {"form": form})
+        return redirect("/internal_ops/view/" + str(pk))
+    else:
+        messages.error(request, "Please enter the information requested.")
+    return redirect("/internal_ops/view/" + str(pk))
 
 
 def purchase(request, pk):

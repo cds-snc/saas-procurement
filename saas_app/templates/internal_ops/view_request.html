@@ -80,18 +80,6 @@
           </div>
         </form>
       </div>
-     
-        <form action="send_mail" method="post" novalidate>
-          <div class="form-group">
-            {% csrf_token %}
-            <label for="message-text" class="col-form-label">Message:</label>
-            <textarea class="form-control" name="info_requested" id="message-text" rows="7"></textarea>
-          </div>
-          <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary" name="submit" Value="Submit">Send message</button>
-          </div>
-        </form>
       </div>
     </div>
   </div>
