@@ -235,7 +235,6 @@ def send_mail(request, pk):
                 request,
                 "There was an error sending the notification email to the requestor.",
             )
-        return redirect("/internal_ops/view/" + str(pk))
     else:
         messages.error(request, "Please enter the information requested.")
     return redirect("/internal_ops/view/" + str(pk))
@@ -260,7 +259,6 @@ def purchase(request, pk):
             messages.error(
                 request, "There was an error recording the purchase information"
             )
-        return redirect("/internal_ops/view/" + str(pk))
     else:
         messages.error(request, "Please enter the information requested.")
     return redirect("/internal_ops/view/" + str(pk))
