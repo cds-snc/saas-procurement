@@ -161,11 +161,17 @@ def view_request(request, pk):
                         request, "Please add the fund center and the approver."
                     )
             return render(request, "internal_ops/view_request.html", {"form": form})
+        elif request.POST.get("info_requested"):
+            print("info requested")
+            return render(request, "internal_ops/view_request.html", {"form": form})
         elif request.POST.get("send_for_s32_approval"):
             # update the status
             try:
                 saas_object.status = "Sent to S32 Approver for Approval"
                 saas_object.date_sent_to_s_32_approver = timezone.now()
+                if saas_object.internal_ops is None:
+                    saas_object.internal_ops = Users.objects.get(user=request.user)
+
                 saas_object.save()
             except Exception as e:
                 print(e)
@@ -207,14 +213,13 @@ def view_request(request, pk):
 
 
 @csrf_exempt
-def send_email(request, pk):
+def send_mail(request, pk):
     saas_object = SaasRequest.objects.get(pk=pk)
-    form = ViewS32RequestForm(instance=saas_object)
-    if request.method == "POST":
+    if request.method == "POST" and request.POST.get("info_requested"):
         try:
-            # Record the date that we requested information for
-            saas_object.date_info_requested = timezone.now()
-            saas_object.save()
+            if saas_object.internal_ops is None:
+                saas_object.internal_ops = Users.objects.get(user=request.user)
+                saas_object.save()
             # send an email to the requestor
             info_requested = request.POST.get("info_requested")
             send_requestor_email_more_info(
@@ -253,3 +258,6 @@ def purchase(request, pk):
                 request, "There was an error recording the purchase information"
             )
         return redirect("/internal_ops/view/" + str(pk))
+    else:
+        messages.error(request, "Please enter the information requested.")
+    return redirect("/internal_ops/view/" + str(pk))

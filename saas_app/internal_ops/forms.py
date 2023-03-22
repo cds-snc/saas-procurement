@@ -94,10 +94,6 @@ class ViewS32RequestForm(ModelForm):
                 data_target="#purchase_modal",
                 data_dismiss="modal",
             ),
-            # Submit(
-            #     "purchase",
-            #     "Record Purchase Information",
-            # ),
             Button(
                 "cancel",
                 "Cancel",
