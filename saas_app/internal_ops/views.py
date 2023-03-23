@@ -235,7 +235,30 @@ def send_mail(request, pk):
                 request,
                 "There was an error sending the notification email to the requestor.",
             )
-        return redirect("/internal_ops/view/" + str(pk))
+    else:
+        messages.error(request, "Please enter the information requested.")
+    return redirect("/internal_ops/view/" + str(pk))
+
+
+def purchase(request, pk):
+    saas_object = SaasRequest.objects.get(pk=pk)
+    if request.method == "POST":
+        try:
+            saas_object.purchase_date = request.POST.get("purchase-date")
+            saas_object.purchase_method = request.POST.get("purchase-method")
+            saas_object.purchse_amount = request.POST.get("purchase-amount")
+            saas_object.confirmation_number = request.POST.get("confirmation-number")
+            saas_object.purchase_notes = request.POST.get("purchase-notes")
+            saas_object.purcased = True
+            saas_object.save()
+            messages.success(
+                request, "We have successfully recorded the purchase information"
+            )
+        except Exception as e:
+            print(e)
+            messages.error(
+                request, "There was an error recording the purchase information"
+            )
     else:
         messages.error(request, "Please enter the information requested.")
     return redirect("/internal_ops/view/" + str(pk))

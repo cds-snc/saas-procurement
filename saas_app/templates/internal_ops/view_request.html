@@ -41,8 +41,51 @@
   </div>
 </div>
 
+
+<div class="modal fade" id="purchase_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Record Purchase Information</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="purchase" method="POST" novalidate>
+         {% csrf_token %}
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Purchase Date:</label>
+            <input type="date" class="form-control" name="purchase-date" id="purchase-date">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Purchase Amount:</label>
+            <input type="number" min="1" step="any" class="form-control" name="purchase-amount" id="purchase-amount">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Purchase Method:</label>
+            <input type="text" class="form-control" name="purchase-method" id="purchase-method">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Confirmation Number:</label>
+            <input type="text" class="form-control" name="confirmation-number" id="confirmation-number">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Purchase Notes:</label>
+            <textarea class="form-control" name="purchase-notes" id="purchase-notes"></textarea>
+          </div>
+           <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary" name="submit" Value="Submit">Save</button>
+          </div>
+        </form>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
 <script>
-  $('#request_info_modal').on('show.bs.modal', function (event) {
+ $('#request_info_modal').on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget) // Button that triggered the modal
     var recipient = "SAAS requestor"
     // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
