@@ -7,9 +7,9 @@
 
 {% block content %}
 {% if status == 'approved' %}
-    <h1>The Software as a Service Request has been successfully approved</h1>
+    <h1>{% trans "The Software as a Service Request has been successfully approved" %}</h1>
 {% elif status == 'denied' %}
-    <h1>The Software as a Service Request has been succesfully denied!</h1>
+    <h1>{% trans "The Software as a Service Request has been succesfully denied!" %}</h1>
 {% endif %}
-    <p>The person who has submitted the request will be notified.</p>
+    <p>{% trans "The person who has submitted the request will be notified." %}</p>
 {% endblock %}

@@ -6,26 +6,26 @@
 {% block head_title %}{% trans "Saas Procurement App" %}{% endblock %}
 
 {% block content %}
-  <h1>SAAS requests awaiting s32 approval</h1>
+  <h1>{% trans "SAAS requests awaiting s32 approval" %}</h1>
     {% if s32_approval_needed_requests %}
-      <p> List of requests waiting to be sent for s32 approval</p>
+      <p>{% trans "List of requests waiting to be sent for s32 approval" %}</p>
       <table class="table table-hover table-bordered">
         <thead>
           <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Description</th>
-            <th scope="col">Url</th>
-            <th scope="col">Cost</th>
-            <th scope="col">Date Submitted</th>
-            <th scope="col">Manager</th>
-            <th scope="col">Status</th>
+            <th scope="col">{% trans "Name" %}</th>
+            <th scope="col">{% trans "Description" %}</th>
+            <th scope="col">{% trans "Url" %}</th>
+            <th scope="col">{% trans "Cost" %}</th>
+            <th scope="col">{% trans "Date Submitted" %}</th>
+            <th scope="col">{% trans "Manager" %}</th>
+            <th scope="col">{% trans "Status" %}</th>
             <tbody class="table-group-divider"></tbody>
           </tr>
         </thead>
         <tbody>
         {% for saas_request in s32_approval_needed_requests %}
              <tr>
-              <td><a href="/internal_ops/view/{{saas_request.pk}}">{{ saas_request.name}} </a></td>
+              <td><a href="{{saas_request.pk}}">{{ saas_request.name}} </a></td>
               <td>{{ saas_request.description }}</td>
               <td>{{ saas_request.url }}</td>
               <td>{{ saas_request.cost }}</td>
@@ -38,20 +38,20 @@
     </table>
     <br>
     {% else %}
-      <h4> You have no requests awaiting approval</h4><br>
+      <h4>{% trans "You have no requests awaiting approval" %}</h4><br>
     {% endif %}
 {% if purchase_needed_requests %}
- <h4>Requests that have been s32 approved awaiting purchase</h4>
+ <h4>{% trans "Requests that have been s32 approved awaiting purchase" %}</h4>
   <table class="table table-hover table-bordered">
     <thead>
         <tr>
-          <th scope="col">Name</th>
-          <th scope="col">Description</th>
-          <th scope="col">Url</th>
-          <th scope="col">Cost</th>
-          <th scope="col">Date Submitted</th>
-          <th scope="col">Manager</th>
-          <th scope="col">Status</th>
+          <th scope="col">{% trans "Name" %}</th>
+          <th scope="col">{% trans "Description" %}</th>
+          <th scope="col">{% trans "Url" %}</th>
+          <th scope="col">{% trans "Cost" %}</th>
+          <th scope="col">{% trans "Date Submitted" %}</th>
+          <th scope="col">{% trans "Manager" %}</th>
+          <th scope="col">{% trans "Status" %}</th>
           <tbody class="table-group-divider"></tbody>
         </tr>
       </thead>
@@ -70,20 +70,20 @@
       </tbody> 
 </table>
 {% else %}
-  <h4> You have no requests awaiting purchase</h4><br>
+  <h4>{% trans "You have no requests awaiting purchase" %}</h4><br>
 {% endif %}
 {% if s32_approval_waiting_requests %}
- <h4>Requests that have been sent to the S32 approver and are awaiting approval</h4>
+ <h4>{% trans "Requests that have been sent to the S32 approver and are awaiting approval" %}</h4>
   <table class="table table-hover table-bordered">
     <thead>
         <tr>
-          <th scope="col">Name</th>
-          <th scope="col">Description</th>
-          <th scope="col">Url</th>
-          <th scope="col">Cost</th>
-          <th scope="col">Date Submitted</th>
-          <th scope="col">Manager</th>
-          <th scope="col">Status</th>
+          <th scope="col">{% trans "Name" %}</th>
+          <th scope="col">{% trans "Description" %}</th>
+          <th scope="col">{% trans "Url" %}</th>
+          <th scope="col">{% trans "Cost" %}</th>
+          <th scope="col">{% trans "Date Submitted" %}</th>
+          <th scope="col">{% trans "Manager" %}</th>
+          <th scope="col">{% trans "Status" %}</th>
           <tbody class="table-group-divider"></tbody>
         </tr>
       </thead>
@@ -102,7 +102,7 @@
       </tbody> 
 </table>
 {% else %}
-  <h4> You have no requests that are awaiting to be approved by the S32 approver</h4><br>
+  <h4>{% trans "You have no requests that are awaiting to be approved by the S32 approver" %}</h4><br>
 {% endif %}
-    <button type="button" class="btn btn-primary btn-lg" name="home" onclick="location.href='{% url 'home' %}'">Cancel</button>
+    <button type="button" class="btn btn-primary btn-lg" name="home" onclick="location.href='{% url 'home' %}'">{% trans "Cancel" %}</button>
 {% endblock %}

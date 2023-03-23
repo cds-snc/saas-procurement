@@ -1,6 +1,7 @@
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit, Layout, Button, Field
 from django.forms import ModelForm
+from django.utils.translation import gettext_lazy as _
 from submit_request.models import SaasRequest
 
 
@@ -26,20 +27,20 @@ class ViewS32RequestForm(ModelForm):
             "approved_by",
         ]
         labels = {
-            "name": "Name",
-            "url": "URL",
-            "description": "Description",
-            "cost": "Cost",
-            "level_of_subscription": "Level of Subscription",
-            "number_of_users": "Number of Users",
-            "names_of_users": "Names of Users",
-            "account_administrator": "Account Administrator",
-            "backup_administrator": "Backup Administrator",
-            "manager": "Manager",
-            "date_manager_reviewed": "Date Manager Approved the request",
-            "submitted_by": "Submitted By",
-            "fund_center": "Fund Center",
-            "approved_by": "S32 Approver",
+            "name": _("Name"),
+            "url": _("URL"),
+            "description": _("Description"),
+            "cost": _("Cost"),
+            "level_of_subscription": _("Level of Subscription"),
+            "number_of_users": _("Number of Users"),
+            "names_of_users": _("Names of Users"),
+            "account_administrator": _("Account Administrator"),
+            "backup_administrator": _("Backup Administrator"),
+            "manager": _("Manager"),
+            "date_manager_reviewed": _("Date Manager Approved the request"),
+            "submitted_by": _("Submitted By"),
+            "fund_center": _("Fund Center"),
+            "approved_by": _("S32 Approver"),
         }
 
     def __init__(self, *args, **kwargs):
@@ -72,13 +73,13 @@ class ViewS32RequestForm(ModelForm):
             Field("approved_by"),
             Submit(
                 "save",
-                "Save",
+                _("Save"),
                 css_class="btn btn-primary btn-lg",
             ),
-            Submit("send_for_s32_approval", "Send for S32 Approval"),
+            Submit("send_for_s32_approval", _("Send for S32 Approval")),
             Button(
                 "request_info",
-                "Request Additional Information",
+                _("Request Additional Information"),
                 css_id="submit",
                 css_class="btn btn-primary btn-lg",
                 data_toggle="modal",
@@ -87,7 +88,7 @@ class ViewS32RequestForm(ModelForm):
             ),
             Button(
                 "purchase",
-                "Record Purchase Information",
+                _("Record Purchase Information"),
                 css_id="submit",
                 css_class="btn btn-primary btn-lg",
                 data_toggle="modal",
@@ -96,7 +97,7 @@ class ViewS32RequestForm(ModelForm):
             ),
             Button(
                 "cancel",
-                "Cancel",
+                _("Cancel"),
                 css_id="submit",
                 css_class="btn btn-primary btn-lg",
                 onclick="history.back()",

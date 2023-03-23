@@ -67,7 +67,7 @@ MIDDLEWARE = [
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
-    'django.middleware.locale.LocaleMiddleware',
+    "django.middleware.locale.LocaleMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
@@ -142,6 +142,9 @@ LOCALE_PATHS = [
 ]
 
 LANGUAGE_CODE = "en-us"
+
+prefix_default_language = False
+
 
 TIME_ZONE = "UTC"
 

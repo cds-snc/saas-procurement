@@ -6,26 +6,27 @@
 {% block head_title %}{% trans "Saas Procurement App" %}{% endblock %}
 
 {% block content %}
-    <h1>Submitted Requests</h1>
-    <p>This is the list of requests that you have submitted. Click on the request name to view more information.</p>
-    <p>Note: You can only modify requests that have not yet been reviewed.</p><br>
+    <h1>{% trans "Submitted Requests" %}</h1>
+    <p>{% trans "This is the list of requests that you have submitted. Click on the request name to view more information." %}</p>
+    <p>{% trans "Note: You can only modify requests that have not yet been reviewed." %}</p><br>
     <table class="table table-hover table-bordered">
         <thead>
             <tr>
-              <th scope="col">Name</th>
-              <th scope="col">Description</th>
-              <th scope="col">Url</th>
-              <th scope="col">Cost</th>
-              <th scope="col">Date Submitted</th>
-              <th scope="col">Status</th>
+              <th scope="col">{% trans "Name" %}</th>
+              <th scope="col">{% trans "Description" %}</th>
+              <th scope="col">{% trans "Url" %}</th>
+              <th scope="col">{% trans "Cost" %}</th>
+              <th scope="col">{% trans "Date Submitted" %}</th>
+              <th scope="col">{% trans "Status" %}</th>
               <tbody class="table-group-divider"></tbody>
             </tr>
           </thead>
           <tbody>
             {% for request in submitted_requests %}
             <tr>
-                {% if request.status == "Request submitted" %}
-                	<td><a href="/submit_request/view/{{request.pk}}">{{ request.name}} </a></td>
+                {% get_current_language as CURRENT_LANGUAGE %}
+                {% if request.status == "Request submitted" or request.status == "Demande soumise" %}
+                	<td><a href="{{request.pk}}">{{ request.name}} </a></td>
                 {% else %}
                 	<td>{{ request.name}}</td>
                 {% endif %}
@@ -38,5 +39,5 @@
             {% endfor %}
           </tbody>
     </table>
-    <button type="button" class="btn btn-primary btn-lg" name="home" onclick="location.href='{% url 'home' %}'">Cancel</button>
+    <button type="button" class="btn btn-primary btn-lg" name="home" onclick="location.href='{% url 'home' %}'">{% trans "Cancel" %}</button>
 {% endblock %}
