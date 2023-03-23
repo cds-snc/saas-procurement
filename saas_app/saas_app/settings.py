@@ -141,10 +141,7 @@ LOCALE_PATHS = [
     os.path.join(BASE_DIR, "locale"),
 ]
 
-LANGUAGE_CODE = "en-us"
-
-prefix_default_language = False
-
+LANGUAGE_CODE = "en"
 
 TIME_ZONE = "UTC"
 
