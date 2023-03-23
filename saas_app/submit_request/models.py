@@ -11,11 +11,11 @@ class SaasRequest(models.Model):
     url = models.URLField(max_length=100)
     description = models.CharField(_("description"), max_length=500)
     cost = models.CharField(_("cost"), max_length=100)
-    level_of_subscription = models.CharField(_("level_of_subscription"), max_length=100)
-    number_of_users = models.IntegerField(_("number_of_users"))
-    names_of_users = models.CharField(_("names_of_users"), max_length=500)
-    account_administrator = models.CharField(_("account_administrator"), max_length=100)
-    backup_administrator = models.CharField(_("backup_administrator"), max_length=100)
+    level_of_subscription = models.CharField(_("level of subscription"), max_length=100)
+    number_of_users = models.IntegerField(_("number of users"))
+    names_of_users = models.CharField(_("names of users"), max_length=500)
+    account_administrator = models.CharField(_("account administrator"), max_length=100)
+    backup_administrator = models.CharField(_("backup administrator"), max_length=100)
     manager = models.ForeignKey(
         Users,
         on_delete=models.CASCADE,
@@ -23,9 +23,9 @@ class SaasRequest(models.Model):
         verbose_name=_("manager"),
     )
     submitted_by = models.ForeignKey(
-        User, on_delete=models.CASCADE, verbose_name=_("submitted_by")
+        User, on_delete=models.CASCADE, verbose_name=_("submitted by")
     )
-    date_submitted = models.DateTimeField(_("date_submitted"), auto_now_add=True)
+    date_submitted = models.DateTimeField(_("date submitted"), auto_now_add=True)
     approved_by = models.ForeignKey(
         Users,
         on_delete=models.CASCADE,

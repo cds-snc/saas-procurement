@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-23 00:29+0000\n"
+"POT-Creation-Date: 2023-03-23 15:23+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -264,23 +264,23 @@ msgid "cost"
 msgstr "coût"
 
 #: submit_request/models.py:14
-msgid "level_of_subscription"
+msgid "level of subscription"
 msgstr "Niveau d'abonnement"
 
 #: submit_request/models.py:15
-msgid "number_of_users"
+msgid "number of users"
 msgstr "Nombre d'utilisateurs"
 
 #: submit_request/models.py:16
-msgid "names_of_users"
+msgid "names of users"
 msgstr "Noms des utilisateurs"
 
 #: submit_request/models.py:17
-msgid "account_administrator"
+msgid "account administrator"
 msgstr "Administrateur de compte"
 
 #: submit_request/models.py:18
-msgid "backup_administrator"
+msgid "backup administrator"
 msgstr "Administrateur de sauvegarde"
 
 #: submit_request/models.py:23
@@ -288,11 +288,11 @@ msgid "manager"
 msgstr "Directeur/Directrice"
 
 #: submit_request/models.py:26
-msgid "submitted_by"
+msgid "submitted by"
 msgstr "Proposé par:"
 
 #: submit_request/models.py:28
-msgid "date_submitted"
+msgid "date submitted"
 msgstr "Date de soumission"
 
 #: submit_request/views.py:64
@@ -752,6 +752,15 @@ msgstr "Résultats de recherche"
 #: templates/search.html:17
 msgid "No results found"
 msgstr "Aucun résultat trouvé"
+
+#~ msgid "level_of_subscription"
+#~ msgstr "Niveau d'abonnement"
+
+#~ msgid "number_of_users"
+#~ msgstr "Nombre d'utilisateurs"
+
+#~ msgid "names_of_users"
+#~ msgstr "Noms des utilisateurs"
 
 #~ msgid "Language"
 #~ msgstr "Langue"

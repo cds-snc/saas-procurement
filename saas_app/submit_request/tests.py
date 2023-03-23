@@ -135,7 +135,7 @@ class SubmitRequestFormTest(TestCase):
         form = SubmitRequestForm()
         self.assertTrue(
             form.fields["level_of_subscription"].label is None
-            or form.fields["level_of_subscription"].label == "Level_of_subscription"
+            or form.fields["level_of_subscription"].label == "Level of subscription"
         )
 
     # Test the number of users label of the form
@@ -143,7 +143,7 @@ class SubmitRequestFormTest(TestCase):
         form = SubmitRequestForm()
         self.assertTrue(
             form.fields["number_of_users"].label is None
-            or form.fields["number_of_users"].label == "Number_of_users"
+            or form.fields["number_of_users"].label == "Number of users"
         )
 
     # Test the names of users label of the form
@@ -151,7 +151,7 @@ class SubmitRequestFormTest(TestCase):
         form = SubmitRequestForm()
         self.assertTrue(
             form.fields["names_of_users"].label is None
-            or form.fields["names_of_users"].label == "Names_of_users"
+            or form.fields["names_of_users"].label == "Names of users"
         )
 
     # Test the account administrator label of the form
@@ -159,7 +159,7 @@ class SubmitRequestFormTest(TestCase):
         form = SubmitRequestForm()
         self.assertTrue(
             form.fields["account_administrator"].label is None
-            or form.fields["account_administrator"].label == "Account_administrator"
+            or form.fields["account_administrator"].label == "Account administrator"
         )
 
     # Test the backup administrator label of the form
@@ -167,7 +167,7 @@ class SubmitRequestFormTest(TestCase):
         form = SubmitRequestForm()
         self.assertTrue(
             form.fields["backup_administrator"].label is None
-            or form.fields["backup_administrator"].label == "Backup_administrator"
+            or form.fields["backup_administrator"].label == "Backup administrator"
         )
 
 
