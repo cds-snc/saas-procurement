@@ -1,5 +1,4 @@
 from django.test import TestCase
-from django.utils.translation import gettext as _
 from .models import SaasRequest, User, Users
 from user.models import Roles
 from .forms import SubmitRequestForm

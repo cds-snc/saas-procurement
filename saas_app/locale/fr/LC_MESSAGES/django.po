@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-22 23:51+0000\n"
+"POT-Creation-Date: 2023-03-23 00:29+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,43 +18,43 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: approve/forms.py:53
+#: approve/forms.py:52
 msgid "Approve"
 msgstr " Approuver"
 
-#: approve/forms.py:56
+#: approve/forms.py:55
 msgid "Deny"
 msgstr "Refuser"
 
-#: approve/views.py:87
+#: approve/views.py:86
 msgid "Manager approved"
 msgstr "Gestionnaire approuvé"
 
-#: approve/views.py:94 approve/views.py:181
+#: approve/views.py:93 approve/views.py:184
 msgid "Request has been successfully approved"
 msgstr "La demande a été approuvée avec succès"
 
-#: approve/views.py:97 approve/views.py:184
+#: approve/views.py:97 approve/views.py:188
 msgid "An error occurred while approving the request"
 msgstr "Une erreur s'est produite lors de l'approbation de la demande"
 
-#: approve/views.py:107
+#: approve/views.py:108
 msgid "Manager denied"
 msgstr "Gestionnaire refusé"
 
-#: approve/views.py:114 approve/views.py:207
+#: approve/views.py:115 approve/views.py:212
 msgid "Request has been successfully denied"
 msgstr "La demande a été refusée avec succès"
 
-#: approve/views.py:117 approve/views.py:210
+#: approve/views.py:119 approve/views.py:216
 msgid "An error occurred while denying the request"
 msgstr "Une erreur s'est produite lors du refus de la demande"
 
-#: approve/views.py:168
+#: approve/views.py:171
 msgid "S32 approved"
 msgstr "Approuvé S32"
 
-#: approve/views.py:194
+#: approve/views.py:199
 msgid "S32 denied"
 msgstr "S32 refusé"
 
@@ -149,14 +149,14 @@ msgstr "Demander des informations supplémentaires"
 msgid "Record Purchase Information"
 msgstr "Enregistrer les informations d'achat"
 
-#: internal_ops/forms.py:100 submit_request/forms.py:37
-#: submit_request/forms.py:87 templates/approve/view_all_requests.html:75
+#: internal_ops/forms.py:100 submit_request/forms.py:39
+#: submit_request/forms.py:89 templates/approve/view_all_requests.html:75
 #: templates/internal_ops/view_all_requests.html:107
 #: templates/request/view_all_requests.html:42
 msgid "Cancel"
 msgstr "Annuler"
 
-#: internal_ops/models.py:7 submit_request/models.py:10 user/models.py:9
+#: internal_ops/models.py:7 submit_request/models.py:10 user/models.py:8
 msgid "name"
 msgstr "nom"
 
@@ -181,34 +181,34 @@ msgstr "En attente d'envoi pour approbation S32"
 msgid "The form was successfully saved."
 msgstr "Le formulaire a été enregistré avec succès."
 
-#: internal_ops/views.py:159
+#: internal_ops/views.py:160
 msgid "There was an error saving the form."
 msgstr "Le formulaire a été enregistré avec succès"
 
-#: internal_ops/views.py:162
+#: internal_ops/views.py:164
 msgid "Please add the fund center and the approver."
 msgstr "Veuillez ajouter le centre financier et l'approbateur."
 
-#: internal_ops/views.py:170
+#: internal_ops/views.py:172
 msgid "Sent to S32 Approver for Approval"
 msgstr "Envoyé à l'approbateur S32 pour approbation"
 
-#: internal_ops/views.py:179
+#: internal_ops/views.py:181
 msgid "There was an error updating the status of the form."
 msgstr ""
 "Une erreur s'est produite lors de la mise à jour du statut du formulaire"
 
-#: internal_ops/views.py:186
+#: internal_ops/views.py:189
 msgid "Please add the fund center and the approver and then save the form."
 msgstr ""
 "Veuillez ajouter le centre financier et l'approbateur, puis enregistrer le "
 "formulaire."
 
-#: internal_ops/views.py:204
+#: internal_ops/views.py:208
 msgid "We have successfully emailed the S32 approver."
 msgstr "Nous avons réussi à envoyer un e-mail à l'approbateur S32."
 
-#: internal_ops/views.py:210
+#: internal_ops/views.py:215
 msgid ""
 "There was an error sending the notification emails to the S32 approver or "
 "requestor."
@@ -216,25 +216,25 @@ msgstr ""
 "Une erreur s'est produite lors de l'envoi des e-mails de notification à "
 "l'approbateur ou au demandeur S32"
 
-#: internal_ops/views.py:232
+#: internal_ops/views.py:238
 msgid "We have successfully emailed the requestor."
 msgstr "Nous avons réussi à envoyer un e-mail au demandeur."
 
-#: internal_ops/views.py:237
+#: internal_ops/views.py:244
 msgid "There was an error sending the notification email to the requestor."
 msgstr ""
 "Une erreur s'est produite lors de l'envoi de l'e-mail de notification au "
 "demandeur."
 
-#: internal_ops/views.py:240 internal_ops/views.py:265
+#: internal_ops/views.py:248 internal_ops/views.py:273
 msgid "Please enter the information requested."
 msgstr "Veuillez saisir les informations demandées."
 
-#: internal_ops/views.py:257
+#: internal_ops/views.py:265
 msgid "We have successfully recorded the purchase information"
 msgstr "Nous avons enregistré avec succès les informations d'achat"
 
-#: internal_ops/views.py:262
+#: internal_ops/views.py:270
 msgid "There was an error recording the purchase information"
 msgstr ""
 "Une erreur s'est produite lors de l'enregistrement des informations d'achat"
@@ -243,19 +243,19 @@ msgstr ""
 msgid "Something went wrong with the search. Please try again."
 msgstr "Une erreur s'est produite lors de la recherche. Veuillez réessayer."
 
-#: submit_request/forms.py:33
+#: submit_request/forms.py:34
 msgid "Submit"
 msgstr "Soumettre"
 
-#: submit_request/forms.py:79
+#: submit_request/forms.py:81
 msgid "Save changes"
 msgstr "Sauvegarder les modifications"
 
-#: submit_request/forms.py:82
+#: submit_request/forms.py:84
 msgid "Delete"
 msgstr "Supprimer"
 
-#: submit_request/models.py:12 user/models.py:10
+#: submit_request/models.py:12 user/models.py:9
 msgid "description"
 msgstr "description"
 
@@ -283,15 +283,15 @@ msgstr "Administrateur de compte"
 msgid "backup_administrator"
 msgstr "Administrateur de sauvegarde"
 
-#: submit_request/models.py:19
+#: submit_request/models.py:23
 msgid "manager"
 msgstr "Directeur/Directrice"
 
-#: submit_request/models.py:20
+#: submit_request/models.py:26
 msgid "submitted_by"
 msgstr "Proposé par:"
 
-#: submit_request/models.py:21
+#: submit_request/models.py:28
 msgid "date_submitted"
 msgstr "Date de soumission"
 
@@ -404,23 +404,19 @@ msgstr ""
 "Veuillez approuver, refuser ou demander des informations complémentaires au "
 "demandeur"
 
-#: templates/base.html:48
-msgid "Language"
-msgstr "Langue"
-
-#: templates/base.html:82
+#: templates/base.html:75
 msgid "Home"
 msgstr "Page d'accueil"
 
-#: templates/base.html:90
+#: templates/base.html:83
 msgid "Google Accounts"
 msgstr "Comptes Google"
 
-#: templates/base.html:93
+#: templates/base.html:86
 msgid "Sign Out"
 msgstr "se déconnecter"
 
-#: templates/base.html:98
+#: templates/base.html:90 templates/base.html:91
 msgid "Search"
 msgstr "Recherche"
 
@@ -756,6 +752,9 @@ msgstr "Résultats de recherche"
 #: templates/search.html:17
 msgid "No results found"
 msgstr "Aucun résultat trouvé"
+
+#~ msgid "Language"
+#~ msgstr "Langue"
 
 #, fuzzy
 #~| msgid "Url"
