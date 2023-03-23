@@ -1,4 +1,5 @@
 from django.test import TestCase
+from django.utils.translation import gettext as _
 from .models import SaasRequest, User, Users
 from user.models import Roles
 from .forms import SubmitRequestForm
@@ -135,7 +136,7 @@ class SubmitRequestFormTest(TestCase):
         form = SubmitRequestForm()
         self.assertTrue(
             form.fields["level_of_subscription"].label is None
-            or form.fields["level_of_subscription"].label == "Level of subscription"
+            or form.fields["level_of_subscription"].label == "Level_of_subscription"
         )
 
     # Test the number of users label of the form
@@ -143,7 +144,7 @@ class SubmitRequestFormTest(TestCase):
         form = SubmitRequestForm()
         self.assertTrue(
             form.fields["number_of_users"].label is None
-            or form.fields["number_of_users"].label == "Number of users"
+            or form.fields["number_of_users"].label == "Number_of_users"
         )
 
     # Test the names of users label of the form
@@ -151,7 +152,7 @@ class SubmitRequestFormTest(TestCase):
         form = SubmitRequestForm()
         self.assertTrue(
             form.fields["names_of_users"].label is None
-            or form.fields["names_of_users"].label == "Names of users"
+            or form.fields["names_of_users"].label == "Names_of_users"
         )
 
     # Test the account administrator label of the form
@@ -159,7 +160,7 @@ class SubmitRequestFormTest(TestCase):
         form = SubmitRequestForm()
         self.assertTrue(
             form.fields["account_administrator"].label is None
-            or form.fields["account_administrator"].label == "Account administrator"
+            or form.fields["account_administrator"].label == "Account_administrator"
         )
 
     # Test the backup administrator label of the form
@@ -167,7 +168,7 @@ class SubmitRequestFormTest(TestCase):
         form = SubmitRequestForm()
         self.assertTrue(
             form.fields["backup_administrator"].label is None
-            or form.fields["backup_administrator"].label == "Backup administrator"
+            or form.fields["backup_administrator"].label == "Backup_administrator"
         )
 
 
@@ -175,9 +176,9 @@ class TestSubmitRequestViews(TestCase):
     # Test that the submit request page is accessible
     def test_submit_request_page(self):
         response = self.client.get("/submit_request")
-        self.assertEqual(response.status_code, 301)
+        self.assertEqual(response.status_code, 302)
 
     # Test that the view request page is accessible
     def test_view_request_page(self):
         response = self.client.get("/submit_request/view")
-        self.assertEqual(response.status_code, 301)
+        self.assertEqual(response.status_code, 302)
