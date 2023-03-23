@@ -6,6 +6,7 @@ from submit_request.views import send_requestor_email
 from .forms import ViewRequestForm
 import datetime
 import common.util.utils as utils
+from django.utils.translation import gettext as _
 
 
 def send_internal_ops_email(request, saas_object, template_id):
@@ -82,17 +83,19 @@ def view_request(request, pk):
                 # update the approve field and notify the requestor
                 saas_object.manager_approved = True
                 saas_object.date_manager_reviewed = datetime.datetime.now()
-                saas_object.status = "Manager approved"
+                saas_object.status = _("Manager approved")
                 # Save the data to the database
                 saas_object.save()
                 # send emails to the requestor that an approval has been made
                 send_requestor_email(
                     request, saas_object, os.getenv("APPROVED_REQUEST_TEMPLATE_ID")
                 )
-                messages.success(request, "Request has been successfully approved")
+                messages.success(request, _("Request has been successfully approved"))
             except Exception as e:
                 print(e)
-                messages.error(request, "An error occurred while approving the request")
+                messages.error(
+                    request, _("An error occurred while approving the request")
+                )
             # redirect to a new URL
             return render(request, "approve/saas_status.html", {"status": "approved"})
         # else if the deny button was clicked
@@ -102,17 +105,19 @@ def view_request(request, pk):
                 # update the approve field and notify the requestor
                 saas_object.manager_denied = True
                 saas_object.date_manager_reviewed = datetime.datetime.now()
-                saas_object.status = "Manager denied"
+                saas_object.status = _("Manager denied")
                 # Save the data to the database
                 saas_object.save()
                 # send emails to the requestor that an approval has been made
                 send_requestor_email(
                     request, saas_object, os.getenv("DENIED_REQUEST_TEMPLATE_ID")
                 )
-                messages.success(request, "Request has been successfully denied")
+                messages.success(request, _("Request has been successfully denied"))
             except Exception as e:
                 print(e)
-                messages.error(request, "An error occurred while denying the request")
+                messages.error(
+                    request, _("An error occurred while denying the request")
+                )
 
             # redirect to a new URL
             return render(request, "approve/saas_status.html", {"status": "denied"})
@@ -163,7 +168,7 @@ def view_request_s32_approver(request, pk):
                 # update the approve field and notify the requestor
                 saas_object.s_32_approved = True
                 saas_object.s_32_review_date = datetime.datetime.now()
-                saas_object.status = "S32 approved"
+                saas_object.status = _("S32 approved")
                 # Save the data to the database
                 saas_object.save()
                 # send emails to the requestor that an approval has been made
@@ -176,10 +181,12 @@ def view_request_s32_approver(request, pk):
                     saas_object,
                     os.getenv("REQUEST_S32_APPROVED_INTERNAL_OPS_TEMPLATE_ID"),
                 )
-                messages.success(request, "Request has been successfully approved")
+                messages.success(request, _("Request has been successfully approved"))
             except Exception as e:
                 print(e)
-                messages.error(request, "An error occurred while approving the request")
+                messages.error(
+                    request, _("An error occurred while approving the request")
+                )
             # redirect to a new URL
             return render(request, "approve/saas_status.html", {"status": "approved"})
         # else if the deny button was clicked
@@ -189,28 +196,25 @@ def view_request_s32_approver(request, pk):
                 # update the approve field and notify the requestor
                 saas_object.s_32_approved = False
                 saas_object.s_32_review_date = datetime.datetime.now()
-                saas_object.status = "S32 denied"
+                saas_object.status = _("S32 denied")
                 # Save the data to the database
                 saas_object.save()
                 # send emails to the requestor that an approval has been made
                 send_requestor_email(
                     request, saas_object, os.getenv("REQUEST_S32_DENIED_TEMPLATE_ID")
                 )
-                # send internal ops email to notify that a request has been d
+                # send internal ops email to notify that a request has been denied
                 send_internal_ops_email(
                     request,
                     saas_object,
                     os.getenv("REQUEST_S32_DENIED_INTERNAL_OPS_TEMPLATE_ID"),
                 )
-                messages.success(request, "Request has been successfully denied")
+                messages.success(request, _("Request has been successfully denied"))
             except Exception as e:
                 print(e)
-                messages.error(request, "An error occurred while denying the request")
+                messages.error(
+                    request, _("An error occurred while denying the request")
+                )
 
             # redirect to a new URL
             return render(request, "approve/saas_status.html", {"status": "denied"})
-
-
-# Placeholder for now
-def send_email(request):
-    pass

@@ -1,0 +1,771 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-03-23 15:23+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: approve/forms.py:52
+msgid "Approve"
+msgstr " Approuver"
+
+#: approve/forms.py:55
+msgid "Deny"
+msgstr "Refuser"
+
+#: approve/views.py:86
+msgid "Manager approved"
+msgstr "Gestionnaire approuvé"
+
+#: approve/views.py:93 approve/views.py:184
+msgid "Request has been successfully approved"
+msgstr "La demande a été approuvée avec succès"
+
+#: approve/views.py:97 approve/views.py:188
+msgid "An error occurred while approving the request"
+msgstr "Une erreur s'est produite lors de l'approbation de la demande"
+
+#: approve/views.py:108
+msgid "Manager denied"
+msgstr "Gestionnaire refusé"
+
+#: approve/views.py:115 approve/views.py:212
+msgid "Request has been successfully denied"
+msgstr "La demande a été refusée avec succès"
+
+#: approve/views.py:119 approve/views.py:216
+msgid "An error occurred while denying the request"
+msgstr "Une erreur s'est produite lors du refus de la demande"
+
+#: approve/views.py:171
+msgid "S32 approved"
+msgstr "Approuvé S32"
+
+#: approve/views.py:199
+msgid "S32 denied"
+msgstr "S32 refusé"
+
+#: common/util/utils.py:35
+msgid "There was an error sending the email."
+msgstr "Une erreur s'est produite lors de l'envoi de l'e-mail."
+
+#: internal_ops/forms.py:30 templates/approve/view_all_requests.html:15
+#: templates/internal_ops/view_all_requests.html:15
+#: templates/internal_ops/view_all_requests.html:48
+#: templates/internal_ops/view_all_requests.html:80
+#: templates/request/view_all_requests.html:15
+msgid "Name"
+msgstr "Nom"
+
+#: internal_ops/forms.py:31
+msgid "URL"
+msgstr "URL"
+
+#: internal_ops/forms.py:32 templates/approve/view_all_requests.html:16
+#: templates/internal_ops/view_all_requests.html:16
+#: templates/internal_ops/view_all_requests.html:49
+#: templates/internal_ops/view_all_requests.html:81
+#: templates/request/view_all_requests.html:16
+msgid "Description"
+msgstr "Description"
+
+#: internal_ops/forms.py:33 templates/approve/view_all_requests.html:18
+#: templates/internal_ops/view_all_requests.html:18
+#: templates/internal_ops/view_all_requests.html:51
+#: templates/internal_ops/view_all_requests.html:83
+#: templates/request/view_all_requests.html:18
+msgid "Cost"
+msgstr "Coût"
+
+#: internal_ops/forms.py:34
+msgid "Level of Subscription"
+msgstr "Niveau d'abonnement"
+
+#: internal_ops/forms.py:35
+msgid "Number of Users"
+msgstr "Nombre d'utilisateurs"
+
+#: internal_ops/forms.py:36
+msgid "Names of Users"
+msgstr "Noms des utilisateurs"
+
+#: internal_ops/forms.py:37
+msgid "Account Administrator"
+msgstr "Administrateur de compte"
+
+#: internal_ops/forms.py:38
+msgid "Backup Administrator"
+msgstr "Administrateur de sauvegarde"
+
+#: internal_ops/forms.py:39 templates/approve/view_all_requests.html:20
+#: templates/internal_ops/view_all_requests.html:20
+#: templates/internal_ops/view_all_requests.html:53
+#: templates/internal_ops/view_all_requests.html:85
+msgid "Manager"
+msgstr "Directeur/Directrice"
+
+#: internal_ops/forms.py:40
+msgid "Date Manager Approved the request"
+msgstr "Date à laquelle le responsable a approuvé la demande"
+
+#: internal_ops/forms.py:41
+msgid "Submitted By"
+msgstr "Proposé par"
+
+#: internal_ops/forms.py:42
+msgid "Fund Center"
+msgstr "Centre de fonds"
+
+#: internal_ops/forms.py:43 templates/index.html:58
+msgid "S32 Approver"
+msgstr "Approbateur S32"
+
+#: internal_ops/forms.py:76 templates/internal_ops/view_request.html:79
+msgid "Save"
+msgstr "Sauvegarder"
+
+#: internal_ops/forms.py:79
+msgid "Send for S32 Approval"
+msgstr "En attente d'envoi pour approbation S32"
+
+#: internal_ops/forms.py:82
+msgid "Request Additional Information"
+msgstr "Demander des informations supplémentaires"
+
+#: internal_ops/forms.py:91 templates/internal_ops/view_request.html:49
+msgid "Record Purchase Information"
+msgstr "Enregistrer les informations d'achat"
+
+#: internal_ops/forms.py:100 submit_request/forms.py:39
+#: submit_request/forms.py:89 templates/approve/view_all_requests.html:75
+#: templates/internal_ops/view_all_requests.html:107
+#: templates/request/view_all_requests.html:42
+msgid "Cancel"
+msgstr "Annuler"
+
+#: internal_ops/models.py:7 submit_request/models.py:10 user/models.py:8
+msgid "name"
+msgstr "nom"
+
+#: internal_ops/models.py:8
+msgid "number"
+msgstr ""
+
+#: internal_ops/views.py:63
+msgid "There was an error sending the email to the S32 approver."
+msgstr ""
+"Une erreur s'est produite lors de l'envoi de l'e-mail à l'approbateur S32"
+
+#: internal_ops/views.py:102
+msgid "There was an error sending the email to the requestor."
+msgstr "Une erreur s'est produite lors de l'envoi de l'e-mail au demandeur"
+
+#: internal_ops/views.py:150
+msgid "Waiting to be sent for S32 Approval"
+msgstr "En attente d'envoi pour approbation S32"
+
+#: internal_ops/views.py:156
+msgid "The form was successfully saved."
+msgstr "Le formulaire a été enregistré avec succès."
+
+#: internal_ops/views.py:160
+msgid "There was an error saving the form."
+msgstr "Le formulaire a été enregistré avec succès"
+
+#: internal_ops/views.py:164
+msgid "Please add the fund center and the approver."
+msgstr "Veuillez ajouter le centre financier et l'approbateur."
+
+#: internal_ops/views.py:172
+msgid "Sent to S32 Approver for Approval"
+msgstr "Envoyé à l'approbateur S32 pour approbation"
+
+#: internal_ops/views.py:181
+msgid "There was an error updating the status of the form."
+msgstr ""
+"Une erreur s'est produite lors de la mise à jour du statut du formulaire"
+
+#: internal_ops/views.py:189
+msgid "Please add the fund center and the approver and then save the form."
+msgstr ""
+"Veuillez ajouter le centre financier et l'approbateur, puis enregistrer le "
+"formulaire."
+
+#: internal_ops/views.py:208
+msgid "We have successfully emailed the S32 approver."
+msgstr "Nous avons réussi à envoyer un e-mail à l'approbateur S32."
+
+#: internal_ops/views.py:215
+msgid ""
+"There was an error sending the notification emails to the S32 approver or "
+"requestor."
+msgstr ""
+"Une erreur s'est produite lors de l'envoi des e-mails de notification à "
+"l'approbateur ou au demandeur S32"
+
+#: internal_ops/views.py:238
+msgid "We have successfully emailed the requestor."
+msgstr "Nous avons réussi à envoyer un e-mail au demandeur."
+
+#: internal_ops/views.py:244
+msgid "There was an error sending the notification email to the requestor."
+msgstr ""
+"Une erreur s'est produite lors de l'envoi de l'e-mail de notification au "
+"demandeur."
+
+#: internal_ops/views.py:248 internal_ops/views.py:273
+msgid "Please enter the information requested."
+msgstr "Veuillez saisir les informations demandées."
+
+#: internal_ops/views.py:265
+msgid "We have successfully recorded the purchase information"
+msgstr "Nous avons enregistré avec succès les informations d'achat"
+
+#: internal_ops/views.py:270
+msgid "There was an error recording the purchase information"
+msgstr ""
+"Une erreur s'est produite lors de l'enregistrement des informations d'achat"
+
+#: saas_app/views.py:24
+msgid "Something went wrong with the search. Please try again."
+msgstr "Une erreur s'est produite lors de la recherche. Veuillez réessayer."
+
+#: submit_request/forms.py:34
+msgid "Submit"
+msgstr "Soumettre"
+
+#: submit_request/forms.py:81
+msgid "Save changes"
+msgstr "Sauvegarder les modifications"
+
+#: submit_request/forms.py:84
+msgid "Delete"
+msgstr "Supprimer"
+
+#: submit_request/models.py:12 user/models.py:9
+msgid "description"
+msgstr "description"
+
+#: submit_request/models.py:13
+msgid "cost"
+msgstr "coût"
+
+#: submit_request/models.py:14
+msgid "level of subscription"
+msgstr "Niveau d'abonnement"
+
+#: submit_request/models.py:15
+msgid "number of users"
+msgstr "Nombre d'utilisateurs"
+
+#: submit_request/models.py:16
+msgid "names of users"
+msgstr "Noms des utilisateurs"
+
+#: submit_request/models.py:17
+msgid "account administrator"
+msgstr "Administrateur de compte"
+
+#: submit_request/models.py:18
+msgid "backup administrator"
+msgstr "Administrateur de sauvegarde"
+
+#: submit_request/models.py:23
+msgid "manager"
+msgstr "Directeur/Directrice"
+
+#: submit_request/models.py:26
+msgid "submitted by"
+msgstr "Proposé par:"
+
+#: submit_request/models.py:28
+msgid "date submitted"
+msgstr "Date de soumission"
+
+#: submit_request/views.py:64
+msgid "Request submitted"
+msgstr "Demande soumise"
+
+#: submit_request/views.py:66
+msgid "Your form was submitted successfully!"
+msgstr "Votre formulaire a été soumis avec succès!"
+
+#: submit_request/views.py:133
+msgid "Your form was saved successfully!"
+msgstr "Votre formulaire a été enregistré avec succès !"
+
+#: submit_request/views.py:135
+msgid "Your form was not saved successfully!"
+msgstr "Votre formulaire n'a pas été enregistré avec succès !"
+
+#: submit_request/views.py:152
+msgid "Your form was deleted successfully!"
+msgstr "Votre formulaire a été supprimé avec succès !"
+
+#: submit_request/views.py:155
+msgid "There was an error deleting the request"
+msgstr "Une erreur s'est produite lors de la suppression de la demande"
+
+#: templates/approve/request_info.html:7 templates/approve/saas_status.html:6
+#: templates/approve/view_all_requests.html:6 templates/detail.html:6
+#: templates/index.html:6 templates/internal_ops/view_all_requests.html:6
+#: templates/request/saas_deleted.html:6 templates/request/saas_edited.html:6
+#: templates/request/thanks.html:6 templates/request/view_all_requests.html:6
+#: templates/search.html:6
+msgid "Saas Procurement App"
+msgstr "Application d'approvisionnement Saas"
+
+#: templates/approve/saas_status.html:10
+msgid "The Software as a Service Request has been successfully approved"
+msgstr "La demande de logiciel en tant que service a été approuvée avec succès"
+
+#: templates/approve/saas_status.html:12
+msgid "The Software as a Service Request has been succesfully denied!"
+msgstr "La demande de logiciel en tant que service a été refusée avec succès !"
+
+#: templates/approve/saas_status.html:14
+msgid "The person who has submitted the request will be notified."
+msgstr "La personne qui a soumis la demande en sera avisée."
+
+#: templates/approve/view_all_requests.html:9
+msgid "SAAS requests awaiting approval"
+msgstr "Demandes SAAS en attente d'approbation"
+
+#: templates/approve/view_all_requests.html:11
+msgid "List of requests awaiting approval"
+msgstr "Liste des demandes en attente d'approbation"
+
+#: templates/approve/view_all_requests.html:17
+#: templates/internal_ops/view_all_requests.html:17
+#: templates/internal_ops/view_all_requests.html:50
+#: templates/internal_ops/view_all_requests.html:82
+#: templates/request/view_all_requests.html:17
+msgid "Url"
+msgstr "Url"
+
+#: templates/approve/view_all_requests.html:19
+#: templates/internal_ops/view_all_requests.html:19
+#: templates/internal_ops/view_all_requests.html:52
+#: templates/internal_ops/view_all_requests.html:84
+#: templates/request/view_all_requests.html:19
+msgid "Date Submitted"
+msgstr "Date de soumission"
+
+#: templates/approve/view_all_requests.html:21
+#: templates/internal_ops/view_all_requests.html:21
+#: templates/internal_ops/view_all_requests.html:54
+#: templates/internal_ops/view_all_requests.html:86
+#: templates/request/view_all_requests.html:20
+msgid "Status"
+msgstr "Statut"
+
+#: templates/approve/view_all_requests.html:41
+#: templates/internal_ops/view_all_requests.html:41
+msgid "You have no requests awaiting approval"
+msgstr "Vous n'avez aucune demande en attente d'approbation"
+
+#: templates/approve/view_all_requests.html:44
+msgid "Requests that have been previously reviewed by you"
+msgstr "Vous n'avez aucune demande qui a déjà été examinée par vous"
+
+#: templates/approve/view_all_requests.html:73
+msgid "You have no requests that have been previously reviewed by you"
+msgstr "Vous n'avez aucune demande qui a déjà été examinée par vous"
+
+#: templates/approve/view_request.html:7
+#: templates/internal_ops/view_request.html:7
+#: templates/request/saas_request.html:8 templates/request/view_request.html:8
+msgid "Software as a Service form Request"
+msgstr "Demande de formulaire de logiciel en tant que service"
+
+#: templates/approve/view_request.html:11
+#: templates/internal_ops/view_request.html:11
+msgid "Software as a Service Request Submission"
+msgstr "Soumission de demande de logiciel en tant que service"
+
+#: templates/approve/view_request.html:12
+#: templates/internal_ops/view_request.html:12
+msgid ""
+" Please approve, deny or request further information from the requestor "
+msgstr ""
+"Veuillez approuver, refuser ou demander des informations complémentaires au "
+"demandeur"
+
+#: templates/base.html:75
+msgid "Home"
+msgstr "Page d'accueil"
+
+#: templates/base.html:83
+msgid "Google Accounts"
+msgstr "Comptes Google"
+
+#: templates/base.html:86
+msgid "Sign Out"
+msgstr "se déconnecter"
+
+#: templates/base.html:90 templates/base.html:91
+msgid "Search"
+msgstr "Recherche"
+
+#: templates/detail.html:9
+msgid "Results"
+msgstr "Résultats de recherche"
+
+#: templates/detail.html:13
+msgid "SAAS Request"
+msgstr "Demande SAAS"
+
+#: templates/detail.html:16
+msgid "Detailed information about the SAAS request"
+msgstr "Informations détaillées sur la demande SAAS"
+
+#: templates/detail.html:17
+msgid "Name:"
+msgstr "Nom:"
+
+#: templates/detail.html:18
+msgid "Description:"
+msgstr "Description:"
+
+#: templates/detail.html:19
+msgid "URL:"
+msgstr "URL:"
+
+#: templates/detail.html:20
+msgid "Cost:"
+msgstr "Coût:"
+
+#: templates/detail.html:21
+msgid "Level of Subscription:"
+msgstr "Niveau d'abonnement :"
+
+#: templates/detail.html:22
+msgid "Number of Users:"
+msgstr "Nombre d'utilisateurs:"
+
+#: templates/detail.html:23
+msgid "Names of Users:"
+msgstr "Noms des utilisateurs :"
+
+#: templates/detail.html:24
+msgid "Account Administrator:"
+msgstr "Administrateur de compte :"
+
+#: templates/detail.html:25
+msgid "Backup Administrator:"
+msgstr "Administrateur de sauvegarde :"
+
+#: templates/detail.html:26
+msgid "Submitted by:"
+msgstr "Proposé par:"
+
+#: templates/detail.html:27
+msgid "Date Submitted:"
+msgstr "Date de soumission:"
+
+#: templates/detail.html:28
+msgid "Manager:"
+msgstr "Directeur/Directrice:"
+
+#: templates/detail.html:29
+msgid "Status:"
+msgstr "Statut:"
+
+#: templates/detail.html:30
+msgid "Go back"
+msgstr "Retourner"
+
+#: templates/index.html:10
+msgid "Welcome"
+msgstr "Bienvenue"
+
+#: templates/index.html:11
+msgid "What do you want to do today?"
+msgstr "Que voulez-vous faire aujourd'hui?"
+
+#: templates/index.html:14
+msgid "Submit a SAAS Request"
+msgstr "Soumettre une demande SAAS"
+
+#: templates/index.html:17 templates/request/saas_request.html:11
+#: templates/request/view_request.html:11
+msgid "Software as a Service Request Form"
+msgstr "Logiciel en tant que formulaire de demande de service"
+
+#: templates/index.html:18
+msgid ""
+"Please fill out this form if you would like to request the purchase of an "
+"unclassified software subscription service."
+msgstr ""
+"Veuillez remplir ce formulaire si vous souhaitez demander l'achat d'un "
+"service d'abonnement à des logiciels non classifiés."
+
+#: templates/index.html:19 templates/index.html:30 templates/index.html:41
+#: templates/index.html:52 templates/index.html:63
+msgid "Start"
+msgstr "Commencer"
+
+#: templates/index.html:25 templates/index.html:50 templates/index.html:61
+msgid "View requests"
+msgstr "Afficher les demandes"
+
+#: templates/index.html:28
+msgid "View your submitted requests"
+msgstr "Afficher vos demandes soumises"
+
+#: templates/index.html:29
+msgid "Click here to view all of your submitted SAAS requests."
+msgstr "Cliquez ici pour afficher toutes vos demandes SAAS soumises."
+
+#: templates/index.html:36
+msgid "Manager Approve/Deny"
+msgstr "Le responsable approuve/refuse"
+
+#: templates/index.html:39
+msgid "Manager - Approve/Deny requests"
+msgstr "Gestionnaire - Approuver/Refuser les demandes"
+
+#: templates/index.html:40
+msgid "For manager, click here to approve/deny existing requests."
+msgstr ""
+"Pour le gestionnaire, cliquez ici pour approuver/refuser les demandes "
+"existantes."
+
+#: templates/index.html:47
+msgid "Internal Ops"
+msgstr "Opérations internes"
+
+#: templates/index.html:51
+msgid ""
+"For internal ops, click here to view requests, select S32 approver or record "
+"a purchase."
+msgstr ""
+"Pour les opérations internes, cliquez ici pour afficher les demandes, "
+"sélectionnez l'approbateur S32 ou enregistrezun achat."
+
+#: templates/index.html:62
+msgid "For S32 Approver - click here to approve or deny requests."
+msgstr ""
+"Pour le gestionnaire, cliquez ici pour approuver/refuser les demandes "
+"existantes."
+
+#: templates/index.html:67
+msgid "Sass Procurement App"
+msgstr "Application d'approvisionnement Sass"
+
+#: templates/index.html:68
+msgid ""
+"You are about to use your Google account to login to\n"
+"    the Saas procurement app. "
+msgstr ""
+"Vous êtes sur le point d'utiliser votre compte Google pour vous connecter à\n"
+" l'application d'approvisionnement Saas. "
+
+#: templates/internal_ops/view_all_requests.html:9
+msgid "SAAS requests awaiting s32 approval"
+msgstr "Demandes SAAS en attente d'approbation s32"
+
+#: templates/internal_ops/view_all_requests.html:11
+msgid "List of requests waiting to be sent for s32 approval"
+msgstr "Liste des demandes en attente d'envoi pour approbation s32"
+
+#: templates/internal_ops/view_all_requests.html:44
+msgid "Requests that have been s32 approved awaiting purchase"
+msgstr "Demandes qui ont été approuvées s32 en attente d'achat"
+
+#: templates/internal_ops/view_all_requests.html:73
+msgid "You have no requests awaiting purchase"
+msgstr "Vous n'avez aucune demande en attente d'achat"
+
+#: templates/internal_ops/view_all_requests.html:76
+msgid ""
+"Requests that have been sent to the S32 approver and are awaiting approval"
+msgstr ""
+"Demandes qui ont été envoyées à l'approbateur S32 et qui sont en attente "
+"d'approbation"
+
+#: templates/internal_ops/view_all_requests.html:105
+msgid ""
+"You have no requests that are awaiting to be approved by the S32 approver"
+msgstr ""
+"Vous n'avez aucune demande en attente d'approbation par l'approbateur S32"
+
+#: templates/internal_ops/view_request.html:22
+msgid "New message to requestor"
+msgstr "Nouveau message à la demande"
+
+#: templates/internal_ops/view_request.html:31
+msgid "Message:"
+msgstr "Message:"
+
+#: templates/internal_ops/view_request.html:35
+#: templates/internal_ops/view_request.html:78
+msgid "Close"
+msgstr "Fermer"
+
+#: templates/internal_ops/view_request.html:36
+msgid "Send message"
+msgstr "Envoyer le message"
+
+#: templates/internal_ops/view_request.html:58
+msgid "Purchase Date:"
+msgstr "Date d'achat:"
+
+#: templates/internal_ops/view_request.html:62
+msgid "Purchase Amount:"
+msgstr "Montant des achats:"
+
+#: templates/internal_ops/view_request.html:66
+msgid "Purchase Method:"
+msgstr "Méthode d'achat :"
+
+#: templates/internal_ops/view_request.html:70
+msgid "Confirmation Number:"
+msgstr "Numéro de confirmation:"
+
+#: templates/internal_ops/view_request.html:74
+msgid "Purchase Notes:"
+msgstr "Notes d'achat :"
+
+#: templates/request/saas_deleted.html:9
+msgid "Your Software as a Service Request Form has been deleted!"
+msgstr ""
+"Votre formulaire de demande de logiciel en tant que service a été supprimé !"
+
+#: templates/request/saas_deleted.html:10
+msgid ""
+"Your approver will be notified of the deletion. If this was done by mistake, "
+"please enter a new Saas Request."
+msgstr ""
+"Votre approbateur sera informé de la suppression. Si cela a été fait par "
+"erreur, veuillez entrer une nouvelle demande Saas."
+
+#: templates/request/saas_edited.html:9
+msgid "Thank you for editing your Software as a Service Request Form!"
+msgstr ""
+"Merci d'avoir édité votre formulaire de demande de logiciel en tant que "
+"service !"
+
+#: templates/request/saas_edited.html:10
+msgid "The request has been upated and the approver will be notified."
+msgstr "La demande a été mise à jour et l'approbateur en sera informé."
+
+#: templates/request/saas_request.html:12
+msgid ""
+"Please fill out this form if you would like to request the purchase of an "
+"unclassified software subscription service.\n"
+"\n"
+"    Software subscription services are online tools, paid for on a monthly "
+"or annual basis. Many of these tools can help people collaborate, build "
+"software, monitor and troubleshoot systems, etc. Some examples include "
+"Github, Trello, AirTable, Harvest, Sentry etc. \n"
+"    \n"
+"    In this form, you may select your current supervisor to approve of this "
+"purchase. Internal Ops will then get fund centre manager financial "
+"approval.\n"
+"    \n"
+"    For further information or guidance on subscription services, please "
+"talk to the Internal Operations team. "
+msgstr ""
+"Veuillez remplir ce formulaire si vous souhaitez demander l'achat d'un "
+"service d'abonnement logiciel non classifié.\n"
+"\n"
+" Les services d'abonnement aux logiciels sont des outils en ligne, payés "
+"mensuellement ou sur une base annuelle. Beaucoup de ces outils peuvent aider "
+"les gens à collaborer, à construire logiciel, surveiller et dépanner les "
+"systèmes, etc. Quelques exemples incluent« Github, Trello, AirTable, "
+"Harvest, Sentry, etc. \n"
+" »\n"
+" Dans ce formulaire, vous pouvez sélectionner votre superviseur actuel pour "
+"approuver cette achat. Les opérations internes obtiendront alors le "
+"financement du gestionnaire du centre financier approbation.\n"
+"\n"
+" Pour plus d'informations ou des conseils sur les services d'abonnement, "
+"veuillez parlez à l'équipe des opérations internes."
+
+#: templates/request/saas_request.html:19
+msgid ""
+"Guide to requesting low-dollar value unclassified software subscription "
+"services"
+msgstr ""
+"Veuillez remplir ce formulaire si vous souhaitez demander l'achat d'un "
+"service d'abonnement à des logiciels non classifiés."
+
+#: templates/request/saas_request.html:20
+msgid "CDS Subscription Services - Billing and Admin"
+msgstr "Services d'abonnement CDS - Facturation et administration"
+
+#: templates/request/thanks.html:9
+msgid "Thank you for submitting the Software as a Service Request Form!"
+msgstr ""
+"Merci d'avoir soumis le formulaire de demande de logiciel en tant que "
+"service !"
+
+#: templates/request/thanks.html:10
+msgid "This is the overall process that can be expected."
+msgstr "C'est le processus global auquel on peut s'attendre."
+
+#: templates/request/view_all_requests.html:9
+msgid "Submitted Requests"
+msgstr "Demandes soumises"
+
+#: templates/request/view_all_requests.html:10
+msgid ""
+"This is the list of requests that you have submitted. Click on the request "
+"name to view more information."
+msgstr ""
+"Ceci est la liste des demandes que vous avez soumises. Cliquez sur la "
+"demande nom pour afficher plus d'informations."
+
+#: templates/request/view_all_requests.html:11
+msgid "Note: You can only modify requests that have not yet been reviewed."
+msgstr ""
+"Remarque : Vous ne pouvez modifier que les demandes qui n'ont pas encore été "
+"examinées."
+
+#: templates/request/view_request.html:12
+msgid ""
+" To overwrite any changes, make your changes and then press the Save Changes "
+"Button. To delete, the Saas Request, press the Delete button "
+msgstr ""
+" Pour écraser les modifications, effectuez vos modifications, puis appuyez "
+"sur Enregistrer les modifications Bouton. Pour supprimer, la demande Saas, "
+"appuyez sur le bouton Supprimer "
+
+#: templates/search.html:9
+msgid "Search Results"
+msgstr "Résultats de recherche"
+
+#: templates/search.html:17
+msgid "No results found"
+msgstr "Aucun résultat trouvé"
+
+#~ msgid "level_of_subscription"
+#~ msgstr "Niveau d'abonnement"
+
+#~ msgid "number_of_users"
+#~ msgstr "Nombre d'utilisateurs"
+
+#~ msgid "names_of_users"
+#~ msgstr "Noms des utilisateurs"
+
+#~ msgid "Language"
+#~ msgstr "Langue"
+
+#, fuzzy
+#~| msgid "Url"
+#~ msgid "url"
+#~ msgstr "Url"

@@ -1,5 +1,6 @@
 from notifications_python_client.notifications import NotificationsAPIClient
 from django.contrib.sites.models import Site
+from django.utils.translation import gettext as _
 import os
 
 # This contains common utility functions used by the application
@@ -31,7 +32,7 @@ def send_email(email_address, template_id, details):
         )
     except Exception as e:
         print(e)
-        raise Exception("There was an error sending the email.")
+        raise Exception(_("There was an error sending the email."))
 
 
 # Get the current site domain

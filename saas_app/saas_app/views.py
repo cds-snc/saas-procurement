@@ -1,5 +1,6 @@
 from django.shortcuts import render
 import django.contrib.messages as messages
+from django.utils.translation import gettext as _
 from submit_request.models import SaasRequest
 from django.db.models import Q
 
@@ -20,7 +21,7 @@ def search(request):
         except Exception as e:
             print(e)
             messages.error(
-                request, "Something went wrong with the search. Please try again."
+                request, _("Something went wrong with the search. Please try again.")
             )
         return render(request, "search.html", {"results": results})
     else:

@@ -6,28 +6,28 @@
 {% block head_title %}{% trans "Saas Procurement App" %}{% endblock %}
 
 {% block content %}
-<h1>Results</h1>
+<h1>{% trans "Results" %}</h1>
 {% if saas_request %}
 <div class="card">
   <div class="card-header">
-    SAAS Request
+    {% trans "SAAS Request" %}
   </div>
   <div class="card-body">
-    <h4 class="card-title">Detailed information about the SAAS request</h4>
-    <p class="card-text"><b>Name:</b> {{saas_request.name}} </p>
-    <p class="card-text"><b>Description:</b> {{saas_request.description}} </p>
-    <p class="card-text"><b>URL:</b> {{saas_request.url}} </p>
-    <p class="card-text"><b>Cost:</b> {{saas_request.cost}} </p>
-    <p class="card-text"><b>Level of Subscription:</b> {{saas_request.level_of_subscription}} </p>
-    <p class="card-text"><b>Number of Users:</b> {{saas_request.number_of_users}} </p>
-    <p class="card-text"><b>Names of Users:</b> {{saas_request.names_of_users}} </p>
-    <p class="card-text"><b>Account Administrator:</b> {{saas_request.account_administrator}} </p>
-    <p class="card-text"><b>Backup Administrator:</b> {{saas_request.backup_administrator}} </p>
-    <p class="card-text"><b>Submitted by:</b> {{saas_request.submitted_by}} </p>
-    <p class="card-text"><b>Date Submitted:</b> {{saas_request.date_submitted}} </p>
-    <p class="card-text"><b>Manager:</b> {{saas_request.manager}} </p>
-    <p class="card-text"><b>Status:</b> {{saas_request.status}} </p>
-    <a href="#" class="btn btn-primary" onclick="history.back()">Go back</a>
+    <h4 class="card-title">{% trans "Detailed information about the SAAS request" %}</h4>
+    <p class="card-text"><b>{% trans "Name:" %}</b> {{saas_request.name}} </p>
+    <p class="card-text"><b>{% trans "Description:" %}</b> {{saas_request.description}} </p>
+    <p class="card-text"><b>{% trans "URL:" %}</b> {{saas_request.url}} </p>
+    <p class="card-text"><b>{% trans "Cost:" %}</b> {{saas_request.cost}} </p>
+    <p class="card-text"><b>{% trans "Level of Subscription:" %}</b> {{saas_request.level_of_subscription}} </p>
+    <p class="card-text"><b>{% trans "Number of Users:" %}</b> {{saas_request.number_of_users}} </p>
+    <p class="card-text"><b>{% trans "Names of Users:" %}</b> {{saas_request.names_of_users}} </p>
+    <p class="card-text"><b>{% trans "Account Administrator:" %}</b> {{saas_request.account_administrator}} </p>
+    <p class="card-text"><b>{% trans "Backup Administrator:" %}</b> {{saas_request.backup_administrator}} </p>
+    <p class="card-text"><b>{% trans "Submitted by:" %}</b> {{saas_request.submitted_by}} </p>
+    <p class="card-text"><b>{% trans "Date Submitted:" %}</b> {{saas_request.date_submitted}} </p>
+    <p class="card-text"><b>{% trans "Manager:" %}</b> {{saas_request.manager}} </p>
+    <p class="card-text"><b>{% trans "Status:" %}</b> {{saas_request.status}} </p>
+    <a href="#" class="btn btn-primary" onclick="history.back()">{% trans "Go back" %}</a>
   </div>
 </div>
 {% endif %}

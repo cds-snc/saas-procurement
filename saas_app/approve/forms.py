@@ -2,6 +2,7 @@ from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit, Layout, Button, Field
 from django.forms import ModelForm
 from submit_request.models import SaasRequest
+from django.utils.translation import gettext_lazy as _
 
 
 # View a Saas Request Form
@@ -48,11 +49,11 @@ class ViewRequestForm(ModelForm):
                 disabled=True,
                 style="color:black; background-color:#e9ecef; opacity:1; font-weight: inherit; font-color: inherit;",
             ),
-            Submit("approve", "Approve"),
+            Submit("approve", _("Approve")),
             Submit(
                 "deny",
-                "Deny",
-                onclick="return confirm('Are you sure you want to deny this saas request?');",
+                _("Deny"),
+                onclick="return confirm(_('Are you sure you want to deny this saas request?'));",
             ),
             Button(
                 "cancel",

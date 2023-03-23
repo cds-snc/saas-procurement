@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.utils.translation import get_language, gettext as _
 from django.utils import timezone
 from submit_request.models import SaasRequest
 from user.models import Users
@@ -59,7 +60,7 @@ def send_s32_approval_email(request, saas_object, template_id):
     except Exception as e:
         print(e)
         messages.error(
-            request, "There was an error sending the email to the S32 approver."
+            request, _("There was an error sending the email to the S32 approver.")
         )
 
 
@@ -98,7 +99,7 @@ def send_requestor_email_more_info(request, saas_object, info_requested, templat
     except Exception as e:
         print(e)
         messages.error(
-            request, "There was an error sending the email to the requestor."
+            request, _("There was an error sending the email to the requestor.")
         )
 
 
@@ -146,28 +147,29 @@ def view_request(request, pk):
                     saas_object.fund_center = form.cleaned_data["fund_center"]
                     saas_object.approved_by = form.cleaned_data["approved_by"]
                     saas_object.date_sent_to_s_32_approver = timezone.now()
-                    saas_object.status = "Waiting to be sent for S32 Approval"
+                    saas_object.status = _("Waiting to be sent for S32 Approval")
                     saas_object.internal_ops = Users.objects.get(user=request.user)
 
                     try:
                         # Save the data to the database
                         saas_object.save()
-                        messages.success(request, "The form was successfully saved.")
+                        messages.success(request, _("The form was successfully saved."))
                     except Exception as e:
                         print(e)
-                        messages.error(request, "There was an error saving the form.")
+                        messages.error(
+                            request, _("There was an error saving the form.")
+                        )
                 else:
                     messages.error(
-                        request, "Please add the fund center and the approver."
+                        request, _("Please add the fund center and the approver.")
                     )
             return render(request, "internal_ops/view_request.html", {"form": form})
         elif request.POST.get("info_requested"):
-            print("info requested")
             return render(request, "internal_ops/view_request.html", {"form": form})
         elif request.POST.get("send_for_s32_approval"):
             # update the status
             try:
-                saas_object.status = "Sent to S32 Approver for Approval"
+                saas_object.status = _("Sent to S32 Approver for Approval")
                 saas_object.date_sent_to_s_32_approver = timezone.now()
                 if saas_object.internal_ops is None:
                     saas_object.internal_ops = Users.objects.get(user=request.user)
@@ -176,14 +178,16 @@ def view_request(request, pk):
             except Exception as e:
                 print(e)
                 messages.error(
-                    request, "There was an error updating the status of the form."
+                    request, _("There was an error updating the status of the form.")
                 )
 
             # if the approver or fund center is not set, then return an error
             if saas_object.fund_center is None or saas_object.approved_by is None:
                 messages.error(
                     request,
-                    "Please add the fund center and the approver and then save the form.",
+                    _(
+                        "Please add the fund center and the approver and then save the form."
+                    ),
                 )
                 return render(request, "internal_ops/view_request.html", {"form": form})
 
@@ -201,13 +205,15 @@ def view_request(request, pk):
                     os.getenv("S32_APPROVAL_REQUESTED_TEMPLATE_ID"),
                 )
                 messages.success(
-                    request, "We have successfully emailed the S32 approver."
+                    request, _("We have successfully emailed the S32 approver.")
                 )
             except Exception as e:
                 print(e)
                 messages.error(
                     request,
-                    "There was an error sending the notification emails to the S32 approver or requestor.",
+                    _(
+                        "There was an error sending the notification emails to the S32 approver or requestor."
+                    ),
                 )
             return render(request, "internal_ops/view_request.html", {"form": form})
 
@@ -215,6 +221,7 @@ def view_request(request, pk):
 @csrf_exempt
 def send_mail(request, pk):
     saas_object = SaasRequest.objects.get(pk=pk)
+    current_language = get_language()
     if request.method == "POST" and request.POST.get("info_requested"):
         try:
             if saas_object.internal_ops is None:
@@ -228,20 +235,23 @@ def send_mail(request, pk):
                 info_requested,
                 os.getenv("INTERNAL_OPS_REQUEST_MORE_INFO_TEMPLATE_ID"),
             )
-            messages.success(request, "We have successfully emailed the requestor.")
+            messages.success(request, _("We have successfully emailed the requestor."))
         except Exception as e:
             print(e)
             messages.error(
                 request,
-                "There was an error sending the notification email to the requestor.",
+                _(
+                    "There was an error sending the notification email to the requestor."
+                ),
             )
     else:
-        messages.error(request, "Please enter the information requested.")
-    return redirect("/internal_ops/view/" + str(pk))
+        messages.error(request, _("Please enter the information requested."))
+    return redirect("/" + current_language + "/internal_ops/view/" + str(pk))
 
 
 def purchase(request, pk):
     saas_object = SaasRequest.objects.get(pk=pk)
+    current_language = get_language()
     if request.method == "POST":
         try:
             saas_object.purchase_date = request.POST.get("purchase-date")
@@ -252,13 +262,13 @@ def purchase(request, pk):
             saas_object.purcased = True
             saas_object.save()
             messages.success(
-                request, "We have successfully recorded the purchase information"
+                request, _("We have successfully recorded the purchase information")
             )
         except Exception as e:
             print(e)
             messages.error(
-                request, "There was an error recording the purchase information"
+                request, _("There was an error recording the purchase information")
             )
     else:
-        messages.error(request, "Please enter the information requested.")
-    return redirect("/internal_ops/view/" + str(pk))
+        messages.error(request, _("Please enter the information requested."))
+    return redirect("/" + current_language + "/internal_ops/view/" + str(pk))

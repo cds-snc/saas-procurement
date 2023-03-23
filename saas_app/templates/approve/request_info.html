@@ -7,8 +7,8 @@
 {% block head_title %}{% trans "Saas Procurement App" %}{% endblock %}
 
 {% block content %}
-<h1>Send message to requestor</h1>
-<p>Send a message to the requestor to ask for additional information.</p>
+<h1>{% trans Send message to requestor %}</h1>
+<p>{% trans Send a message to the requestor to ask for additional information. %}</p>
 <form method="post" novalidate>
     {% crispy form %}
 </form>
