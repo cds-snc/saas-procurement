@@ -106,8 +106,11 @@ class ViewS32RequestForm(ModelForm):
             ),
         )
         # append the Purchase Information button if the request is approved
-        if self.instance.status == "S32 approved" or self.instance.status == "Approuvé S32":
-                self.helper.layout[17] = Button (
+        if (
+            self.instance.status == "S32 approved"
+            or self.instance.status == "Approuvé S32"
+        ):
+            self.helper.layout[17] = Button(
                 "purchase",
                 _("Record Purchase Information"),
                 css_id="submit",
