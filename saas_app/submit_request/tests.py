@@ -174,10 +174,10 @@ class SubmitRequestFormTest(TestCase):
 class TestSubmitRequestViews(TestCase):
     # Test that the submit request page is accessible
     def test_submit_request_page(self):
-        response = self.client.get("/submit_request")
-        self.assertEqual(response.status_code, 302)
+        response = self.client.get("/en/submit_request")
+        self.assertEqual(response.status_code, 301)
 
     # Test that the view request page is accessible and redirects properly
     def test_view_request_page(self):
-        response = self.client.get("/submit_request/view")
-        self.assertEqual(response.status_code, 302)
+        response = self.client.get("/en/submit_request/view")
+        self.assertEqual(response.status_code, 301)
