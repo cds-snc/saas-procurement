@@ -48,9 +48,9 @@
               <ul class="languages">
                 {% for language in languages %}
                 <li>
-                  <a href="/{{ language.code }}/"
-                {% if language.code == CURRENT_LANGUAGE %} class="active"{% endif %}>
-                {{ language.name_local }}
+                   <a href="/{{ language.code }}/{{request.get_full_path|slice:"4:"}}"
+                  {% if language.code == CURRENT_LANGUAGE %} class="active"{% endif %}>
+                    {{ language.name_local|title }} 
               </a>
             </li>
           {% endfor %}
