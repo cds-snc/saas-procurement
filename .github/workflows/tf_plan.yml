@@ -26,8 +26,8 @@ jobs:
       fail-fast: false
       matrix:
         include:
+          - module: iam
           - module: hosted_zone
-          - module: iam 
 
     runs-on: ubuntu-latest
     steps:
