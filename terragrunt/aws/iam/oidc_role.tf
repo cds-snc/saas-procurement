@@ -12,10 +12,10 @@ module "gh_oidc_roles" {
       claim     = "*"
     },
     {
-      name	 = local.admin_name
+      name      = local.admin_name
       repo_name = "saas-procurement"
-      claim	 = "ref:refs/heads/main"
-    } 
+      claim     = "ref:refs/heads/main"
+    }
   ]
 
   billing_tag_value = var.billing_code
