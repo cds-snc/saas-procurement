@@ -1,45 +1,49 @@
 locals {
-  oidc_role = "OIDCGithubWorkflowRole"
+  plan_name  = "gh_plan_role"
+  admin_name = "gh_admin_role"
 }
 
-data "aws_caller_identity" "current" {}
-
 module "gh_oidc_roles" {
-  source = "github.com/cds-snc/terraform-modules?ref=v3.0.17//gh_oidc_role"
+  source = "github.com/cds-snc/terraform-modules?ref=v5.1.4//gh_oidc_role"
   roles = [
     {
-      name      = local.oidc_role
+      name      = local.plan_name
       repo_name = "saas-procurement"
       claim     = "*"
+    },
+    {
+      name      = local.admin_name
+      repo_name = "saas-procurement"
+      claim     = "ref:refs/heads/main"
     }
   ]
 
   billing_tag_value = var.billing_code
 }
 
+data "aws_iam_policy" "readonly" {
+  name = "ReadOnlyAccess"
+}
+
+resource "aws_iam_role_policy_attachment" "readonly" {
+  role       = local.plan_name
+  policy_arn = data.aws_iam_policy.readonly.arn
+}
+
 module "attach_tf_plan_policy" {
   source            = "github.com/cds-snc/terraform-modules?ref=v5.1.4//attach_tf_plan_policy"
-  account_id        = data.aws_caller_identity.current.account_id
-  role_name         = local.oidc_role
+  account_id        = var.account_id
+  role_name         = local.plan_name
   bucket_name       = "${var.billing_code}-tf"
   lock_table_name   = "terraform-state-lock-dynamo"
   billing_tag_value = var.billing_code
-  depends_on = [
-    module.gh_oidc_roles
-  ]
 }
 
 data "aws_iam_policy" "admin" {
   name = "AdministratorAccess"
-  depends_on = [
-    module.gh_oidc_roles
-  ]
 }
 
 resource "aws_iam_role_policy_attachment" "admin" {
-  role       = local.oidc_role
+  role       = local.admin_name
   policy_arn = data.aws_iam_policy.admin.arn
-  depends_on = [
-    module.gh_oidc_roles
-  ]
 }
