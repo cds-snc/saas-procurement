@@ -1,4 +1,5 @@
 skip-check:
+  - CKV2_AWS_5  # Security Groups: False positive, this is attached to a resource
   - CKV2_AWS_38 # Route53: DNS Secruity Extensions (DNSSEC) signing not required 
   - CKV2_AWS_39 # Route53: False positive, we have DNS query logging but checkov cant see it
   - CKV_AWS_275 # IAM: Administrator policy is allowed
