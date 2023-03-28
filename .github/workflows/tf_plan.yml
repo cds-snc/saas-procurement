@@ -28,6 +28,7 @@ jobs:
         include:
           - module: iam
           - module: hosted_zone
+          - module: network 
 
     runs-on: ubuntu-latest
     steps:
