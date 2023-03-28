@@ -4,7 +4,7 @@ output "vpc_id" {
 }
 
 output "private_subnet_ids" {
-  description = "List of the URL Shortner VPC private subnet ids"
+  description = "List of the Saas Procurement App VPC private subnet ids"
   value       = module.saas_procurement_vpc.private_subnet_ids
 }
 
