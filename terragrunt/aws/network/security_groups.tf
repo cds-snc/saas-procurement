@@ -38,7 +38,7 @@ resource "aws_security_group_rule" "app_egress_internet" {
 }
 
 resource "aws_security_group_rule" "vpc_endpoint_interface_ingress" {
-  description              = "Ingress from the API security group to the private interface endpoints"
+  description              = "Ingress from the App security group to the private interface endpoints"
   type                     = "ingress"
   from_port                = 443
   to_port                  = 443
@@ -47,8 +47,8 @@ resource "aws_security_group_rule" "vpc_endpoint_interface_ingress" {
   source_security_group_id = aws_security_group.app.id
 }
 
-resource "aws_security_group_rule" "vpc_endpoint_dynamodb_ingress" {
-  description       = "Ingress from the private DynamoDB endpoint"
+resource "aws_security_group_rule" "vpc_endpoint_rds_ingress" {
+  description       = "Ingress from the private RDS endpoint"
   type              = "ingress"
   from_port         = 443
   to_port           = 443
