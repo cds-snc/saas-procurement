@@ -39,7 +39,6 @@ resource "aws_lb_listener" "saas_procurement_listener" {
 
 resource "aws_lb_target_group" "saas_procurement" {
   name                 = "saas-procurement"
-  description	       = "Security group for load balancer"
   port                 = 8000
   protocol             = "HTTP"
   target_type          = "ip"
