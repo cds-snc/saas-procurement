@@ -47,18 +47,6 @@ resource "aws_security_group_rule" "vpc_endpoint_interface_ingress" {
   source_security_group_id = aws_security_group.app.id
 }
 
-resource "aws_security_group_rule" "vpc_endpoint_rds_ingress" {
-  description       = "Ingress from the private RDS endpoint"
-  type              = "ingress"
-  from_port         = 443
-  to_port           = 443
-  protocol          = "tcp"
-  security_group_id = aws_security_group.vpc_endpoint.id
-  prefix_list_ids = [
-    aws_vpc_endpoint.rds.prefix_list_id
-  ]
-}
-
 resource "aws_security_group_rule" "s3_private_endpoint_ingress" {
   description       = "Ingress from the private S3 endpoint"
   type              = "ingress"
@@ -69,17 +57,4 @@ resource "aws_security_group_rule" "s3_private_endpoint_ingress" {
   prefix_list_ids = [
     aws_vpc_endpoint.s3.prefix_list_id
   ]
-}
-
-resource "aws_flow_log" "cloud_based_sensor" {
-  log_destination      = "arn:aws:s3:::${var.cbs_satellite_bucket_name}/vpc_flow_logs/"
-  log_destination_type = "s3"
-  traffic_type         = "ALL"
-  vpc_id               = module.saas_procurement_vpc.vpc_id
-  log_format           = "$${vpc-id} $${version} $${account-id} $${interface-id} $${srcaddr} $${dstaddr} $${srcport} $${dstport} $${protocol} $${packets} $${bytes} $${start} $${end} $${action} $${log-status} $${subnet-id} $${instance-id}"
-
-  tags = {
-    CostCentre = var.billing_code
-    Terraform  = true
-  }
 }
