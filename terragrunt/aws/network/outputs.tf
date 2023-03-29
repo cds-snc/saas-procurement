@@ -9,13 +9,13 @@ output "vpc_private_subnet_ids" {
 }
 
 output "vpc_public_subnet_ids" {
-  description 	= "List of the Saas Procurement App VPC public subnet ids"
-  value		= module.saas_procurement_vpc.public_subnet_ids
+  description = "List of the Saas Procurement App VPC public subnet ids"
+  value       = module.saas_procurement_vpc.public_subnet_ids
 }
 
 output "vpc_cidr_block" {
-  description	= "List of cidr block ips of the Saas Procurement VPC"
-  value		=  module.saas_procurement_vpc.cidr_block
+  description = "List of cidr block ips of the Saas Procurement VPC"
+  value       = module.saas_procurement_vpc.cidr_block
 }
 
 

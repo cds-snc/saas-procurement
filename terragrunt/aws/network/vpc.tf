@@ -40,7 +40,7 @@ resource "aws_vpc_endpoint" "rds" {
   security_group_ids = [
     aws_security_group.vpc_endpoint.id,
   ]
-  subnet_ids = module.saas_procurement_vpc.private_subnet_ids 
+  subnet_ids = module.saas_procurement_vpc.private_subnet_ids
 }
 
 resource "aws_vpc_endpoint" "s3" {
