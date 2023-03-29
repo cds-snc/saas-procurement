@@ -13,7 +13,7 @@ resource "aws_acm_certificate" "saas_procurement" {
 }
 
 resource "aws_route53_record" "saas_procurement_certificate_validation" {
-  zone_id = aws_route53_zone.saas_procurement.zone_id
+  zone_id = var.hosted_zone_id
 
   for_each = {
     for dvo in aws_acm_certificate.saas_procurement.domain_validation_options : dvo.domain_name => {

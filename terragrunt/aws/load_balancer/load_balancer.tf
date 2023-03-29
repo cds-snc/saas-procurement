@@ -1,6 +1,6 @@
 resource "aws_lb" "saas_procurement" {
 
-  name               = "saas_procurement-alb"
+  name               = "saas-procurement-alb"
   internal           = false #tfsec:ignore:AWS005
   load_balancer_type = "application"
 
@@ -8,7 +8,7 @@ resource "aws_lb" "saas_procurement" {
     aws_security_group.saas_procurement_load_balancer.id
   ]
 
-  subnets = module.vpc.public_subnet_ids
+  subnets = [var.vpc_public_subnet_ids]
 
   tags = {
     "CostCentre" = var.billing_code
@@ -35,17 +35,17 @@ resource "aws_lb_listener" "saas_procurement_listener" {
 }
 
 resource "aws_lb_target_group" "saas_procurement" {
-  name                 = "saas_procurement"
+  name                 = "saas-procurement"
   port                 = 8000
   protocol             = "HTTP"
   target_type          = "ip"
   deregistration_delay = 30
-  vpc_id               = module.vpc.vpc_id
+  vpc_id               = var.vpc_id
 
   health_check {
     enabled             = true
     interval            = 10
-    path                = "/version"
+    path                = "/health"
     timeout             = 5
     healthy_threshold   = 2
     unhealthy_threshold = 2
