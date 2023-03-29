@@ -4,6 +4,9 @@ resource "aws_lb" "saas_procurement" {
   internal           = false #tfsec:ignore:AWS005
   load_balancer_type = "application"
 
+  enable_deletion_protection = true
+  drop_invalid_header_fields = true
+
   security_groups = [
     aws_security_group.saas_procurement_load_balancer.id
   ]
@@ -36,6 +39,7 @@ resource "aws_lb_listener" "saas_procurement_listener" {
 
 resource "aws_lb_target_group" "saas_procurement" {
   name                 = "saas-procurement"
+  description	       = "Security group for load balancer"
   port                 = 8000
   protocol             = "HTTP"
   target_type          = "ip"

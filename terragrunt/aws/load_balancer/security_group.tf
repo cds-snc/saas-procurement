@@ -1,6 +1,6 @@
 resource "aws_security_group" "saas_procurement_load_balancer" {
   name        = "Saas Procurement load balancer"
-  description = "Ingress - Saas Procurement Load Balancer"
+  description = "Ingress of Saas Procurement Load Balancer"
   vpc_id      = var.vpc_id
 
   ingress {
@@ -20,5 +20,4 @@ resource "aws_security_group" "saas_procurement_load_balancer" {
   tags = {
     "CostCentre" = var.billing_code
   }
-
 }
