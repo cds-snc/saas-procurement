@@ -74,12 +74,10 @@ class ViewS32RequestForm(ModelForm):
             Submit(
                 "save",
                 _("Save"),
-                style="font-size:smaller",
             ),
             Submit(
                 "send_for_s32_approval",
                 _("Send for S32 Approval"),
-                style="font-size:smaller",
             ),
             Button(
                 "request_info",

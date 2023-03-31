@@ -49,11 +49,10 @@ class ViewRequestForm(ModelForm):
                 disabled=True,
                 style="color:black; background-color:#e9ecef; opacity:1; font-weight: inherit; font-color: inherit;",
             ),
-            Submit("approve", _("Approve"), style="font-size:smaller"),
+            Submit("approve", _("Approve")),
             Submit(
                 "deny",
                 _("Deny"),
-                style="font-size:smaller",
                 onclick="return confirm(_('Are you sure you want to deny this saas request?'));",
             ),
             Button(

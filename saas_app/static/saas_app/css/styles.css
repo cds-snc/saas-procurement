@@ -11,6 +11,7 @@ body {
 }
 
 input[type=submit],
+input[type=button],
 button 
 {
   padding:5px 15px; 
@@ -19,7 +20,6 @@ button
   cursor:pointer;
   -webkit-border-radius: 5px;
   border-radius: 5px; 
-  font-size: larger;
 }
 
 input[type=text],

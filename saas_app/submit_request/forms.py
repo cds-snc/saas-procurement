@@ -1,5 +1,5 @@
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Submit, Layout, Button
+from crispy_forms.layout import Submit, Layout, Button, Reset
 from django.utils.translation import gettext_lazy as _
 from django.forms import ModelForm
 from .models import SaasRequest
@@ -30,7 +30,7 @@ class SubmitRequestForm(ModelForm):
         self.helper.form_class = "blueForms"
         self.helper.form_method = "post"
         self.helper.form_action = "submit_saas_form"
-        self.helper.add_input(Submit("submit", _("Submit"), style="font-size:smaller"))
+        self.helper.add_input(Submit("submit", _("Submit")))
         self.helper.add_input(
             Button(
                 "cancel",
@@ -76,11 +76,10 @@ class ViewRequestForm(ModelForm):
             "account_administrator",
             "backup_administrator",
             "manager",
-            Submit("save", _("Save changes"), style="font-size:smaller"),
+            Submit("save", _("Save changes")),
             Submit(
                 "delete",
                 _("Delete"),
-                style="font-size:smaller",
                 onclick="return confirm(_('Are you sure you want to delete this saas request?'));",
             ),
             Button(
