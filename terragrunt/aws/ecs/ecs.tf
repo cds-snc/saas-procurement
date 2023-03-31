@@ -1,5 +1,6 @@
-resource "aws_ecs_cluster" "sre-bot" {
-  name = "sre-bot-cluster"
+# Cluster
+resource "aws_ecs_cluster" "saas_procurement" {
+  name = "saas-procurement-cluster"
 
   setting {
     name  = "containerInsights"
@@ -7,29 +8,30 @@ resource "aws_ecs_cluster" "sre-bot" {
   }
 }
 
-data "template_file" "sre-bot" {
-  template = file("./templates/sre-bot.json.tpl")
+# Task definition
+data "template_file" "saas_procurement" {
+  template = file("./templates/saas_procurement.json.tpl")
 
   vars = {
-    awslogs-group         = aws_cloudwatch_log_group.sre-bot_group.name
+    awslogs-group         = aws_cloudwatch_log_group.saas_procurement_group.name
     awslogs-region        = "ca-central-1"
-    awslogs-stream-prefix = "ecs-sre-bot"
-    image                 = "${aws_ecr_repository.sre-bot.repository_url}:latest"
+    awslogs-stream-prefix = "ecs-saas_procurement"
+    image                 = "${aws_ecr_repository.saas_procurement.repository_url}:latest"
     fargate_cpu           = var.fargate_cpu
     fargate_memory        = var.fargate_memory
     aws_region            = "ca-central-1"
   }
 }
 
-resource "aws_ecs_task_definition" "sre-bot" {
-  family                   = "sre-bot-task"
-  execution_role_arn       = aws_iam_role.sre-bot.arn
+resource "aws_ecs_task_definition" "saas_procurement" {
+  family                   = "saas-procurement-task"
+  execution_role_arn       = aws_iam_role.saas_procurement.arn
   network_mode             = "awsvpc"
   requires_compatibilities = ["FARGATE"]
   cpu                      = var.fargate_cpu
   memory                   = var.fargate_memory
-  container_definitions    = data.template_file.sre-bot.rendered
-  task_role_arn            = aws_iam_role.sre-bot.arn
+  container_definitions    = data.template_file.saas_procurement.rendered
+  task_role_arn            = aws_iam_role.saas_procurement.arn
 
   runtime_platform {
     operating_system_family = "LINUX"
@@ -37,10 +39,11 @@ resource "aws_ecs_task_definition" "sre-bot" {
   }
 }
 
+# Service
 resource "aws_ecs_service" "main" {
-  name             = "sre-bot-service"
-  cluster          = aws_ecs_cluster.sre-bot.id
-  task_definition  = aws_ecs_task_definition.sre-bot.arn
+  name             = "saas_procurement-service"
+  cluster          = aws_ecs_cluster.saas_procurement.id
+  task_definition  = aws_ecs_task_definition.saas_procurement.arn
   desired_count    = 1
   launch_type      = "FARGATE"
   platform_version = "1.4.0"
@@ -53,13 +56,13 @@ resource "aws_ecs_service" "main" {
   }
 
   depends_on = [
-    aws_lb_listener.sre_bot_listener,
+    aws_lb_listener.saas_procurement_listener,
     aws_iam_role_policy_attachment.ecs_task_execution
   ]
 
   load_balancer {
-    target_group_arn = aws_lb_target_group.sre_bot.arn
-    container_name   = "sre-bot"
+    target_group_arn = aws_lb_target_group.saas_procurement.arn
+    container_name   = "saas_procurement"
     container_port   = 8000
   }
 
@@ -68,16 +71,16 @@ resource "aws_ecs_service" "main" {
   }
 }
 
-resource "aws_cloudwatch_log_group" "sre-bot_group" {
-  name              = "/ecs/sre-bot-app"
+resource "aws_cloudwatch_log_group" "saas_procurement_group" {
+  name              = "/ecs/saas-procurement-app"
   retention_in_days = 30
 
   tags = {
-    Name = "sre-bot-log-group"
+    Name = "saas-procurement-log-group"
   }
 }
 
-resource "aws_cloudwatch_log_stream" "sre-bot_stream" {
-  name           = "sre-bot-log-stream"
-  log_group_name = aws_cloudwatch_log_group.sre-bot_group.name
+resource "aws_cloudwatch_log_stream" "saas_procurement_stream" {
+  name           = "saas-procurement-log-stream"
+  log_group_name = aws_cloudwatch_log_group.saas_procurement_group.name
 }
