@@ -16,7 +16,7 @@ data "template_file" "saas_procurement" {
     awslogs-group         = aws_cloudwatch_log_group.saas_procurement_group.name
     awslogs-region        = "ca-central-1"
     awslogs-stream-prefix = "ecs-saas_procurement"
-    image                 = "${aws_ecr_repository.saas_procurement.repository_url}:latest"
+    image                 = "${var.ecr_repository_url}:latest"
     fargate_cpu           = var.fargate_cpu
     fargate_memory        = var.fargate_memory
     aws_region            = "ca-central-1"
@@ -25,13 +25,13 @@ data "template_file" "saas_procurement" {
 
 resource "aws_ecs_task_definition" "saas_procurement" {
   family                   = "saas-procurement-task"
-  execution_role_arn       = aws_iam_role.saas_procurement.arn
+  execution_role_arn       = var.iam_role_saas_procurement_arn 
   network_mode             = "awsvpc"
   requires_compatibilities = ["FARGATE"]
   cpu                      = var.fargate_cpu
   memory                   = var.fargate_memory
   container_definitions    = data.template_file.saas_procurement.rendered
-  task_role_arn            = aws_iam_role.saas_procurement.arn
+  task_role_arn            = var.iam_role_saas_procurement_arn 
 
   runtime_platform {
     operating_system_family = "LINUX"
@@ -51,17 +51,18 @@ resource "aws_ecs_service" "main" {
 
   network_configuration {
     security_groups  = [aws_security_group.ecs_tasks.id]
-    subnets          = module.vpc.private_subnet_ids
+    subnets          = var.vpc_private_subnet_ids
     assign_public_ip = false
   }
 
   depends_on = [
-    aws_lb_listener.saas_procurement_listener,
-    aws_iam_role_policy_attachment.ecs_task_execution
+    var.lb_listener,
+    var.ecs_task_policy_attachment
+    
   ]
 
   load_balancer {
-    target_group_arn = aws_lb_target_group.saas_procurement.arn
+    target_group_arn = var.lb_target_group_arn
     container_name   = "saas_procurement"
     container_port   = 8000
   }
