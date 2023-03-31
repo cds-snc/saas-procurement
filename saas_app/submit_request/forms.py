@@ -30,15 +30,13 @@ class SubmitRequestForm(ModelForm):
         self.helper.form_class = "blueForms"
         self.helper.form_method = "post"
         self.helper.form_action = "submit_saas_form"
-        self.helper.add_input(
-            Submit("submit", _("Submit"), css_class="btn btn-primary")
-        )
+        self.helper.add_input(Submit("submit", _("Submit"), style="font-size:smaller"))
         self.helper.add_input(
             Button(
                 "cancel",
                 _("Cancel"),
                 css_id="submit",
-                css_class="btn btn-primary btn-lg",
+                css_class="btn btn-primary btn-med",
                 onclick="history.back()",
             )
         )
@@ -78,17 +76,18 @@ class ViewRequestForm(ModelForm):
             "account_administrator",
             "backup_administrator",
             "manager",
-            Submit("save", _("Save changes")),
+            Submit("save", _("Save changes"), style="font-size:smaller"),
             Submit(
                 "delete",
                 _("Delete"),
+                style="font-size:smaller",
                 onclick="return confirm(_('Are you sure you want to delete this saas request?'));",
             ),
             Button(
                 "cancel",
                 _("Cancel"),
                 css_id="submit",
-                css_class="btn btn-primary btn-lg",
+                css_class="btn btn-primary",
                 onclick="history.back()",
             ),
         )
