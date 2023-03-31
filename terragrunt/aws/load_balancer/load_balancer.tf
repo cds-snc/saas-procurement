@@ -11,7 +11,7 @@ resource "aws_lb" "saas_procurement" {
     aws_security_group.saas_procurement_load_balancer.id
   ]
 
-  subnets = [var.vpc_public_subnet_ids]
+  subnets = ["var.vpc_public_subnet_ids"]
 
   tags = {
     "CostCentre" = var.billing_code
