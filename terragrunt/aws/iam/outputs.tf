@@ -5,7 +5,7 @@ output "iam_role_saas_procurement_arn" {
 
 output "iam_role_saas_procurement_task_arn" {
   description = "Arn of the Saas procurement task role"
-  value	      = aws_iam_role.saas_procurement_task.arn
+  value       = aws_iam_role.saas_procurement_task.arn
 }
 
 output "ecs_task_policy_attachment" {

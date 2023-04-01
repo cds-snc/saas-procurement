@@ -5,7 +5,7 @@ variable "vpc_id" {
 
 variable "vpc_private_subnet_ids" {
   description = "Private subnet ids of the Saas Procurement VPC"
-  type	      = list(string)
+  type        = list(string)
 }
 
 variable "vpc_cidr_block" {
@@ -38,12 +38,12 @@ variable "fargate_memory" {
 
 variable "iam_role_saas_procurement_arn" {
   description = "Arn of the IAM saas procurement role"
-  type 	      = string
+  type        = string
 }
 
 variable "iam_role_saas_procurement_task_arn" {
   description = "Arn of the IAM saas procurement task role"
-  type	      = string
+  type        = string
 }
 
 variable "ecs_task_policy_attachment" {
