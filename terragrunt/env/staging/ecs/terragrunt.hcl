@@ -51,15 +51,15 @@ dependency "load_balancer" {
 }
 
 inputs = {
-  iam_role_saas_procurement_arn = dependency.iam.outputs.iam_role_saas_procurement_arn
+  iam_role_saas_procurement_arn      = dependency.iam.outputs.iam_role_saas_procurement_arn
   iam_role_saas_procurement_task_arn = dependency.iam.outputs.iam_role_saas_procurement_task_arn
-  ecs_task_policy_attachment   = dependency.iam.outputs.ecs_task_policy_attachment
-  vpc_private_subnet_ids = dependency.network.outputs.vpc_private_subnet_ids
-  vpc_id	         = dependency.network.outputs.vpc_id
-  ecr_repository_url     = dependency.ecr.outputs.ecr_repository_url
-  ecr_repository_arn     = dependency.ecr.outputs.ecr_repository_arn
-  lb_listener            = dependency.load_balancer.outputs.lb_listener
-  lb_target_group_arn    = dependency.load_balancer.outputs.lb_target_group_arn
+  ecs_task_policy_attachment         = dependency.iam.outputs.ecs_task_policy_attachment
+  vpc_private_subnet_ids 	     = dependency.network.outputs.vpc_private_subnet_ids
+  vpc_id	         	     = dependency.network.outputs.vpc_id
+  ecr_repository_url     	     = dependency.ecr.outputs.ecr_repository_url
+  ecr_repository_arn     	     = dependency.ecr.outputs.ecr_repository_arn
+  lb_listener            	     = dependency.load_balancer.outputs.lb_listener
+  lb_target_group_arn    	     = dependency.load_balancer.outputs.lb_target_group_arn
 } 
 
 include {
