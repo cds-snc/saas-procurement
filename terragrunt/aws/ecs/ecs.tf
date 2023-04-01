@@ -58,7 +58,6 @@ resource "aws_ecs_service" "main" {
   depends_on = [
     var.lb_listener,
     var.ecs_task_policy_attachment
-    
   ]
 
   load_balancer {
