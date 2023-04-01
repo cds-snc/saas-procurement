@@ -41,6 +41,11 @@ variable "iam_role_saas_procurement_arn" {
   type 	      = string
 }
 
+variable "iam_role_saas_procurement_task_arn" {
+  description = "Arn of the IAM saas procurement task role"
+  type	      = string
+}
+
 variable "ecs_task_policy_attachment" {
   description = "ECS Task execution policy attachment"
   type        = string

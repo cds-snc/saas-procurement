@@ -31,7 +31,7 @@ resource "aws_ecs_task_definition" "saas_procurement" {
   cpu                      = var.fargate_cpu
   memory                   = var.fargate_memory
   container_definitions    = data.template_file.saas_procurement.rendered
-  task_role_arn            = var.iam_role_saas_procurement_arn 
+  task_role_arn            = var.iam_role_saas_procurement_task_arn
 
   runtime_platform {
     operating_system_family = "LINUX"
