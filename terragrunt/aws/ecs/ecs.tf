@@ -62,7 +62,7 @@ resource "aws_ecs_service" "main" {
 
   load_balancer {
     target_group_arn = var.lb_target_group_arn
-    container_name   = "saas_procurement"
+    container_name   = "saas-procurement"
     container_port   = 8000
   }
 
