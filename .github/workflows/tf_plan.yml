@@ -30,6 +30,8 @@ jobs:
           - module: hosted_zone
           - module: network 
           - module: load_balancer 
+          - module: ecr 
+          - module: ecs 
 
     runs-on: ubuntu-latest
     steps:
