@@ -8,7 +8,7 @@ on:
 env:
   GITHUB_SHA: ${{ github.sha }}
   AWS_ACCOUNT: 394954348146 
-  REGISTRY: 394954348146.dkr.ecr.ca-central-1.amazonaws.com/saas-procurement 
+  REGISTRY: 394954348146.dkr.ecr.ca-central-1.amazonaws.com/saas-procurement
   AWS_REGION: ca-central-1
 
 permissions:
