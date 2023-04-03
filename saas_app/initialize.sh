@@ -69,3 +69,10 @@ if [ "${social_account}" -eq 0 ]; then
 else
     echo "Initial data is already installed"
 fi
+
+# Run collectstatic to generate the static files
+echo "Generating static files"
+python manage.py collectstatic --noinput
+
+# Start up the application
+python manage.py runserver
