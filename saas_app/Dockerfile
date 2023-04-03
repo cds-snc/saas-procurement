@@ -1,7 +1,7 @@
 FROM arm64v8/python:3.11.2-slim@sha256:474f1e977c7dcc3c47ee9fee5d50764763c111f7ce8a0ce2282638fdf6135919
 
 RUN  apt-get update \
-  && apt-get install -y make \ 
+  && apt-get install -y make
 
 WORKDIR /saas_app
 
