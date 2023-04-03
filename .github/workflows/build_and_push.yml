@@ -41,8 +41,8 @@ jobs:
         run: |
           docker build \
           --build-arg GIT_SHA=$GITHUB_SHA \
-          -t $REGISTRY/saas_app:$GITHUB_SHA \
-          -t $REGISTRY/saas_app:latest .
+          -t $REGISTRY:$GITHUB_SHA \
+          -t $REGISTRY:latest .
 
       - name: Login to ECR
         id: login-ecr
@@ -50,12 +50,12 @@ jobs:
 
       - name: Push image to ECR
         run: |
-          docker push $REGISTRY/saas_app:$GITHUB_SHA
-          docker push $REGISTRY/saas_app:latest
+          docker push $REGISTRY:$GITHUB_SHA
+          docker push $REGISTRY:latest
       - name: Docker generate SBOM
         uses: cds-snc/security-tools/.github/actions/generate-sbom@cfec0943e40dbb78cee115bbbe89dc17f07b7a0f # v2.1.3
         with:
-          docker_image: "${{ env.REGISTRY }}/saas_app:${{ env.GITHUB_SHA }}"
+          docker_image: "${{ env.REGISTRY }}:${{ env.GITHUB_SHA }}"
           dockerfile_path: "saas_app/Dockerfile"
           sbom_name: "saas_app"
           token: "${{ secrets.GITHUB_TOKEN }}"
@@ -67,7 +67,7 @@ jobs:
       - name: Docker generate SBOM
         uses: cds-snc/security-tools/.github/actions/generate-sbom@cfec0943e40dbb78cee115bbbe89dc17f07b7a0f # v2.1.3    
         with:
-          docker_image: "${{ env.REGISTRY }}/saas_procurement:latest"
+          docker_image: "${{ env.REGISTRY }}:latest"
           dockerfile_path: "saas_app/Dockerfile"
           platform: "linux/arm64"
           sbom_name: "saas_procurement"
