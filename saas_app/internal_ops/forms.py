@@ -86,6 +86,7 @@ class ViewS32RequestForm(ModelForm):
                 data_target="#request_info_modal",
                 data_dismiss="modal",
             ),
+            # hide the purchase button for now. It will be shown if the request is approved by an s32 approver.
             Button(
                 "purchase",
                 _("Record Purchase Information"),
@@ -94,6 +95,7 @@ class ViewS32RequestForm(ModelForm):
                 data_toggle="modal",
                 data_target="#purchase_modal",
                 data_dismiss="modal",
+                hidden=True,
             ),
             Button(
                 "cancel",
@@ -103,3 +105,17 @@ class ViewS32RequestForm(ModelForm):
                 onclick="history.back()",
             ),
         )
+        # append the Purchase Information button if the request is approved
+        if (
+            self.instance.status == "S32 approved"
+            or self.instance.status == "Approuvé S32"
+        ):
+            self.helper.layout[17] = Button(
+                "purchase",
+                _("Record Purchase Information"),
+                css_id="submit",
+                css_class="btn btn-primary btn-lg",
+                data_toggle="modal",
+                data_target="#purchase_modal",
+                data_dismiss="modal",
+            )
