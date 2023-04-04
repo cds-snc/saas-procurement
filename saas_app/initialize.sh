@@ -69,3 +69,5 @@ if [ "${social_account}" -eq 0 ]; then
 else
     echo "Initial data is already installed"
 fi
+
+python manage.py runserver
