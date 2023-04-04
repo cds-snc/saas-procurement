@@ -2,16 +2,16 @@
 # AWS RDS Security Group
 ###
 # Traffic to the DB should only come from ECS
-resource "aws_security_group" "saas_procruement_rds" {
+resource "aws_security_group" "saas_procurement_rds" {
   name        = "saas_procurement_rds"
-  description = "Ingress - RDS instance"
+  description = "RDS instance Ingress"
   vpc_id      = var.vpc_id
 
   ingress {
     protocol  = "tcp"
     from_port = 5432
     to_port   = 5432
-    security_groups = var.ecs_tasks_security_group_id
+    security_groups = [var.ecs_tasks_security_group_id]
   }
 
   egress {

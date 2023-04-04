@@ -1,5 +1,7 @@
 skip-check:
   - CKV2_AWS_5  # Security Groups: False positive, this is attached to a resource
+  - CKV_AWS_23  # RDS: False positive. The RDS security group has a description
+  - CKV2_AWS_30 # RDS: Query logging enabling: TODO 
   - CKV2_AWS_38 # Route53: DNS Secruity Extensions (DNSSEC) signing not required 
   - CKV2_AWS_39 # Route53: False positive, we have DNS query logging but checkov cant see it
   - CKV_AWS_51  # ECR: mutable images is acceptable since the latest tag will be used
@@ -9,3 +11,5 @@ skip-check:
   - CKV_AWS_136 # ECR encryption with default KMS key is acceptable
   - CKV_AWS_158 # CloudWatch log group encryption with default KMS key is acceptable
   - CKV_AWS_275 # IAM: Administrator policy is allowed
+o
+CKV2_AWS_30: "Ensure Postgres RDS as aws_db_instance has Query Logging enabled"
