@@ -36,7 +36,7 @@ class SubmitRequestForm(ModelForm):
                 "cancel",
                 _("Cancel"),
                 css_id="submit",
-                css_class="btn btn-primary btn-med",
+                css_class="btn btn-primary",
                 onclick="history.back()",
             )
         )
