@@ -11,5 +11,3 @@ skip-check:
   - CKV_AWS_136 # ECR encryption with default KMS key is acceptable
   - CKV_AWS_158 # CloudWatch log group encryption with default KMS key is acceptable
   - CKV_AWS_275 # IAM: Administrator policy is allowed
-o
-CKV2_AWS_30: "Ensure Postgres RDS as aws_db_instance has Query Logging enabled"
