@@ -59,7 +59,7 @@ class ViewRequestForm(ModelForm):
                 "cancel",
                 "Cancel",
                 css_id="submit",
-                css_class="btn btn-primary btn-lg",
+                css_class="btn btn-primary",
                 onclick="history.back()",
             ),
         )

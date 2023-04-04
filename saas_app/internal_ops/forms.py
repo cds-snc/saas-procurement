@@ -74,14 +74,16 @@ class ViewS32RequestForm(ModelForm):
             Submit(
                 "save",
                 _("Save"),
-                css_class="btn btn-primary btn-lg",
             ),
-            Submit("send_for_s32_approval", _("Send for S32 Approval")),
+            Submit(
+                "send_for_s32_approval",
+                _("Send for S32 Approval"),
+            ),
             Button(
                 "request_info",
                 _("Request Additional Information"),
                 css_id="submit",
-                css_class="btn btn-primary btn-lg",
+                css_class="btn btn-primary",
                 data_toggle="modal",
                 data_target="#request_info_modal",
                 data_dismiss="modal",
@@ -91,7 +93,7 @@ class ViewS32RequestForm(ModelForm):
                 "purchase",
                 _("Record Purchase Information"),
                 css_id="submit",
-                css_class="btn btn-primary btn-lg",
+                css_class="btn btn-primary",
                 data_toggle="modal",
                 data_target="#purchase_modal",
                 data_dismiss="modal",
@@ -101,7 +103,7 @@ class ViewS32RequestForm(ModelForm):
                 "cancel",
                 _("Cancel"),
                 css_id="submit",
-                css_class="btn btn-primary btn-lg",
+                css_class="btn btn-primary",
                 onclick="history.back()",
             ),
         )
