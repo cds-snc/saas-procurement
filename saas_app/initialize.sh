@@ -70,4 +70,11 @@ else
     echo "Initial data is already installed"
 fi
 
+# Run collectstatic to generate the static files
+echo "Generating static files"
+python manage.py collectstatic --noinput
+
+# Start up the server
+echo "Starting up server"
 python manage.py runserver
+
