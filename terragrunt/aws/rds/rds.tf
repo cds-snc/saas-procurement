@@ -22,11 +22,7 @@ resource "aws_db_instance" "saas_procurement_database" {
   enabled_cloudwatch_logs_exports = ["general", "error", "slowquery"]
   allow_major_version_upgrade = true
   auto_minor_version_upgrade = true
-  
-
-  # Ignore TFSEC rule as we are using managed KMS
-  storage_encrypted = true #tfsec:ignore:AWS051
-
+  storage_encrypted = true 
 
   vpc_security_group_ids = [
     aws_security_group.saas_procurement_rds.id
