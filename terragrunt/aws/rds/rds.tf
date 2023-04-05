@@ -14,7 +14,7 @@ resource "aws_db_instance" "saas_procurement_database" {
   final_snapshot_identifier           = "saas_procurement_rds-${random_string.random.result}"
   iam_database_authentication_enabled = true
   username                            = "postgres"
-  password                            = var.postgres_password_value 
+  password                            = var.postgres_password_value
   backup_retention_period             = 7
   backup_window                       = "07:00-09:00"
   monitoring_interval                 = 5
