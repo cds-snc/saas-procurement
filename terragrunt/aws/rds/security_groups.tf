@@ -22,7 +22,7 @@ resource "aws_security_group" "saas_procurement_rds" {
   }
 
   tags = {
-    Name       = "${var.product_name}_database"
-    CostCenter = var.product_name
+    CostCentre = var.billing_code
+    Terraform  = true
   }
 }

@@ -7,6 +7,16 @@ data "aws_iam_policy_document" "saas_procurement" {
       identifiers = ["ecs-tasks.amazonaws.com"]
     }
   }
+
+  statement {
+    effect = "Allow"
+    actions = [
+      "ssm:GetParameters",
+    ]
+    resources = [
+      var.postgres_password_arn
+    ]
+  }
 }
 
 resource "aws_iam_role" "saas_procurement" {

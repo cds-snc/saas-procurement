@@ -1,6 +1,6 @@
 # RDS database password
-variable "rds_cluster_password" {
-  description = "RDS cluster password"
+variable "postgres_password_value" {
+  description = "RDS password"
   sensitive   = true
   type        = string
 }

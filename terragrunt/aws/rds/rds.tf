@@ -14,7 +14,7 @@ resource "aws_db_instance" "saas_procurement_database" {
   final_snapshot_identifier           = "saas_procurement_rds-${random_string.random.result}"
   iam_database_authentication_enabled = true
   username                            = "postgres"
-  password                            = aws_ssm_parameter.db_password.value
+  password                            = var.postgres_password_value 
   backup_retention_period             = 7
   backup_window                       = "07:00-09:00"
   monitoring_interval                 = 5
@@ -29,7 +29,7 @@ resource "aws_db_instance" "saas_procurement_database" {
   ]
 
   tags = {
-    Name       = "${var.product_name}-database"
-    CostCenter = var.product_name
+    CostCentre = var.billing_code
+    Terraform  = true
   }
 }
