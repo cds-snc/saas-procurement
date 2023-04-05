@@ -27,13 +27,13 @@ jobs:
       fail-fast: false
       matrix:
         include:
+          - module: ssm 
           - module: iam
           - module: hosted_zone
           - module: network 
           - module: load_balancer 
           - module: ecr 
           - module: ecs 
-          - module: ssm 
           - module: rds 
 
     runs-on: ubuntu-latest
