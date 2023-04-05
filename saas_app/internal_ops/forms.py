@@ -74,19 +74,45 @@ class ViewS32RequestForm(ModelForm):
             Submit(
                 "save",
                 _("Save"),
-                css_class="btn btn-primary btn-lg",
             ),
-            Submit("send_for_s32_approval", _("Send for S32 Approval")),
+            Submit(
+                "send_for_s32_approval",
+                _("Send for S32 Approval"),
+            ),
             Button(
                 "request_info",
                 _("Request Additional Information"),
                 css_id="submit",
-                css_class="btn btn-primary btn-lg",
+                css_class="btn btn-primary",
                 data_toggle="modal",
                 data_target="#request_info_modal",
                 data_dismiss="modal",
             ),
+            # hide the purchase button for now. It will be shown if the request is approved by an s32 approver.
             Button(
+                "purchase",
+                _("Record Purchase Information"),
+                css_id="submit",
+                css_class="btn btn-primary",
+                data_toggle="modal",
+                data_target="#purchase_modal",
+                data_dismiss="modal",
+                hidden=True,
+            ),
+            Button(
+                "cancel",
+                _("Cancel"),
+                css_id="submit",
+                css_class="btn btn-primary",
+                onclick="history.back()",
+            ),
+        )
+        # append the Purchase Information button if the request is approved
+        if (
+            self.instance.status == "S32 approved"
+            or self.instance.status == "Approuvé S32"
+        ):
+            self.helper.layout[17] = Button(
                 "purchase",
                 _("Record Purchase Information"),
                 css_id="submit",
@@ -94,12 +120,4 @@ class ViewS32RequestForm(ModelForm):
                 data_toggle="modal",
                 data_target="#purchase_modal",
                 data_dismiss="modal",
-            ),
-            Button(
-                "cancel",
-                _("Cancel"),
-                css_id="submit",
-                css_class="btn btn-primary btn-lg",
-                onclick="history.back()",
-            ),
-        )
+            )

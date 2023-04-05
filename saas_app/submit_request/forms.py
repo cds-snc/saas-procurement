@@ -30,15 +30,13 @@ class SubmitRequestForm(ModelForm):
         self.helper.form_class = "blueForms"
         self.helper.form_method = "post"
         self.helper.form_action = "submit_saas_form"
-        self.helper.add_input(
-            Submit("submit", _("Submit"), css_class="btn btn-primary")
-        )
+        self.helper.add_input(Submit("submit", _("Submit")))
         self.helper.add_input(
             Button(
                 "cancel",
                 _("Cancel"),
                 css_id="submit",
-                css_class="btn btn-primary btn-lg",
+                css_class="btn btn-primary",
                 onclick="history.back()",
             )
         )
@@ -88,7 +86,7 @@ class ViewRequestForm(ModelForm):
                 "cancel",
                 _("Cancel"),
                 css_id="submit",
-                css_class="btn btn-primary btn-lg",
+                css_class="btn btn-primary",
                 onclick="history.back()",
             ),
         )

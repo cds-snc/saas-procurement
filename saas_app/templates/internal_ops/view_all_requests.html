@@ -58,7 +58,7 @@
       <tbody>
         {% for saas_request in purchase_needed_requests %}
             <tr>
-            <td>{{ saas_request.name}} </td>
+            <td><a href="{{saas_request.pk}}">{{ saas_request.name}} </a></td>
             <td>{{ saas_request.description }}</td>
             <td>{{ saas_request.url }}</td>
             <td>{{ saas_request.cost }}</td>
@@ -104,5 +104,5 @@
 {% else %}
   <h4>{% trans "You have no requests that are awaiting to be approved by the S32 approver" %}</h4><br>
 {% endif %}
-    <button type="button" class="btn btn-primary btn-lg" name="home" onclick="location.href='{% url 'home' %}'">{% trans "Cancel" %}</button>
+    <button type="button" class="btn btn-primary" name="home" onclick="location.href='{% url 'home' %}'">{% trans "Cancel" %}</button>
 {% endblock %}

@@ -10,18 +10,6 @@ body {
   line-height: 1.65;
 }
 
-input[type=submit],
-button 
-{
-  padding:5px 15px; 
-  background-color:gainsboro;
-  border:0 none;
-  cursor:pointer;
-  -webkit-border-radius: 5px;
-  border-radius: 5px; 
-  font-size: larger;
-}
-
 input[type=text],
 input[type=password],
 input[type=email]
