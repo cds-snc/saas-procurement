@@ -74,7 +74,6 @@ fi
 echo "Generating static files"
 python manage.py collectstatic --noinput
 
-# Start up the server
-echo "Starting up server"
+# Start up the application
+echo "Starting up the application"
 python manage.py runserver
-
