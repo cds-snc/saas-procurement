@@ -59,6 +59,6 @@ resource "aws_iam_role_policy_attachment" "ecs_task_execution" {
 
 resource "aws_iam_role_policy_attachment" "saas_procurement_ssm" {
   policy_arn = aws_iam_policy.saas_procurement_ssm.arn
-  role       = aws_iam_role.saas_procurement_task.name 
+  role       = aws_iam_role.saas_procurement_task.name
 }
 
