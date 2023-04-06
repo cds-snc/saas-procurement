@@ -7,7 +7,9 @@ data "aws_iam_policy_document" "saas_procurement" {
       identifiers = ["ecs-tasks.amazonaws.com"]
     }
   }
+}
 
+data "aws_iam_policy_document" "saas_procurement_ssm" {
   statement {
     effect = "Allow"
     actions = [
