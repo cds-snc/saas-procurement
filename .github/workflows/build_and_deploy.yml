@@ -52,9 +52,9 @@ jobs:
           docker push $REGISTRY:$GITHUB_SHA
           docker push $REGISTRY:latest
           
- 	- name: Restart ECS
+      - name: Restart ECS
         run: |
-          aws ecs update-service --cluster saas-procurement-ecs-cluster --service saas-procurement-service --force-new-deployment > /dev/null 2>&1
+        aws ecs update-service --cluster saas-procurement-ecs-cluster --service saas-procurement-service --force-new-deployment > /dev/null 2>&1
 
       - name: Docker generate SBOM
         uses: cds-snc/security-tools/.github/actions/generate-sbom@cfec0943e40dbb78cee115bbbe89dc17f07b7a0f # v2.1.3    
