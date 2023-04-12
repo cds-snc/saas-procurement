@@ -13,4 +13,5 @@ WORKDIR /saas_app
 COPY requirements.txt /saas_app/
 RUN pip install -r requirements.txt
 COPY . /saas_app/
+EXPOSE 8000
 ENTRYPOINT ./bin/initialize.sh

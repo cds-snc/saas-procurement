@@ -32,6 +32,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
+CSRF_TRUSTED_ORIGINS = ['https://saas.cdssandbox.xyz']
 
 # Application definition
 
@@ -181,6 +182,8 @@ SOCIALACCOUNT_PROVIDERS = {
 if "test" in sys.argv:
     DATABASES["default"]["ENGINE"] = "django.db.backends.sqlite3"
     DATABASES["default"]["NAME"] = ":memory:"
+
+ACCOUNT_DEFAULT_HTTP_PROTOCOL = "https"
 
 SITE_ID = 11
 
