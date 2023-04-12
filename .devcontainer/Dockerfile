@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/devcontainers/python:0-3.11@sha256:c5c891d6dc126af9928974d983de32a3af6983d22a6c3c81c39543be48b0da1a
+FROM mcr.microsoft.com/devcontainers/python:0-3.11@sha256:72ae45aa5390c0fc66b4612d25c0b854fdc11cac79d67b8e64f4065dd7838dfa
 
 # Install packages
 ARG DEBIAN_FRONTEND=noninteractive
