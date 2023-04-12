@@ -32,7 +32,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
-CSRF_TRUSTED_ORIGINS = ['https://saas.cdssandbox.xyz']
+CSRF_TRUSTED_ORIGINS = ["https://saas.cdssandbox.xyz"]
 
 # Application definition
 
