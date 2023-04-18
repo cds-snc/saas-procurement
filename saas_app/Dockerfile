@@ -1,4 +1,4 @@
-FROM python:3.8-slim-buster@sha256:31d0d41a5356cfbb9d7a3788f6443d02a69a0f2cfa97aa8873e6fb48bbfa3ffc
+FROM python:3.8-slim-buster@sha256:bf7fc227b0dc580c8bbbe696b61840c61bc241b404a288ef1612ce11fe92ab85
 
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && apt-get -y install --no-install-recommends \
