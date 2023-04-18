@@ -17,6 +17,9 @@ else
     echo "If you want to manually update the project packages, run: pip install -r requirements_dev.txt"
 fi
 
+echo "Retrieving environment parameters and put them in an .env file"
+python bin/get_parameters.py
+
 # Check if there are migrations to apply, if there are store their count to a variable
 migration_count=$(python manage.py showmigrations | grep -c "\[ \]")
 # If migration_count is greater than 0, there are migrations to apply
@@ -76,4 +79,4 @@ python manage.py collectstatic --noinput
 
 # Start up the application
 echo "Starting up the application"
-python manage.py runserver
+python manage.py runserver 0.0.0.0:8000

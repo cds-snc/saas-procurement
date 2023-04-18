@@ -31,6 +31,7 @@ SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+# ALLOWED_HOSTS = ["*"]
 ALLOWED_HOSTS = [
     "0.0.0.0",
     "127.0.0.1",
@@ -38,6 +39,7 @@ ALLOWED_HOSTS = [
     gethostname(),
 ]
 
+CSRF_TRUSTED_ORIGINS = ["https://saas.cdssandbox.xyz"]
 
 # Application definition
 
@@ -188,7 +190,9 @@ if "test" in sys.argv:
     DATABASES["default"]["ENGINE"] = "django.db.backends.sqlite3"
     DATABASES["default"]["NAME"] = ":memory:"
 
-SITE_ID = 9
+ACCOUNT_DEFAULT_HTTP_PROTOCOL = "https"
+
+SITE_ID = 11
 
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
