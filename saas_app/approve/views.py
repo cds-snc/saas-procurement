@@ -2,13 +2,28 @@ from django.shortcuts import render
 import django.contrib.messages as messages
 import os
 from submit_request.models import SaasRequest, Users
-from submit_request.views import send_requestor_email
 from .forms import ViewRequestForm
 import datetime
 import common.util.utils as utils
 from django.utils.translation import gettext as _
 
+def send_requestor_email(request, saas_object, template_id):
+    # get the requester's email address
+    requestor_email = saas_object.submitted_by.email
+    # get the requestors's name
+    requestor_name = saas_object.submitted_by.first_name
+    # get the saas_name
+    saas_name = saas_object.name
+    # get the url
+    url = utils.get_current_site(request)
 
+    # send an email to the requestor
+    utils.send_email(
+        requestor_email,
+        template_id,
+        {"saas_name": saas_name, "name": requestor_name, "url": url},
+    )
+    
 def send_internal_ops_email(request, saas_object, template_id):
     # get the internal ops's email address
     internal_ops_email = saas_object.internal_ops.user.email

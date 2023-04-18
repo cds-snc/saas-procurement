@@ -190,9 +190,13 @@ if "test" in sys.argv:
     DATABASES["default"]["ENGINE"] = "django.db.backends.sqlite3"
     DATABASES["default"]["NAME"] = ":memory:"
 
-ACCOUNT_DEFAULT_HTTP_PROTOCOL = "https"
 
-SITE_ID = 11
+if os.environ.get("ENVIRONMENT") == "local":
+    SITE_ID = 9 
+else:
+    SITE_ID = 11
+    ACCOUNT_DEFAULT_HTTP_PROTOCOL = "https"
+
 
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
