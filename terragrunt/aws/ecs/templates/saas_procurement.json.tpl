@@ -18,9 +18,13 @@
     },
     "name": "saas-procurement",
     "portMappings": [
-      {
-        "containerPort": 8000
-      }
+ 	{
+	    "name": "saas-procurement-8000-tcp",
+	    "containerPort": 8000,
+	    "hostPort": 8000,
+	    "protocol": "tcp",
+    	    "appProtocol": "http"
+	},
     ],
     "ulimits": [
       {

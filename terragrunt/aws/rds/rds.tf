@@ -1,34 +1,25 @@
-resource "random_string" "random" {
-  length  = 6
-  special = false
-  upper   = false
-}
+#
+# RDS Postgresql database for the Saas procurement app 
+#
+module "rds_cluster" {
+  source = "github.com/cds-snc/terraform-modules?ref=v5.1.4//rds"
+  name   = "saas-procurement-database"
 
-resource "aws_db_instance" "saas_procurement_database" {
-  allocated_storage                   = 20
-  storage_type                        = "gp2"
-  engine                              = "postgres"
-  engine_version                      = "14.4"
-  identifier                          = "saas-procurement-rds"
-  instance_class                      = "db.t3.micro"
-  final_snapshot_identifier           = "saas_procurement_rds-${random_string.random.result}"
-  iam_database_authentication_enabled = true
-  username                            = "postgres"
-  password                            = var.postgres_password_value
-  backup_retention_period             = 7
-  backup_window                       = "07:00-09:00"
-  monitoring_interval                 = 5
-  multi_az                            = true
-  enabled_cloudwatch_logs_exports     = ["general", "error", "slowquery"]
-  allow_major_version_upgrade         = true
-  auto_minor_version_upgrade          = true
-  storage_encrypted                   = true
+  database_name  = var.database_name
+  engine         = "aurora-postgresql"
+  engine_version = "14.6"
+  instances      = var.database_instances_count
+  instance_class = "db.r4.large"
+  username       = var.database_username
+  password       = var.database_password
 
-  vpc_security_group_ids = [
-    aws_security_group.saas_procurement_rds.id
-  ]
+  backup_retention_period = 14
+  preferred_backup_window = "02:00-04:00"
 
-  tags = {
+  vpc_id     = var.vpc_id
+  subnet_ids = var.private_subnet_ids
+
+ tags = {
     CostCentre = var.billing_code
     Terraform  = true
   }

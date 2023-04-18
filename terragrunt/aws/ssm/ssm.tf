@@ -1,7 +1,7 @@
-resource "aws_ssm_parameter" "db_password" {
-  name  = "/saas_procurement/db_password"
+resource "aws_ssm_parameter" "saas_app_config" {
+  name  = "saas_app_config"
   type  = "SecureString"
-  value = "POSTGRES_PASSWORD=${var.postgres_password}"
+  value = "${var.saas_app_config}"
 
   tags = {
     CostCentre = var.billing_code

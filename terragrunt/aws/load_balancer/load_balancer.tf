@@ -8,7 +8,7 @@ resource "aws_lb" "saas_procurement" {
   drop_invalid_header_fields = true
 
   security_groups = [
-    aws_security_group.saas_procurement_load_balancer.id
+    aws_security_group.saas_procurement_load_balancer_sg.id
   ]
 
   subnets = var.vpc_public_subnet_ids
@@ -28,7 +28,7 @@ resource "aws_lb_listener" "saas_procurement_listener" {
   load_balancer_arn = aws_lb.saas_procurement.arn
   port              = "443"
   protocol          = "HTTPS"
-  ssl_policy        = "ELBSecurityPolicy-FS-1-2-Res-2020-10"
+  ssl_policy        = "EELBSecurityPolicy-TLS13-1-2-2021-06"
   certificate_arn   = aws_acm_certificate.saas_procurement.arn
 
   default_action {
@@ -41,6 +41,7 @@ resource "aws_lb_target_group" "saas_procurement" {
   name                 = "saas-procurement"
   port                 = 8000
   protocol             = "HTTP"
+  protocol_version     = "HTTP1"
   target_type          = "ip"
   deregistration_delay = 30
   vpc_id               = var.vpc_id

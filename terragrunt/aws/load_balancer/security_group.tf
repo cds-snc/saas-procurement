@@ -1,6 +1,6 @@
-resource "aws_security_group" "saas_procurement_load_balancer" {
-  name        = "Saas Procurement load balancer"
-  description = "Ingress of Saas Procurement Load Balancer"
+resource "aws_security_group" "saas_procurement_load_balancer_sg" {
+  name        = "saas_procurement_load_balancer_sg"
+  description = "Security group of the Load balancer"
   vpc_id      = var.vpc_id
 
   ingress {

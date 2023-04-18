@@ -37,7 +37,7 @@ dependency "ecs" {
 
 inputs = {
   vpc_id	              = dependency.network.outputs.vpc_id
-  postgres_password_value = dependency.ssm.outputs.postgres_password_value
+  postgres_password_value     = dependency.ssm.outputs.postgres_password_value
   ecs_tasks_security_group_id = dependency.ecs.outputs.ecs_tasks_security_group_id
 } 
 

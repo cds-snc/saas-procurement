@@ -1,10 +1,10 @@
-output "postgres_password_arn" {
-  description = "Arn of the postgres db password"
-  value       = aws_ssm_parameter.db_password.arn
+output "saas_app_config_arn" {
+  description = "Arn of the saas app config parameter"
+  value       = aws_ssm_parameter.saas_app_config.arn
 }
 
-output "postgres_password_value" {
-  description = "The value of the postgres db password"
-  value       = aws_ssm_parameter.db_password.value
+output "saas_app_config_value" {
+  description = "The value of the saas app config parameter"
+  value       = aws_ssm_parameter.saas_app_config.value
   sensitive   = true
 }

@@ -1,6 +1,7 @@
 # Cluster
 resource "aws_ecs_cluster" "saas_procurement" {
   name = "saas-procurement-cluster"
+  capacity_providers = ["FARGATE", "FARGATE_SPOT"]
 
   setting {
     name  = "containerInsights"
@@ -40,17 +41,17 @@ resource "aws_ecs_task_definition" "saas_procurement" {
 }
 
 # Service
-resource "aws_ecs_service" "main" {
+resource "aws_ecs_service" "saas-procurement-app-service" {
   name             = "saas_procurement-service"
   cluster          = aws_ecs_cluster.saas_procurement.id
   task_definition  = aws_ecs_task_definition.saas_procurement.arn
-  desired_count    = 1
+  desired_count    = 2
   launch_type      = "FARGATE"
   platform_version = "1.4.0"
   propagate_tags   = "SERVICE"
 
   network_configuration {
-    security_groups  = [aws_security_group.ecs_tasks.id]
+    security_groups  = [aws_security_group.ecs_tasks_sg.id]
     subnets          = var.vpc_private_subnet_ids
     assign_public_ip = false
   }
