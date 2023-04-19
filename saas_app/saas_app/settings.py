@@ -191,8 +191,8 @@ if "test" in sys.argv:
     DATABASES["default"]["NAME"] = ":memory:"
 
 
-if os.environ.get("ENVIRONMENT") == "local":
-    SITE_ID = 9 
+if os.environ.get("ENVIRONMENT") == "dev":
+    SITE_ID = 9 # the site id for the local database 
 else:
     SITE_ID = 11
     ACCOUNT_DEFAULT_HTTP_PROTOCOL = "https"

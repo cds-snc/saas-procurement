@@ -7,6 +7,7 @@ import datetime
 import common.util.utils as utils
 from django.utils.translation import gettext as _
 
+
 def send_requestor_email(request, saas_object, template_id):
     # get the requester's email address
     requestor_email = saas_object.submitted_by.email
@@ -23,7 +24,8 @@ def send_requestor_email(request, saas_object, template_id):
         template_id,
         {"saas_name": saas_name, "name": requestor_name, "url": url},
     )
-    
+
+
 def send_internal_ops_email(request, saas_object, template_id):
     # get the internal ops's email address
     internal_ops_email = saas_object.internal_ops.user.email
