@@ -192,7 +192,7 @@ if "test" in sys.argv:
 
 
 if os.environ.get("ENVIRONMENT") == "dev":
-    SITE_ID = 9   # the site id for the local database
+    SITE_ID = 9  # the site id for the local database
 else:
     SITE_ID = 11
     ACCOUNT_DEFAULT_HTTP_PROTOCOL = "https"
