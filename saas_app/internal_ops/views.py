@@ -7,7 +7,7 @@ from .forms import ViewS32RequestForm
 import os
 import django.contrib.messages as messages
 import common.util.utils as utils
-from submit_request.views import send_requestor_email
+from approve.views import send_requestor_email
 from django.views.decorators.csrf import csrf_exempt
 
 
@@ -75,6 +75,7 @@ def send_requestor_email_more_info(request, saas_object, info_requested, templat
             + " "
             + saas_object.submitted_by.last_name
         )
+        submitted_by_email = saas_object.submitted_by.email
         internal_ops_name = (
             saas_object.internal_ops.user.first_name
             + " "
@@ -85,7 +86,7 @@ def send_requestor_email_more_info(request, saas_object, info_requested, templat
 
         # send an email to the requestor
         utils.send_email(
-            internal_ops_email,
+            submitted_by_email,
             template_id,
             {
                 "name": submitted_by,
