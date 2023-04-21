@@ -29,5 +29,10 @@ variable "private_subnet_ids" {
 
 variable "vpc_id" {
   description = "The VPC id of the url shortener"
-  type = string
+  type        = string
+}
+
+variable "ecs_tasks_security_group_id" {
+  description = "The security group for ecs tasks"
+  type        = string
 }

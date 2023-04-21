@@ -18,9 +18,5 @@ module "rds_cluster" {
 
   vpc_id     = var.vpc_id
   subnet_ids = var.private_subnet_ids
-
- tags = {
-    CostCentre = var.billing_code
-    Terraform  = true
-  }
+  billing_tag_value = var.billing_code
 }
