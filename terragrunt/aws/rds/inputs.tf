@@ -1,6 +1,6 @@
 variable "database_instances_count" {
   description = "The number of db instances to create"
-  type	      = number
+  type        = number
   default     = 2
 }
 
@@ -24,7 +24,7 @@ variable "database_password" {
 
 variable "private_subnet_ids" {
   description = "The proviate subnet ids of the VPC"
-  type	      = list(any)
+  type        = list(any)
 }
 
 variable "vpc_id" {

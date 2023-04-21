@@ -28,7 +28,7 @@ resource "aws_lb_listener" "saas_procurement_listener" {
   load_balancer_arn = aws_lb.saas_procurement.arn
   port              = "443"
   protocol          = "HTTPS"
-  ssl_policy        = "EELBSecurityPolicy-TLS13-1-2-2021-06"
+  ssl_policy        = "ELBSecurityPolicy-FS-1-2-Res-2020-10"
   certificate_arn   = aws_acm_certificate.saas_procurement.arn
 
   default_action {

@@ -64,5 +64,5 @@ variable "lb_target_group_arn" {
 
 variable "saas_procurement_load_balancer_sg" {
   description = "Security group of the Load balancer"
-  type	      = string
+  type        = string
 }

@@ -24,7 +24,7 @@
 	    "hostPort": 8000,
 	    "protocol": "tcp",
     	    "appProtocol": "http"
-	},
+	}
     ],
     "ulimits": [
       {
