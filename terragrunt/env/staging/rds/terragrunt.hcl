@@ -28,6 +28,7 @@ dependency "ecs" {
 
 inputs = {
   vpc_id	              = dependency.network.outputs.vpc_id
+  vpc_private_subnet_ids      = dependency.network.outputs.vpc_private_subnet_ids
   ecs_tasks_security_group_id = dependency.ecs.outputs.ecs_tasks_security_group_id
 } 
 

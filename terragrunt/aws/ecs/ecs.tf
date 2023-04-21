@@ -1,7 +1,6 @@
 # Cluster
 resource "aws_ecs_cluster" "saas_procurement" {
   name               = "saas-procurement-cluster"
-  capacity_providers = ["FARGATE", "FARGATE_SPOT"]
 
   setting {
     name  = "containerInsights"

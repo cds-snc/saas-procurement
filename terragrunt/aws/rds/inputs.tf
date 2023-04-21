@@ -22,8 +22,8 @@ variable "database_password" {
   sensitive   = true
 }
 
-variable "private_subnet_ids" {
-  description = "The proviate subnet ids of the VPC"
+variable "vpc_private_subnet_ids" {
+  description = "The private subnet ids of the VPC"
   type        = list(any)
 }
 

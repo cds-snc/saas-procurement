@@ -17,6 +17,6 @@ module "rds_cluster" {
   preferred_backup_window = "02:00-04:00"
 
   vpc_id            = var.vpc_id
-  subnet_ids        = var.private_subnet_ids
+  subnet_ids        = var.vpc_private_subnet_ids
   billing_tag_value = var.billing_code
 }
