@@ -45,8 +45,9 @@ dependency "load_balancer" {
   mock_outputs_allowed_terraform_commands = ["init", "fmt", "validate", "plan", "show"]
   mock_outputs_merge_with_state           = true
   mock_outputs = {
-    lb_listener         = ""
-    lb_target_group_arn = ""
+    lb_listener         	      = ""
+    lb_target_group_arn 	      = ""
+    saas_procurement_load_balancer_sg = ""
   }
 }
 
@@ -60,6 +61,7 @@ inputs = {
   ecr_repository_arn     	     = dependency.ecr.outputs.ecr_repository_arn
   lb_listener            	     = dependency.load_balancer.outputs.lb_listener
   lb_target_group_arn    	     = dependency.load_balancer.outputs.lb_target_group_arn
+  saas_procurement_load_balancer_sg  = dependency.load_balancer.outputs.saas_procurement_load_balancer_sg
 } 
 
 include {

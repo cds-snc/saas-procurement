@@ -1,6 +1,6 @@
 # Cluster
 resource "aws_ecs_cluster" "saas_procurement" {
-  name               = "saas-procurement-cluster"
+  name = "saas-procurement-cluster"
 
   setting {
     name  = "containerInsights"
