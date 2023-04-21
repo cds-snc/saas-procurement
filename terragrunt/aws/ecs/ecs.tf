@@ -51,7 +51,7 @@ resource "aws_ecs_service" "saas-procurement-app-service" {
   propagate_tags   = "SERVICE"
 
   network_configuration {
-    security_groups  = [aws_security_group.ecs_tasks_sg.id]
+    security_groups  = [aws_security_group.ecs_tasks.id]
     subnets          = var.vpc_private_subnet_ids
     assign_public_ip = false
   }
