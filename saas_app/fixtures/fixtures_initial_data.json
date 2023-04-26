@@ -3,8 +3,32 @@
     "model": "user.roles",
     "pk": 1,
     "fields": {
-      "name": "Approver",
-      "description": "Approver Group that can approve a SAAS request"
+      "name": "Requestor",
+      "description": "Requestor group that can submit a request"
+    }
+  },
+  {
+    "model": "user.roles",
+    "pk": 2,
+    "fields": {
+      "name": "Manager",
+      "description": "Manager group that approves a requestor's request"
+    }
+  },
+  {
+    "model": "user.roles",
+    "pk": 3,
+    "fields": {
+      "name": "InternalOps",
+      "description": "Internal Ops group that can send a request to the S32 approver, request further information or record purchase details."
+    }
+  },
+  {
+    "model": "user.roles",
+    "pk": 4,
+    "fields": {
+      "name": "S32Approver",
+      "description": "S32Approver Group that can approve a SAAS request"
     }
   },
   {
@@ -17,7 +41,7 @@
       "title": "S32 Approver",
       "business_unit": "Business unit of Approver",
       "user_roles": [
-        1
+        4
       ]
     }
   },
@@ -31,7 +55,7 @@
          "title":"Manager title",
          "business_unit":"Manager business unit",
          "user_roles":[
-            1
+            2
          ]
       }
    },

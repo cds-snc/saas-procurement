@@ -89,6 +89,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "saas_app.context_processors.testing_feature_flag",
             ],
         },
     },
@@ -207,3 +208,6 @@ ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_EMAIL_REQUIRED = True
 
 CRISPY_TEMPLATE_PACK = "bootstrap4"
+
+# Set up a feature flag for testing the app without needing to create many accounts. We want to be able to switch roles so that we can test the app from the perspective of different users.
+TESTING_FEATURE_FLAG = os.environ.get("TESTING_FEATURE_FLAG")
