@@ -63,13 +63,12 @@ def switch_role(request):
             new_role = request.GET.get("role")
             request.session["role"] = new_role
             messages.success(
-                request,
-                _("You have successfully switched to {} role").format(new_role)
+                request, _("You have successfully switched to {} role").format(new_role)
             )
         except Exception:
             messages.error(
                 request,
-                _("Something went wrong with switching roles. Please try again.")
+                _("Something went wrong with switching roles. Please try again."),
             )
         return render(request, "index.html", {"role": request.session["role"]})
 
