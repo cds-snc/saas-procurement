@@ -116,7 +116,7 @@ class ViewS32RequestForm(ModelForm):
                 "purchase",
                 _("Record Purchase Information"),
                 css_id="submit",
-                css_class="btn btn-primary btn-lg",
+                css_class="btn btn-primary",
                 data_toggle="modal",
                 data_target="#purchase_modal",
                 data_dismiss="modal",

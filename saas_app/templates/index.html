@@ -7,30 +7,32 @@
 
 {% block content %}
 {% if user.is_authenticated %}
+{{ role }}
     <h1>{% trans "Welcome" %} {{user}}!</h1>
     <p>{% trans "What do you want to do today?" %}</p></br>
-    <div class="card">
-      <div class="card-header">
-        {% trans "Submit a SAAS Request" %}
+      <div class="card">
+        <div class="card-header">
+          {% trans "Submit a SAAS Request" %}
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{% trans "Software as a Service Request Form" %}</h5>
+          <p class="card-text">{% trans "Please fill out this form if you would like to request the purchase of an unclassified software subscription service." %}</p>
+          <a href="submit_request" class="btn btn-primary">{% trans "Start" %}</a>
+        </div>
       </div>
-      <div class="card-body">
-        <h5 class="card-title">{% trans "Software as a Service Request Form" %}</h5>
-        <p class="card-text">{% trans "Please fill out this form if you would like to request the purchase of an unclassified software subscription service." %}</p>
-        <a href="submit_request" class="btn btn-primary">{% trans "Start" %}</a>
+      <br>
+      <div class="card">
+        <div class="card-header">
+          {% trans "View requests" %}
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{% trans "View your submitted requests" %}</h5>
+          <p class="card-text">{% trans "Click here to view all of your submitted SAAS requests." %}</p>
+          <a href="submit_request/view" class="btn btn-primary">{% trans "Start" %}</a>
+        </div>
       </div>
-    </div>
-    <br>
-    <div class="card">
-      <div class="card-header">
-        {% trans "View requests" %}
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">{% trans "View your submitted requests" %}</h5>
-        <p class="card-text">{% trans "Click here to view all of your submitted SAAS requests." %}</p>
-        <a href="submit_request/view" class="btn btn-primary">{% trans "Start" %}</a>
-      </div>
-    </div>
-    <br>
+      <br>
+    {%if role == "Manager" %}
     <div class="card">
       <div class="card-header">
         {% trans "Manager Approve/Deny" %}
@@ -42,6 +44,7 @@
       </div>
     </div>
     <br>
+    {% elif role == "InternalOps" %}
      <div class="card">
       <div class="card-header">
         {% trans "Internal Ops" %}
@@ -53,6 +56,7 @@
       </div>
     </div>
     <br>
+    {% elif role == "S32Approver" %}
     <div class="card">
       <div class="card-header">
         {% trans "S32 Approver" %}
@@ -63,6 +67,7 @@
         <a href="approve/view_s32" class="btn btn-primary">{% trans "Start" %}</a>
       </div>
     </div>
+    {% endif %}
 {% else %}
     <h1>{% trans "Sass Procurement App" %}</h1>
     <p>{% blocktrans %}You are about to use your Google account to login to

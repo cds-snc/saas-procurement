@@ -88,10 +88,10 @@
                       Switch Roles 
                     </a>
                     <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">Requestor</a></li>
-                      <li><a class="dropdown-item" href="#">Manager</a></li>
-                      <li><a class="dropdown-item" href="#">Internal Ops</a></li>
-                      <li><a class="dropdown-item" href="#">S32 Approver</a></li>
+                      <li><a class="dropdown-item" href="{% url 'switch_role' %}?role=Requestor">Requestor</a></li>
+                      <li><a class="dropdown-item" href="{% url 'switch_role' %}?role=Manager">Manager</a></li>
+                      <li><a class="dropdown-item" href="{% url 'switch_role' %}?role=InternalOps">Internal Ops</a></li>
+                      <li><a class="dropdown-item" href="{% url 'switch_role' %}?role=S32Approver">S32 Approver</a></li>
                     </ul>
                   </li>
                   {% endif %}
