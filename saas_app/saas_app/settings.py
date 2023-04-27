@@ -211,3 +211,6 @@ CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 # Set up a feature flag for testing the app without needing to create many accounts. We want to be able to switch roles so that we can test the app from the perspective of different users.
 TESTING_FEATURE_FLAG = os.environ.get("TESTING_FEATURE_FLAG")
+
+# Set up the session engine
+SESSION_ENGINE = "django.contrib.sessions.backends.cache"

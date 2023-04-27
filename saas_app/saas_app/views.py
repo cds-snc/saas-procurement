@@ -40,7 +40,7 @@ def view_request(request, pk):
 
 # Function to initialize the application and set the initial role to Requestor
 def init(request):
-    if request.method == "GET":
+    if request.method == "GET" and request.user.is_authenticated:
         # if we are testing then we need to add each user to each group for testing purposes
         if os.getenv("TESTING_FEATURE_FLAG"):
             user_logged_in.connect(create_groups)
@@ -48,6 +48,10 @@ def init(request):
             if request.session["role"] == None:
                 request.session["role"] = "Requestor"
         return render(request, "index.html", {'role' : request.session["role"]})
+    else:
+        # set initially that the role is requestor
+        request.session["role"] = "Requestor"
+        return render(request, "index.html", {})
 
 # Function to switch to a new role
 def switch_role(request):
