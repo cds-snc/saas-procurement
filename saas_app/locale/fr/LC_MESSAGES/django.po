@@ -3,12 +3,11 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-23 15:23+0000\n"
+"POT-Creation-Date: 2023-04-27 23:07+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,35 +25,35 @@ msgstr " Approuver"
 msgid "Deny"
 msgstr "Refuser"
 
-#: approve/views.py:86
+#: approve/views.py:103
 msgid "Manager approved"
 msgstr "Gestionnaire approuvé"
 
-#: approve/views.py:93 approve/views.py:184
+#: approve/views.py:110 approve/views.py:201
 msgid "Request has been successfully approved"
 msgstr "La demande a été approuvée avec succès"
 
-#: approve/views.py:97 approve/views.py:188
+#: approve/views.py:114 approve/views.py:205
 msgid "An error occurred while approving the request"
 msgstr "Une erreur s'est produite lors de l'approbation de la demande"
 
-#: approve/views.py:108
+#: approve/views.py:125
 msgid "Manager denied"
 msgstr "Gestionnaire refusé"
 
-#: approve/views.py:115 approve/views.py:212
+#: approve/views.py:132 approve/views.py:229
 msgid "Request has been successfully denied"
 msgstr "La demande a été refusée avec succès"
 
-#: approve/views.py:119 approve/views.py:216
+#: approve/views.py:136 approve/views.py:233
 msgid "An error occurred while denying the request"
 msgstr "Une erreur s'est produite lors du refus de la demande"
 
-#: approve/views.py:171
+#: approve/views.py:188
 msgid "S32 approved"
 msgstr "Approuvé S32"
 
-#: approve/views.py:199
+#: approve/views.py:216
 msgid "S32 denied"
 msgstr "S32 refusé"
 
@@ -111,7 +110,7 @@ msgid "Backup Administrator"
 msgstr "Administrateur de sauvegarde"
 
 #: internal_ops/forms.py:39 templates/approve/view_all_requests.html:20
-#: templates/internal_ops/view_all_requests.html:20
+#: templates/base.html:92 templates/internal_ops/view_all_requests.html:20
 #: templates/internal_ops/view_all_requests.html:53
 #: templates/internal_ops/view_all_requests.html:85
 msgid "Manager"
@@ -129,28 +128,29 @@ msgstr "Proposé par"
 msgid "Fund Center"
 msgstr "Centre de fonds"
 
-#: internal_ops/forms.py:43 templates/index.html:58
+#: internal_ops/forms.py:43 templates/base.html:94 templates/index.html:62
 msgid "S32 Approver"
 msgstr "Approbateur S32"
 
-#: internal_ops/forms.py:76 templates/internal_ops/view_request.html:79
+#: internal_ops/forms.py:76 templates/internal_ops/view_request.html:78
 msgid "Save"
 msgstr "Sauvegarder"
 
-#: internal_ops/forms.py:79
+#: internal_ops/forms.py:80
 msgid "Send for S32 Approval"
 msgstr "En attente d'envoi pour approbation S32"
 
-#: internal_ops/forms.py:82
+#: internal_ops/forms.py:84
 msgid "Request Additional Information"
 msgstr "Demander des informations supplémentaires"
 
-#: internal_ops/forms.py:91 templates/internal_ops/view_request.html:49
+#: internal_ops/forms.py:94 internal_ops/forms.py:117
+#: templates/internal_ops/view_request.html:48
 msgid "Record Purchase Information"
 msgstr "Enregistrer les informations d'achat"
 
-#: internal_ops/forms.py:100 submit_request/forms.py:39
-#: submit_request/forms.py:89 templates/approve/view_all_requests.html:75
+#: internal_ops/forms.py:104 submit_request/forms.py:37
+#: submit_request/forms.py:87 templates/approve/view_all_requests.html:75
 #: templates/internal_ops/view_all_requests.html:107
 #: templates/request/view_all_requests.html:42
 msgid "Cancel"
@@ -169,46 +169,46 @@ msgid "There was an error sending the email to the S32 approver."
 msgstr ""
 "Une erreur s'est produite lors de l'envoi de l'e-mail à l'approbateur S32"
 
-#: internal_ops/views.py:102
+#: internal_ops/views.py:103
 msgid "There was an error sending the email to the requestor."
 msgstr "Une erreur s'est produite lors de l'envoi de l'e-mail au demandeur"
 
-#: internal_ops/views.py:150
+#: internal_ops/views.py:151
 msgid "Waiting to be sent for S32 Approval"
 msgstr "En attente d'envoi pour approbation S32"
 
-#: internal_ops/views.py:156
+#: internal_ops/views.py:157
 msgid "The form was successfully saved."
 msgstr "Le formulaire a été enregistré avec succès."
 
-#: internal_ops/views.py:160
+#: internal_ops/views.py:161
 msgid "There was an error saving the form."
 msgstr "Le formulaire a été enregistré avec succès"
 
-#: internal_ops/views.py:164
+#: internal_ops/views.py:165
 msgid "Please add the fund center and the approver."
 msgstr "Veuillez ajouter le centre financier et l'approbateur."
 
-#: internal_ops/views.py:172
+#: internal_ops/views.py:173
 msgid "Sent to S32 Approver for Approval"
 msgstr "Envoyé à l'approbateur S32 pour approbation"
 
-#: internal_ops/views.py:181
+#: internal_ops/views.py:182
 msgid "There was an error updating the status of the form."
 msgstr ""
 "Une erreur s'est produite lors de la mise à jour du statut du formulaire"
 
-#: internal_ops/views.py:189
+#: internal_ops/views.py:190
 msgid "Please add the fund center and the approver and then save the form."
 msgstr ""
 "Veuillez ajouter le centre financier et l'approbateur, puis enregistrer le "
 "formulaire."
 
-#: internal_ops/views.py:208
+#: internal_ops/views.py:209
 msgid "We have successfully emailed the S32 approver."
 msgstr "Nous avons réussi à envoyer un e-mail à l'approbateur S32."
 
-#: internal_ops/views.py:215
+#: internal_ops/views.py:216
 msgid ""
 "There was an error sending the notification emails to the S32 approver or "
 "requestor."
@@ -216,42 +216,50 @@ msgstr ""
 "Une erreur s'est produite lors de l'envoi des e-mails de notification à "
 "l'approbateur ou au demandeur S32"
 
-#: internal_ops/views.py:238
+#: internal_ops/views.py:239
 msgid "We have successfully emailed the requestor."
 msgstr "Nous avons réussi à envoyer un e-mail au demandeur."
 
-#: internal_ops/views.py:244
+#: internal_ops/views.py:245
 msgid "There was an error sending the notification email to the requestor."
 msgstr ""
 "Une erreur s'est produite lors de l'envoi de l'e-mail de notification au "
 "demandeur."
 
-#: internal_ops/views.py:248 internal_ops/views.py:273
+#: internal_ops/views.py:249 internal_ops/views.py:274
 msgid "Please enter the information requested."
 msgstr "Veuillez saisir les informations demandées."
 
-#: internal_ops/views.py:265
+#: internal_ops/views.py:266
 msgid "We have successfully recorded the purchase information"
 msgstr "Nous avons enregistré avec succès les informations d'achat"
 
-#: internal_ops/views.py:270
+#: internal_ops/views.py:271
 msgid "There was an error recording the purchase information"
 msgstr ""
 "Une erreur s'est produite lors de l'enregistrement des informations d'achat"
 
-#: saas_app/views.py:24
+#: saas_app/views.py:27
 msgid "Something went wrong with the search. Please try again."
 msgstr "Une erreur s'est produite lors de la recherche. Veuillez réessayer."
 
-#: submit_request/forms.py:34
+#: saas_app/views.py:67
+msgid "You have successfully switched to {} role"
+msgstr "Vous êtes passé avec succès à {} rôle"
+
+#: saas_app/views.py:72
+msgid "Something went wrong with switching roles. Please try again."
+msgstr "Quelque chose s'est mal passé avec le changement de rôle. Veuillez réessayer."
+
+#: submit_request/forms.py:33
 msgid "Submit"
 msgstr "Soumettre"
 
-#: submit_request/forms.py:81
+#: submit_request/forms.py:79
 msgid "Save changes"
 msgstr "Sauvegarder les modifications"
 
-#: submit_request/forms.py:84
+#: submit_request/forms.py:82
 msgid "Delete"
 msgstr "Supprimer"
 
@@ -404,7 +412,7 @@ msgstr ""
 "Veuillez approuver, refuser ou demander des informations complémentaires au "
 "demandeur"
 
-#: templates/base.html:75
+#: templates/base.html:76
 msgid "Home"
 msgstr "Page d'accueil"
 
@@ -412,11 +420,23 @@ msgstr "Page d'accueil"
 msgid "Google Accounts"
 msgstr "Comptes Google"
 
-#: templates/base.html:86
+#: templates/base.html:88
+msgid "Switch Roles"
+msgstr "Changer de rôle"
+
+#: templates/base.html:91
+msgid "Requestor"
+msgstr "Demandeur"
+
+#: templates/base.html:93 templates/index.html:50
+msgid "Internal Ops"
+msgstr "Opérations internes"
+
+#: templates/base.html:99
 msgid "Sign Out"
 msgstr "se déconnecter"
 
-#: templates/base.html:90 templates/base.html:91
+#: templates/base.html:102 templates/base.html:103
 msgid "Search"
 msgstr "Recherche"
 
@@ -496,16 +516,16 @@ msgstr "Bienvenue"
 msgid "What do you want to do today?"
 msgstr "Que voulez-vous faire aujourd'hui?"
 
-#: templates/index.html:14
+#: templates/index.html:15
 msgid "Submit a SAAS Request"
 msgstr "Soumettre une demande SAAS"
 
-#: templates/index.html:17 templates/request/saas_request.html:11
+#: templates/index.html:18 templates/request/saas_request.html:11
 #: templates/request/view_request.html:11
 msgid "Software as a Service Request Form"
 msgstr "Logiciel en tant que formulaire de demande de service"
 
-#: templates/index.html:18
+#: templates/index.html:19
 msgid ""
 "Please fill out this form if you would like to request the purchase of an "
 "unclassified software subscription service."
@@ -513,42 +533,38 @@ msgstr ""
 "Veuillez remplir ce formulaire si vous souhaitez demander l'achat d'un "
 "service d'abonnement à des logiciels non classifiés."
 
-#: templates/index.html:19 templates/index.html:30 templates/index.html:41
-#: templates/index.html:52 templates/index.html:63
+#: templates/index.html:20 templates/index.html:31 templates/index.html:43
+#: templates/index.html:55 templates/index.html:67
 msgid "Start"
 msgstr "Commencer"
 
-#: templates/index.html:25 templates/index.html:50 templates/index.html:61
+#: templates/index.html:26 templates/index.html:53 templates/index.html:65
 msgid "View requests"
 msgstr "Afficher les demandes"
 
-#: templates/index.html:28
+#: templates/index.html:29
 msgid "View your submitted requests"
 msgstr "Afficher vos demandes soumises"
 
-#: templates/index.html:29
+#: templates/index.html:30
 msgid "Click here to view all of your submitted SAAS requests."
 msgstr "Cliquez ici pour afficher toutes vos demandes SAAS soumises."
 
-#: templates/index.html:36
+#: templates/index.html:38
 msgid "Manager Approve/Deny"
 msgstr "Le responsable approuve/refuse"
 
-#: templates/index.html:39
+#: templates/index.html:41
 msgid "Manager - Approve/Deny requests"
 msgstr "Gestionnaire - Approuver/Refuser les demandes"
 
-#: templates/index.html:40
+#: templates/index.html:42
 msgid "For manager, click here to approve/deny existing requests."
 msgstr ""
 "Pour le gestionnaire, cliquez ici pour approuver/refuser les demandes "
 "existantes."
 
-#: templates/index.html:47
-msgid "Internal Ops"
-msgstr "Opérations internes"
-
-#: templates/index.html:51
+#: templates/index.html:54
 msgid ""
 "For internal ops, click here to view requests, select S32 approver or record "
 "a purchase."
@@ -556,17 +572,17 @@ msgstr ""
 "Pour les opérations internes, cliquez ici pour afficher les demandes, "
 "sélectionnez l'approbateur S32 ou enregistrezun achat."
 
-#: templates/index.html:62
+#: templates/index.html:66
 msgid "For S32 Approver - click here to approve or deny requests."
 msgstr ""
 "Pour le gestionnaire, cliquez ici pour approuver/refuser les demandes "
 "existantes."
 
-#: templates/index.html:67
+#: templates/index.html:72
 msgid "Sass Procurement App"
 msgstr "Application d'approvisionnement Sass"
 
-#: templates/index.html:68
+#: templates/index.html:73
 msgid ""
 "You are about to use your Google account to login to\n"
 "    the Saas procurement app. "
@@ -612,7 +628,7 @@ msgid "Message:"
 msgstr "Message:"
 
 #: templates/internal_ops/view_request.html:35
-#: templates/internal_ops/view_request.html:78
+#: templates/internal_ops/view_request.html:77
 msgid "Close"
 msgstr "Fermer"
 
@@ -620,23 +636,23 @@ msgstr "Fermer"
 msgid "Send message"
 msgstr "Envoyer le message"
 
-#: templates/internal_ops/view_request.html:58
+#: templates/internal_ops/view_request.html:57
 msgid "Purchase Date:"
 msgstr "Date d'achat:"
 
-#: templates/internal_ops/view_request.html:62
+#: templates/internal_ops/view_request.html:61
 msgid "Purchase Amount:"
 msgstr "Montant des achats:"
 
-#: templates/internal_ops/view_request.html:66
+#: templates/internal_ops/view_request.html:65
 msgid "Purchase Method:"
 msgstr "Méthode d'achat :"
 
-#: templates/internal_ops/view_request.html:70
+#: templates/internal_ops/view_request.html:69
 msgid "Confirmation Number:"
 msgstr "Numéro de confirmation:"
 
-#: templates/internal_ops/view_request.html:74
+#: templates/internal_ops/view_request.html:73
 msgid "Purchase Notes:"
 msgstr "Notes d'achat :"
 
@@ -753,6 +769,9 @@ msgstr "Résultats de recherche"
 msgid "No results found"
 msgstr "Aucun résultat trouvé"
 
+#~ msgid " role"
+#~ msgstr " rôle"
+
 #~ msgid "level_of_subscription"
 #~ msgstr "Niveau d'abonnement"
 
@@ -764,8 +783,3 @@ msgstr "Aucun résultat trouvé"
 
 #~ msgid "Language"
 #~ msgstr "Langue"
-
-#, fuzzy
-#~| msgid "Url"
-#~ msgid "url"
-#~ msgstr "Url"

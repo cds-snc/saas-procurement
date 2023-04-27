@@ -85,13 +85,13 @@
                   {% if testing_feature_flag %}
                     <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-                      Switch Roles 
+                      {% trans "Switch Roles" %} 
                     </a>
                     <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="{% url 'switch_role' %}?role=Requestor">Requestor</a></li>
-                      <li><a class="dropdown-item" href="{% url 'switch_role' %}?role=Manager">Manager</a></li>
-                      <li><a class="dropdown-item" href="{% url 'switch_role' %}?role=InternalOps">Internal Ops</a></li>
-                      <li><a class="dropdown-item" href="{% url 'switch_role' %}?role=S32Approver">S32 Approver</a></li>
+                      <li><a class="dropdown-item" href="{% url 'switch_role' %}?role=Requestor">{% trans "Requestor" %}</a></li>
+                      <li><a class="dropdown-item" href="{% url 'switch_role' %}?role=Manager">{% trans "Manager" %}</a></li>
+                      <li><a class="dropdown-item" href="{% url 'switch_role' %}?role=InternalOps">{% trans "Internal Ops" %}</a></li>
+                      <li><a class="dropdown-item" href="{% url 'switch_role' %}?role=S32Approver">{% trans "S32 Approver" %}</a></li>
                     </ul>
                   </li>
                   {% endif %}
