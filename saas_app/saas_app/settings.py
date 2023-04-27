@@ -26,7 +26,11 @@ PROJECT_ROOT = os.path.normpath(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
+SECRET_KEY = (
+    os.getenv("DJANGO_SECRET_KEY")
+    # use a fake one mostly for testing
+    or "a$b+cdefgh=!i$jklmno!$(@p!qrstuvw^xyz123@4@5-67%89"
+)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -89,6 +93,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "saas_app.context_processors.testing_feature_flag",
             ],
         },
     },
@@ -207,3 +212,9 @@ ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_EMAIL_REQUIRED = True
 
 CRISPY_TEMPLATE_PACK = "bootstrap4"
+
+# Set up a feature flag for testing the app without needing to create many accounts. We want to be able to switch roles so that we can test the app from the perspective of different users.
+TESTING_FEATURE_FLAG = os.environ.get("TESTING_FEATURE_FLAG")
+
+# Set up the session engine
+SESSION_ENGINE = "django.contrib.sessions.backends.cache"
