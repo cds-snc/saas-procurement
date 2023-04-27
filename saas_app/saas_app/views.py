@@ -43,13 +43,14 @@ def init(request):
     if request.method == "GET" and request.user.is_authenticated:
         # if we are testing then we need to add each user to each group for testing purposes
         if os.getenv("TESTING_FEATURE_FLAG"):
-            user_logged_in.connect(create_groups)
+            # user_logged_in.connect(create_groups)
             # Store the role in a session variable if it does not exist
             if request.session["role"] is None:
                 request.session["role"] = "Requestor"
         return render(request, "index.html", {"role": request.session["role"]})
     else:
         # set initially that the role is requestor
+        user_logged_in.connect(create_groups)
         request.session["role"] = "Requestor"
         return render(request, "index.html", {})
 
