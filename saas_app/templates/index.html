@@ -7,9 +7,9 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-{{ role }}
     <h1>{% trans "Welcome" %} {{user}}!</h1>
     <p>{% trans "What do you want to do today?" %}</p></br>
+    {% if role == "Requestor" %}
       <div class="card">
         <div class="card-header">
           {% trans "Submit a SAAS Request" %}
@@ -32,7 +32,7 @@
         </div>
       </div>
       <br>
-    {%if role == "Manager" %}
+    {% elif role == "Manager" %}
     <div class="card">
       <div class="card-header">
         {% trans "Manager Approve/Deny" %}

@@ -56,11 +56,11 @@ social_account=$(python manage.py shell -c "from allauth.socialaccount.models im
 if [ "${social_account}" -eq 0 ]; then
     # get the environment variables and replaces them in the fixtures file for the google social account
     # An extra precaution so that we don't leak the secrets
-    social_app_model=$(jq '.[10].model' -r fixtures/fixtures_initial_data.json)
+    social_app_model=$(jq '.[6].model' -r fixtures/fixtures_initial_data.json)
     if [ "${social_app_model}" = "socialaccount.socialapp" ]; then
         # Make a copy of file temporarily so that we can modify it
         cp fixtures/fixtures_initial_data.json fixtures/original_fixtures_initial_data.json
-        jq '.[10].fields.client_id=env.SOCIAL_APPLICATION_CLIENT_ID | .[10].fields.secret=env.SOCIAL_APPLICATION_SECRET_KEY | .[7].fields.password = env.MANAGER_PASSWORD' fixtures/fixtures_initial_data.json >> tmp.json && mv tmp.json fixtures/fixtures_initial_data.json
+        jq '.[6].fields.client_id=env.SOCIAL_APPLICATION_CLIENT_ID | .[6].fields.secret=env.SOCIAL_APPLICATION_SECRET_KEY' fixtures/fixtures_initial_data.json >> tmp.json && mv tmp.json fixtures/fixtures_initial_data.json
         # Run the loaddata command
         echo "Installing initial database data"
         python manage.py loaddata fixtures/fixtures_initial_data.json

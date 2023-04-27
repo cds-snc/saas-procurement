@@ -38,6 +38,7 @@ def view_request(request, pk):
         saas_request = SaasRequest.objects.get(pk=pk)
         return render(request, "detail.html", {"saas_request": saas_request})
 
+# Function to initialize the application and set the initial role to Requestor
 def init(request):
     if request.method == "GET":
         # if we are testing then we need to add each user to each group for testing purposes
@@ -51,8 +52,13 @@ def init(request):
 # Function to switch to a new role
 def switch_role(request):
     if request.method == "GET":
-        new_role = request.GET.get("role")
-        request.session["role"] = new_role
+        try:
+            # get the new role and set it in the session
+            new_role = request.GET.get("role")
+            request.session["role"] = new_role
+            messages.success(request, _("You have successfully switched to the " + new_role + " role"))
+        except Exception as e:
+            messages.error(request, _("Something went wrong with switching roles. Please try again."))
         return render(request, "index.html", {'role' : request.session["role"]})
 
         
