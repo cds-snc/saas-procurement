@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-27 23:07+0000\n"
+"POT-Creation-Date: 2023-04-28 18:03+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -243,13 +243,15 @@ msgstr ""
 msgid "Something went wrong with the search. Please try again."
 msgstr "Une erreur s'est produite lors de la recherche. Veuillez réessayer."
 
-#: saas_app/views.py:67
-msgid "You have successfully switched to {} role"
-msgstr "Vous êtes passé avec succès à {} rôle"
+#: saas_app/views.py:68
+#, python-format
+msgid "You have successfully switched to %(role)s role"
+msgstr "Vous avez réussi à passer au rôle %(role)s"
 
-#: saas_app/views.py:72
+#: saas_app/views.py:73
 msgid "Something went wrong with switching roles. Please try again."
-msgstr "Quelque chose s'est mal passé avec le changement de rôle. Veuillez réessayer."
+msgstr ""
+"Quelque chose s'est mal passé avec le changement de rôle. Veuillez réessayer."
 
 #: submit_request/forms.py:33
 msgid "Submit"
@@ -768,6 +770,12 @@ msgstr "Résultats de recherche"
 #: templates/search.html:17
 msgid "No results found"
 msgstr "Aucun résultat trouvé"
+
+msgid "InternalOps"
+msgstr "Opérations internes"
+
+msgid "S32Approver"
+msgstr "Approbateur S32"
 
 #~ msgid " role"
 #~ msgstr " rôle"
