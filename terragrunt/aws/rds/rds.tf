@@ -9,7 +9,7 @@ module "rds_cluster" {
   engine         = "aurora-postgresql"
   engine_version = "14.6"
   instances      = var.database_instances_count
-  instance_class = "db.r4.large"
+  instance_class = "db.serverless"
   username       = var.database_username
   password       = var.database_password
 

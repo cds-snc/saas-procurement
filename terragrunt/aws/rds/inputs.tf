@@ -1,7 +1,7 @@
 variable "database_instances_count" {
   description = "The number of db instances to create"
   type        = number
-  default     = 2
+  default     = 1
 }
 
 variable "database_name" {
