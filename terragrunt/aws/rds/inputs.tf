@@ -1,8 +1,30 @@
-# RDS database password
-variable "postgres_password_value" {
-  description = "RDS password"
-  sensitive   = true
+variable "database_instances_count" {
+  description = "The number of db instances to create"
+  type        = number
+  default     = 1
+}
+
+variable "database_name" {
+  description = "The database name of the postgresql database"
   type        = string
+  sensitive   = true
+}
+
+variable "database_username" {
+  description = "The username of the postgresql database"
+  type        = string
+  sensitive   = true
+}
+
+variable "database_password" {
+  description = "The password for hte postgresql database"
+  type        = string
+  sensitive   = true
+}
+
+variable "vpc_private_subnet_ids" {
+  description = "The private subnet ids of the VPC"
+  type        = list(any)
 }
 
 variable "vpc_id" {
@@ -11,6 +33,6 @@ variable "vpc_id" {
 }
 
 variable "ecs_tasks_security_group_id" {
-  description = "Id of the ECS tasks security group"
+  description = "The security group for ecs tasks"
   type        = string
 }

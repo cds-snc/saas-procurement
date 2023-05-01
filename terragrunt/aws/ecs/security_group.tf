@@ -4,10 +4,11 @@ resource "aws_security_group" "ecs_tasks" {
   vpc_id      = var.vpc_id
 
   ingress {
-    protocol    = "tcp"
-    from_port   = 8000
-    to_port     = 8000
-    cidr_blocks = var.vpc_cidr_block
+    from_port       = "0"
+    protocol        = "tcp"
+    security_groups = [var.saas_procurement_load_balancer_sg]
+    self            = "false"
+    to_port         = "65535"
   }
 
   egress {

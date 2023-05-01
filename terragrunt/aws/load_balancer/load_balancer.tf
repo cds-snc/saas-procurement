@@ -8,7 +8,7 @@ resource "aws_lb" "saas_procurement" {
   drop_invalid_header_fields = true
 
   security_groups = [
-    aws_security_group.saas_procurement_load_balancer.id
+    aws_security_group.saas_procurement_load_balancer_sg.id
   ]
 
   subnets = var.vpc_public_subnet_ids
@@ -41,6 +41,7 @@ resource "aws_lb_target_group" "saas_procurement" {
   name                 = "saas-procurement"
   port                 = 8000
   protocol             = "HTTP"
+  protocol_version     = "HTTP1"
   target_type          = "ip"
   deregistration_delay = 30
   vpc_id               = var.vpc_id
