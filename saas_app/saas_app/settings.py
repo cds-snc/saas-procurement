@@ -13,7 +13,6 @@ import os
 import sys
 from pathlib import Path
 from dotenv import load_dotenv
-from socket import gethostname
 
 load_dotenv()
 
@@ -35,13 +34,7 @@ SECRET_KEY = (
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# ALLOWED_HOSTS = ["*"]
-ALLOWED_HOSTS = [
-    "0.0.0.0",
-    "127.0.0.1",
-    "localhost",
-    gethostname(),
-]
+ALLOWED_HOSTS = ["*"]
 
 CSRF_TRUSTED_ORIGINS = ["https://saas.cdssandbox.xyz"]
 

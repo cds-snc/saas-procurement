@@ -62,9 +62,11 @@ def switch_role(request):
             # get the new role and set it in the session
             new_role = request.GET.get("role")
             request.session["role"] = new_role
+            translated_role = _(new_role)
             messages.success(
                 request,
-                _("You have successfully switched to the " + new_role + " role"),
+                _("You have successfully switched to %(role)s role")
+                % {"role": translated_role},
             )
         except Exception:
             messages.error(
