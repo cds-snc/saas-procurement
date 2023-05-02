@@ -10,5 +10,5 @@ output "lb_target_group_arn" {
 
 output "saas_procurement_load_balancer_sg" {
   description = "Security group of the Load balancer"
-  value       = aws_security_group.saas_procurement_load_balancer_sg
+  value       = aws_security_group.saas_procurement_load_balancer_sg.id
 }

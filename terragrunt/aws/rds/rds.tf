@@ -12,6 +12,10 @@ module "rds_cluster" {
   instance_class = "db.serverless"
   username       = var.database_username
   password       = var.database_password
+  allow_major_version_upgrade = true
+
+  serverless_min_capacity = 1.0
+  serverless_max_capacity = 2.0
 
   backup_retention_period = 14
   preferred_backup_window = "02:00-04:00"

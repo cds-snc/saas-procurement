@@ -1,6 +1,6 @@
 resource "aws_lb" "saas_procurement" {
 
-  name               = "saas-procurement-alb"
+  name               = "saas-procurement-lb"
   internal           = false #tfsec:ignore:AWS005
   load_balancer_type = "application"
 
