@@ -6,7 +6,7 @@ resource "aws_security_group" "ecs_tasks" {
   ingress {
     from_port       = "0"
     protocol        = "tcp"
-    security_groups = [var.saas_procurement_load_balancer_sg]
+    security_groups = ["${var.saas_procurement_load_balancer_sg}"] 
     self            = "false"
     to_port         = "65535"
   }

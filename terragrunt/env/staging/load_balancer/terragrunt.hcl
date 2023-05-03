@@ -12,7 +12,8 @@ dependency "hosted_zone" {
   mock_outputs_allowed_terraform_commands = ["init", "fmt", "validate", "plan", "show"]
   mock_outputs_merge_with_state           = true
   mock_outputs = {
-    hosted_zone_id = "1234567890"
+    hosted_zone_id   = "1234567890"
+    hosted_zone_name = ""
   }
 }
 
@@ -31,6 +32,7 @@ dependency "network" {
 
 inputs = {
   hosted_zone_id     	 = dependency.hosted_zone.outputs.hosted_zone_id
+  hosted_zone_name     	 = dependency.hosted_zone.outputs.hosted_zone_name
   vpc_id	     	 = dependency.network.outputs.vpc_id
   vpc_private_subnet_ids = dependency.network.outputs.vpc_private_subnet_ids
   vpc_public_subnet_ids  = dependency.network.outputs.vpc_public_subnet_ids

@@ -25,7 +25,7 @@ data "template_file" "saas_procurement" {
 
 resource "aws_ecs_task_definition" "saas_procurement" {
   family                   = "saas-procurement-task"
-  execution_role_arn       = var.iam_role_saas_procurement_arn
+  execution_role_arn       = var.iam_role_saas_procurement_ecs_arn
   network_mode             = "awsvpc"
   requires_compatibilities = ["FARGATE"]
   cpu                      = var.fargate_cpu
@@ -35,7 +35,7 @@ resource "aws_ecs_task_definition" "saas_procurement" {
 
   runtime_platform {
     operating_system_family = "LINUX"
-    cpu_architecture        = "ARM64"
+    cpu_architecture        = "X86_64"
   }
 }
 

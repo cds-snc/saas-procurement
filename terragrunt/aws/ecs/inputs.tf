@@ -27,16 +27,16 @@ variable "ecr_repository_url" {
 variable "fargate_cpu" {
   description = "Fargate CPU units"
   type        = number
-  default     = 256
+  default     = 512
 }
 
 variable "fargate_memory" {
   description = "Fargate Memory units"
   type        = number
-  default     = 512
+  default     = 1024 
 }
 
-variable "iam_role_saas_procurement_arn" {
+variable "iam_role_saas_procurement_ecs_arn" {
   description = "Arn of the IAM saas procurement role"
   type        = string
 }

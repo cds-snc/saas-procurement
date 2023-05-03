@@ -10,15 +10,17 @@ data "aws_iam_policy_document" "saas_procurement" {
 }
 
 data "aws_iam_policy_document" "saas_procurement_ssm" {
+
   statement {
-    effect = "Allow"
-    actions = [
-      "ssm:GetParameters",
-    ]
-    resources = [
-      var.postgres_password_arn
-    ]
-  }
+      sid      = "AllowSSMAccess"
+      effect   = "Allow"
+      actions  = [
+		"ssm:GetParametersByPath",
+		"ssm:GetParameters",
+		"ssm:GetParameter"
+	    ]
+      resources = ["arn:aws:ssm:*:*:parameter/*"]
+   }
 }
 
 resource "aws_iam_policy" "saas_procurement_ssm" {
@@ -32,7 +34,7 @@ resource "aws_iam_policy" "saas_procurement_ssm" {
   }
 }
 
-resource "aws_iam_role" "saas_procurement" {
+resource "aws_iam_role" "saas_procurement_ecs" {
   name = "saas_procurement-ecs-role"
 
   assume_role_policy = data.aws_iam_policy_document.saas_procurement.json
@@ -53,7 +55,12 @@ resource "aws_iam_role" "saas_procurement_task" {
 }
 
 resource "aws_iam_role_policy_attachment" "ecs_task_execution" {
-  role       = aws_iam_role.saas_procurement.name
+  role       = aws_iam_role.saas_procurement_ecs.name
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
+}
+
+resource "aws_iam_role_policy_attachment" "saas_procurement_task" {
+  role       = aws_iam_role.saas_procurement_task.name
   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
 }
 
