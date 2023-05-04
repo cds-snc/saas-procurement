@@ -8,10 +8,10 @@ resource "aws_security_group" "saas_procurement_rds" {
   vpc_id      = var.vpc_id
 
   ingress {
-    protocol        = "tcp"
-    from_port       = 5432
-    to_port         = 5432
-    cidr_blocks     = ["0.0.0.0/0"] #tfsec:ignore:AWS009
+    protocol    = "tcp"
+    from_port   = 5432
+    to_port     = 5432
+    cidr_blocks = ["0.0.0.0/0"] #tfsec:ignore:AWS009
   }
 
   egress {

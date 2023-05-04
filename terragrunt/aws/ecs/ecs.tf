@@ -25,7 +25,7 @@ data "template_file" "saas_procurement" {
 
 resource "aws_ecs_task_definition" "saas_procurement" {
   family                   = "saas-procurement-task"
-  execution_role_arn       = var.iam_role_saas_procurement_ecs_arn
+  execution_role_arn       = var.iam_role_saas_procurement_task_arn
   network_mode             = "awsvpc"
   requires_compatibilities = ["FARGATE"]
   cpu                      = var.fargate_cpu

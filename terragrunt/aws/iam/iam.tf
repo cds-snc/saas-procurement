@@ -12,15 +12,15 @@ data "aws_iam_policy_document" "saas_procurement" {
 data "aws_iam_policy_document" "saas_procurement_ssm" {
 
   statement {
-      sid      = "AllowSSMAccess"
-      effect   = "Allow"
-      actions  = [
-		"ssm:GetParametersByPath",
-		"ssm:GetParameters",
-		"ssm:GetParameter"
-	    ]
-      resources = ["arn:aws:ssm:*:*:parameter/*"]
-   }
+    sid    = "AllowSSMAccess"
+    effect = "Allow"
+    actions = [
+      "ssm:GetParametersByPath",
+      "ssm:GetParameters",
+      "ssm:GetParameter"
+    ]
+    resources = ["arn:aws:ssm:*:*:parameter/*"]
+  }
 }
 
 resource "aws_iam_policy" "saas_procurement_ssm" {

@@ -33,12 +33,7 @@ variable "fargate_cpu" {
 variable "fargate_memory" {
   description = "Fargate Memory units"
   type        = number
-  default     = 1024 
-}
-
-variable "iam_role_saas_procurement_ecs_arn" {
-  description = "Arn of the IAM saas procurement role"
-  type        = string
+  default     = 1024
 }
 
 variable "iam_role_saas_procurement_task_arn" {

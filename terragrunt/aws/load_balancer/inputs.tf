@@ -5,7 +5,7 @@ variable "hosted_zone_id" {
 
 variable "hosted_zone_name" {
   description = "Route53 hosted zone ID that will hold our DNS records"
-  type 	      = string
+  type        = string
 }
 
 variable "vpc_id" {
