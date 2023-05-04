@@ -1,4 +1,4 @@
-variable "postgres_password_arn" {
-  description = "The Arn of the postgres DB password ssm parameter"
+variable "saas_app_config_arn" {
+  description = "The Arn of saas app config ssm parameter"
   type        = string
 }

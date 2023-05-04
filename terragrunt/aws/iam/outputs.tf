@@ -1,6 +1,6 @@
-output "iam_role_saas_procurement_arn" {
+output "iam_role_saas_procurement_ecs_arn" {
   description = "Arn of the Saas procurement role"
-  value       = aws_iam_role.saas_procurement.arn
+  value       = aws_iam_role.saas_procurement_ecs.arn
 }
 
 output "iam_role_saas_procurement_task_arn" {

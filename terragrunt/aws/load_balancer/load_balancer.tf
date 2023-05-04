@@ -1,6 +1,6 @@
 resource "aws_lb" "saas_procurement" {
 
-  name               = "saas-procurement-alb"
+  name               = "saas-procurement-lb"
   internal           = false #tfsec:ignore:AWS005
   load_balancer_type = "application"
 
@@ -28,7 +28,7 @@ resource "aws_lb_listener" "saas_procurement_listener" {
   load_balancer_arn = aws_lb.saas_procurement.arn
   port              = "443"
   protocol          = "HTTPS"
-  ssl_policy        = "ELBSecurityPolicy-FS-1-2-Res-2020-10"
+  ssl_policy        = "ELBSecurityPolicy-TLS13-1-2-2021-06"
   certificate_arn   = aws_acm_certificate.saas_procurement.arn
 
   default_action {

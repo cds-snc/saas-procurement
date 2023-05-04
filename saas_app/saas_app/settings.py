@@ -190,9 +190,9 @@ if "test" in sys.argv:
 
 
 if os.environ.get("ENVIRONMENT") == "dev":
-    SITE_ID = 9  # the site id for the local database
+    SITE_ID = 9
 else:
-    SITE_ID = 11
+    SITE_ID = 13
     ACCOUNT_DEFAULT_HTTP_PROTOCOL = "https"
 
 
@@ -210,4 +210,4 @@ CRISPY_TEMPLATE_PACK = "bootstrap4"
 TESTING_FEATURE_FLAG = os.environ.get("TESTING_FEATURE_FLAG")
 
 # Set up the session engine
-SESSION_ENGINE = "django.contrib.sessions.backends.cache"
+SESSION_ENGINE = "django.contrib.sessions.backends.db"

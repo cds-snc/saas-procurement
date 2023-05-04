@@ -12,7 +12,6 @@ dependency "iam" {
   mock_outputs_allowed_terraform_commands = ["init", "fmt", "validate", "plan", "show"]
   mock_outputs_merge_with_state           = true
   mock_outputs = {
-    iam_role_saas_procurement_arn      = ""
     iam_role_saas_procurement_task_arn = ""
     ecs_task_policy_attachment         = ""
   }
@@ -52,7 +51,6 @@ dependency "load_balancer" {
 }
 
 inputs = {
-  iam_role_saas_procurement_arn      = dependency.iam.outputs.iam_role_saas_procurement_arn
   iam_role_saas_procurement_task_arn = dependency.iam.outputs.iam_role_saas_procurement_task_arn
   ecs_task_policy_attachment         = dependency.iam.outputs.ecs_task_policy_attachment
   vpc_private_subnet_ids 	     = dependency.network.outputs.vpc_private_subnet_ids

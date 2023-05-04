@@ -3,6 +3,11 @@ variable "hosted_zone_id" {
   type        = string
 }
 
+variable "hosted_zone_name" {
+  description = "Route53 hosted zone ID that will hold our DNS records"
+  type        = string
+}
+
 variable "vpc_id" {
   description = "The VPC id of the url shortener"
   type        = string

@@ -8,6 +8,7 @@ skip-check:
   - CKV_AWS_91 # LB: Access logging on ELB :TO DO
   - CKV_AWS_23 # LB: False positive, the security group already has a description
   - CKV2_AWS_28 # LB: Secure with WAF since public facing: TO DO 
+  - CKV_AWS_103 # LB: False negative, the load balancer is using TLS 1.2 
   - CKV_AWS_136 # ECR encryption with default KMS key is acceptable
   - CKV_AWS_158 # CloudWatch log group encryption with default KMS key is acceptable
   - CKV_AWS_275 # IAM: Administrator policy is allowed
