@@ -190,9 +190,9 @@ if "test" in sys.argv:
 
 
 if os.environ.get("ENVIRONMENT") == "dev":
-    SITE_ID = 9 
+    SITE_ID = 9
 else:
-    SITE_ID = 13 
+    SITE_ID = 13
     ACCOUNT_DEFAULT_HTTP_PROTOCOL = "https"
 
 
