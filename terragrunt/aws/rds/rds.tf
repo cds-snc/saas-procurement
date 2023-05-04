@@ -1,4 +1,4 @@
-#
+
 # RDS Postgresql database for the Saas procurement app 
 #
 module "rds_cluster" {
@@ -12,6 +12,8 @@ module "rds_cluster" {
   instance_class = "db.serverless"
   username       = var.database_username
   password       = var.database_password
+
+  vpc_security_group_ids = [aws_security_group.saas_procurement_rds.id]
 
   serverless_min_capacity = 1.0
   serverless_max_capacity = 2.0
