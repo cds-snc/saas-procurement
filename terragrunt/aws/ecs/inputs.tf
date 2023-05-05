@@ -61,3 +61,8 @@ variable "saas_procurement_load_balancer_sg" {
   description = "Security group of the Load balancer"
   type        = string
 }
+
+variable "proxy_security_group_id" {
+  description = "The security group of the RDS proxy"
+  type 	      = string
+}
