@@ -1,3 +1,7 @@
+###
+# Security groups for ECS
+###
+
 resource "aws_security_group" "ecs_tasks" {
   name        = "saas-procurement-security-group"
   description = "Allow inbound and outbout traffic for Saas procurement app"
@@ -25,7 +29,7 @@ resource "aws_security_group" "ecs_tasks" {
 
 ###
 # Traffic to the DB should only come from ECS
-#
+###
 
 resource "aws_security_group_rule" "ecs_egress_database" {
   description              = "Allow ECS to talk to the RDS cluster"
