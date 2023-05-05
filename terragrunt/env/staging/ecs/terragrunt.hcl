@@ -3,7 +3,7 @@ terraform {
 }
 
 dependencies {
-  paths = ["../iam","../network","../ecr", "../load_balancer"]
+  paths = ["../iam","../network","../ecr", "../load_balancer", "../rds"]
 }
 
 dependency "iam" {
@@ -50,6 +50,16 @@ dependency "load_balancer" {
   }
 }
 
+dependency "rds" {
+  config_path = "../rds"
+
+  mock_outputs_allowed_terraform_commands = ["init", "fmt", "validate", "plan", "show"]
+  mock_outputs_merge_with_state           = true
+  mock_outputs = {
+    proxy_security_group_id = ""
+  }
+}
+
 inputs = {
   iam_role_saas_procurement_task_arn = dependency.iam.outputs.iam_role_saas_procurement_task_arn
   ecs_task_policy_attachment         = dependency.iam.outputs.ecs_task_policy_attachment
@@ -60,6 +70,7 @@ inputs = {
   lb_listener            	     = dependency.load_balancer.outputs.lb_listener
   lb_target_group_arn    	     = dependency.load_balancer.outputs.lb_target_group_arn
   saas_procurement_load_balancer_sg  = dependency.load_balancer.outputs.saas_procurement_load_balancer_sg
+  proxy_security_group_id	     = dependency.rds.outputs.proxy_security_group_id
 } 
 
 include {

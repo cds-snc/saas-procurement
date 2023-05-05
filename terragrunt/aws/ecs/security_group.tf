@@ -47,6 +47,6 @@ resource "aws_security_group_rule" "database_ingress_ecs" {
   from_port                = 5432
   to_port                  = 5432
   protocol                 = "TCP"
-  source_security_group_id = aws_security_group.ecs_tasks.id 
+  source_security_group_id = aws_security_group.ecs_tasks.id
   security_group_id        = var.proxy_security_group_id
 }
