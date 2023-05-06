@@ -1,5 +1,4 @@
 from notifications_python_client.notifications import NotificationsAPIClient
-from django.contrib.sites.models import Site
 from django.utils.translation import gettext as _
 import os
 
@@ -37,5 +36,4 @@ def send_email(email_address, template_id, details):
 
 # Get the current site domain
 def get_current_site(request):
-    current_site = Site.objects.get_current()
-    return current_site.domain
+    return request.build_absolute_uri("/")
