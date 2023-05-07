@@ -36,8 +36,8 @@ jobs:
           - module: network 
           - module: load_balancer 
           - module: ecr 
-          - module: ecs 
           - module: rds 
+          - module: ecs 
 
     runs-on: ubuntu-latest
     steps:

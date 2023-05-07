@@ -66,11 +66,11 @@ jobs:
       - name: Apply ecr 
         working-directory: terragrunt/env/staging/ecr
         run: terragrunt apply --terragrunt-non-interactive -auto-approve
+
+      - name: Apply rds
+        working-directory: terragrunt/env/staging/rds
+        run: terragrunt apply --terragrunt-non-interactive -auto-approve
       
       - name: Apply ecs 
         working-directory: terragrunt/env/staging/ecs
-        run: terragrunt apply --terragrunt-non-interactive -auto-approve
-      
-      - name: Apply rds 
-        working-directory: terragrunt/env/staging/rds
         run: terragrunt apply --terragrunt-non-interactive -auto-approve
