@@ -9,8 +9,8 @@ class UtilsTestCase(TestCase):
     # Test that the get_current_site function returns the correct domain
     def test_get_current_site(self):
         request = MagicMock()
-        request.get_host.return_value = "example.com"
-        self.assertEqual(utils.get_current_site(request), "example.com")
+        request.build_absolute_uri.return_value = "http://example.com/"
+        self.assertEqual(utils.get_current_site(request), "http://example.com/")
 
     # Test that the notify client is initialized and is called once
     @patch("common.util.utils.NotificationsAPIClient")
