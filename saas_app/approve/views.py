@@ -2,7 +2,11 @@ from django.shortcuts import render
 import django.contrib.messages as messages
 import os
 from submit_request.models import SaasRequest, Users
-from .forms import ViewRequestForm
+from .forms import (
+    ViewRequestForm,
+    ViewManagerOldRequestForm,
+    ViewS32ApproverOldRequestForm,
+)
 import datetime
 import common.util.utils as utils
 from django.utils.translation import gettext as _
@@ -85,11 +89,34 @@ def view_all_requests(request):
     )
 
 
+def view_all_prev_requests(request):
+    # get all the objects that need to be approved
+    try:
+        current_user = Users.objects.get(user=request.user)
+    except Exception:
+        current_user = None
+
+    all_prev_requests = SaasRequest.objects.filter(manager=current_user).exclude(
+        date_manager_reviewed=None
+    )
+    # render the requests in a table
+    return render(
+        request,
+        "approve/view_all_prev_requests.html",
+        {
+            "all_approval_needed_requests": all_prev_requests,
+        },
+    )
+
+
 def view_request(request, pk):
     if request.method == "GET":
         # search for the request with the given primary key
         saas_request = SaasRequest.objects.get(pk=pk)
-        form = ViewRequestForm(instance=saas_request)
+        if saas_request.date_manager_reviewed is not None:
+            form = ViewManagerOldRequestForm(instance=saas_request)
+        else:
+            form = ViewRequestForm(instance=saas_request)
         return render(request, "approve/view_request.html", {"form": form})
     elif request.method == "POST":
         # if the save button was clicked
@@ -155,9 +182,6 @@ def view_all_requests_s32_approver(request):
         s_32_review_date=None,
         date_sent_to_s_32_approver__isnull=False,
     )
-    all_old_requests = SaasRequest.objects.filter(approved_by=current_user).exclude(
-        s_32_review_date=None
-    )
 
     # render the requests in a table
     return render(
@@ -165,6 +189,26 @@ def view_all_requests_s32_approver(request):
         "approve/view_all_requests.html",
         {
             "user_approval_needed_requests": s32_approval_needed_requests,
+        },
+    )
+
+
+def view_all_prev_requests_s32_approver(request):
+    # get all the objects that need to be approved
+    try:
+        current_user = Users.objects.get(user=request.user)
+    except Exception:
+        current_user = None
+
+    all_old_requests = SaasRequest.objects.filter(approved_by=current_user).exclude(
+        s_32_review_date=None
+    )
+
+    # render the requests in a table
+    return render(
+        request,
+        "approve/view_all_prev_requests.html",
+        {
             "all_approval_needed_requests": all_old_requests,
         },
     )
@@ -174,7 +218,10 @@ def view_request_s32_approver(request, pk):
     if request.method == "GET":
         # search for the request with the given primary key
         saas_request = SaasRequest.objects.get(pk=pk)
-        form = ViewRequestForm(instance=saas_request)
+        if saas_request.s_32_review_date is not None:
+            form = ViewS32ApproverOldRequestForm(instance=saas_request)
+        else:
+            form = ViewRequestForm(instance=saas_request)
         return render(request, "approve/view_request.html", {"form": form})
     elif request.method == "POST":
         # if the save button was clicked

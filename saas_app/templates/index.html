@@ -44,17 +44,39 @@
       </div>
     </div>
     <br>
+     <div class="card">
+        <div class="card-header">
+          {% trans "Manager view previous requests" %}
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{% trans "View your previously reviewed requests" %}</h5>
+          <p class="card-text">{% trans "Click here to view all requests that you have previously reviewed." %}</p>
+          <a href="approve/view_prev" class="btn btn-primary">{% trans "Start" %}</a>
+        </div>
+      </div>
+    <br>
     {% elif role == "InternalOps" %}
      <div class="card">
       <div class="card-header">
-        {% trans "Internal Ops" %}
+        {% trans "Internal Ops action required" %}
       </div>
       <div class="card-body">
-        <h5 class="card-title">{% trans "View requests" %}</h5>
-        <p class="card-text">{% trans "For internal ops, click here to view requests, select S32 approver or record a purchase." %}</p>
+        <h5 class="card-title">{% trans "View requests that need your action" %}</h5>
+        <p class="card-text">{% trans "For internal ops, click here to view requests that require action, such as selecting S32 approver or recording a purchase." %}</p>
         <a href="internal_ops/view" class="btn btn-primary">{% trans "Start" %}</a>
       </div>
     </div>
+    <br>
+    <div class="card">
+        <div class="card-header">
+          {% trans "Internal Ops view previous requests" %}
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{% trans "View your previously reviewed requests" %}</h5>
+          <p class="card-text">{% trans "Click here to view all requests that you have previously reviewed." %}</p>
+          <a href="internal_ops/view_prev" class="btn btn-primary">{% trans "Start" %}</a>
+        </div>
+      </div>
     <br>
     {% elif role == "S32Approver" %}
     <div class="card">
@@ -62,11 +84,22 @@
         {% trans "S32 Approver" %}
       </div>
       <div class="card-body">
-        <h5 class="card-title">{% trans "View requests" %}</h5>
+        <h5 class="card-title">{% trans "Approve/Deny requests" %}</h5>
         <p class="card-text">{% trans "For S32 Approver - click here to approve or deny requests." %}</p>
         <a href="approve/view_s32" class="btn btn-primary">{% trans "Start" %}</a>
       </div>
     </div>
+    <br>
+    <div class="card">
+      <div class="card-header">
+        {% trans "S32 Approver view previous requests" %}
+      </div>
+      <div class="card-body">
+      <h5 class="card-title">{% trans "View your previously reviewed requests" %}</h5>
+        <p class="card-text">{% trans "Click here to view all requests that you have previously reviewed." %}</p>
+        <a href="approve/view_s32_prev" class="btn btn-primary">{% trans "Start" %}</a>
+      </div>
+      </div>
     {% endif %}
 {% else %}
     <h1>{% trans "Sass Procurement App" %}</h1>

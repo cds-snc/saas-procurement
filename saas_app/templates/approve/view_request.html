@@ -9,7 +9,6 @@
 
 {% block content %}
 <h1>{% trans "Software as a Service Request Submission" %}</h1>
-<p>{% blocktrans %} Please approve, deny or request further information from the requestor {% endblocktrans %}</p>
 <form method="post" novalidate>
         {% csrf_token %}
         {% crispy form %}

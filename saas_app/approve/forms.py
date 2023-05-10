@@ -57,7 +57,141 @@ class ViewRequestForm(ModelForm):
             ),
             Button(
                 "cancel",
-                "Cancel",
+                _("Cancel"),
+                css_id="submit",
+                css_class="btn btn-primary",
+                onclick="history.back()",
+            ),
+        )
+
+
+class ViewManagerOldRequestForm(ModelForm):
+    # Form is generated from the database fields.
+    class Meta:
+        model = SaasRequest
+        fields = [
+            "name",
+            "url",
+            "description",
+            "cost",
+            "level_of_subscription",
+            "number_of_users",
+            "names_of_users",
+            "account_administrator",
+            "backup_administrator",
+            "manager",
+            "submitted_by",
+            "status",
+            "date_manager_reviewed",
+            "manager_approved",
+            "manager_denied",
+        ]
+        labels = {
+            "status": _("Current status"),
+        }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_id = "view_request_form"
+        self.helper.form_class = "blueForms"
+        self.helper.layout = Layout(
+            Field("name", disabled=True),
+            Field("url", disabled=True),
+            Field("description", disabled=True),
+            Field("cost", disabled=True),
+            Field("level_of_subscription", disabled=True),
+            Field("number_of_users", disabled=True),
+            Field("names_of_users", disabled=True),
+            Field("account_administrator", disabled=True),
+            Field("backup_administrator", disabled=True),
+            Field(
+                "manager",
+                disabled=True,
+                style="color:black; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
+            ),
+            Field(
+                "submitted_by",
+                disabled=True,
+                style="color:black; background-color:#e9ecef; opacity:1; font-weight: inherit; font-color: inherit;",
+            ),
+            Field("status", disabled=True),
+            Field("date_manager_reviewed", disabled=True),
+            Field("manager_approved", disabled=True),
+            Field("manager_denied", disabled=True),
+            Button(
+                "cancel",
+                _("Cancel"),
+                css_id="submit",
+                css_class="btn btn-primary",
+                onclick="history.back()",
+            ),
+        )
+
+
+class ViewS32ApproverOldRequestForm(ModelForm):
+    # Form is generated from the database fields.
+    class Meta:
+        model = SaasRequest
+        fields = [
+            "name",
+            "url",
+            "description",
+            "cost",
+            "level_of_subscription",
+            "number_of_users",
+            "names_of_users",
+            "account_administrator",
+            "backup_administrator",
+            "manager",
+            "submitted_by",
+            "status",
+            "date_manager_reviewed",
+            "manager_approved",
+            "manager_denied",
+            "date_sent_to_s_32_approver",
+            "s_32_review_date",
+            "s_32_approved",
+        ]
+        labels = {
+            "status": _("Current status"),
+        }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_id = "view_request_form"
+        self.helper.form_class = "blueForms"
+        self.helper.layout = Layout(
+            Field("name", disabled=True),
+            Field("url", disabled=True),
+            Field("description", disabled=True),
+            Field("cost", disabled=True),
+            Field("level_of_subscription", disabled=True),
+            Field("number_of_users", disabled=True),
+            Field("names_of_users", disabled=True),
+            Field("account_administrator", disabled=True),
+            Field("backup_administrator", disabled=True),
+            Field(
+                "manager",
+                disabled=True,
+                style="color:black; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
+            ),
+            Field(
+                "submitted_by",
+                disabled=True,
+                style="color:black; background-color:#e9ecef; opacity:1; font-weight: inherit; font-color: inherit;",
+            ),
+            Field("status", disabled=True),
+            Field("date_manager_reviewed", disabled=True),
+            Field("manager_approved", disabled=True),
+            Field("manager_denied", disabled=True),
+            Field("date_sent_to_s_32_approver", disabled=True),
+            Field("s_32_review_date", disabled=True),
+            Field("s_32_approved", disabled=True),
+            Button(
+                "cancel",
+                _("Cancel"),
                 css_id="submit",
                 css_class="btn btn-primary",
                 onclick="history.back()",

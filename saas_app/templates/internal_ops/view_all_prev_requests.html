@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% load socialaccount %}
+{% load i18n %}
+{% load static %}
+
+{% block head_title %}{% trans "Saas Procurement App" %}{% endblock %}
+
+{% block content %}
+  <h1>{% trans "SAAS requests" %}</h1>
+{% if s32_approval_waiting_requests %}
+ <h4>{% trans "Requests that have been sent to the S32 approver and are awaiting approval" %}</h4>
+  <table class="table table-hover table-bordered">
+    <thead>
+        <tr>
+          <th scope="col">{% trans "Name" %}</th>
+          <th scope="col">{% trans "Description" %}</th>
+          <th scope="col">{% trans "Url" %}</th>
+          <th scope="col">{% trans "Cost" %}</th>
+          <th scope="col">{% trans "Date Submitted" %}</th>
+          <th scope="col">{% trans "Manager" %}</th>
+          <th scope="col">{% trans "Status" %}</th>
+          <tbody class="table-group-divider"></tbody>
+        </tr>
+      </thead>
+      <tbody>
+        {% for saas_request in s32_approval_waiting_requests %}
+            <tr>
+            <td><a href="{{saas_request.pk}}">{{ saas_request.name}} </a></td>
+            <td>{{ saas_request.description }}</td>
+            <td>{{ saas_request.url }}</td>
+            <td>{{ saas_request.cost }}</td>
+            <td>{{ saas_request.date_submitted }}</td>
+            <td>{{ saas_request.manager }}</td>
+            <td>{{ saas_request.status }}</td>
+        </tr>
+        {% endfor %}
+      </tbody> 
+</table>
+{% else %}
+  <h4>{% trans "You have no requests that are awaiting to be approved by the S32 approver" %}</h4><br>
+{% endif %}
+{% if purchased_requests %}
+ <h4>{% trans "Requests that have already been purchased" %}</h4>
+  <table class="table table-hover table-bordered">
+    <thead>
+        <tr>
+          <th scope="col">{% trans "Name" %}</th>
+          <th scope="col">{% trans "Description" %}</th>
+          <th scope="col">{% trans "Url" %}</th>
+          <th scope="col">{% trans "Cost" %}</th>
+          <th scope="col">{% trans "Date Submitted" %}</th>
+          <th scope="col">{% trans "Manager" %}</th>
+          <th scope="col">{% trans "Status" %}</th>
+          <tbody class="table-group-divider"></tbody>
+        </tr>
+      </thead>
+      <tbody>
+        {% for saas_request in purchased_requests %}
+            <tr>
+            <td><a href="{{saas_request.pk}}">{{ saas_request.name}} </a></td>
+            <td>{{ saas_request.description }}</td>
+            <td>{{ saas_request.url }}</td>
+            <td>{{ saas_request.cost }}</td>
+            <td>{{ saas_request.date_submitted }}</td>
+            <td>{{ saas_request.manager }}</td>
+            <td>{{ saas_request.status }}</td>
+        </tr>
+        {% endfor %}
+      </tbody> 
+</table>
+{% else %}
+  <h4>{% trans "You have no requests that have been purchased" %}</h4><br>
+{% endif %}
+    <button type="button" class="btn btn-primary" name="home" onclick="location.href='{% url 'home' %}'">{% trans "Cancel" %}</button>
+{% endblock %}

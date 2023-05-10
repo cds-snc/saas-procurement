@@ -7,29 +7,26 @@
 
 {% block content %}
     <h1>{% trans "Submitted Requests" %}</h1>
-    <p>{% trans "This is the list of requests that you have submitted. Click on the request name to view more information." %}</p>
-    <p>{% trans "Note: You can only modify requests that have not yet been reviewed." %}</p><br>
-    <table class="table table-hover table-bordered">
-        <thead>
-            <tr>
-              <th scope="col">{% trans "Name" %}</th>
-              <th scope="col">{% trans "Description" %}</th>
-              <th scope="col">{% trans "Url" %}</th>
-              <th scope="col">{% trans "Cost" %}</th>
-              <th scope="col">{% trans "Date Submitted" %}</th>
-              <th scope="col">{% trans "Status" %}</th>
+      <p>{% trans "This is the list of requests that you have submitted. Click on the request name to view more information." %}</p>
+      <p>{% trans "Note: You can only modify requests that have not yet been reviewed." %}</p><br>
+    {% if submitted_requests %}
+        <h4>{% trans "Active requests that you can still modify" %}</h4>
+        <table class="table table-hover table-bordered">
+          <thead>
+              <tr>
+                <th scope="col">{% trans "Name" %}</th>
+                <th scope="col">{% trans "Description" %}</th>
+                <th scope="col">{% trans "Url" %}</th>
+                <th scope="col">{% trans "Cost" %}</th>
+                <th scope="col">{% trans "Date Submitted" %}</th>
+                <th scope="col">{% trans "Status" %}</th>
               <tbody class="table-group-divider"></tbody>
-            </tr>
-          </thead>
-          <tbody>
-            {% for request in submitted_requests %}
-            <tr>
-                {% get_current_language as CURRENT_LANGUAGE %}
-                {% if request.status == "Request submitted" or request.status == "Demande soumise" %}
-                	<td><a href="{{request.pk}}">{{ request.name}} </a></td>
-                {% else %}
-                	<td>{{ request.name}}</td>
-                {% endif %}
+              </tr>
+            </thead>
+            <tbody>
+              {% for request in submitted_requests %}
+              <tr>
+                <td><a href="{{request.pk}}">{{ request.name}} </a></td>
                 <td>{{ request.description }}</td>
                 <td>{{ request.url }}</td>
                 <td>{{ request.cost }}</td>
@@ -39,5 +36,38 @@
             {% endfor %}
           </tbody>
     </table>
+    {% endif %}
+    <br>
+    {% if prev_submitted_requests %}
+      <h4>{% trans "Previous requests" %}</h4>
+        <table class="table table-hover table-bordered">
+          <thead>
+              <tr>
+                <th scope="col">{% trans "Name" %}</th>
+                <th scope="col">{% trans "Description" %}</th>
+                <th scope="col">{% trans "Url" %}</th>
+                <th scope="col">{% trans "Cost" %}</th>
+                <th scope="col">{% trans "Date Submitted" %}</th>
+                <th scope="col">{% trans "Status" %}</th>
+              <tbody class="table-group-divider"></tbody>
+              </tr>
+            </thead>
+            <tbody>
+              {% for request in prev_submitted_requests %}
+              <tr>
+                <td><a href="{{request.pk}}">{{ request.name}} </a></td>
+                <td>{{ request.description }}</td>
+                <td>{{ request.url }}</td>
+                <td>{{ request.cost }}</td>
+                <td>{{ request.date_submitted }}</td>
+                <td>{{ request.status }}</td>
+            </tr>
+              {% endfor %}
+          </tbody>
+      </table>
+    {% endif %}
+    {% if not submitted_requests and not prev_submitted_requests %}
+      <p>{% trans "You have no submitted requests." %}</p>
+    {% endif %}
     <button type="button" class="btn btn-primary" name="home" onclick="location.href='{% url 'home' %}'">{% trans "Cancel" %}</button>
 {% endblock %}
