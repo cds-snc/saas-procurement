@@ -3,7 +3,12 @@ from django.utils.translation import get_language, gettext as _
 from django.utils import timezone
 from submit_request.models import SaasRequest
 from user.models import Users
-from .forms import ViewS32RequestForm
+from .forms import (
+    ViewS32RequestForm,
+    ViewOldPurchasedRequests,
+    ViewOlS32ApprovedRequests,
+    ViewPurchaseRequiredForm,
+)
 import os
 import django.contrib.messages as messages
 import common.util.utils as utils
@@ -116,6 +121,9 @@ def view_all_requests(request):
         manager_approved=True,
         date_sent_to_s_32_approver__isnull=False,
     )
+    purchased_requests = SaasRequest.objects.filter(
+        purchase_date__isnull=False, s_32_approved=True
+    )
 
     return render(
         request,
@@ -124,6 +132,27 @@ def view_all_requests(request):
             "s32_approval_needed_requests": s32_approval_needed_requests,
             "purchase_needed_requests": purchase_needed_requests,
             "s32_approval_waiting_requests": s32_approval_waiting_requests,
+            "purchased_requests": purchased_requests,
+        },
+    )
+
+
+def view_all_prev_requests(request):
+    s32_approval_waiting_requests = SaasRequest.objects.filter(
+        s_32_review_date__isnull=True,
+        manager_approved=True,
+        date_sent_to_s_32_approver__isnull=False,
+    )
+    purchased_requests = SaasRequest.objects.filter(
+        purchase_date__isnull=False, s_32_approved=True
+    )
+
+    return render(
+        request,
+        "internal_ops/view_all_prev_requests.html",
+        {
+            "s32_approval_waiting_requests": s32_approval_waiting_requests,
+            "purchased_requests": purchased_requests,
         },
     )
 
@@ -132,7 +161,21 @@ def view_request(request, pk):
     if request.method == "GET":
         # search for the request with the given primary key
         saas_request = SaasRequest.objects.get(pk=pk)
-        form = ViewS32RequestForm(instance=saas_request)
+        if saas_request.purchased is True:
+            print("purchased")
+            form = ViewOldPurchasedRequests(instance=saas_request)
+        elif (
+            saas_request.s_32_review_date is None
+            and saas_request.date_sent_to_s_32_approver is not None
+        ):
+            form = ViewOlS32ApprovedRequests(instance=saas_request)
+        elif (
+            saas_request.s_32_review_date is not None
+            and saas_request.s_32_approved is True
+        ):
+            form = ViewPurchaseRequiredForm(instance=saas_request)
+        else:
+            form = ViewS32RequestForm(instance=saas_request)
         return render(request, "internal_ops/view_request.html", {"form": form})
     elif request.method == "POST":
         form = ViewS32RequestForm(request.POST)
@@ -147,7 +190,6 @@ def view_request(request, pk):
                 ):
                     saas_object.fund_center = form.cleaned_data["fund_center"]
                     saas_object.approved_by = form.cleaned_data["approved_by"]
-                    saas_object.date_sent_to_s_32_approver = timezone.now()
                     saas_object.status = _("Waiting to be sent for S32 Approval")
                     saas_object.internal_ops = Users.objects.get(user=request.user)
 
@@ -164,8 +206,6 @@ def view_request(request, pk):
                     messages.error(
                         request, _("Please add the fund center and the approver.")
                     )
-            return render(request, "internal_ops/view_request.html", {"form": form})
-        elif request.POST.get("info_requested"):
             return render(request, "internal_ops/view_request.html", {"form": form})
         elif request.POST.get("send_for_s32_approval"):
             # update the status
@@ -225,11 +265,14 @@ def send_mail(request, pk):
     current_language = get_language()
     if request.method == "POST" and request.POST.get("info_requested"):
         try:
+            info_requested = request.POST.get("info_requested")
             if saas_object.internal_ops is None:
                 saas_object.internal_ops = Users.objects.get(user=request.user)
-                saas_object.save()
+            saas_object.status = _("Request for more information")
+            saas_object.info_requested = info_requested
+            saas_object.date_info_requested = timezone.now()
+            saas_object.save()
             # send an email to the requestor
-            info_requested = request.POST.get("info_requested")
             send_requestor_email_more_info(
                 request,
                 saas_object,
@@ -257,10 +300,11 @@ def purchase(request, pk):
         try:
             saas_object.purchase_date = request.POST.get("purchase-date")
             saas_object.purchase_method = request.POST.get("purchase-method")
-            saas_object.purchse_amount = request.POST.get("purchase-amount")
+            saas_object.purchase_amount = request.POST.get("purchase-amount")
             saas_object.confirmation_number = request.POST.get("confirmation-number")
             saas_object.purchase_notes = request.POST.get("purchase-notes")
-            saas_object.purcased = True
+            saas_object.status = _("Purchased")
+            saas_object.purchased = True
             saas_object.save()
             messages.success(
                 request, _("We have successfully recorded the purchase information")

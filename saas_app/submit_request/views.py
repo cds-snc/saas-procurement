@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.utils.translation import gettext as _
-from .forms import SubmitRequestForm, ViewRequestForm
+from .forms import SubmitRequestForm, ViewRequestForm, ViewPrevRequestForm
 from .models import SaasRequest
 import os
 import common.util.utils as utils
@@ -86,13 +86,19 @@ def view_all_requests(request):
     if request.method == "GET":
         # search fro all the requests submitted by the logged in user
         submitted_requests = SaasRequest.objects.filter(
-            submitted_by=request.user
+            submitted_by=request.user, date_manager_reviewed__isnull=True
+        )
+        prev_submitted_requests = SaasRequest.objects.filter(
+            submitted_by=request.user, date_manager_reviewed__isnull=False
         ).order_by("-date_manager_reviewed")
         # render the requests in a table
         return render(
             request,
             "request/view_all_requests.html",
-            {"submitted_requests": submitted_requests},
+            {
+                "submitted_requests": submitted_requests,
+                "prev_submitted_requests": prev_submitted_requests,
+            },
         )
 
 
@@ -101,7 +107,10 @@ def view_request(request, pk):
     if request.method == "GET":
         # search for the request with the given primary key
         saas_request = SaasRequest.objects.get(pk=pk)
-        form = ViewRequestForm(instance=saas_request)
+        if saas_request.date_manager_reviewed is not None:
+            form = ViewPrevRequestForm(instance=saas_request)
+        else:
+            form = ViewRequestForm(instance=saas_request)
         return render(request, "request/view_request.html", {"form": form})
     elif request.method == "POST":
         form = ViewRequestForm(request.POST)

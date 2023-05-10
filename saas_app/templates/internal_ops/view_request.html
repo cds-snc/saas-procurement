@@ -9,7 +9,6 @@
 
 {% block content %}
 <h1>{% trans "Software as a Service Request Submission" %}</h1>
-<p>{% blocktrans %} Please approve, deny or request further information from the requestor {% endblocktrans %}</p>
 <form method="post">
         {% csrf_token %}
         {% crispy form %}
@@ -29,7 +28,7 @@
           <div class="form-group">
             {% csrf_token %}
             <label for="message-text" class="col-form-label">{% trans "Message:" %}</label>
-            <textarea class="form-control" name="info_requested" id="message-text" rows="7"></textarea>
+            <textarea class="form-control" name="info_requested" id="info-requested" rows="7"></textarea>
           </div>
           <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">{% trans "Close" %}</button>
