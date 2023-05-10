@@ -171,8 +171,6 @@ class ViewPurchaseRequiredForm(ModelForm):
             "date_sent_to_s_32_approver": _("Date Sent to S32 Approver"),
             "date_manager_reviewed": _("Date Manager reviewed the request"),
             "submitted_by": _("Submitted By"),
-            "date_info_requested": _("Date Info Requested"),
-            "info_requested": _("Info Requested"),
             "fund_center": _("Fund Center"),
             "approved_by": _("S32 Approver"),
         }
