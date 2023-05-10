@@ -31,7 +31,7 @@
                 <td>{{ request.url }}</td>
                 <td>{{ request.cost }}</td>
                 <td>{{ request.date_submitted }}</td>
-                <td>{{ request.status }}</td>
+                <td>{% trans request.status %}</td>
             </tr>
             {% endfor %}
           </tbody>
@@ -60,7 +60,7 @@
                 <td>{{ request.url }}</td>
                 <td>{{ request.cost }}</td>
                 <td>{{ request.date_submitted }}</td>
-                <td>{{ request.status }}</td>
+               <td>{% trans request.status %}</td> 
             </tr>
               {% endfor %}
           </tbody>

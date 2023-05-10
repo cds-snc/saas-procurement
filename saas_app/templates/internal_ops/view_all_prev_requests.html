@@ -63,7 +63,7 @@
             <td>{{ saas_request.cost }}</td>
             <td>{{ saas_request.date_submitted }}</td>
             <td>{{ saas_request.manager }}</td>
-            <td>{{ saas_request.status }}</td>
+            <td>{% trans saas_request.status %}</td>
         </tr>
         {% endfor %}
       </tbody> 

@@ -112,6 +112,12 @@ class ViewPrevRequestForm(ModelForm):
             "manager_denied",
             "status",
         ]
+        labels = {
+            "status": _("Current status"),
+            "date_manager_reviewed": _("Date manager reviewed the request"),
+            "manager_approved": _("Manager approved the request"),
+            "manager_denied": _("Manager denied the request"),
+        }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

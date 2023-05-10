@@ -162,7 +162,6 @@ def view_request(request, pk):
         # search for the request with the given primary key
         saas_request = SaasRequest.objects.get(pk=pk)
         if saas_request.purchased is True:
-            print("purchased")
             form = ViewOldPurchasedRequests(instance=saas_request)
         elif (
             saas_request.s_32_review_date is None
