@@ -1,8 +1,11 @@
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit, Layout, Button, Field
 from django.forms import ModelForm
-from django.utils.translation import gettext_lazy as _
+from django.utils.translation import get_language, gettext_lazy as _
 from submit_request.models import SaasRequest
+
+# get the current language
+current_language = get_language()
 
 
 # View a Saas Request Form
@@ -25,11 +28,6 @@ class ViewS32RequestForm(ModelForm):
             "submitted_by",
             "date_info_requested",
             "info_requested",
-            # "purchase_date",
-            # "purchase_amount",
-            # "purchase_method",
-            # "confirmation_number",
-            # "purchase_notes",
             "fund_center",
             "approved_by",
         ]
@@ -48,11 +46,6 @@ class ViewS32RequestForm(ModelForm):
             "submitted_by": _("Submitted By"),
             "date_info_requested": _("Date Info Requested"),
             "info_requested": _("Info Requested"),
-            # "purchase_date": _("Date Purchased"),
-            # "purchase_amount": _("Purchase Amount"),
-            # "purchase_method": _("Purchase Method"),
-            # "confirmation_number": _("Confirmation Number"),
-            # "purchase_notes": _("Purchase Notes"),
             "fund_center": _("Fund Center"),
             "approved_by": _("S32 Approver"),
         }
@@ -85,11 +78,6 @@ class ViewS32RequestForm(ModelForm):
             ),
             Field("date_info_requested", readonly=True),
             Field("info_requested", readonly=True),
-            # Field("purchase_date", readonly=True),
-            # Field("purchase_amount", readonly=True),
-            # Field("purchase_method", readonly=True),
-            # Field("confirmation_number", readonly=True),
-            # Field("purchase_notes", readonly=True),
             Field("fund_center"),
             Field("approved_by"),
             Submit(
@@ -125,7 +113,9 @@ class ViewS32RequestForm(ModelForm):
                 _("Cancel"),
                 css_id="submit",
                 css_class="btn btn-primary",
-                onclick="history.back()",
+                onclick="window.location.href='/"
+                + current_language
+                + "/internal_ops/view'",
             ),
         )
         # append the Purchase Information button if the request is approved
@@ -224,7 +214,6 @@ class ViewPurchaseRequiredForm(ModelForm):
                 data_target="#request_info_modal",
                 data_dismiss="modal",
             ),
-            # hide the purchase button for now. It will be shown if the request is approved by an s32 approver.
             Button(
                 "purchase",
                 _("Record Purchase Information"),
@@ -239,7 +228,9 @@ class ViewPurchaseRequiredForm(ModelForm):
                 _("Cancel"),
                 css_id="submit",
                 css_class="btn btn-primary",
-                onclick="history.back()",
+                onclick="window.location.href='/"
+                + current_language
+                + "/internal_ops/view'",
             ),
         )
 
@@ -333,7 +324,9 @@ class ViewOldPurchasedRequests(ModelForm):
                 _("Cancel"),
                 css_id="submit",
                 css_class="btn btn-primary",
-                onclick="history.back()",
+                onclick="window.location.href='/"
+                + current_language
+                + "/internal_ops/view'",
             ),
         )
 
