@@ -44,15 +44,15 @@ msgstr "Statut actuel"
 
 #: approve/forms.py:91 approve/forms.py:161 submit_request/forms.py:117
 msgid "Date manager reviewed the request"
-msgstr "Date à laquelle le responsable a examiné la demande"
+msgstr "Date à laquelle le gestionnaire a examiné la demande"
 
 #: approve/forms.py:92 approve/forms.py:162 submit_request/forms.py:118
 msgid "Manager approved the request"
-msgstr "Le responsable a approuvé la demande"
+msgstr "Le gestionnaire a approuvé la demande"
 
 #: approve/forms.py:93 approve/forms.py:163 submit_request/forms.py:119
 msgid "Manager denied the request"
-msgstr "Le directeur a refusé la demande"
+msgstr "Le gestionnaire a refusé la demande"
 
 #: approve/forms.py:164
 msgid "Date sent to S32 approver"
@@ -60,11 +60,11 @@ msgstr "Date d'envoi à l'approbateur S32"
 
 #: approve/forms.py:165
 msgid "Date S32 approver reviewed the request"
-msgstr "Date à laquelle le responsable a examiné la demande"
+msgstr "Date à laquelle le approbateur S32 a examiné la demande"
 
 #: approve/forms.py:166
 msgid "S32 approver approved the request"
-msgstr "Le responsable a approuvé la demande"
+msgstr "l'approbateur S32 a approuvé la demande"
 
 #: approve/views.py:130
 msgid "Manager approved"
@@ -176,12 +176,12 @@ msgstr "Date à laquelle le responsable a examiné la demande"
 #: internal_ops/forms.py:43 internal_ops/forms.py:167 internal_ops/forms.py:274
 #: internal_ops/forms.py:376
 msgid "Manager Approved"
-msgstr "Gestionnaire approuvé"
+msgstr "Approuvé par le gestionnaire"
 
 #: internal_ops/forms.py:44 internal_ops/forms.py:168 internal_ops/forms.py:275
 #: internal_ops/forms.py:377
 msgid "Manager Denied"
-msgstr "Gestionnaire refusé"
+msgstr "Refusé par le gestionnaire"
 
 #: internal_ops/forms.py:45 internal_ops/forms.py:173
 msgid "Submitted By"
@@ -190,7 +190,7 @@ msgstr "Proposé par"
 #: internal_ops/forms.py:46 internal_ops/forms.py:169 internal_ops/forms.py:174
 #: internal_ops/forms.py:276 internal_ops/forms.py:378
 msgid "Date Info Requested"
-msgstr "Informations sur la date demandées"
+msgstr "Date à laquelle des informations ont été demandées"
 
 #: internal_ops/forms.py:47 internal_ops/forms.py:170 internal_ops/forms.py:175
 #: internal_ops/forms.py:277 internal_ops/forms.py:379
@@ -231,7 +231,7 @@ msgstr "Date d'envoi à l'approbateur S32"
 
 #: internal_ops/forms.py:281 internal_ops/forms.py:383
 msgid "S32 Approver approved"
-msgstr "Approbateur S32 approuvé"
+msgstr "Approuvé par l'approbateur S32"
 
 #: internal_ops/forms.py:282 internal_ops/forms.py:384
 msgid "S32 Approver Review Date"
@@ -319,7 +319,7 @@ msgid ""
 "requestor."
 msgstr ""
 "Une erreur s'est produite lors de l'envoi des e-mails de notification à "
-"l'approbateur ou au demandeur S32"
+"l'approbateur S32 ou au demandeur"
 
 #: internal_ops/views.py:270
 msgid "Request for more information"
