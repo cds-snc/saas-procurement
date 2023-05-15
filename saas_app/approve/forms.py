@@ -88,6 +88,9 @@ class ViewManagerOldRequestForm(ModelForm):
         ]
         labels = {
             "status": _("Current status"),
+            "date_manager_reviewed": _("Date manager reviewed the request"),
+            "manager_approved": _("Manager approved the request"),
+            "manager_denied": _("Manager denied the request"),
         }
 
     def __init__(self, *args, **kwargs):
@@ -155,6 +158,12 @@ class ViewS32ApproverOldRequestForm(ModelForm):
         ]
         labels = {
             "status": _("Current status"),
+            "date_manager_reviewed": _("Date manager reviewed the request"),
+            "manager_approved": _("Manager approved the request"),
+            "manager_denied": _("Manager denied the request"),
+            "date_sent_to_s_32_approver": _("Date sent to S32 approver"),
+            "s_32_review_date": _("Date S32 approver reviewed the request"),
+            "s_32_approved": _("S32 approver approved the request"),
         }
 
     def __init__(self, *args, **kwargs):

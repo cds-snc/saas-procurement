@@ -42,7 +42,9 @@ class ViewS32RequestForm(ModelForm):
             "account_administrator": _("Account Administrator"),
             "backup_administrator": _("Backup Administrator"),
             "manager": _("Manager"),
-            "date_manager_reviewed": _("Date Manager Approved the request"),
+            "date_manager_reviewed": _("Date Manager reviewed the request"),
+            "manager_approved": _("Manager Approved"),
+            "manager_denied": _("Manager Denied"),
             "submitted_by": _("Submitted By"),
             "date_info_requested": _("Date Info Requested"),
             "info_requested": _("Info Requested"),
@@ -167,10 +169,13 @@ class ViewPurchaseRequiredForm(ModelForm):
             "account_administrator": _("Account Administrator"),
             "backup_administrator": _("Backup Administrator"),
             "manager": _("Manager"),
-            "date_manager_reviewed": _("Date Manager Approved the request"),
-            "submitted_by": _("Submitted By"),
+            "manager_approved": _("Manager Approved"),
+            "Manager_denied": _("Manager Denied"),
             "date_info_requested": _("Date Info Requested"),
             "info_requested": _("Info Requested"),
+            "date_sent_to_s_32_approver": _("Date Sent to S32 Approver"),
+            "date_manager_reviewed": _("Date Manager reviewed the request"),
+            "submitted_by": _("Submitted By"),
             "fund_center": _("Fund Center"),
             "approved_by": _("S32 Approver"),
         }
@@ -269,6 +274,21 @@ class ViewOldPurchasedRequests(ModelForm):
         ]
         labels = {
             "status": _("Current status"),
+            "date_manager_reviewed": _("Date Manager reviewed the request"),
+            "manager_approved": _("Manager Approved"),
+            "manager_denied": _("Manager Denied"),
+            "date_info_requested": _("Date Info Requested"),
+            "info_requested": _("Info Requested"),
+            "date_sent_to_s_32_approver": _("Date Sent to S32 Approver"),
+            "fund_center": _("Fund Center"),
+            "approved_by": _("S32 Approver"),
+            "s_32_approved": _("S32 Approver approved"),
+            "s_32_review_date": _("S32 Approver Review Date"),
+            "purchase_date": _("Purchase Date"),
+            "purchase_amount": _("Purchase Amount"),
+            "purchase_method": _("Purchase Method"),
+            "confirmation_number": _("Confirmation Number"),
+            "purchase_notes": _("Purchase Notes"),
         }
 
     def __init__(self, *args, **kwargs):
@@ -358,6 +378,16 @@ class ViewOlS32ApprovedRequests(ModelForm):
         ]
         labels = {
             "status": _("Current Status"),
+            "date_manager_reviewed": _("Date Manager reviewed the request"),
+            "manager_approved": _("Manager Approved"),
+            "manager_denied": _("Manager Denied"),
+            "date_info_requested": _("Date Info Requested"),
+            "info_requested": _("Info Requested"),
+            "date_sent_to_s_32_approver": _("Date Sent to S32 Approver"),
+            "fund_center": _("Fund Center"),
+            "approved_by": _("S32 Approver"),
+            "s_32_approved": _("S32 Approver approved"),
+            "s_32_review_date": _("S32 Approver Review Date"),
         }
 
     def __init__(self, *args, **kwargs):
