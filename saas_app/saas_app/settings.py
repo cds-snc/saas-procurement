@@ -211,3 +211,6 @@ TESTING_FEATURE_FLAG = os.environ.get("TESTING_FEATURE_FLAG")
 
 # Set up the session engine
 SESSION_ENGINE = "django.contrib.sessions.backends.db"
+
+USE_X_FORWARDED_HOST = True
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
