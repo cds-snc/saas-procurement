@@ -31,8 +31,11 @@ SECRET_KEY = (
     or "a$b+cdefgh=!i$jklmno!$(@p!qrstuvw^xyz123@4@5-67%89"
 )
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG should be set to False in production
+if os.environ.get("ENVIRONMENT") == "dev":
+    DEBUG = True
+else:
+    DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 
