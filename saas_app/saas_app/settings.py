@@ -32,10 +32,11 @@ SECRET_KEY = (
 )
 
 # DEBUG should be set to False in production
-if os.environ.get("ENVIRONMENT") == "dev":
-    DEBUG = True
-else:
-    DEBUG = False
+# if os.environ.get("ENVIRONMENT") == "dev":
+#     DEBUG = True
+# else:
+#     DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
