@@ -1,4 +1,4 @@
-asgiref==3.6.0
+asgiref==3.7.2
 aws-sns-message-validator==0.0.5
 awscli==1.27.142
 boto3==1.26.142
