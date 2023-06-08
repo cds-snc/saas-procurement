@@ -13,3 +13,4 @@ django-crispy-forms==2.0
 crispy-bootstrap4==2022.1
 notifications-python-client==8.0.1
 pytz==2022.7.1
+whitenoise==6.4.0

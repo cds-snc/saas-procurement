@@ -32,11 +32,10 @@ SECRET_KEY = (
 )
 
 # DEBUG should be set to False in production
-# if os.environ.get("ENVIRONMENT") == "dev":
-#     DEBUG = True
-# else:
-#     DEBUG = False
-DEBUG = True
+if os.environ.get("ENVIRONMENT") == "dev":
+    DEBUG = True
+else:
+    DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 
@@ -75,6 +74,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "saas_app.middleware.HealthCheckMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
 ROOT_URLCONF = "saas_app.urls"
