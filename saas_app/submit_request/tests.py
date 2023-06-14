@@ -1,5 +1,5 @@
 from django.test import TestCase
-from .models import SaasRequest, User, Users
+from .models import SaasRequest, User, Users, Currency, Frequency
 from user.models import Roles
 from .forms import SubmitRequestForm
 import datetime
@@ -26,17 +26,24 @@ class SubmitRequestModelTestCase(TestCase):
         logged_user = User.objects.create_user(
             username="Test User 2", password="Test Password 2"
         )
+        currency = Currency.objects.create(currency="CDN")
+        frequency = Frequency.objects.create(frequency="Yearly")
         SaasRequest.objects.create(
             name="Test Name",
             url="http://www.testurl.com",
             description="Test Description",
             cost="Test Cost",
+            currency=currency,
+            frequency=frequency,
+            units=1,
+            duration="Test Duration",
             level_of_subscription="Test Level of Subscription",
             number_of_users=1,
             names_of_users="Test Names of Users",
             account_administrator="Test Account Administrator",
             backup_administrator="Test Backup Administrator",
             manager=manager,
+            comments="Test Comments",
             submitted_by=logged_user,
             manager_approved=False,
         )
@@ -47,9 +54,15 @@ class SubmitRequestModelTestCase(TestCase):
         manager = Users.objects.get(user=auth_user)
         logged_user = User.objects.get(username="Test User 2")
         saas_request = SaasRequest.objects.get(name="Test Name")
+        frequency = Frequency.objects.get(frequency="Yearly")
+        currency = Currency.objects.get(currency="CDN")
         self.assertEqual(saas_request.url, "http://www.testurl.com")
         self.assertEqual(saas_request.description, "Test Description")
         self.assertEqual(saas_request.cost, "Test Cost")
+        self.assertEqual(saas_request.currency, currency)
+        self.assertEqual(saas_request.frequency, frequency)
+        self.assertEqual(saas_request.units, 1)
+        self.assertEqual(saas_request.duration, "Test Duration")
         self.assertEqual(
             saas_request.level_of_subscription, "Test Level of Subscription"
         )
@@ -60,6 +73,7 @@ class SubmitRequestModelTestCase(TestCase):
         )
         self.assertEqual(saas_request.backup_administrator, "Test Backup Administrator")
         self.assertEqual(saas_request.manager, manager)
+        self.assertEqual(saas_request.comments, "Test Comments")
         self.assertEqual(saas_request.submitted_by, logged_user)
         mocked_date = datetime.datetime(2020, 1, 1, 0, 0, 0)
         saas_request.date_submitted = mocked_date
@@ -92,7 +106,23 @@ class SubmitRequestModelTestCase(TestCase):
         self.assertEqual(
             saas_request._meta.get_field("manager_approved").max_length, None
         )
-
+        self.assertEqual(
+            saas_request._meta.get_field("currency").max_length, None
+        )
+        self.assertEqual(
+            saas_request._meta.get_field("frequency").max_length, None
+        )
+        self.assertEqual(
+            saas_request._meta.get_field("units").max_length, 100
+        )
+        self.assertEqual(
+            saas_request._meta.get_field("duration").max_length, 100
+        )
+        self.assertEqual(
+            saas_request._meta.get_field("comments").max_length, 5000
+        )
+        
+        
     # Test that the string representation of the model is correctly returned
     def test_saas_request_string_representation(self):
         saas_request = SaasRequest.objects.get(name="Test Name")
@@ -130,6 +160,40 @@ class SubmitRequestFormTest(TestCase):
             form.fields["cost"].label is None or form.fields["cost"].label == "Cost"
         )
 
+    # Test the currency label of the form
+    def test_currency_label(self):
+        form = SubmitRequestForm()
+        self.assertTrue(
+            form.fields["currency"].label is None or form.fields["currency"].label == "Currency"
+        )
+        
+    # Test the frequency label of the form
+    def test_frequency_label(self):
+        form = SubmitRequestForm()
+        self.assertTrue(
+            form.fields["frequency"].label is None or form.fields["frequency"].label == "Frequency"
+        )
+    # Test units label of the form
+    def test_units_label(self):
+        form = SubmitRequestForm()
+        self.assertTrue(
+            form.fields["units"].label is None or form.fields["units"].label == "Units"
+        )
+        
+    # Test duration label of the form
+    def test_duration_label(self):
+        form = SubmitRequestForm()
+        self.assertTrue(
+            form.fields["duration"].label is None or form.fields["duration"].label == "Duration"
+        )
+        
+    # Test the comments label of the form
+    def test_comments_label(self):
+        form = SubmitRequestForm()
+        self.assertTrue(
+            form.fields["comments"].label is None or form.fields["comments"].label == "Comments"
+        )
+        
     # Test the level of subscription label of the form
     def test_level_of_subscription_label(self):
         form = SubmitRequestForm()

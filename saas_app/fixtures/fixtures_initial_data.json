@@ -60,5 +60,61 @@
         9
       ]
     }
+  },
+  {
+    "model": "submit_request.currency",
+    "pk": 1,
+    "fields": {
+      "name": "CDN"
+    } 
+  },
+  {
+    "model": "submit_request.currency",
+    "pk": 2,
+    "fields": {
+      "name": "USD"
+    } 
+  },
+  {
+    "model": "submit_request.frequency",
+    "pk": 1,
+    "fields": {
+      "name": "Daily"
+    }
+  },
+  {
+    "model": "submit_request.frequency",
+    "pk": 2,
+    "fields": {
+      "name": "Weekly"
+    }
+  },
+  {
+    "model": "submit_request.frequency",
+    "pk": 3,
+    "fields": {
+      "name": "Monthly"
+    }
+  },
+  {
+    "model": "submit_request.frequency",
+    "pk": 4,
+    "fields": {
+      "name": "Quarterly"
+    }
+  },
+  {
+    "model": "submit_request.frequency",
+    "pk": 5,
+    "fields": {
+      "name": "Bi-Annually"
+    }
+  },
+  {
+    "model": "submit_request.frequency",
+    "pk": 6,
+    "fields": {
+      "name": "Yearly"
+    }
   }
 ]
