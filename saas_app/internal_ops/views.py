@@ -5,8 +5,8 @@ from submit_request.models import SaasRequest
 from user.models import Users
 from .forms import (
     ViewS32RequestForm,
-    ViewOldPurchasedRequests,
-    ViewOlS32ApprovedRequests,
+    ViewOldPurchasedRequestsForm,
+    ViewOldS32ApprovedRequestsForm,
     ViewPurchaseRequiredForm,
 )
 import os
@@ -162,12 +162,12 @@ def view_request(request, pk):
         # search for the request with the given primary key
         saas_request = SaasRequest.objects.get(pk=pk)
         if saas_request.purchased is True:
-            form = ViewOldPurchasedRequests(instance=saas_request)
+            form = ViewOldPurchasedRequestsForm(instance=saas_request)
         elif (
             saas_request.s_32_review_date is None
             and saas_request.date_sent_to_s_32_approver is not None
         ):
-            form = ViewOlS32ApprovedRequests(instance=saas_request)
+            form = ViewOldS32ApprovedRequestsForm(instance=saas_request)
         elif (
             saas_request.s_32_review_date is not None
             and saas_request.s_32_approved is True
