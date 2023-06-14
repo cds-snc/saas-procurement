@@ -1,5 +1,5 @@
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Submit, Layout, Button, Field
+from crispy_forms.layout import Submit, Layout, Button, Field, Row, Column
 from django.utils.translation import gettext_lazy as _
 from django.forms import ModelForm
 from .models import SaasRequest
@@ -31,6 +31,22 @@ class SubmitRequestForm(ModelForm):
         self.helper.form_method = "post"
         self.helper.form_action = "submit_saas_form"
         self.helper.add_input(Submit("submit", _("Submit")))
+        self.helper.layout = Layout(
+            "name",
+            "url",
+            "description",
+            "cost",
+            "level_of_subscription",
+            "number_of_users",
+            "names_of_users",
+            "account_administrator",
+            "backup_administrator",
+            Field(
+                "manager",
+                readonly=True,
+                style="height: auto;",
+            )
+        )
         self.helper.add_input(
             Button(
                 "cancel",
@@ -75,7 +91,11 @@ class ViewRequestForm(ModelForm):
             "names_of_users",
             "account_administrator",
             "backup_administrator",
-            "manager",
+            Field(
+                "manager",
+                readonly=True,
+                style="height:auto;",
+            ),
             Submit("save", _("Save changes")),
             Submit(
                 "delete",
@@ -137,7 +157,7 @@ class ViewPrevRequestForm(ModelForm):
             Field(
                 "manager",
                 readonly=True,
-                style="color:black; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
+                style="color:black; height:auto; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
             ),
             Field("date_manager_reviewed", readonly=True),
             Field("manager_approved", readonly=True),
