@@ -240,7 +240,7 @@ class ViewPurchaseRequiredForm(ModelForm):
         )
 
 
-class ViewOldPurchasedRequests(ModelForm):
+class ViewOldPurchasedRequestsForm(ModelForm):
     # Form is generated from the database fields.
     class Meta:
         model = SaasRequest
@@ -273,7 +273,17 @@ class ViewOldPurchasedRequests(ModelForm):
             "approved_by",
         ]
         labels = {
+            "name": _("Name"),
+            "url": _("URL"),
+            "description": _("Description"),
+            "cost": _("Cost"),
+            "level_of_subscription": _("Level of Subscription"),
+            "number_of_users": _("Number of Users"),
+            "names_of_users": _("Names of Users"),
+            "account_administrator": _("Account Administrator"),
+            "backup_administrator": _("Backup Administrator"),
             "status": _("Current status"),
+            "submitted_by": _("Submitted By"),
             "date_manager_reviewed": _("Date Manager reviewed the request"),
             "manager_approved": _("Manager Approved"),
             "manager_denied": _("Manager Denied"),
@@ -351,7 +361,7 @@ class ViewOldPurchasedRequests(ModelForm):
         )
 
 
-class ViewOlS32ApprovedRequests(ModelForm):
+class ViewOldS32ApprovedRequestsForm(ModelForm):
     # Form is generated from the database fields.
     class Meta:
         model = SaasRequest
@@ -377,6 +387,13 @@ class ViewOlS32ApprovedRequests(ModelForm):
             "approved_by",
         ]
         labels = {
+            "url": _("URL"),
+            "submitted_by": _("Submitted By"),
+            "level_of_subscription": _("Level of Subscription"),
+            "number_of_users": _("Number of Users"),
+            "names_of_users": _("Names of Users"),
+            "account_administrator": _("Account Administrator"),
+            "backup_administrator": _("Backup Administrator"),
             "status": _("Current Status"),
             "date_manager_reviewed": _("Date Manager reviewed the request"),
             "manager_approved": _("Manager Approved"),
