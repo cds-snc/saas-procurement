@@ -408,7 +408,7 @@ class ViewOlS32ApprovedRequests(ModelForm):
             Field(
                 "manager",
                 readonly=True,
-                style="color:black; height:auto; ackground-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
+                style="color:black; height:auto; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
             ),
             Field("date_manager_reviewed", readonly=True),
             Field("manager_approved", readonly=True),
