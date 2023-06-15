@@ -70,18 +70,18 @@ class ViewS32RequestForm(ModelForm):
             Field(
                 "manager",
                 readonly=True,
-                style="color:black; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
+                style="color:black; height:auto; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
             ),
             Field("date_manager_reviewed", readonly=True),
             Field(
                 "submitted_by",
                 readonly=True,
-                style="color:black; background-color:#e9ecef; opacity:1; font-weight: inherit; font-color: inherit;",
+                style="color:black; height:auto; background-color:#e9ecef; opacity:1; font-weight: inherit; font-color: inherit;",
             ),
             Field("date_info_requested", readonly=True),
             Field("info_requested", readonly=True),
             Field("fund_center"),
-            Field("approved_by"),
+            Field("approved_by", style="height:auto"),
             Submit(
                 "save",
                 _("Save"),
@@ -198,18 +198,18 @@ class ViewPurchaseRequiredForm(ModelForm):
             Field(
                 "manager",
                 readonly=True,
-                style="color:black; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
+                style="color:black; height:auto; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
             ),
             Field("date_manager_reviewed", readonly=True),
             Field(
                 "submitted_by",
                 readonly=True,
-                style="color:black; background-color:#e9ecef; opacity:1; font-weight: inherit; font-color: inherit;",
+                style="color:black; height:auto; background-color:#e9ecef; opacity:1; font-weight: inherit; font-color: inherit;",
             ),
             Field("date_info_requested", readonly=True),
             Field("info_requested", readonly=True),
             Field("fund_center"),
-            Field("approved_by"),
+            Field("approved_by", style="height:auto"),
             Button(
                 "request_info",
                 _("Request Additional Information"),
@@ -319,7 +319,7 @@ class ViewOldPurchasedRequestsForm(ModelForm):
             Field(
                 "manager",
                 readonly=True,
-                style="color:black; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
+                style="color:black; height:auto; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
             ),
             Field("date_manager_reviewed", readonly=True),
             Field("manager_approved", readonly=True),
@@ -327,7 +327,7 @@ class ViewOldPurchasedRequestsForm(ModelForm):
             Field(
                 "submitted_by",
                 readonly=True,
-                style="color:black; background-color:#e9ecef; opacity:1; font-weight: inherit; font-color: inherit;",
+                style="color:black; height:auto; background-color:#e9ecef; opacity:1; font-weight: inherit; font-color: inherit;",
             ),
             Field("date_info_requested", readonly=True),
             Field("info_requested", readonly=True),
@@ -347,7 +347,7 @@ class ViewOldPurchasedRequestsForm(ModelForm):
             Field(
                 "approved_by",
                 readonly=True,
-                style="color:black; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
+                style="color:black; height:auto; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
             ),
             Button(
                 "cancel",
@@ -425,7 +425,7 @@ class ViewOldS32ApprovedRequestsForm(ModelForm):
             Field(
                 "manager",
                 readonly=True,
-                style="color:black; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
+                style="color:black; height:auto; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
             ),
             Field("date_manager_reviewed", readonly=True),
             Field("manager_approved", readonly=True),
@@ -433,13 +433,13 @@ class ViewOldS32ApprovedRequestsForm(ModelForm):
             Field(
                 "submitted_by",
                 readonly=True,
-                style="color:black; background-color:#e9ecef; opacity:1; font-weight: inherit; font-color: inherit;",
+                style="color:black; height:auto; background-color:#e9ecef; opacity:1; font-weight: inherit; font-color: inherit;",
             ),
             Field("date_info_requested", readonly=True),
             Field("info_requested", readonly=True),
             Field("date_sent_to_s_32_approver", readonly=True),
             Field("fund_center", readonly=True),
-            Field("approved_by", readonly=True),
+            Field("approved_by", readonly=True, style="height:auto"),
             Button(
                 "cancel",
                 _("Cancel"),
