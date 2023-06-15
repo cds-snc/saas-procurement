@@ -27,6 +27,13 @@ class SubmitRequestForm(ModelForm):
             "manager",
             "comments",
         ]
+        labels = {
+            "currency": _("Currency"),
+            "frequency": _("Frequency"),
+            "units": _("Units"),
+            "duration": _("Duration"),
+            "comments": _("Comments"),
+        }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -91,6 +98,13 @@ class ViewRequestForm(ModelForm):
             "manager",
             "comments",
         ]
+        labels = {
+            "currency": _("Currency"),
+            "frequency": _("Frequency"),
+            "units": _("Units"),
+            "duration": _("Duration"),
+            "comments": _("Comments"),
+        }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -156,6 +170,11 @@ class ViewPrevRequestForm(ModelForm):
         ]
         labels = {
             "status": _("Current status"),
+            "currency": _("Currency"),
+            "frequency": _("Frequency"),
+            "units": _("Units"),
+            "duration": _("Duration"),
+            "comments": _("Comments"),
             "date_manager_reviewed": _("Date manager reviewed the request"),
             "manager_approved": _("Manager approved the request"),
             "manager_denied": _("Manager denied the request"),

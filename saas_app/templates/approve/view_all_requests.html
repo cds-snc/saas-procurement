@@ -18,6 +18,7 @@
             <th scope="col">{% trans "Cost" %}</th>
             <th scope="col">{% trans "Date Submitted" %}</th>
             <th scope="col">{% trans "Manager" %}</th>
+            <th scope="col">{% trans "Submitted By" %}</th>
             <th scope="col">{% trans "Status" %}</th>
             <tbody class="table-group-divider"></tbody>
           </tr>
@@ -31,6 +32,7 @@
               <td>{{ saas_request.cost }}</td>
               <td>{{ saas_request.date_submitted }}</td>
               <td>{{ saas_request.manager }}</td>
+              <td>{{ saas_request.submitted_by}}</td>
               <td>{% trans saas_request.status %}</td>
           </tr>
           {% endfor %}
