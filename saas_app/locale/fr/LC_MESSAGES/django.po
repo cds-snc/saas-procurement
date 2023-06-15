@@ -450,7 +450,7 @@ msgstr "Directeur/Directrice"
 
 #: submit_request/models.py:62
 msgid "submitted by"
-msgstr "Proposé par:"
+msgstr "Proposé par"
 
 #: submit_request/models.py:64
 msgid "date submitted"
