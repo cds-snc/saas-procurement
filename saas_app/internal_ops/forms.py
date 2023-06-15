@@ -84,19 +84,19 @@ class ViewS32RequestForm(ModelForm):
             Field(
                 "manager",
                 readonly=True,
-                style="color:black; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
+                style="color:black; height:auto; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
             ),
             Field("comments", readonly=True, rows="5"),
             Field("date_manager_reviewed", readonly=True),
             Field(
                 "submitted_by",
                 readonly=True,
-                style="color:black; background-color:#e9ecef; opacity:1; font-weight: inherit; font-color: inherit;",
+                style="color:black; height:auto; background-color:#e9ecef; opacity:1; font-weight: inherit; font-color: inherit;",
             ),
             Field("date_info_requested", readonly=True),
             Field("info_requested", readonly=True),
             Field("fund_center"),
-            Field("approved_by"),
+            Field("approved_by", style="height:auto"),
             Submit(
                 "save",
                 _("Save"),
@@ -226,19 +226,19 @@ class ViewPurchaseRequiredForm(ModelForm):
             Field(
                 "manager",
                 readonly=True,
-                style="color:black; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
+                style="color:black; height:auto; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
             ),
             Field("comments", readonly=True, rows="5"),
             Field("date_manager_reviewed", readonly=True),
             Field(
                 "submitted_by",
                 readonly=True,
-                style="color:black; background-color:#e9ecef; opacity:1; font-weight: inherit; font-color: inherit;",
+                style="color:black; height:auto; background-color:#e9ecef; opacity:1; font-weight: inherit; font-color: inherit;",
             ),
             Field("date_info_requested", readonly=True),
             Field("info_requested", readonly=True),
             Field("fund_center"),
-            Field("approved_by"),
+            Field("approved_by", style="height:auto"),
             Button(
                 "request_info",
                 _("Request Additional Information"),
@@ -269,7 +269,7 @@ class ViewPurchaseRequiredForm(ModelForm):
         )
 
 
-class ViewOldPurchasedRequests(ModelForm):
+class ViewOldPurchasedRequestsForm(ModelForm):
     # Form is generated from the database fields.
     class Meta:
         model = SaasRequest
@@ -307,7 +307,17 @@ class ViewOldPurchasedRequests(ModelForm):
             "approved_by",
         ]
         labels = {
+            "name": _("Name"),
+            "url": _("URL"),
+            "description": _("Description"),
+            "cost": _("Cost"),
+            "level_of_subscription": _("Level of Subscription"),
+            "number_of_users": _("Number of Users"),
+            "names_of_users": _("Names of Users"),
+            "account_administrator": _("Account Administrator"),
+            "backup_administrator": _("Backup Administrator"),
             "status": _("Current status"),
+            "submitted_by": _("Submitted By"),
             "date_manager_reviewed": _("Date Manager reviewed the request"),
             "manager_approved": _("Manager Approved"),
             "manager_denied": _("Manager Denied"),
@@ -347,7 +357,7 @@ class ViewOldPurchasedRequests(ModelForm):
             Field(
                 "manager",
                 readonly=True,
-                style="color:black; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
+                style="color:black; height:auto; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
             ),
             Field("comments", readonly=True, rows="5"),
             Field("date_manager_reviewed", readonly=True),
@@ -356,7 +366,7 @@ class ViewOldPurchasedRequests(ModelForm):
             Field(
                 "submitted_by",
                 readonly=True,
-                style="color:black; background-color:#e9ecef; opacity:1; font-weight: inherit; font-color: inherit;",
+                style="color:black; height:auto; background-color:#e9ecef; opacity:1; font-weight: inherit; font-color: inherit;",
             ),
             Field("date_info_requested", readonly=True),
             Field("info_requested", readonly=True),
@@ -376,7 +386,7 @@ class ViewOldPurchasedRequests(ModelForm):
             Field(
                 "approved_by",
                 readonly=True,
-                style="color:black; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
+                style="color:black; height:auto; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
             ),
             Button(
                 "cancel",
@@ -390,7 +400,7 @@ class ViewOldPurchasedRequests(ModelForm):
         )
 
 
-class ViewOlS32ApprovedRequests(ModelForm):
+class ViewOldS32ApprovedRequestsForm(ModelForm):
     # Form is generated from the database fields.
     class Meta:
         model = SaasRequest
@@ -421,6 +431,13 @@ class ViewOlS32ApprovedRequests(ModelForm):
             "approved_by",
         ]
         labels = {
+            "url": _("URL"),
+            "submitted_by": _("Submitted By"),
+            "level_of_subscription": _("Level of Subscription"),
+            "number_of_users": _("Number of Users"),
+            "names_of_users": _("Names of Users"),
+            "account_administrator": _("Account Administrator"),
+            "backup_administrator": _("Backup Administrator"),
             "status": _("Current Status"),
             "date_manager_reviewed": _("Date Manager reviewed the request"),
             "manager_approved": _("Manager Approved"),
@@ -455,7 +472,7 @@ class ViewOlS32ApprovedRequests(ModelForm):
             Field(
                 "manager",
                 readonly=True,
-                style="color:black; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
+                style="color:black; height:auto; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
             ),
             Field("comments", readonly=True, rows="5"),
             Field("date_manager_reviewed", readonly=True),
@@ -464,13 +481,13 @@ class ViewOlS32ApprovedRequests(ModelForm):
             Field(
                 "submitted_by",
                 readonly=True,
-                style="color:black; background-color:#e9ecef; opacity:1; font-weight: inherit; font-color: inherit;",
+                style="color:black; height:auto; background-color:#e9ecef; opacity:1; font-weight: inherit; font-color: inherit;",
             ),
             Field("date_info_requested", readonly=True),
             Field("info_requested", readonly=True),
             Field("date_sent_to_s_32_approver", readonly=True),
             Field("fund_center", readonly=True),
-            Field("approved_by", readonly=True),
+            Field("approved_by", readonly=True, style="height:auto"),
             Button(
                 "cancel",
                 _("Cancel"),

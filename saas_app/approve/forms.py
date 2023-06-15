@@ -66,13 +66,13 @@ class ViewRequestForm(ModelForm):
             Field(
                 "manager",
                 disabled=True,
-                style="color:black; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
+                style="color:black; height:auto; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
             ),
             Field("comments", disabled=True, rows="5"),
             Field(
                 "submitted_by",
                 disabled=True,
-                style="color:black; background-color:#e9ecef; opacity:1; font-weight: inherit; font-color: inherit;",
+                style="color:black; height:auto; background-color:#e9ecef; opacity:1; font-weight: inherit; font-color: inherit;",
             ),
             Submit("approve", _("Approve")),
             Submit(
@@ -158,13 +158,13 @@ class ViewManagerOldRequestForm(ModelForm):
             Field(
                 "manager",
                 disabled=True,
-                style="color:black; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
+                style="color:black; height:auto; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
             ),
             Field("comments", disabled=True, rows="5"),
             Field(
                 "submitted_by",
                 disabled=True,
-                style="color:black; background-color:#e9ecef; opacity:1; font-weight: inherit; font-color: inherit;",
+                style="color:black; height:auto; background-color:#e9ecef; opacity:1; font-weight: inherit; font-color: inherit;",
             ),
             Field("status", disabled=True),
             Field("date_manager_reviewed", disabled=True),
@@ -246,13 +246,13 @@ class ViewS32ApproverOldRequestForm(ModelForm):
             Field(
                 "manager",
                 disabled=True,
-                style="color:black; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
+                style="color:black; height:auto; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
             ),
             Field("comments", disabled=True, rows="5"),
             Field(
                 "submitted_by",
                 disabled=True,
-                style="color:black; background-color:#e9ecef; opacity:1; font-weight: inherit; font-color: inherit;",
+                style="color:black; height:auto; background-color:#e9ecef; opacity:1; font-weight: inherit; font-color: inherit;",
             ),
             Field("status", disabled=True),
             Field("date_manager_reviewed", disabled=True),

@@ -125,8 +125,12 @@ class ViewRequestForm(ModelForm):
             "names_of_users",
             "account_administrator",
             "backup_administrator",
-            "manager",
             Field("comments", rows="5"),
+            Field(
+                "manager",
+                readonly=True,
+                style="height:auto;",
+            ),
             Submit("save", _("Save changes")),
             Submit(
                 "delete",
@@ -202,7 +206,7 @@ class ViewPrevRequestForm(ModelForm):
             Field(
                 "manager",
                 readonly=True,
-                style="color:black; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
+                style="color:black; height:auto; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
             ),
             Field("comments", readonly=True, rows="5"),
             Field("date_manager_reviewed", readonly=True),
