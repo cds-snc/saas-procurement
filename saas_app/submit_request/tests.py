@@ -112,9 +112,9 @@ class SubmitRequestModelTestCase(TestCase):
         )
         self.assertEqual(saas_request._meta.get_field("currency").max_length, None)
         self.assertEqual(saas_request._meta.get_field("frequency").max_length, None)
-        self.assertEqual(saas_request._meta.get_field("units").max_length, 100)
+        self.assertEqual(saas_request._meta.get_field("units").max_length, None)
         self.assertEqual(saas_request._meta.get_field("duration").max_length, 100)
-        self.assertEqual(saas_request._meta.get_field("comments").max_length, 5000)
+        self.assertEqual(saas_request._meta.get_field("comments").max_length, None)
 
     # Test that the string representation of the model is correctly returned
     def test_saas_request_string_representation(self):
