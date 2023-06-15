@@ -65,56 +65,56 @@
     "model": "submit_request.currency",
     "pk": 1,
     "fields": {
-      "name": "CDN"
+      "currency": "CDN"
     } 
   },
   {
     "model": "submit_request.currency",
     "pk": 2,
     "fields": {
-      "name": "USD"
+      "currency": "USD"
     } 
   },
   {
     "model": "submit_request.frequency",
     "pk": 1,
     "fields": {
-      "name": "Daily"
+      "frequency": "Daily"
     }
   },
   {
     "model": "submit_request.frequency",
     "pk": 2,
     "fields": {
-      "name": "Weekly"
+      "frequency": "Weekly"
     }
   },
   {
     "model": "submit_request.frequency",
     "pk": 3,
     "fields": {
-      "name": "Monthly"
+      "frequency": "Monthly"
     }
   },
   {
     "model": "submit_request.frequency",
     "pk": 4,
     "fields": {
-      "name": "Quarterly"
+      "frequency": "Quarterly"
     }
   },
   {
     "model": "submit_request.frequency",
     "pk": 5,
     "fields": {
-      "name": "Bi-Annually"
+      "frequency": "Bi-Annually"
     }
   },
   {
     "model": "submit_request.frequency",
     "pk": 6,
     "fields": {
-      "name": "Yearly"
+      "frequency": "Yearly"
     }
   }
 ]

@@ -36,6 +36,28 @@ class SubmitRequestForm(ModelForm):
         self.helper.form_method = "post"
         self.helper.form_action = "submit_saas_form"
         self.helper.add_input(Submit("submit", _("Submit")))
+        self.fields["comments"].widget.attrs["rows"] = 5
+        self.helper.layout = Layout(
+            "name",
+            "url",
+            "description",
+            "cost",
+            Field("currency", readonly=True, style="height: auto;"),
+            Field("frequency", readonly=True, style="height: auto;"),
+            "units",
+            "level_of_subscription",
+            "duration",
+            "number_of_users",
+            "names_of_users",
+            "account_administrator",
+            "backup_administrator",
+            Field(
+                "manager",
+                readonly=True,
+                style="height: auto;",
+            ),
+            Field("comments", rows="5"),
+        )
         self.helper.add_input(
             Button(
                 "cancel",
@@ -80,8 +102,8 @@ class ViewRequestForm(ModelForm):
             "url",
             "description",
             "cost",
-            "currency",
-            "frequency",
+            Field("currency", readonly=True, style="height: auto;"),
+            Field("frequency", readonly=True, style="height: auto;"),
             "units",
             "level_of_subscription",
             "duration",
@@ -90,7 +112,7 @@ class ViewRequestForm(ModelForm):
             "account_administrator",
             "backup_administrator",
             "manager",
-            "comments",
+            Field("comments", rows="5"),
             Submit("save", _("Save changes")),
             Submit(
                 "delete",
@@ -149,8 +171,8 @@ class ViewPrevRequestForm(ModelForm):
             Field("url", readonly=True),
             Field("description", readonly=True),
             Field("cost", readonly=True),
-            Field("currency", readonly=True),
-            Field("frequency", readonly=True),
+            Field("currency", readonly=True, style="height: auto;"),
+            Field("frequency", readonly=True, style="height: auto;"),
             Field("units", readonly=True),
             Field("level_of_subscription", readonly=True),
             Field("duration", readonly=True),
@@ -163,7 +185,7 @@ class ViewPrevRequestForm(ModelForm):
                 readonly=True,
                 style="color:black; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
             ),
-            Field("comments", readonly=True),
+            Field("comments", readonly=True, rows="5"),
             Field("date_manager_reviewed", readonly=True),
             Field("manager_approved", readonly=True),
             Field("manager_denied", readonly=True),

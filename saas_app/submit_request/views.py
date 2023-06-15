@@ -124,9 +124,13 @@ def view_request(request, pk):
                 saas_object.url = form.cleaned_data["url"]
                 saas_object.description = form.cleaned_data["description"]
                 saas_object.cost = form.cleaned_data["cost"]
+                saas_object.currency = form.cleaned_data["currency"]
+                saas_object.frequency = form.cleaned_data["frequency"]
+                saas_object.units = form.cleaned_data["units"]
                 saas_object.level_of_subscription = form.cleaned_data[
                     "level_of_subscription"
                 ]
+                saas_object.duration = form.cleaned_data["duration"]
                 saas_object.number_of_users = form.cleaned_data["number_of_users"]
                 saas_object.names_of_users = form.cleaned_data["names_of_users"]
                 saas_object.account_administrator = form.cleaned_data[
@@ -136,6 +140,7 @@ def view_request(request, pk):
                     "backup_administrator"
                 ]
                 saas_object.manager = form.cleaned_data["manager"]
+                saas_object.comments = form.cleaned_data["comments"]
                 try:
                     # Save the data to the database
                     saas_object.save()

@@ -26,8 +26,12 @@ class SubmitRequestModelTestCase(TestCase):
         logged_user = User.objects.create_user(
             username="Test User 2", password="Test Password 2"
         )
-        currency = Currency.objects.create(currency="CDN")
-        frequency = Frequency.objects.create(frequency="Yearly")
+        currency = Currency.objects.create(
+            currency="CDN", description="Test Description"
+        )
+        frequency = Frequency.objects.create(
+            frequency="Yearly", description="Test Description"
+        )
         SaasRequest.objects.create(
             name="Test Name",
             url="http://www.testurl.com",
@@ -106,23 +110,12 @@ class SubmitRequestModelTestCase(TestCase):
         self.assertEqual(
             saas_request._meta.get_field("manager_approved").max_length, None
         )
-        self.assertEqual(
-            saas_request._meta.get_field("currency").max_length, None
-        )
-        self.assertEqual(
-            saas_request._meta.get_field("frequency").max_length, None
-        )
-        self.assertEqual(
-            saas_request._meta.get_field("units").max_length, 100
-        )
-        self.assertEqual(
-            saas_request._meta.get_field("duration").max_length, 100
-        )
-        self.assertEqual(
-            saas_request._meta.get_field("comments").max_length, 5000
-        )
-        
-        
+        self.assertEqual(saas_request._meta.get_field("currency").max_length, None)
+        self.assertEqual(saas_request._meta.get_field("frequency").max_length, None)
+        self.assertEqual(saas_request._meta.get_field("units").max_length, 100)
+        self.assertEqual(saas_request._meta.get_field("duration").max_length, 100)
+        self.assertEqual(saas_request._meta.get_field("comments").max_length, 5000)
+
     # Test that the string representation of the model is correctly returned
     def test_saas_request_string_representation(self):
         saas_request = SaasRequest.objects.get(name="Test Name")
@@ -164,36 +157,41 @@ class SubmitRequestFormTest(TestCase):
     def test_currency_label(self):
         form = SubmitRequestForm()
         self.assertTrue(
-            form.fields["currency"].label is None or form.fields["currency"].label == "Currency"
+            form.fields["currency"].label is None
+            or form.fields["currency"].label == "Currency"
         )
-        
+
     # Test the frequency label of the form
     def test_frequency_label(self):
         form = SubmitRequestForm()
         self.assertTrue(
-            form.fields["frequency"].label is None or form.fields["frequency"].label == "Frequency"
+            form.fields["frequency"].label is None
+            or form.fields["frequency"].label == "Frequency"
         )
+
     # Test units label of the form
     def test_units_label(self):
         form = SubmitRequestForm()
         self.assertTrue(
             form.fields["units"].label is None or form.fields["units"].label == "Units"
         )
-        
+
     # Test duration label of the form
     def test_duration_label(self):
         form = SubmitRequestForm()
         self.assertTrue(
-            form.fields["duration"].label is None or form.fields["duration"].label == "Duration"
+            form.fields["duration"].label is None
+            or form.fields["duration"].label == "Duration"
         )
-        
+
     # Test the comments label of the form
     def test_comments_label(self):
         form = SubmitRequestForm()
         self.assertTrue(
-            form.fields["comments"].label is None or form.fields["comments"].label == "Comments"
+            form.fields["comments"].label is None
+            or form.fields["comments"].label == "Comments"
         )
-        
+
     # Test the level of subscription label of the form
     def test_level_of_subscription_label(self):
         form = SubmitRequestForm()
