@@ -15,14 +15,26 @@ class ViewRequestForm(ModelForm):
             "url",
             "description",
             "cost",
+            "currency",
+            "frequency",
+            "units",
             "level_of_subscription",
+            "duration",
             "number_of_users",
             "names_of_users",
             "account_administrator",
             "backup_administrator",
             "manager",
+            "comments",
             "submitted_by",
         ]
+        labels = {
+            "currency": _("Currency"),
+            "frequency": _("Frequency"),
+            "units": _("Units"),
+            "duration": _("Duration"),
+            "comments": _("Comments"),
+        }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -34,7 +46,19 @@ class ViewRequestForm(ModelForm):
             Field("url", disabled=True),
             Field("description", disabled=True),
             Field("cost", disabled=True),
+            Field(
+                "currency",
+                disabled=True,
+                style="height: auto; color:black; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
+            ),
+            Field(
+                "frequency",
+                disabled=True,
+                style="height: auto; color:black; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
+            ),
+            Field("units", disabled=True),
             Field("level_of_subscription", disabled=True),
+            Field("duration", disabled=True),
             Field("number_of_users", disabled=True),
             Field("names_of_users", disabled=True),
             Field("account_administrator", disabled=True),
@@ -44,6 +68,7 @@ class ViewRequestForm(ModelForm):
                 disabled=True,
                 style="color:black; height:auto; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
             ),
+            Field("comments", disabled=True, rows="5"),
             Field(
                 "submitted_by",
                 disabled=True,
@@ -74,12 +99,17 @@ class ViewManagerOldRequestForm(ModelForm):
             "url",
             "description",
             "cost",
+            "currency",
+            "frequency",
+            "units",
             "level_of_subscription",
+            "duration",
             "number_of_users",
             "names_of_users",
             "account_administrator",
             "backup_administrator",
             "manager",
+            "comments",
             "submitted_by",
             "status",
             "date_manager_reviewed",
@@ -88,9 +118,14 @@ class ViewManagerOldRequestForm(ModelForm):
         ]
         labels = {
             "status": _("Current status"),
+            "currency": _("Currency"),
+            "frequency": _("Frequency"),
+            "units": _("Units"),
+            "duration": _("Duration"),
             "date_manager_reviewed": _("Date manager reviewed the request"),
             "manager_approved": _("Manager approved the request"),
             "manager_denied": _("Manager denied the request"),
+            "comments": _("Comments"),
         }
 
     def __init__(self, *args, **kwargs):
@@ -103,7 +138,19 @@ class ViewManagerOldRequestForm(ModelForm):
             Field("url", disabled=True),
             Field("description", disabled=True),
             Field("cost", disabled=True),
+            Field(
+                "currency",
+                disabled=True,
+                style="height: auto; color:black; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
+            ),
+            Field(
+                "frequency",
+                disabled=True,
+                style="height: auto; color:black; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
+            ),
+            Field("units", disabled=True),
             Field("level_of_subscription", disabled=True),
+            Field("duration", disabled=True),
             Field("number_of_users", disabled=True),
             Field("names_of_users", disabled=True),
             Field("account_administrator", disabled=True),
@@ -113,6 +160,7 @@ class ViewManagerOldRequestForm(ModelForm):
                 disabled=True,
                 style="color:black; height:auto; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
             ),
+            Field("comments", disabled=True, rows="5"),
             Field(
                 "submitted_by",
                 disabled=True,
@@ -141,12 +189,17 @@ class ViewS32ApproverOldRequestForm(ModelForm):
             "url",
             "description",
             "cost",
+            "currency",
+            "frequency",
+            "units",
             "level_of_subscription",
+            "duration",
             "number_of_users",
             "names_of_users",
             "account_administrator",
             "backup_administrator",
             "manager",
+            "comments",
             "submitted_by",
             "status",
             "date_manager_reviewed",
@@ -158,12 +211,17 @@ class ViewS32ApproverOldRequestForm(ModelForm):
         ]
         labels = {
             "status": _("Current status"),
+            "currency": _("Currency"),
+            "frequency": _("Frequency"),
+            "units": _("Units"),
+            "duration": _("Duration"),
             "date_manager_reviewed": _("Date manager reviewed the request"),
             "manager_approved": _("Manager approved the request"),
             "manager_denied": _("Manager denied the request"),
             "date_sent_to_s_32_approver": _("Date sent to S32 approver"),
             "s_32_review_date": _("Date S32 approver reviewed the request"),
             "s_32_approved": _("S32 approver approved the request"),
+            "comments": _("Comments"),
         }
 
     def __init__(self, *args, **kwargs):
@@ -176,7 +234,11 @@ class ViewS32ApproverOldRequestForm(ModelForm):
             Field("url", disabled=True),
             Field("description", disabled=True),
             Field("cost", disabled=True),
+            Field("currency", disabled=True, style="height: auto;"),
+            Field("frequency", disabled=True, style="height: auto;"),
+            Field("units", disabled=True),
             Field("level_of_subscription", disabled=True),
+            Field("duration", disabled=True),
             Field("number_of_users", disabled=True),
             Field("names_of_users", disabled=True),
             Field("account_administrator", disabled=True),
@@ -186,6 +248,7 @@ class ViewS32ApproverOldRequestForm(ModelForm):
                 disabled=True,
                 style="color:black; height:auto; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
             ),
+            Field("comments", disabled=True, rows="5"),
             Field(
                 "submitted_by",
                 disabled=True,

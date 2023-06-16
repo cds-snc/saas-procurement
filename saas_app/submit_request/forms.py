@@ -15,13 +15,25 @@ class SubmitRequestForm(ModelForm):
             "url",
             "description",
             "cost",
+            "currency",
+            "frequency",
+            "units",
             "level_of_subscription",
+            "duration",
             "number_of_users",
             "names_of_users",
             "account_administrator",
             "backup_administrator",
             "manager",
+            "comments",
         ]
+        labels = {
+            "currency": _("Currency"),
+            "frequency": _("Frequency"),
+            "units": _("Units"),
+            "duration": _("Duration"),
+            "comments": _("Comments"),
+        }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -31,12 +43,17 @@ class SubmitRequestForm(ModelForm):
         self.helper.form_method = "post"
         self.helper.form_action = "submit_saas_form"
         self.helper.add_input(Submit("submit", _("Submit")))
+        self.fields["comments"].widget.attrs["rows"] = 5
         self.helper.layout = Layout(
             "name",
             "url",
             "description",
             "cost",
+            Field("currency", readonly=True, style="height: auto;"),
+            Field("frequency", readonly=True, style="height: auto;"),
+            "units",
             "level_of_subscription",
+            "duration",
             "number_of_users",
             "names_of_users",
             "account_administrator",
@@ -46,6 +63,7 @@ class SubmitRequestForm(ModelForm):
                 readonly=True,
                 style="height: auto;",
             ),
+            Field("comments", rows="5"),
         )
         self.helper.add_input(
             Button(
@@ -68,13 +86,25 @@ class ViewRequestForm(ModelForm):
             "url",
             "description",
             "cost",
+            "currency",
+            "frequency",
+            "units",
             "level_of_subscription",
+            "duration",
             "number_of_users",
             "names_of_users",
             "account_administrator",
             "backup_administrator",
             "manager",
+            "comments",
         ]
+        labels = {
+            "currency": _("Currency"),
+            "frequency": _("Frequency"),
+            "units": _("Units"),
+            "duration": _("Duration"),
+            "comments": _("Comments"),
+        }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -86,11 +116,16 @@ class ViewRequestForm(ModelForm):
             "url",
             "description",
             "cost",
+            Field("currency", readonly=True, style="height: auto;"),
+            Field("frequency", readonly=True, style="height: auto;"),
+            "units",
             "level_of_subscription",
+            "duration",
             "number_of_users",
             "names_of_users",
             "account_administrator",
             "backup_administrator",
+            Field("comments", rows="5"),
             Field(
                 "manager",
                 readonly=True,
@@ -121,12 +156,17 @@ class ViewPrevRequestForm(ModelForm):
             "url",
             "description",
             "cost",
+            "currency",
+            "frequency",
+            "units",
             "level_of_subscription",
+            "duration",
             "number_of_users",
             "names_of_users",
             "account_administrator",
             "backup_administrator",
             "manager",
+            "comments",
             "date_manager_reviewed",
             "manager_approved",
             "manager_denied",
@@ -134,6 +174,11 @@ class ViewPrevRequestForm(ModelForm):
         ]
         labels = {
             "status": _("Current status"),
+            "currency": _("Currency"),
+            "frequency": _("Frequency"),
+            "units": _("Units"),
+            "duration": _("Duration"),
+            "comments": _("Comments"),
             "date_manager_reviewed": _("Date manager reviewed the request"),
             "manager_approved": _("Manager approved the request"),
             "manager_denied": _("Manager denied the request"),
@@ -149,7 +194,11 @@ class ViewPrevRequestForm(ModelForm):
             Field("url", readonly=True),
             Field("description", readonly=True),
             Field("cost", readonly=True),
+            Field("currency", readonly=True, style="height: auto;"),
+            Field("frequency", readonly=True, style="height: auto;"),
+            Field("units", readonly=True),
             Field("level_of_subscription", readonly=True),
+            Field("duration", readonly=True),
             Field("number_of_users", readonly=True),
             Field("names_of_users", readonly=True),
             Field("account_administrator", readonly=True),
@@ -159,6 +208,7 @@ class ViewPrevRequestForm(ModelForm):
                 readonly=True,
                 style="color:black; height:auto; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
             ),
+            Field("comments", readonly=True, rows="5"),
             Field("date_manager_reviewed", readonly=True),
             Field("manager_approved", readonly=True),
             Field("manager_denied", readonly=True),

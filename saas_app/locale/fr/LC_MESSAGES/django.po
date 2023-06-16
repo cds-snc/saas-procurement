@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-10 18:05+0000\n"
+"POT-Creation-Date: 2023-06-15 17:57+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,52 +17,52 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: approve/forms.py:52
+#: approve/forms.py:70
 msgid "Approve"
 msgstr " Approuver"
 
-#: approve/forms.py:55
+#: approve/forms.py:73
 msgid "Deny"
 msgstr "Refuser"
 
-#: approve/forms.py:60 approve/forms.py:127 approve/forms.py:203
-#: internal_ops/forms.py:112 internal_ops/forms.py:231
-#: internal_ops/forms.py:340 internal_ops/forms.py:422
-#: submit_request/forms.py:37 submit_request/forms.py:87
-#: submit_request/forms.py:148 templates/approve/view_all_prev_requests.html:42
-#: templates/approve/view_all_requests.html:43
+#: approve/forms.py:78 approve/forms.py:163 approve/forms.py:249
+#: internal_ops/forms.py:130 internal_ops/forms.py:262
+#: internal_ops/forms.py:383 internal_ops/forms.py:476
+#: submit_request/forms.py:64 submit_request/forms.py:124
+#: submit_request/forms.py:195 templates/approve/view_all_prev_requests.html:44
+#: templates/approve/view_all_requests.html:45
 #: templates/internal_ops/view_all_prev_requests.html:74
 #: templates/internal_ops/view_all_requests.html:75
 #: templates/request/view_all_requests.html:72
 msgid "Cancel"
 msgstr "Annuler"
 
-#: approve/forms.py:90 approve/forms.py:160 internal_ops/forms.py:272
-#: submit_request/forms.py:116
+#: approve/forms.py:113 approve/forms.py:201 internal_ops/forms.py:310
+#: submit_request/forms.py:158
 msgid "Current status"
 msgstr "Statut actuel"
 
-#: approve/forms.py:91 approve/forms.py:161 submit_request/forms.py:117
+#: approve/forms.py:114 approve/forms.py:202 submit_request/forms.py:159
 msgid "Date manager reviewed the request"
 msgstr "Date à laquelle le gestionnaire a examiné la demande"
 
-#: approve/forms.py:92 approve/forms.py:162 submit_request/forms.py:118
+#: approve/forms.py:115 approve/forms.py:203 submit_request/forms.py:160
 msgid "Manager approved the request"
 msgstr "Le gestionnaire a approuvé la demande"
 
-#: approve/forms.py:93 approve/forms.py:163 submit_request/forms.py:119
+#: approve/forms.py:116 approve/forms.py:204 submit_request/forms.py:161
 msgid "Manager denied the request"
 msgstr "Le gestionnaire a refusé la demande"
 
-#: approve/forms.py:164
+#: approve/forms.py:205
 msgid "Date sent to S32 approver"
 msgstr "Date d'envoi à l'approbateur S32"
 
-#: approve/forms.py:165
+#: approve/forms.py:206
 msgid "Date S32 approver reviewed the request"
 msgstr "Date à laquelle le approbateur S32 a examiné la demande"
 
-#: approve/forms.py:166
+#: approve/forms.py:207
 msgid "S32 approver approved the request"
 msgstr "l'approbateur S32 a approuvé la demande"
 
@@ -102,7 +102,7 @@ msgstr "S32 refusé"
 msgid "There was an error sending the email."
 msgstr "Une erreur s'est produite lors de l'envoi de l'e-mail."
 
-#: internal_ops/forms.py:32 internal_ops/forms.py:157
+#: internal_ops/forms.py:40 internal_ops/forms.py:182
 #: templates/approve/view_all_requests.html:15
 #: templates/internal_ops/view_all_prev_requests.html:15
 #: templates/internal_ops/view_all_prev_requests.html:47
@@ -113,11 +113,11 @@ msgstr "Une erreur s'est produite lors de l'envoi de l'e-mail."
 msgid "Name"
 msgstr "Nom"
 
-#: internal_ops/forms.py:33 internal_ops/forms.py:158
+#: internal_ops/forms.py:41 internal_ops/forms.py:183
 msgid "URL"
 msgstr "URL"
 
-#: internal_ops/forms.py:34 internal_ops/forms.py:159
+#: internal_ops/forms.py:42 internal_ops/forms.py:184
 #: templates/approve/view_all_requests.html:16
 #: templates/internal_ops/view_all_prev_requests.html:16
 #: templates/internal_ops/view_all_prev_requests.html:48
@@ -128,7 +128,7 @@ msgstr "URL"
 msgid "Description"
 msgstr "Description"
 
-#: internal_ops/forms.py:35 internal_ops/forms.py:160
+#: internal_ops/forms.py:43 internal_ops/forms.py:185
 #: templates/approve/view_all_requests.html:18
 #: templates/internal_ops/view_all_prev_requests.html:18
 #: templates/internal_ops/view_all_prev_requests.html:50
@@ -139,27 +139,43 @@ msgstr "Description"
 msgid "Cost"
 msgstr "Coût"
 
-#: internal_ops/forms.py:36 internal_ops/forms.py:161
+#: internal_ops/forms.py:44 internal_ops/forms.py:186
+msgid "Currency"
+msgstr "Monnaie"
+
+#: internal_ops/forms.py:45 internal_ops/forms.py:187
+msgid "Frequency"
+msgstr "Fréquence"
+
+#: internal_ops/forms.py:46 internal_ops/forms.py:188
+msgid "Units"
+msgstr "Unités"
+
+#: internal_ops/forms.py:47 internal_ops/forms.py:189
 msgid "Level of Subscription"
 msgstr "Niveau d'abonnement"
 
-#: internal_ops/forms.py:37 internal_ops/forms.py:162
+#: internal_ops/forms.py:48 internal_ops/forms.py:190
+msgid "Duration"
+msgstr "Durée"
+
+#: internal_ops/forms.py:49 internal_ops/forms.py:191
 msgid "Number of Users"
 msgstr "Nombre d'utilisateurs"
 
-#: internal_ops/forms.py:38 internal_ops/forms.py:163
+#: internal_ops/forms.py:50 internal_ops/forms.py:192
 msgid "Names of Users"
 msgstr "Noms des utilisateurs"
 
-#: internal_ops/forms.py:39 internal_ops/forms.py:164
+#: internal_ops/forms.py:51 internal_ops/forms.py:193
 msgid "Account Administrator"
 msgstr "Administrateur de compte"
 
-#: internal_ops/forms.py:40 internal_ops/forms.py:165
+#: internal_ops/forms.py:52 internal_ops/forms.py:194
 msgid "Backup Administrator"
 msgstr "Administrateur de sauvegarde"
 
-#: internal_ops/forms.py:41 internal_ops/forms.py:166
+#: internal_ops/forms.py:53 internal_ops/forms.py:195
 #: templates/approve/view_all_requests.html:20 templates/base.html:89
 #: templates/internal_ops/view_all_prev_requests.html:20
 #: templates/internal_ops/view_all_prev_requests.html:52
@@ -168,100 +184,105 @@ msgstr "Administrateur de sauvegarde"
 msgid "Manager"
 msgstr "Directeur/Directrice"
 
-#: internal_ops/forms.py:42 internal_ops/forms.py:172 internal_ops/forms.py:273
-#: internal_ops/forms.py:375
+#: internal_ops/forms.py:54
+msgid "Comments"
+msgstr "commentaires"
+
+#: internal_ops/forms.py:55 internal_ops/forms.py:201 internal_ops/forms.py:311
+#: internal_ops/forms.py:425
 msgid "Date Manager reviewed the request"
 msgstr "Date à laquelle le responsable a examiné la demande"
 
-#: internal_ops/forms.py:43 internal_ops/forms.py:167 internal_ops/forms.py:274
-#: internal_ops/forms.py:376
+#: internal_ops/forms.py:56 internal_ops/forms.py:196 internal_ops/forms.py:312
+#: internal_ops/forms.py:426
 msgid "Manager Approved"
 msgstr "Approuvé par le gestionnaire"
 
-#: internal_ops/forms.py:44 internal_ops/forms.py:168 internal_ops/forms.py:275
-#: internal_ops/forms.py:377
+#: internal_ops/forms.py:57 internal_ops/forms.py:197 internal_ops/forms.py:313
+#: internal_ops/forms.py:427
 msgid "Manager Denied"
 msgstr "Refusé par le gestionnaire"
 
-#: internal_ops/forms.py:45 internal_ops/forms.py:173
+#: internal_ops/forms.py:58 internal_ops/forms.py:202
+#: templates/approve/view_all_requests.html:21
 msgid "Submitted By"
 msgstr "Proposé par"
 
-#: internal_ops/forms.py:46 internal_ops/forms.py:169 internal_ops/forms.py:174
-#: internal_ops/forms.py:276 internal_ops/forms.py:378
+#: internal_ops/forms.py:59 internal_ops/forms.py:198 internal_ops/forms.py:314
+#: internal_ops/forms.py:428
 msgid "Date Info Requested"
 msgstr "Date à laquelle des informations ont été demandées"
 
-#: internal_ops/forms.py:47 internal_ops/forms.py:170 internal_ops/forms.py:175
-#: internal_ops/forms.py:277 internal_ops/forms.py:379
+#: internal_ops/forms.py:60 internal_ops/forms.py:199 internal_ops/forms.py:315
+#: internal_ops/forms.py:429
 msgid "Info Requested"
 msgstr "Informations demandées"
 
-#: internal_ops/forms.py:48 internal_ops/forms.py:176 internal_ops/forms.py:279
-#: internal_ops/forms.py:381
+#: internal_ops/forms.py:61 internal_ops/forms.py:203 internal_ops/forms.py:317
+#: internal_ops/forms.py:431
 msgid "Fund Center"
 msgstr "Centre de fonds"
 
-#: internal_ops/forms.py:49 internal_ops/forms.py:177 internal_ops/forms.py:280
-#: internal_ops/forms.py:382 templates/base.html:91 templates/index.html:84
+#: internal_ops/forms.py:62 internal_ops/forms.py:204 internal_ops/forms.py:318
+#: internal_ops/forms.py:432 templates/base.html:91 templates/index.html:84
 msgid "S32 Approver"
 msgstr "Approbateur S32"
 
-#: internal_ops/forms.py:84 templates/internal_ops/view_request.html:77
+#: internal_ops/forms.py:102 templates/internal_ops/view_request.html:77
 msgid "Save"
 msgstr "Sauvegarder"
 
-#: internal_ops/forms.py:88
+#: internal_ops/forms.py:106
 msgid "Send for S32 Approval"
 msgstr "En attente d'envoi pour approbation S32"
 
-#: internal_ops/forms.py:92 internal_ops/forms.py:212
+#: internal_ops/forms.py:110 internal_ops/forms.py:244
 msgid "Request Additional Information"
 msgstr "Demander des informations supplémentaires"
 
-#: internal_ops/forms.py:102 internal_ops/forms.py:125
-#: internal_ops/forms.py:222 templates/internal_ops/view_request.html:47
+#: internal_ops/forms.py:120 internal_ops/forms.py:145
+#: internal_ops/forms.py:253 templates/internal_ops/view_request.html:47
 msgid "Record Purchase Information"
 msgstr "Enregistrer les informations d'achat"
 
-#: internal_ops/forms.py:171 internal_ops/forms.py:278
-#: internal_ops/forms.py:380
+#: internal_ops/forms.py:200 internal_ops/forms.py:316
+#: internal_ops/forms.py:430
 msgid "Date Sent to S32 Approver"
 msgstr "Date d'envoi à l'approbateur S32"
 
-#: internal_ops/forms.py:281 internal_ops/forms.py:383
+#: internal_ops/forms.py:319 internal_ops/forms.py:433
 msgid "S32 Approver approved"
 msgstr "Approuvé par l'approbateur S32"
 
-#: internal_ops/forms.py:282 internal_ops/forms.py:384
+#: internal_ops/forms.py:320 internal_ops/forms.py:434
 msgid "S32 Approver Review Date"
 msgstr "Date de révision par l'approbateur S32"
 
-#: internal_ops/forms.py:283
+#: internal_ops/forms.py:321
 msgid "Purchase Date"
 msgstr "Date d'achat:"
 
-#: internal_ops/forms.py:284
+#: internal_ops/forms.py:322
 msgid "Purchase Amount"
 msgstr "Montant des achats:"
 
-#: internal_ops/forms.py:285
+#: internal_ops/forms.py:323
 msgid "Purchase Method"
 msgstr "Méthode d'achat"
 
-#: internal_ops/forms.py:286
+#: internal_ops/forms.py:324
 msgid "Confirmation Number"
 msgstr "Numéro de confirmation"
 
-#: internal_ops/forms.py:287
+#: internal_ops/forms.py:325
 msgid "Purchase Notes"
 msgstr "Notes d'achat"
 
-#: internal_ops/forms.py:374
+#: internal_ops/forms.py:424
 msgid "Current Status"
 msgstr "Statut actuel"
 
-#: internal_ops/models.py:7 submit_request/models.py:10 user/models.py:8
+#: internal_ops/models.py:7 submit_request/models.py:30 user/models.py:8
 msgid "name"
 msgstr "nom"
 
@@ -366,55 +387,72 @@ msgid "Something went wrong with switching roles. Please try again."
 msgstr ""
 "Quelque chose s'est mal passé avec le changement de rôle. Veuillez réessayer."
 
-#: submit_request/forms.py:33
+#: submit_request/forms.py:38
 msgid "Submit"
 msgstr "Soumettre"
 
-#: submit_request/forms.py:79
+#: submit_request/forms.py:116
 msgid "Save changes"
 msgstr "Sauvegarder les modifications"
 
-#: submit_request/forms.py:82
+#: submit_request/forms.py:119
 msgid "Delete"
 msgstr "Supprimer"
 
-#: submit_request/models.py:12 user/models.py:9
+#: submit_request/models.py:10
+msgid "frequency"
+msgstr "fréquence"
+
+#: submit_request/models.py:11 submit_request/models.py:21
+#: submit_request/models.py:32 user/models.py:9
 msgid "description"
 msgstr "description"
 
-#: submit_request/models.py:13
+#: submit_request/models.py:20
+msgid "currency"
+msgstr "monnaie"
+
+#: submit_request/models.py:33
 msgid "cost"
 msgstr "coût"
 
-#: submit_request/models.py:14
+#: submit_request/models.py:48
 msgid "level of subscription"
 msgstr "Niveau d'abonnement"
 
-#: submit_request/models.py:15
+#: submit_request/models.py:49
+msgid "units"
+msgstr "unités"
+
+#: submit_request/models.py:50
+msgid "duration"
+msgstr "durée"
+
+#: submit_request/models.py:51
 msgid "number of users"
 msgstr "Nombre d'utilisateurs"
 
-#: submit_request/models.py:16
+#: submit_request/models.py:52
 msgid "names of users"
 msgstr "Noms des utilisateurs"
 
-#: submit_request/models.py:17
+#: submit_request/models.py:53
 msgid "account administrator"
 msgstr "Administrateur de compte"
 
-#: submit_request/models.py:18
+#: submit_request/models.py:54
 msgid "backup administrator"
 msgstr "Administrateur de sauvegarde"
 
-#: submit_request/models.py:23
+#: submit_request/models.py:59
 msgid "manager"
 msgstr "Directeur/Directrice"
 
-#: submit_request/models.py:26
+#: submit_request/models.py:62
 msgid "submitted by"
-msgstr "Proposé par:"
+msgstr "Proposé par"
 
-#: submit_request/models.py:28
+#: submit_request/models.py:64
 msgid "date submitted"
 msgstr "Date de soumission"
 
@@ -426,19 +464,19 @@ msgstr "Demande soumise"
 msgid "Your form was submitted successfully!"
 msgstr "Votre formulaire a été soumis avec succès!"
 
-#: submit_request/views.py:142
+#: submit_request/views.py:147
 msgid "Your form was saved successfully!"
 msgstr "Votre formulaire a été enregistré avec succès !"
 
-#: submit_request/views.py:144
+#: submit_request/views.py:149
 msgid "Your form was not saved successfully!"
 msgstr "Votre formulaire n'a pas été enregistré avec succès !"
 
-#: submit_request/views.py:161
+#: submit_request/views.py:166
 msgid "Your form was deleted successfully!"
 msgstr "Votre formulaire a été supprimé avec succès !"
 
-#: submit_request/views.py:164
+#: submit_request/views.py:169
 msgid "There was an error deleting the request"
 msgstr "Une erreur s'est produite lors de la suppression de la demande"
 
@@ -476,7 +514,7 @@ msgstr "Demande SAAS"
 msgid "Requests that have been previously reviewed by you"
 msgstr "Vous n'avez aucune demande qui a déjà été examinée par vous"
 
-#: templates/approve/view_all_prev_requests.html:40
+#: templates/approve/view_all_prev_requests.html:42
 msgid "You have no requests that have been previously reviewed by you"
 msgstr "Vous n'avez aucune demande qui a déjà été examinée par vous"
 
@@ -504,7 +542,7 @@ msgstr "Url"
 msgid "Date Submitted"
 msgstr "Date de soumission"
 
-#: templates/approve/view_all_requests.html:21
+#: templates/approve/view_all_requests.html:22
 #: templates/internal_ops/view_all_prev_requests.html:21
 #: templates/internal_ops/view_all_prev_requests.html:53
 #: templates/internal_ops/view_all_requests.html:21
@@ -514,7 +552,7 @@ msgstr "Date de soumission"
 msgid "Status"
 msgstr "Statut"
 
-#: templates/approve/view_all_requests.html:41
+#: templates/approve/view_all_requests.html:43
 msgid "You have no requests awaiting approval"
 msgstr "Vous n'avez aucune demande en attente d'approbation"
 

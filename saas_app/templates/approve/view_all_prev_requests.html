@@ -12,13 +12,14 @@
     <table class="table table-hover table-bordered">
       <thead>
         <tr>
-          <th scope="col">Name</th>
-          <th scope="col">Description</th>
-          <th scope="col">Url</th>
-          <th scope="col">Cost</th>
-          <th scope="col">Date Submitted</th>
-          <th scope="col">Manager</th>
-          <th scope="col">Status</th>
+          <th scope="col">{% trans "Name" %}</th>
+          <th scope="col">{% trans "Description" %}</th>
+          <th scope="col">{% trans "Url" %}</th>
+          <th scope="col">{% trans "Cost" %}</th>
+          <th scope="col">{% trans "Date Submitted" %}</th>
+          <th scope="col">{% trans "Manager" %}</th>
+          <th scope="col">{% trans "Submitted By" %}</th>
+          <th scope="col">{% trans "Status" %}</th>
           <tbody class="table-group-divider"></tbody>
         </tr>
       </thead>
@@ -31,6 +32,7 @@
             <td>{{ saas_request.cost }}</td>
             <td>{{ saas_request.date_submitted }}</td>
             <td>{{ saas_request.manager }}</td>
+            <td>{{ saas_request.submitted_by}}</td>
             <td>{% trans saas_request.status %}</td>
         </tr>
         {% endfor %}

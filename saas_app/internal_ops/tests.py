@@ -1,5 +1,6 @@
 from django.test import TestCase
-from submit_request.models import SaasRequest, User, Users
+from django.utils import timezone
+from submit_request.models import SaasRequest, User, Users, Currency, Frequency
 from user.models import Roles
 from .models import FundCenter
 from .forms import (
@@ -28,6 +29,12 @@ class SubmitRequestModelTestCase(TestCase):
             title="Test Title",
             business_unit="Test Business Unit",
         )
+        currency = Currency.objects.create(
+            currency="CDN", description="Test Description"
+        )
+        frequency = Frequency.objects.create(
+            frequency="Yearly", description="Test Description"
+        )
         manager.user_roles.add(role)
         logged_user = User.objects.create_user(
             username="Test User 2", password="Test Password 2"
@@ -42,25 +49,38 @@ class SubmitRequestModelTestCase(TestCase):
             url="http://www.testurl.com",
             description="Test Description",
             cost="Test Cost",
+            currency=currency,
+            frequency=frequency,
+            units=1,
+            duration="Test Duration",
             level_of_subscription="Test Level of Subscription",
             number_of_users=1,
             names_of_users="Test Names of Users",
             account_administrator="Test Account Administrator",
             backup_administrator="Test Backup Administrator",
-            date_manager_reviewed=datetime.datetime(2020, 1, 1, 0, 0, 0),
-            date_info_requested=datetime.datetime(2020, 1, 1, 0, 0, 0),
+            date_manager_reviewed=datetime.datetime(
+                2020, 1, 1, 0, 0, 0, tzinfo=timezone.utc
+            ),
+            date_info_requested=datetime.datetime(
+                2020, 1, 1, 0, 0, 0, tzinfo=timezone.utc
+            ),
             info_requested="Test Info Requested",
             fund_center=fund_center,
-            date_sent_to_s_32_approver=datetime.datetime(2020, 1, 1, 0, 0, 0),
-            s_32_review_date=datetime.datetime(2020, 1, 1, 0, 0, 0),
+            date_sent_to_s_32_approver=datetime.datetime(
+                2020, 1, 1, 0, 0, 0, tzinfo=timezone.utc
+            ),
+            s_32_review_date=datetime.datetime(
+                2020, 1, 1, 0, 0, 0, tzinfo=timezone.utc
+            ),
             s_32_approved=True,
-            purchase_date=datetime.datetime(2020, 1, 1, 0, 0, 0),
+            purchase_date=datetime.datetime(2020, 1, 1, 0, 0, 0, tzinfo=timezone.utc),
             purchase_amount=100,
             purchase_method="Test Purchase Method",
             confirmation_number="Test Confirmation Number",
             purchase_notes="Test Purchase Notes",
             approved_by=manager,
             manager=manager,
+            comments="Test Comments",
             submitted_by=logged_user,
             manager_approved=True,
             manager_denied=False,
@@ -72,10 +92,16 @@ class SubmitRequestModelTestCase(TestCase):
         manager = Users.objects.get(user=auth_user)
         logged_user = User.objects.get(username="Test User 2")
         fund_center = FundCenter.objects.get(name="Test Fund Center Name")
+        frequency = Frequency.objects.get(frequency="Yearly")
+        currency = Currency.objects.get(currency="CDN")
         saas_request = SaasRequest.objects.get(name="Test Name")
         self.assertEqual(saas_request.url, "http://www.testurl.com")
         self.assertEqual(saas_request.description, "Test Description")
         self.assertEqual(saas_request.cost, "Test Cost")
+        self.assertEqual(saas_request.currency, currency)
+        self.assertEqual(saas_request.frequency, frequency)
+        self.assertEqual(saas_request.units, 1)
+        self.assertEqual(saas_request.duration, "Test Duration")
         self.assertEqual(
             saas_request.level_of_subscription, "Test Level of Subscription"
         )
@@ -86,6 +112,7 @@ class SubmitRequestModelTestCase(TestCase):
         )
         self.assertEqual(saas_request.backup_administrator, "Test Backup Administrator")
         self.assertEqual(saas_request.manager, manager)
+        self.assertEqual(saas_request.comments, "Test Comments")
         self.assertEqual(saas_request.submitted_by, logged_user)
         mocked_date = datetime.datetime(2020, 1, 1, 0, 0, 0)
         saas_request.date_submitted = mocked_date
@@ -118,6 +145,11 @@ class SubmitRequestModelTestCase(TestCase):
         self.assertEqual(saas_request._meta.get_field("url").max_length, 100)
         self.assertEqual(saas_request._meta.get_field("description").max_length, 500)
         self.assertEqual(saas_request._meta.get_field("cost").max_length, 100)
+        self.assertEqual(saas_request._meta.get_field("currency").max_length, None)
+        self.assertEqual(saas_request._meta.get_field("frequency").max_length, None)
+        self.assertEqual(saas_request._meta.get_field("units").max_length, None)
+        self.assertEqual(saas_request._meta.get_field("duration").max_length, 100)
+        self.assertEqual(saas_request._meta.get_field("comments").max_length, None)
         self.assertEqual(
             saas_request._meta.get_field("level_of_subscription").max_length, 100
         )
@@ -202,6 +234,45 @@ class ViewS32RequestFormTest(TestCase):
         form = ViewS32RequestForm()
         self.assertTrue(
             form.fields["cost"].label is None or form.fields["cost"].label == "Cost"
+        )
+
+    # Test the currency label of the form
+    def test_currency_label(self):
+        form = ViewS32RequestForm()
+        self.assertTrue(
+            form.fields["currency"].label is None
+            or form.fields["currency"].label == "Currency"
+        )
+
+    # Test the frequency label of the form
+    def test_frequency_label(self):
+        form = ViewS32RequestForm()
+        self.assertTrue(
+            form.fields["frequency"].label is None
+            or form.fields["frequency"].label == "Frequency"
+        )
+
+    # Test units label of the form
+    def test_units_label(self):
+        form = ViewS32RequestForm()
+        self.assertTrue(
+            form.fields["units"].label is None or form.fields["units"].label == "Units"
+        )
+
+    # Test duration label of the form
+    def test_duration_label(self):
+        form = ViewS32RequestForm()
+        self.assertTrue(
+            form.fields["duration"].label is None
+            or form.fields["duration"].label == "Duration"
+        )
+
+    # Test the comments label of the form
+    def test_comments_label(self):
+        form = ViewS32RequestForm()
+        self.assertTrue(
+            form.fields["comments"].label is None
+            or form.fields["comments"].label == "Comments"
         )
 
     # Test the level of subscription label of the form
@@ -333,6 +404,45 @@ class ViewPurchaseRequiredFormTest(TestCase):
             form.fields["cost"].label is None or form.fields["cost"].label == "Cost"
         )
 
+    # Test the currency label of the form
+    def test_currency_label(self):
+        form = ViewPurchaseRequiredForm()
+        self.assertTrue(
+            form.fields["currency"].label is None
+            or form.fields["currency"].label == "Currency"
+        )
+
+    # Test the frequency label of the form
+    def test_frequency_label(self):
+        form = ViewPurchaseRequiredForm()
+        self.assertTrue(
+            form.fields["frequency"].label is None
+            or form.fields["frequency"].label == "Frequency"
+        )
+
+    # Test units label of the form
+    def test_units_label(self):
+        form = ViewPurchaseRequiredForm()
+        self.assertTrue(
+            form.fields["units"].label is None or form.fields["units"].label == "Units"
+        )
+
+    # Test duration label of the form
+    def test_duration_label(self):
+        form = ViewPurchaseRequiredForm()
+        self.assertTrue(
+            form.fields["duration"].label is None
+            or form.fields["duration"].label == "Duration"
+        )
+
+    # Test the comments label of the form
+    def test_comments_label(self):
+        form = ViewPurchaseRequiredForm()
+        self.assertTrue(
+            form.fields["comments"].label is None
+            or form.fields["comments"].label == "Comments"
+        )
+
     # Test the level of subscription label of the form
     def test_level_of_subscription_label(self):
         form = ViewPurchaseRequiredForm()
@@ -460,6 +570,45 @@ class ViewOldPurchasedRequestsFormTest(TestCase):
         form = ViewOldPurchasedRequestsForm()
         self.assertTrue(
             form.fields["cost"].label is None or form.fields["cost"].label == "Cost"
+        )
+
+    # Test the currency label of the form
+    def test_currency_label(self):
+        form = ViewOldPurchasedRequestsForm()
+        self.assertTrue(
+            form.fields["currency"].label is None
+            or form.fields["currency"].label == "Currency"
+        )
+
+    # Test the frequency label of the form
+    def test_frequency_label(self):
+        form = ViewOldPurchasedRequestsForm()
+        self.assertTrue(
+            form.fields["frequency"].label is None
+            or form.fields["frequency"].label == "Frequency"
+        )
+
+    # Test units label of the form
+    def test_units_label(self):
+        form = ViewOldPurchasedRequestsForm()
+        self.assertTrue(
+            form.fields["units"].label is None or form.fields["units"].label == "Units"
+        )
+
+    # Test duration label of the form
+    def test_duration_label(self):
+        form = ViewOldPurchasedRequestsForm()
+        self.assertTrue(
+            form.fields["duration"].label is None
+            or form.fields["duration"].label == "Duration"
+        )
+
+    # Test the comments label of the form
+    def test_comments_label(self):
+        form = ViewOldPurchasedRequestsForm()
+        self.assertTrue(
+            form.fields["comments"].label is None
+            or form.fields["comments"].label == "Comments"
         )
 
     # Test the level of subscription label of the form
@@ -670,6 +819,45 @@ class ViewOldS32ApprovedRequestsFormTest(TestCase):
         form = ViewOldS32ApprovedRequestsForm()
         self.assertTrue(
             form.fields["cost"].label is None or form.fields["cost"].label == "Cost"
+        )
+
+    # Test the currency label of the form
+    def test_currency_label(self):
+        form = ViewOldS32ApprovedRequestsForm()
+        self.assertTrue(
+            form.fields["currency"].label is None
+            or form.fields["currency"].label == "Currency"
+        )
+
+    # Test the frequency label of the form
+    def test_frequency_label(self):
+        form = ViewOldS32ApprovedRequestsForm()
+        self.assertTrue(
+            form.fields["frequency"].label is None
+            or form.fields["frequency"].label == "Frequency"
+        )
+
+    # Test units label of the form
+    def test_units_label(self):
+        form = ViewOldS32ApprovedRequestsForm()
+        self.assertTrue(
+            form.fields["units"].label is None or form.fields["units"].label == "Units"
+        )
+
+    # Test duration label of the form
+    def test_duration_label(self):
+        form = ViewOldS32ApprovedRequestsForm()
+        self.assertTrue(
+            form.fields["duration"].label is None
+            or form.fields["duration"].label == "Duration"
+        )
+
+    # Test the comments label of the form
+    def test_comments_label(self):
+        form = ViewOldS32ApprovedRequestsForm()
+        self.assertTrue(
+            form.fields["comments"].label is None
+            or form.fields["comments"].label == "Comments"
         )
 
     # Test the level of subscription label of the form
