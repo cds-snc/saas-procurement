@@ -20,6 +20,18 @@ fi
 echo "Retrieving environment parameters and put them in an .env file"
 python bin/get_parameters.py
 
+# One time update the currency and frequency values
+currency=$(python manage.py shell -c "from submit_request.models import Currency; print(len(Currency.objects.all()))")
+frequency=$(python manage.py shell -c "from submit_request.models import Frequency; print(len(Frequency.objects.all()))")
+if [ "${currency}" -eq 0 ] || [ "${frequency}" -eq 0 ] 
+then
+    echo "Installing currency and frequency data"
+    python manage.py loaddata fixtures/fixtures_currency_frequency_data.json
+else
+    echo "Currency and frequency data is already installed"
+fi
+
+
 # Check if there are migrations to apply, if there are store their count to a variable
 migration_count=$(python manage.py showmigrations | grep -c "\[ \]")
 # If migration_count is greater than 0, there are migrations to apply
@@ -71,17 +83,6 @@ if [ "${social_account}" -eq 0 ]; then
     fi
 else
     echo "Initial data is already installed"
-fi
-
-# One time update the currency and frequency values
-currency=$(python manage.py shell -c "from submit_request.models import Currency; print(len(Currency.objects.all()))")
-frequency=$(python manage.py shell -c "from submit_request.models import Frequency; print(len(Frequency.objects.all()))")
-if [ "${currency}" -eq 0 ] || [ "${frequency}" -eq 0 ] 
-then
-    echo "Installing currency and frequency data"
-    python manage.py loaddata fixtures/fixtures_currency_frequency_data.json
-else
-    echo "Currency and frequency data is already installed"
 fi
 
 # Run collectstatic to generate the static files

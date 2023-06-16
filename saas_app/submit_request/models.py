@@ -35,12 +35,14 @@ class SaasRequest(models.Model):
         Currency,
         on_delete=models.CASCADE,
         null=True,
+        default="CDN",
         blank=True,
         related_name="saas_currency",
     )
     frequency = models.ForeignKey(
         Frequency,
         on_delete=models.CASCADE,
+        default=None,
         null=True,
         blank=True,
         related_name="saas_frequency",
