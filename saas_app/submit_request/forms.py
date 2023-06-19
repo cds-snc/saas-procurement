@@ -25,6 +25,7 @@ class SubmitRequestForm(ModelForm):
             "account_administrator",
             "backup_administrator",
             "manager",
+            "fund_center",
             "comments",
         ]
         labels = {
@@ -32,7 +33,13 @@ class SubmitRequestForm(ModelForm):
             "frequency": _("Frequency"),
             "units": _("Units"),
             "duration": _("Duration"),
+            "fund_center": _("Fund Center"),
             "comments": _("Comments"),
+        }
+        help_texts = {
+            "fund_center": _(
+                "If Saas is to be used for all of CDS, select FC 110804. If the Saas is to be used specifically for your BU, please select the appropriate FC."
+            ),
         }
 
     def __init__(self, *args, **kwargs):
@@ -63,6 +70,7 @@ class SubmitRequestForm(ModelForm):
                 readonly=True,
                 style="height: auto;",
             ),
+            "fund_center",
             Field("comments", rows="5"),
         )
         self.helper.add_input(
@@ -96,6 +104,7 @@ class ViewRequestForm(ModelForm):
             "account_administrator",
             "backup_administrator",
             "manager",
+            "fund_center",
             "comments",
         ]
         labels = {
@@ -103,6 +112,7 @@ class ViewRequestForm(ModelForm):
             "frequency": _("Frequency"),
             "units": _("Units"),
             "duration": _("Duration"),
+            "fund_center": _("Fund Center"),
             "comments": _("Comments"),
         }
 
@@ -125,12 +135,13 @@ class ViewRequestForm(ModelForm):
             "names_of_users",
             "account_administrator",
             "backup_administrator",
-            Field("comments", rows="5"),
             Field(
                 "manager",
                 readonly=True,
                 style="height:auto;",
             ),
+            "fund_center",
+            Field("comments", rows="5"),
             Submit("save", _("Save changes")),
             Submit(
                 "delete",
@@ -166,6 +177,7 @@ class ViewPrevRequestForm(ModelForm):
             "account_administrator",
             "backup_administrator",
             "manager",
+            "fund_center",
             "comments",
             "date_manager_reviewed",
             "manager_approved",
@@ -178,6 +190,7 @@ class ViewPrevRequestForm(ModelForm):
             "frequency": _("Frequency"),
             "units": _("Units"),
             "duration": _("Duration"),
+            "fund_center": _("Fund Center"),
             "comments": _("Comments"),
             "date_manager_reviewed": _("Date manager reviewed the request"),
             "manager_approved": _("Manager approved the request"),
@@ -208,6 +221,7 @@ class ViewPrevRequestForm(ModelForm):
                 readonly=True,
                 style="color:black; height:auto; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
             ),
+            Field("fund_center", readonly=True),
             Field("comments", readonly=True, rows="5"),
             Field("date_manager_reviewed", readonly=True),
             Field("manager_approved", readonly=True),

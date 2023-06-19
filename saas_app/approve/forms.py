@@ -25,6 +25,7 @@ class ViewRequestForm(ModelForm):
             "account_administrator",
             "backup_administrator",
             "manager",
+            "fund_center",
             "comments",
             "submitted_by",
         ]
@@ -33,6 +34,7 @@ class ViewRequestForm(ModelForm):
             "frequency": _("Frequency"),
             "units": _("Units"),
             "duration": _("Duration"),
+            "fund_center": _("Fund Center"),
             "comments": _("Comments"),
         }
 
@@ -67,6 +69,11 @@ class ViewRequestForm(ModelForm):
                 "manager",
                 disabled=True,
                 style="color:black; height:auto; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
+            ),
+            Field(
+                "fund_center",
+                disabled=True,
+                style="height: auto; color:black; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
             ),
             Field("comments", disabled=True, rows="5"),
             Field(
@@ -109,6 +116,7 @@ class ViewManagerOldRequestForm(ModelForm):
             "account_administrator",
             "backup_administrator",
             "manager",
+            "fund_center",
             "comments",
             "submitted_by",
             "status",
@@ -122,6 +130,7 @@ class ViewManagerOldRequestForm(ModelForm):
             "frequency": _("Frequency"),
             "units": _("Units"),
             "duration": _("Duration"),
+            "fund_center": _("Fund Center"),
             "date_manager_reviewed": _("Date manager reviewed the request"),
             "manager_approved": _("Manager approved the request"),
             "manager_denied": _("Manager denied the request"),
@@ -159,6 +168,11 @@ class ViewManagerOldRequestForm(ModelForm):
                 "manager",
                 disabled=True,
                 style="color:black; height:auto; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
+            ),
+            Field(
+                "fund_center",
+                disabled=True,
+                style="height: auto; color:black; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
             ),
             Field("comments", disabled=True, rows="5"),
             Field(
@@ -199,6 +213,7 @@ class ViewS32ApproverOldRequestForm(ModelForm):
             "account_administrator",
             "backup_administrator",
             "manager",
+            "fund_center",
             "comments",
             "submitted_by",
             "status",
@@ -215,6 +230,7 @@ class ViewS32ApproverOldRequestForm(ModelForm):
             "frequency": _("Frequency"),
             "units": _("Units"),
             "duration": _("Duration"),
+            "fund_center": _("Fund Center"),
             "date_manager_reviewed": _("Date manager reviewed the request"),
             "manager_approved": _("Manager approved the request"),
             "manager_denied": _("Manager denied the request"),
@@ -247,6 +263,11 @@ class ViewS32ApproverOldRequestForm(ModelForm):
                 "manager",
                 disabled=True,
                 style="color:black; height:auto; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
+            ),
+            Field(
+                "fund_center",
+                disabled=True,
+                style="height: auto; color:black; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
             ),
             Field("comments", disabled=True, rows="5"),
             Field(

@@ -252,7 +252,9 @@ def view_request_s32_approver(request, pk):
                     request, _("An error occurred while approving the request")
                 )
             # redirect to a new URL
-            return render(request, "approve/saas_status.html", {"status": "approved"})
+            return render(
+                request, "approve/saas_status.html", {"status": "s32 approved"}
+            )
         # else if the deny button was clicked
         elif request.POST.get("deny"):
             try:
@@ -281,4 +283,4 @@ def view_request_s32_approver(request, pk):
                 )
 
             # redirect to a new URL
-            return render(request, "approve/saas_status.html", {"status": "denied"})
+            return render(request, "approve/saas_status.html", {"status": "s32 denied"})
