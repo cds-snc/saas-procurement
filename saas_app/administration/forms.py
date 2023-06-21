@@ -8,11 +8,12 @@ from user.models import Users
 # get the current language
 current_language = get_language()
 
+
 # View a Saas Request Form
 class ViewUserForm(ModelForm):
     # Form is generated from the database fields.
     class Meta:
-        model = Users 
+        model = Users
         fields = [
             "first_name",
             "last_name",
@@ -36,8 +37,6 @@ class ViewUserForm(ModelForm):
         self.helper.layout = Layout(
             "first_name",
             "last_name",
-            Field.checkboxes("user_roles"),
-            Field("user_roles", css_class="select2"),
             "user_roles",
             "title",
             "business_unit",
