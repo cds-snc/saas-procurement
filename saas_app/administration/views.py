@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.utils.translation import gettext as _
 from .forms import ViewUserForm
-from user.models import Users
+from user.models import Users, Roles
 import django.contrib.messages as messages
 
 
@@ -11,7 +11,7 @@ def view_users(request):
         # search for all the users of the application
         users = Users.objects.all()
         for user in users:
-            user.roles = [role.name for role in user.user_roles.all()]
+            user.roles = ", ".join([role.name for role in user.user_roles.all()])
         # render the requests in a table
         return render(
             request,
@@ -39,7 +39,21 @@ def view_user(request, pk):
                 # update all the fields
                 user.first_name = form.cleaned_data["first_name"]
                 user.last_name = form.cleaned_data["last_name"]
-                # user.user_roles = form.cleaned_data["user_roles"]
+
+                # get all the roles that exist in the database
+                all_roles = Roles.objects.all()
+
+                # remove all the roles from the user
+                for role in all_roles:
+                    user.user_roles.remove(role)
+
+                # get all the roles from the form
+                roles = form.cleaned_data["user_roles"]
+
+                # add the roles from the form to the user
+                for role in roles:
+                    user.user_roles.add(role)
+
                 user.title = form.cleaned_data["title"]
                 user.business_unit = form.cleaned_data["business_unit"]
 
@@ -53,25 +67,6 @@ def view_user(request, pk):
                 except Exception:
                     messages.error(
                         request, _("The user data was not saved successfully!")
-                    )
-
-                return render(request, "administration/view_user.html", {"form": form})
-        elif request.POST.get("update_roles"):
-            if form.is_valid():
-                # get the user object by its primary key
-                user = Users.objects.get(pk=pk)
-                # update the roles
-                user.user_roles = form.cleaned_data["user_roles"]
-                # save the user object
-                try:
-                    # Save the data to the database
-                    user.save()
-                    messages.success(
-                        request, _("The user's roles were updated successfully!")
-                    )
-                except Exception:
-                    messages.error(
-                        request, _("The user's roles were not updated successfully!")
                     )
 
                 return render(request, "administration/view_user.html", {"form": form})

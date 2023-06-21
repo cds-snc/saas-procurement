@@ -13,30 +13,4 @@
         {% csrf_token %}
         {% crispy form %}
 </form>
-
-<div class="modal fade" id="update_roles_modal" tabindex="-1" aria-labelledby="update_roles_label" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="update_roles_label">{% trans "Update User roles" %}</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form action="send_mail" method="post" novalidate>
-          <div class="form-group">
-            {% csrf_token %}
-            <label for="message-text" class="col-form-label">{% trans "Message:" %}</label>
-            <textarea class="form-control" name="info_requested" id="info-requested" rows="7"></textarea>
-          </div>
-          <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">{% trans "Close" %}</button>
-          <button type="submit" class="btn btn-primary" name="submit" Value="Submit">{% trans "Send message" %}</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
 {% endblock %}

@@ -1,16 +1,23 @@
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Submit, Layout, Button, Field
-from django.forms import ModelForm
+from crispy_forms.layout import Submit, Layout, Button
+from crispy_forms.bootstrap import InlineCheckboxes
+import django.forms as forms
 from django.utils.translation import get_language, gettext_lazy as _
-from django.db import models
-from user.models import Users
+from user.models import Users, Roles
 
 # get the current language
 current_language = get_language()
 
 
 # View a Saas Request Form
-class ViewUserForm(ModelForm):
+class ViewUserForm(forms.ModelForm):
+    # user roles multiple choice field
+    user_roles = forms.ModelMultipleChoiceField(
+        queryset=Roles.objects.all(),
+        widget=forms.CheckboxSelectMultiple,
+        required=False,
+    )
+
     # Form is generated from the database fields.
     class Meta:
         model = Users
@@ -37,18 +44,9 @@ class ViewUserForm(ModelForm):
         self.helper.layout = Layout(
             "first_name",
             "last_name",
-            "user_roles",
+            InlineCheckboxes("user_roles"),
             "title",
             "business_unit",
-            Button(
-                "update_roles",
-                _("Update roles"),
-                css_id="submit",
-                css_class="btn btn-primary",
-                data_toggle="modal",
-                data_target="#update_roles_modal",
-                data_dismiss="modal",
-            ),
             Submit(
                 "save",
                 _("Save"),
