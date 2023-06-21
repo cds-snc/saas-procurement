@@ -100,6 +100,17 @@
         <a href="approve/view_s32_prev" class="btn btn-primary" target="_blank">{% trans "Start" %}</a>
       </div>
       </div>
+    {% elif role == "Admin" %}
+       <div class="card">
+      <div class="card-header">
+        {% trans "Change User's Data" %}
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">{% trans "Change User's Attributes" %}</h5>
+        <p class="card-text">{% trans "Add/change user data." %}</p>
+        <a href="administration/view" class="btn btn-primary" target="_blank">{% trans "Start" %}</a>
+      </div>
+    </div>
     {% endif %}
 {% else %}
     <h1>{% trans "Sass Procurement App" %}</h1>
