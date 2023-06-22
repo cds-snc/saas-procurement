@@ -85,11 +85,10 @@
                 {% trans "Switch Roles" %} 
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="{% url 'switch_role' %}?role=Requestor">{% trans "Requestor" %}</a>
-                  <a class="dropdown-item" href="{% url 'switch_role' %}?role=Manager">{% trans "Manager" %}</a>
-                  <a class="dropdown-item" href="{% url 'switch_role' %}?role=InternalOps">{% trans "Internal Ops" %}</a>
-                  <a class="dropdown-item" href="{% url 'switch_role' %}?role=S32Approver">{% trans "S32 Approver" %}</a>
-                  <a class="dropdown-item" href="{% url 'switch_role' %}?role=Admin">{% trans "Admin" %}</a>
+                {% for role in request.session.roles %}
+                  <a class="dropdown-item" href="{% url 'switch_role' %}?role={{role}}">{% blocktrans %} {{role}} {% endblocktrans %}</a>
+                {% endfor %}
+                <a class="dropdown-item" href="{% url 'switch_role' %}?role=all">{% trans "Restore all Roles" %}</a>
                 </div>
               </li>
             <li class="nav-item">

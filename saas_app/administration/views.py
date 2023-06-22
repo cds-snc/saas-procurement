@@ -54,6 +54,8 @@ def view_user(request, pk):
                 for role in roles:
                     user.user_roles.add(role)
 
+                request.session["roles"] = [role.name for role in roles]
+
                 user.title = form.cleaned_data["title"]
                 user.business_unit = form.cleaned_data["business_unit"]
 
