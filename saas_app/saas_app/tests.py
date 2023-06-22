@@ -30,21 +30,41 @@ class InitTestCase(TestCase):
             self.assertEqual(response.status_code, 200)
 
             # mock the request session
-            mock_request_session = {"role": "Requestor", "roles": ["Requestor", "Approver", "Internal Ops", "Administrator", "Manager"]}
+            mock_request_session = {
+                "role": "Requestor",
+                "roles": [
+                    "Requestor",
+                    "Approver",
+                    "Internal Ops",
+                    "Administrator",
+                    "Manager",
+                ],
+            }
 
             # Check that the role was set in the session
             self.assertEqual(mock_request_session["role"], "Requestor")
 
             # Check that the roles were set in the session
-            self.assertEqual(mock_request_session["roles"], ["Requestor", "Approver", "Internal Ops", "Administrator", "Manager"])
-            
+            self.assertEqual(
+                mock_request_session["roles"],
+                ["Requestor", "Approver", "Internal Ops", "Administrator", "Manager"],
+            )
 
     # test successful switch role
     def test_switch_role_get_request(self):
         # Create a GET request
         request = self.factory.get(reverse("switch_role"))
         request.user = self.user
-        request.session = {"role": "Requestor", "roles": ["Requestor", "Approver", "Internal Ops", "Administrator", "Manager"]}
+        request.session = {
+            "role": "Requestor",
+            "roles": [
+                "Requestor",
+                "Approver",
+                "Internal Ops",
+                "Administrator",
+                "Manager",
+            ],
+        }
         request.GET = {"role": "Approver"}
 
         # Needed for Django messages to work properly
@@ -61,7 +81,10 @@ class InitTestCase(TestCase):
         self.assertEqual(request.session["role"], "Approver")
 
         # Check that all the roles are in the session
-        self.assertEqual(request.session["roles"], ["Requestor", "Approver", "Internal Ops", "Administrator", "Manager"])
+        self.assertEqual(
+            request.session["roles"],
+            ["Requestor", "Approver", "Internal Ops", "Administrator", "Manager"],
+        )
 
     # test switching roles with no role parameter
     def test_switch_role_get_request_error(self):
@@ -69,7 +92,13 @@ class InitTestCase(TestCase):
         request = self.factory.get(reverse("switch_role"))
         request.user = self.user
         request.session = {}
-        request.session["roles"] = ["Requestor", "Approver", "Internal Ops", "Administrator", "Manager"]
+        request.session["roles"] = [
+            "Requestor",
+            "Approver",
+            "Internal Ops",
+            "Administrator",
+            "Manager",
+        ]
 
         messages = FallbackStorage(request)
         setattr(request, "_messages", messages)
