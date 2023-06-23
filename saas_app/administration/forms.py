@@ -15,6 +15,7 @@ class ViewUserForm(forms.ModelForm):
     user_roles = forms.ModelMultipleChoiceField(
         queryset=Roles.objects.all(),
         widget=forms.CheckboxSelectMultiple,
+        label=_("User Roles:"),
         required=False,
     )
 
@@ -44,7 +45,7 @@ class ViewUserForm(forms.ModelForm):
         self.helper.layout = Layout(
             "first_name",
             "last_name",
-            InlineCheckboxes("user_roles"),
+            InlineCheckboxes(_("user_roles")),
             "title",
             "business_unit",
             Submit(
