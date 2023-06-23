@@ -86,7 +86,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 {% for role in request.session.roles %}
-                  <a class="dropdown-item" href="{% url 'switch_role' %}?role={{role}}">{% blocktrans %} {{role}} {% endblocktrans %}</a>
+                  <a class="dropdown-item" href="{% url 'switch_role' %}?role={{role}}">{% trans role %}</a>
                 {% endfor %}
                 <a class="dropdown-item" href="{% url 'switch_role' %}?role=all">{% trans "Restore all Roles" %}</a>
                 </div>
