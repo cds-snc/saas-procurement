@@ -11,6 +11,7 @@
 <h1>{% trans "Software as a Service Request Submission" %}</h1>
 <form method="post" novalidate>
         {% csrf_token %}
+        <p><b>{% trans "Case number:" %} {{form.instance.id}}</b></p>
         {% crispy form %}
 </form>
 
