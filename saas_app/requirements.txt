@@ -1,7 +1,7 @@
 asgiref==3.7.2
 aws-sns-message-validator==0.0.5
-awscli==1.27.154
-boto3==1.26.154
+awscli==1.27.156
+boto3==1.26.156
 Django==4.2.2
 gunicorn==20.1.0
 psycopg2-binary==2.9.6
