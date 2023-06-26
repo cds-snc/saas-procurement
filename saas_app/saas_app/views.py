@@ -43,11 +43,18 @@ def init(request):
     if request.method == "GET" and request.user.is_authenticated:
         # if we are testing then we need to add each user to each group for testing purposes
         if os.getenv("TESTING_FEATURE_FLAG"):
-            # user_logged_in.connect(create_groups)
             # Store the role in a session variable if it does not exist
             if request.session["role"] is None:
                 request.session["role"] = "Requestor"
-        return render(request, "index.html", {"role": request.session["role"]})
+            # get all the roles and set them in the session
+            user = Users.objects.get(user__username=request.user.username)
+            roles = user.user_roles.all()
+            request.session["roles"] = [role.name for role in roles]
+        return render(
+            request,
+            "index.html",
+            {"role": request.session["role"], "roles": request.session["roles"]},
+        )
     else:
         # set initially that the role is requestor
         user_logged_in.connect(create_groups)
@@ -61,19 +68,34 @@ def switch_role(request):
         try:
             # get the new role and set it in the session
             new_role = request.GET.get("role")
-            request.session["role"] = new_role
-            translated_role = _(new_role)
-            messages.success(
-                request,
-                _("You have successfully switched to %(role)s role")
-                % {"role": translated_role},
-            )
+
+            # if we need to restore all roles, then associate all the roles iwth the user
+            if new_role == "all":
+                user = Users.objects.get(user__username=request.user.username)
+                all_roles = Roles.objects.all()
+                for role in all_roles:
+                    user.user_roles.add(role)
+                user.save()
+                request.session["roles"] = [role.name for role in all_roles]
+                messages.success(request, _("You have successfully restored all roles"))
+            else:
+                request.session["role"] = new_role
+                translated_role = _(new_role)
+                messages.success(
+                    request,
+                    _("You have successfully switched to %(role)s role")
+                    % {"role": translated_role},
+                )
         except Exception:
             messages.error(
                 request,
                 _("Something went wrong with switching roles. Please try again."),
             )
-        return render(request, "index.html", {"role": request.session["role"]})
+        return render(
+            request,
+            "index.html",
+            {"role": request.session["role"], "roles": request.session["roles"]},
+        )
 
 
 def create_groups(sender, user, request, **kwargs):

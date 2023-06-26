@@ -32,6 +32,14 @@
     }
   },
   {
+    "model": "user.roles",
+    "pk": 5,
+    "fields": {
+      "name": "Administrator",
+      "description": "Administrator group that can manage users and groups"
+    }
+  },
+  {
     "model": "sites.site",
     "pk": 9,
     "fields": {

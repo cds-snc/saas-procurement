@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-15 17:57+0000\n"
+"POT-Creation-Date: 2023-06-23 13:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,19 +17,45 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: approve/forms.py:70
-msgid "Approve"
-msgstr " Approuver"
+#: administration/forms.py:18
+msgid "User Roles:"
+msgstr "Rôles d'utilisateur:"
 
-#: approve/forms.py:73
-msgid "Deny"
-msgstr "Refuser"
+#: administration/forms.py:33
+msgid "First Name"
+msgstr "Prénom"
 
-#: approve/forms.py:78 approve/forms.py:163 approve/forms.py:249
-#: internal_ops/forms.py:130 internal_ops/forms.py:262
-#: internal_ops/forms.py:383 internal_ops/forms.py:476
-#: submit_request/forms.py:64 submit_request/forms.py:124
-#: submit_request/forms.py:195 templates/approve/view_all_prev_requests.html:44
+#: administration/forms.py:34
+msgid "Last Name"
+msgstr "Nom de famille"
+
+#: administration/forms.py:35
+msgid "User Roles"
+msgstr "Rôles d'utilisateur"
+
+#: administration/forms.py:36 templates/administration/view_all_users.html:16
+msgid "Title"
+msgstr "Titre"
+
+#: administration/forms.py:37
+msgid "Business Unit"
+msgstr "Unité commerciale"
+
+#: administration/forms.py:48
+#msgid "user_roles"
+#msgstr "%(role)s"
+
+#: administration/forms.py:53 internal_ops/forms.py:102
+#: templates/internal_ops/view_request.html:77
+msgid "Save"
+msgstr "Sauvegarder"
+
+#: administration/forms.py:57 approve/forms.py:85 approve/forms.py:175
+#: approve/forms.py:266 internal_ops/forms.py:130 internal_ops/forms.py:262
+#: internal_ops/forms.py:393 internal_ops/forms.py:493
+#: submit_request/forms.py:71 submit_request/forms.py:142
+#: submit_request/forms.py:218 templates/administration/view_all_users.html:38
+#: templates/approve/view_all_prev_requests.html:44
 #: templates/approve/view_all_requests.html:45
 #: templates/internal_ops/view_all_prev_requests.html:74
 #: templates/internal_ops/view_all_requests.html:75
@@ -37,32 +63,82 @@ msgstr "Refuser"
 msgid "Cancel"
 msgstr "Annuler"
 
-#: approve/forms.py:113 approve/forms.py:201 internal_ops/forms.py:310
-#: submit_request/forms.py:158
+#: administration/views.py:67
+msgid "The user data was updated successfully!"
+msgstr "Les données utilisateur ont été mises à jour avec succès !"
+
+#: administration/views.py:71
+msgid "The user data was not saved successfully!"
+msgstr "Les données utilisateur n'ont pas été enregistrées avec succès !"
+
+#: approve/forms.py:32 approve/forms.py:121 approve/forms.py:214
+#: internal_ops/forms.py:44 internal_ops/forms.py:186
+#: submit_request/forms.py:31 submit_request/forms.py:102
+#: submit_request/forms.py:177
+msgid "Currency"
+msgstr "Monnaie"
+
+#: approve/forms.py:33 approve/forms.py:122 approve/forms.py:215
+#: internal_ops/forms.py:45 internal_ops/forms.py:187
+#: submit_request/forms.py:32 submit_request/forms.py:103
+#: submit_request/forms.py:178
+msgid "Frequency"
+msgstr "Fréquence"
+
+#: approve/forms.py:34 approve/forms.py:123 approve/forms.py:216
+#: internal_ops/forms.py:46 internal_ops/forms.py:188
+#: submit_request/forms.py:33 submit_request/forms.py:104
+#: submit_request/forms.py:179
+msgid "Units"
+msgstr "Unités"
+
+#: approve/forms.py:35 approve/forms.py:124 approve/forms.py:217
+#: internal_ops/forms.py:48 internal_ops/forms.py:190
+#: submit_request/forms.py:34 submit_request/forms.py:105
+#: submit_request/forms.py:180
+msgid "Duration"
+msgstr "Durée"
+
+#: approve/forms.py:36 approve/forms.py:128 approve/forms.py:224
+#: internal_ops/forms.py:54 submit_request/forms.py:35
+#: submit_request/forms.py:106 submit_request/forms.py:181
+msgid "Comments"
+msgstr "commentaires"
+
+#: approve/forms.py:77
+msgid "Approve"
+msgstr " Approuver"
+
+#: approve/forms.py:80
+msgid "Deny"
+msgstr "Refuser"
+
+#: approve/forms.py:120 approve/forms.py:213 internal_ops/forms.py:319
+#: submit_request/forms.py:176
 msgid "Current status"
 msgstr "Statut actuel"
 
-#: approve/forms.py:114 approve/forms.py:202 submit_request/forms.py:159
+#: approve/forms.py:125 approve/forms.py:218 submit_request/forms.py:182
 msgid "Date manager reviewed the request"
 msgstr "Date à laquelle le gestionnaire a examiné la demande"
 
-#: approve/forms.py:115 approve/forms.py:203 submit_request/forms.py:160
+#: approve/forms.py:126 approve/forms.py:219 submit_request/forms.py:183
 msgid "Manager approved the request"
 msgstr "Le gestionnaire a approuvé la demande"
 
-#: approve/forms.py:116 approve/forms.py:204 submit_request/forms.py:161
+#: approve/forms.py:127 approve/forms.py:220 submit_request/forms.py:184
 msgid "Manager denied the request"
 msgstr "Le gestionnaire a refusé la demande"
 
-#: approve/forms.py:205
+#: approve/forms.py:221
 msgid "Date sent to S32 approver"
 msgstr "Date d'envoi à l'approbateur S32"
 
-#: approve/forms.py:206
+#: approve/forms.py:222
 msgid "Date S32 approver reviewed the request"
 msgstr "Date à laquelle le approbateur S32 a examiné la demande"
 
-#: approve/forms.py:207
+#: approve/forms.py:223
 msgid "S32 approver approved the request"
 msgstr "l'approbateur S32 a approuvé la demande"
 
@@ -102,7 +178,8 @@ msgstr "S32 refusé"
 msgid "There was an error sending the email."
 msgstr "Une erreur s'est produite lors de l'envoi de l'e-mail."
 
-#: internal_ops/forms.py:40 internal_ops/forms.py:182
+#: internal_ops/forms.py:40 internal_ops/forms.py:182 internal_ops/forms.py:310
+#: templates/approve/view_all_prev_requests.html:15
 #: templates/approve/view_all_requests.html:15
 #: templates/internal_ops/view_all_prev_requests.html:15
 #: templates/internal_ops/view_all_prev_requests.html:47
@@ -113,11 +190,13 @@ msgstr "Une erreur s'est produite lors de l'envoi de l'e-mail."
 msgid "Name"
 msgstr "Nom"
 
-#: internal_ops/forms.py:41 internal_ops/forms.py:183
+#: internal_ops/forms.py:41 internal_ops/forms.py:183 internal_ops/forms.py:311
+#: internal_ops/forms.py:434
 msgid "URL"
 msgstr "URL"
 
-#: internal_ops/forms.py:42 internal_ops/forms.py:184
+#: internal_ops/forms.py:42 internal_ops/forms.py:184 internal_ops/forms.py:312
+#: templates/approve/view_all_prev_requests.html:16
 #: templates/approve/view_all_requests.html:16
 #: templates/internal_ops/view_all_prev_requests.html:16
 #: templates/internal_ops/view_all_prev_requests.html:48
@@ -128,7 +207,8 @@ msgstr "URL"
 msgid "Description"
 msgstr "Description"
 
-#: internal_ops/forms.py:43 internal_ops/forms.py:185
+#: internal_ops/forms.py:43 internal_ops/forms.py:185 internal_ops/forms.py:313
+#: templates/approve/view_all_prev_requests.html:18
 #: templates/approve/view_all_requests.html:18
 #: templates/internal_ops/view_all_prev_requests.html:18
 #: templates/internal_ops/view_all_prev_requests.html:50
@@ -139,44 +219,34 @@ msgstr "Description"
 msgid "Cost"
 msgstr "Coût"
 
-#: internal_ops/forms.py:44 internal_ops/forms.py:186
-msgid "Currency"
-msgstr "Monnaie"
-
-#: internal_ops/forms.py:45 internal_ops/forms.py:187
-msgid "Frequency"
-msgstr "Fréquence"
-
-#: internal_ops/forms.py:46 internal_ops/forms.py:188
-msgid "Units"
-msgstr "Unités"
-
-#: internal_ops/forms.py:47 internal_ops/forms.py:189
+#: internal_ops/forms.py:47 internal_ops/forms.py:189 internal_ops/forms.py:314
+#: internal_ops/forms.py:436
 msgid "Level of Subscription"
 msgstr "Niveau d'abonnement"
 
-#: internal_ops/forms.py:48 internal_ops/forms.py:190
-msgid "Duration"
-msgstr "Durée"
-
-#: internal_ops/forms.py:49 internal_ops/forms.py:191
+#: internal_ops/forms.py:49 internal_ops/forms.py:191 internal_ops/forms.py:315
+#: internal_ops/forms.py:437
 msgid "Number of Users"
 msgstr "Nombre d'utilisateurs"
 
-#: internal_ops/forms.py:50 internal_ops/forms.py:192
+#: internal_ops/forms.py:50 internal_ops/forms.py:192 internal_ops/forms.py:316
+#: internal_ops/forms.py:438
 msgid "Names of Users"
 msgstr "Noms des utilisateurs"
 
-#: internal_ops/forms.py:51 internal_ops/forms.py:193
+#: internal_ops/forms.py:51 internal_ops/forms.py:193 internal_ops/forms.py:317
+#: internal_ops/forms.py:439
 msgid "Account Administrator"
 msgstr "Administrateur de compte"
 
-#: internal_ops/forms.py:52 internal_ops/forms.py:194
+#: internal_ops/forms.py:52 internal_ops/forms.py:194 internal_ops/forms.py:318
+#: internal_ops/forms.py:440
 msgid "Backup Administrator"
 msgstr "Administrateur de sauvegarde"
 
 #: internal_ops/forms.py:53 internal_ops/forms.py:195
-#: templates/approve/view_all_requests.html:20 templates/base.html:89
+#: templates/approve/view_all_prev_requests.html:20
+#: templates/approve/view_all_requests.html:20
 #: templates/internal_ops/view_all_prev_requests.html:20
 #: templates/internal_ops/view_all_prev_requests.html:52
 #: templates/internal_ops/view_all_requests.html:20
@@ -184,53 +254,46 @@ msgstr "Administrateur de sauvegarde"
 msgid "Manager"
 msgstr "Directeur/Directrice"
 
-#: internal_ops/forms.py:54
-msgid "Comments"
-msgstr "commentaires"
-
-#: internal_ops/forms.py:55 internal_ops/forms.py:201 internal_ops/forms.py:311
-#: internal_ops/forms.py:425
+#: internal_ops/forms.py:55 internal_ops/forms.py:201 internal_ops/forms.py:321
+#: internal_ops/forms.py:442
 msgid "Date Manager reviewed the request"
 msgstr "Date à laquelle le responsable a examiné la demande"
 
-#: internal_ops/forms.py:56 internal_ops/forms.py:196 internal_ops/forms.py:312
-#: internal_ops/forms.py:426
+#: internal_ops/forms.py:56 internal_ops/forms.py:196 internal_ops/forms.py:322
+#: internal_ops/forms.py:443
 msgid "Manager Approved"
 msgstr "Approuvé par le gestionnaire"
 
-#: internal_ops/forms.py:57 internal_ops/forms.py:197 internal_ops/forms.py:313
-#: internal_ops/forms.py:427
+#: internal_ops/forms.py:57 internal_ops/forms.py:197 internal_ops/forms.py:323
+#: internal_ops/forms.py:444
 msgid "Manager Denied"
 msgstr "Refusé par le gestionnaire"
 
-#: internal_ops/forms.py:58 internal_ops/forms.py:202
+#: internal_ops/forms.py:58 internal_ops/forms.py:202 internal_ops/forms.py:320
+#: internal_ops/forms.py:435 templates/approve/view_all_prev_requests.html:21
 #: templates/approve/view_all_requests.html:21
 msgid "Submitted By"
 msgstr "Proposé par"
 
-#: internal_ops/forms.py:59 internal_ops/forms.py:198 internal_ops/forms.py:314
-#: internal_ops/forms.py:428
+#: internal_ops/forms.py:59 internal_ops/forms.py:198 internal_ops/forms.py:324
+#: internal_ops/forms.py:445
 msgid "Date Info Requested"
 msgstr "Date à laquelle des informations ont été demandées"
 
-#: internal_ops/forms.py:60 internal_ops/forms.py:199 internal_ops/forms.py:315
-#: internal_ops/forms.py:429
+#: internal_ops/forms.py:60 internal_ops/forms.py:199 internal_ops/forms.py:325
+#: internal_ops/forms.py:446
 msgid "Info Requested"
 msgstr "Informations demandées"
 
-#: internal_ops/forms.py:61 internal_ops/forms.py:203 internal_ops/forms.py:317
-#: internal_ops/forms.py:431
+#: internal_ops/forms.py:61 internal_ops/forms.py:203 internal_ops/forms.py:327
+#: internal_ops/forms.py:448
 msgid "Fund Center"
 msgstr "Centre de fonds"
 
-#: internal_ops/forms.py:62 internal_ops/forms.py:204 internal_ops/forms.py:318
-#: internal_ops/forms.py:432 templates/base.html:91 templates/index.html:84
+#: internal_ops/forms.py:62 internal_ops/forms.py:204 internal_ops/forms.py:328
+#: internal_ops/forms.py:449 templates/index.html:84
 msgid "S32 Approver"
 msgstr "Approbateur S32"
-
-#: internal_ops/forms.py:102 templates/internal_ops/view_request.html:77
-msgid "Save"
-msgstr "Sauvegarder"
 
 #: internal_ops/forms.py:106
 msgid "Send for S32 Approval"
@@ -245,40 +308,40 @@ msgstr "Demander des informations supplémentaires"
 msgid "Record Purchase Information"
 msgstr "Enregistrer les informations d'achat"
 
-#: internal_ops/forms.py:200 internal_ops/forms.py:316
-#: internal_ops/forms.py:430
+#: internal_ops/forms.py:200 internal_ops/forms.py:326
+#: internal_ops/forms.py:447
 msgid "Date Sent to S32 Approver"
 msgstr "Date d'envoi à l'approbateur S32"
 
-#: internal_ops/forms.py:319 internal_ops/forms.py:433
+#: internal_ops/forms.py:329 internal_ops/forms.py:450
 msgid "S32 Approver approved"
 msgstr "Approuvé par l'approbateur S32"
 
-#: internal_ops/forms.py:320 internal_ops/forms.py:434
+#: internal_ops/forms.py:330 internal_ops/forms.py:451
 msgid "S32 Approver Review Date"
 msgstr "Date de révision par l'approbateur S32"
 
-#: internal_ops/forms.py:321
+#: internal_ops/forms.py:331
 msgid "Purchase Date"
 msgstr "Date d'achat:"
 
-#: internal_ops/forms.py:322
+#: internal_ops/forms.py:332
 msgid "Purchase Amount"
 msgstr "Montant des achats:"
 
-#: internal_ops/forms.py:323
+#: internal_ops/forms.py:333
 msgid "Purchase Method"
 msgstr "Méthode d'achat"
 
-#: internal_ops/forms.py:324
+#: internal_ops/forms.py:334
 msgid "Confirmation Number"
 msgstr "Numéro de confirmation"
 
-#: internal_ops/forms.py:325
+#: internal_ops/forms.py:335
 msgid "Purchase Notes"
 msgstr "Notes d'achat"
 
-#: internal_ops/forms.py:424
+#: internal_ops/forms.py:441
 msgid "Current Status"
 msgstr "Statut actuel"
 
@@ -377,25 +440,29 @@ msgstr ""
 msgid "Something went wrong with the search. Please try again."
 msgstr "Une erreur s'est produite lors de la recherche. Veuillez réessayer."
 
-#: saas_app/views.py:68
+#: saas_app/views.py:80
+msgid "You have successfully restored all roles"
+msgstr "Vous avez restauré avec succès tous les rôles"
+
+#: saas_app/views.py:86
 #, python-format
 msgid "You have successfully switched to %(role)s role"
 msgstr "Vous avez réussi à passer au rôle %(role)s"
 
-#: saas_app/views.py:74
+#: saas_app/views.py:92
 msgid "Something went wrong with switching roles. Please try again."
 msgstr ""
 "Quelque chose s'est mal passé avec le changement de rôle. Veuillez réessayer."
 
-#: submit_request/forms.py:38
+#: submit_request/forms.py:45
 msgid "Submit"
 msgstr "Soumettre"
 
-#: submit_request/forms.py:116
+#: submit_request/forms.py:134
 msgid "Save changes"
 msgstr "Sauvegarder les modifications"
 
-#: submit_request/forms.py:119
+#: submit_request/forms.py:137
 msgid "Delete"
 msgstr "Supprimer"
 
@@ -480,6 +547,7 @@ msgstr "Votre formulaire a été supprimé avec succès !"
 msgid "There was an error deleting the request"
 msgstr "Une erreur s'est produite lors de la suppression de la demande"
 
+#: templates/administration/view_all_users.html:6
 #: templates/approve/request_info.html:7 templates/approve/saas_status.html:6
 #: templates/approve/view_all_prev_requests.html:6
 #: templates/approve/view_all_requests.html:6 templates/detail.html:6
@@ -490,6 +558,45 @@ msgstr "Une erreur s'est produite lors de la suppression de la demande"
 #: templates/search.html:6
 msgid "Saas Procurement App"
 msgstr "Application d'approvisionnement Saas"
+
+#: templates/administration/view_all_users.html:9
+msgid "List of Users of the Saas Procurement App"
+msgstr "Liste des utilisateurs de l'application Saas Procurement"
+
+#: templates/administration/view_all_users.html:10
+msgid ""
+"This is the list of users of the application. Click on the user's name to "
+"view more information."
+msgstr ""
+"Il s'agit de la liste des utilisateurs de l'application. Cliquez sur le nom "
+"de l'utilisateur pour voir plus d'informations"
+
+#: templates/administration/view_all_users.html:15
+msgid "Full name"
+msgstr "Nom et prénom"
+
+#: templates/administration/view_all_users.html:17
+msgid "Business unit"
+msgstr "Unité commerciale"
+
+#: templates/administration/view_all_users.html:18
+msgid "Roles"
+msgstr "Les rôles"
+
+#: templates/administration/view_all_users.html:36
+msgid "There are no users."
+msgstr "Il n'y a pas d'utilisateurs."
+
+#: templates/administration/view_user.html:7
+#: templates/approve/view_request.html:7
+#: templates/internal_ops/view_request.html:7
+#: templates/request/saas_request.html:8 templates/request/view_request.html:8
+msgid "Software as a Service form Request"
+msgstr "Demande de formulaire de logiciel en tant que service"
+
+#: templates/administration/view_user.html:11
+msgid "View User Details"
+msgstr "Afficher les détails de l'utilisateur"
 
 #: templates/approve/saas_status.html:10
 msgid "The Software as a Service Request has been successfully approved"
@@ -514,14 +621,7 @@ msgstr "Demande SAAS"
 msgid "Requests that have been previously reviewed by you"
 msgstr "Vous n'avez aucune demande qui a déjà été examinée par vous"
 
-#: templates/approve/view_all_prev_requests.html:42
-msgid "You have no requests that have been previously reviewed by you"
-msgstr "Vous n'avez aucune demande qui a déjà été examinée par vous"
-
-#: templates/approve/view_all_requests.html:11
-msgid "List of requests awaiting approval"
-msgstr "Liste des demandes en attente d'approbation"
-
+#: templates/approve/view_all_prev_requests.html:17
 #: templates/approve/view_all_requests.html:17
 #: templates/internal_ops/view_all_prev_requests.html:17
 #: templates/internal_ops/view_all_prev_requests.html:49
@@ -532,6 +632,7 @@ msgstr "Liste des demandes en attente d'approbation"
 msgid "Url"
 msgstr "Url"
 
+#: templates/approve/view_all_prev_requests.html:19
 #: templates/approve/view_all_requests.html:19
 #: templates/internal_ops/view_all_prev_requests.html:19
 #: templates/internal_ops/view_all_prev_requests.html:51
@@ -542,6 +643,7 @@ msgstr "Url"
 msgid "Date Submitted"
 msgstr "Date de soumission"
 
+#: templates/approve/view_all_prev_requests.html:22
 #: templates/approve/view_all_requests.html:22
 #: templates/internal_ops/view_all_prev_requests.html:21
 #: templates/internal_ops/view_all_prev_requests.html:53
@@ -552,15 +654,17 @@ msgstr "Date de soumission"
 msgid "Status"
 msgstr "Statut"
 
+#: templates/approve/view_all_prev_requests.html:42
+msgid "You have no requests that have been previously reviewed by you"
+msgstr "Vous n'avez aucune demande qui a déjà été examinée par vous"
+
+#: templates/approve/view_all_requests.html:11
+msgid "List of requests awaiting approval"
+msgstr "Liste des demandes en attente d'approbation"
+
 #: templates/approve/view_all_requests.html:43
 msgid "You have no requests awaiting approval"
 msgstr "Vous n'avez aucune demande en attente d'approbation"
-
-#: templates/approve/view_request.html:7
-#: templates/internal_ops/view_request.html:7
-#: templates/request/saas_request.html:8 templates/request/view_request.html:8
-msgid "Software as a Service form Request"
-msgstr "Demande de formulaire de logiciel en tant que service"
 
 #: templates/approve/view_request.html:11
 #: templates/internal_ops/view_request.html:11
@@ -575,19 +679,15 @@ msgstr "Page d'accueil"
 msgid "Switch Roles"
 msgstr "Changer de rôle"
 
-#: templates/base.html:88
-msgid "Requestor"
-msgstr "Demandeur"
+#: templates/base.html:93
+msgid "Restore all Roles"
+msgstr "Restaurer tous les rôles"
 
-#: templates/base.html:90
-msgid "Internal Ops"
-msgstr "Opérations internes"
-
-#: templates/base.html:95
+#: templates/base.html:97
 msgid "Sign Out"
 msgstr "se déconnecter"
 
-#: templates/base.html:99 templates/base.html:100
+#: templates/base.html:101 templates/base.html:102
 msgid "Search"
 msgstr "Recherche"
 
@@ -686,7 +786,7 @@ msgstr ""
 
 #: templates/index.html:20 templates/index.html:31 templates/index.html:43
 #: templates/index.html:54 templates/index.html:66 templates/index.html:77
-#: templates/index.html:89 templates/index.html:100
+#: templates/index.html:89 templates/index.html:100 templates/index.html:111
 msgid "Start"
 msgstr "Commencer"
 
@@ -764,11 +864,23 @@ msgstr ""
 msgid "S32 Approver view previous requests"
 msgstr "Approbateur S32 voir les demandes précédentes`"
 
-#: templates/index.html:105
+#: templates/index.html:106
+msgid "Change User's Data"
+msgstr "Modifier les données de l'utilisateur"
+
+#: templates/index.html:109
+msgid "Change User's Attributes"
+msgstr "Modifier les attributs de l'utilisateur"
+
+#: templates/index.html:110
+msgid "Add/change user data."
+msgstr "Ajouter/modifier les données utilisateur."
+
+#: templates/index.html:116
 msgid "Sass Procurement App"
 msgstr "Application d'approvisionnement Sass"
 
-#: templates/index.html:106
+#: templates/index.html:117
 msgid ""
 "You are about to use your Google account to login to\n"
 "    the Saas procurement app. "
@@ -976,6 +1088,15 @@ msgstr "Résultats de recherche"
 msgid "No results found"
 msgstr "Aucun résultat trouvé"
 
+msgid " %(role)s "
+msgstr "%(role)"
+
+msgid "Requestor"
+msgstr "Demandeur"
+
+msgid "Internal Ops"
+msgstr "Opérations internes"
+
 #~ msgid "Date Manager Approved the request"
 #~ msgstr "Date à laquelle le responsable a approuvé la demande"
 
@@ -994,14 +1115,11 @@ msgstr "Aucun résultat trouvé"
 #~ msgid "SAAS requests awaiting s32 approval"
 #~ msgstr "Demandes SAAS en attente d'approbation s32"
 
-#~ msgid "InternalOps"
-#~ msgstr "Opérations internes"
+msgid "InternalOps"
+msgstr "Opérations internes"
 
-#~ msgid "S32Approver"
-#~ msgstr "Approbateur S32"
-
-#~ msgid " role"
-#~ msgstr " rôle"
+msgid "S32Approver"
+msgstr "Approbateur S32"
 
 #~ msgid "level_of_subscription"
 #~ msgstr "Niveau d'abonnement"
