@@ -207,8 +207,16 @@ class ViewPrevRequestForm(ModelForm):
             Field("url", readonly=True),
             Field("description", readonly=True),
             Field("cost", readonly=True),
-            Field("currency", readonly=True, style="height: auto;"),
-            Field("frequency", readonly=True, style="height: auto;"),
+            Field(
+                "currency",
+                readonly=True,
+                style="color:black; height:auto; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
+            ),
+            Field(
+                "frequency",
+                readonly=True,
+                style="color:black; height:auto; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
+            ),
             Field("units", readonly=True),
             Field("level_of_subscription", readonly=True),
             Field("duration", readonly=True),
