@@ -35,6 +35,8 @@ def send_s32_approval_email(request, saas_object, template_id):
             + saas_object.approved_by.user.last_name
         )
         cost = saas_object.cost
+        total_cost = cost * saas_object.units
+        frequency = saas_object.frequency.frequency
         description = saas_object.description
         subsciption_level = saas_object.level_of_subscription
         number_of_users = saas_object.number_of_users
@@ -52,7 +54,8 @@ def send_s32_approval_email(request, saas_object, template_id):
                 "name": s32_approver,
                 "saas_name": saas_name,
                 "cost": cost,
-                "total_cost": cost,
+                "total_cost": total_cost,
+                "frequency": frequency,
                 "description": description,
                 "requestor": requestor_name,
                 "submitted_by": submitted_by,
