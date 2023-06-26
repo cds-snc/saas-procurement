@@ -35,19 +35,21 @@ class SaasRequest(models.Model):
         Currency,
         on_delete=models.CASCADE,
         null=True,
+        default=None,
         blank=True,
         related_name="saas_currency",
     )
     frequency = models.ForeignKey(
         Frequency,
         on_delete=models.CASCADE,
+        default=None,
         null=True,
         blank=True,
         related_name="saas_frequency",
     )
     level_of_subscription = models.CharField(_("level of subscription"), max_length=100)
-    units = models.IntegerField(_("units"))
-    duration = models.CharField(_("duration"), max_length=100)
+    units = models.IntegerField(_("units"), null=True, blank=True)
+    duration = models.CharField(_("duration"), max_length=100, null=True, blank=True)
     number_of_users = models.IntegerField(_("number of users"))
     names_of_users = models.CharField(_("names of users"), max_length=500)
     account_administrator = models.CharField(_("account administrator"), max_length=100)
