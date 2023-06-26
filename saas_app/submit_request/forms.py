@@ -229,7 +229,11 @@ class ViewPrevRequestForm(ModelForm):
                 readonly=True,
                 style="color:black; height:auto; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
             ),
-            Field("fund_center", readonly=True),
+            Field(
+                "fund_center",
+                readonly=True,
+                style="color:black; height:auto; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
+            ),
             Field("comments", readonly=True, rows="5"),
             Field("date_manager_reviewed", readonly=True),
             Field("manager_approved", readonly=True),
