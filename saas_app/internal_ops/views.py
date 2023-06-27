@@ -180,8 +180,9 @@ def view_request(request, pk):
             form = ViewS32RequestForm(instance=saas_request)
         return render(request, "internal_ops/view_request.html", {"form": form})
     elif request.method == "POST":
-        form = ViewS32RequestForm(request.POST)
         saas_object = SaasRequest.objects.get(pk=pk)
+        # initialize the instance to get teh id in the form
+        form = ViewS32RequestForm(request.POST, instance=saas_object)
         # if the save button was clicked
         if request.POST.get("save"):
             if form.is_valid():
@@ -197,7 +198,7 @@ def view_request(request, pk):
 
                     try:
                         # Save the data to the database
-                        saas_object.save()
+                        saas_object = form.save()
                         messages.success(request, _("The form was successfully saved."))
                     except Exception as e:
                         print(e)

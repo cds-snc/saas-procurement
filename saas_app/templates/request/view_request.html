@@ -12,6 +12,7 @@
 <p>{% blocktrans %} To overwrite any changes, make your changes and then press the Save Changes Button. To delete, the Saas Request, press the Delete button {% endblocktrans %}</p>
 <form method="post" novalidate>
         {% csrf_token %}
+        <p><b>{% trans "Case number:" %} {{form.instance.id}}</b></p>
         {% crispy form %}
 </form>
 {% endblock %}

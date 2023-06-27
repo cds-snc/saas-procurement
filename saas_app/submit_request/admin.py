@@ -24,6 +24,7 @@ class FrequencyAdmin(admin.ModelAdmin):
 @admin.register(SaasRequest)
 class SaasRequestAdmin(admin.ModelAdmin):
     list_display = (
+        "id",
         "name",
         "url",
         "description",
