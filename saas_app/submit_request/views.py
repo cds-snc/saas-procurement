@@ -140,6 +140,7 @@ def view_request(request, pk):
                     "backup_administrator"
                 ]
                 saas_object.manager = form.cleaned_data["manager"]
+                saas_object.fund_center = form.cleaned_data["fund_center"]
                 saas_object.comments = form.cleaned_data["comments"]
                 try:
                     # Save the data to the database

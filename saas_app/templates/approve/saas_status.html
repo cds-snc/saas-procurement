@@ -12,4 +12,9 @@
     <h1>{% trans "The Software as a Service Request has been succesfully denied!" %}</h1>
 {% endif %}
     <p>{% trans "The person who has submitted the request will be notified." %}</p>
+{% if status == 's32 approved' or status == 's32 denied' %}
+    <button type="button" class="btn btn-primary" onclick="window.location.href='/approve/view_s32'">{% trans "Back" %}</button>
+{% else %}
+    <button type="button" class="btn btn-primary" onclick="window.location.href='/approve/view'">{% trans "Back" %}</button>
+{% endif %}
 {% endblock %}

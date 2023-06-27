@@ -99,7 +99,7 @@ class ViewS32RequestForm(ModelForm):
             Field("approved_by", style="height:auto"),
             Submit(
                 "save",
-                _("Save"),
+                _("Update fund center and/or add s32 approver"),
             ),
             Submit(
                 "send_for_s32_approval",
