@@ -66,3 +66,13 @@ variable "proxy_security_group_id" {
   description = "The security group of the RDS proxy"
   type        = string
 }
+
+variable "sentinel_customer_id" {
+  type      = string
+  sensitive = true
+}
+
+variable "sentinel_shared_key" {
+  type      = string
+  sensitive = true
+}

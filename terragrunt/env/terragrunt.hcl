@@ -11,6 +11,7 @@ inputs = {
   env                          = "${local.vars.inputs.env}"
   region                       = "ca-central-1"
   billing_code                 = "${local.vars.inputs.cost_center_code}"
+  billing_tag_value            = "${local.vars.inputs.billing_tag_value}"
   cbs_satellite_bucket_name    = "cbs-satellite-${local.vars.inputs.account_id}"
 }
 
