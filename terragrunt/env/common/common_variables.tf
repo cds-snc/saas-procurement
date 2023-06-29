@@ -32,3 +32,8 @@ variable "billing_code" {
   description = "The billing code to tag our resources with"
   type        = string
 }
+
+variable "billing_tag_value" {
+  description = "The value we use to track billing"
+  type        = string
+}

@@ -15,6 +15,8 @@ env:
   TF_VAR_database_username: ${{ secrets.POSTGRES_USER }}
   TF_VAR_database_name: ${{ secrets.POSTGRES_DB }}
   TF_VAR_saas_app_config: ${{ secrets.APP_CONFIG }}
+  TF_VAR_sentinel_customer_id: ${{ secrets.LOG_ANALYTICS_WORKSPACE_ID }}
+  TF_VAR_sentinel_shared_key: ${{ secrets.LOG_ANALYTICS_WORKSPACE_KEY }}
 
 permissions:
   id-token: write
