@@ -11,7 +11,7 @@ resource "aws_ssm_parameter" "saas_app_config" {
 
 resource "aws_ssm_parameter" "approved_request_template_id" {
   name  = "approved_request_template_id"
-  type  = "String"
+  type  = "SecureString"
   value = var.approved_request_template_id
 
   tags = {
@@ -42,7 +42,7 @@ resource "aws_ssm_parameter" "postgres_password" {
 }
 resource "aws_ssm_parameter" "environment" {
   name  = "environment"
-  type  = "String"
+  type  = "SecureString"
   value = var.environment
 
   tags = {
@@ -262,7 +262,7 @@ resource "aws_ssm_parameter" "social_application_secret_key" {
 }
 resource "aws_ssm_parameter" "testing_feature_flag" {
   name  = "testing_feature_flag"
-  type  = "String"
+  type  = "SecureString"
   value = var.testing_feature_flag
 
   tags = {
@@ -272,7 +272,7 @@ resource "aws_ssm_parameter" "testing_feature_flag" {
 }
 resource "aws_ssm_parameter" "site_id" {
   name  = "site_id"
-  type  = "String"
+  type  = "SecureString"
   value = var.site_id
 
   tags = {

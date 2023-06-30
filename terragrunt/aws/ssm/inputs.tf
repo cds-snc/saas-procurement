@@ -25,7 +25,7 @@ variable "postgres_password" {
 
 variable "environment" {
   description = "The environment that we are running (stage, prod or dev)"
-  sensitive   = false
+  sensitive   = true 
   type        = string
 }
 variable "django_secret_key" {
@@ -136,11 +136,11 @@ variable "social_application_secret_key" {
 }
 variable "testing_feature_flag" {
   description = "The testing feature flag"
-  sensitive   = false
+  sensitive   = true 
   type        = string
 }
 variable "site_id" {
   description = "The site id for the social application"
-  sensitive   = false
+  sensitive   = true 
   type        = string
 }
