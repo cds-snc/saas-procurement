@@ -13,13 +13,41 @@ data "template_file" "saas_procurement" {
   template = file("./templates/saas_procurement.json.tpl")
 
   vars = {
-    awslogs-group         = aws_cloudwatch_log_group.saas_procurement_group.name
-    awslogs-region        = "ca-central-1"
-    awslogs-stream-prefix = "ecs-saas_procurement"
-    image                 = "${var.ecr_repository_url}:latest"
-    fargate_cpu           = var.fargate_cpu
-    fargate_memory        = var.fargate_memory
-    aws_region            = "ca-central-1"
+    awslogs-group                                     = aws_cloudwatch_log_group.saas_procurement_group.name
+    awslogs-region                                    = "ca-central-1"
+    awslogs-stream-prefix                             = "ecs-saas_procurement"
+    image                                             = "${var.ecr_repository_url}:latest"
+    fargate_cpu                                       = var.fargate_cpu
+    fargate_memory                                    = var.fargate_memory
+    aws_region                                        = "ca-central-1"
+
+    APPROVED_REQUEST_TEMPLATE_ID                      = aws_ssm_parameter.approved_request_template_id.arn
+    REQUEST_S32_APPROVED_TEMPLATE_ID                  = aws_ssm_parameter.request_s32_approved_template_id.arn
+    POSTGRES_PASSWORD                                 = aws_ssm_parameter.postgres_password.arn
+    ENVIRONMENT                                       = aws_ssm_parameter.environment.arn
+    DJANGO_SECRET_KEY                                 = aws_ssm_parameter.django_secret_key.arn
+    APPROVER_DELETE_TEMPLATE_ID                       = aws_ssm_parameter.approver_delete_template_id.arn
+    SOCIAL_APPLICATION_CLIENT_ID                      = aws_ssm_parameter.social_application_client_id.arn
+    SAAS_SUBMISSION_TEMPLATE_ID                       = aws_ssm_parameter.saas_submission_template_id.arn
+    EDIT_REQUEST_TEMPLATE_ID                          = aws_ssm_parameter.edit_request_template_id.arn
+    DELETE_SAAS_REQUEST_TEMPLATE_ID                   = aws_ssm_parameter.delete_saas_request_template_id.arn
+    SAAS_SUBMISSION_EDIT_TEMPLATE_ID                  = aws_ssm_parameter.saas_submission_edit_template_id.arn
+    DENIED_REQUEST_TEMPLATE_ID                        = aws_ssm_parameter.denied_request_template_id.arn
+    NOTIFY_URL                                        = aws_ssm_parameter.notify_url.arn
+    NOTIFY_API_KEY                                    = aws_ssm_parameter.notify_api_key.arn
+    APPROVAL_REQUEST_TEMPLATE_ID                      = aws_ssm_parameter.approval_request_template_id.arn
+    REQUEST_S32_DENIED_INTERNAL_OPS_TEMPLATE_ID       = aws_ssm_parameter.request_s32_denied_internal_ops_template_id.arn
+    DB_HOST                                           = aws_ssm_parameter.db_host.arn
+    INTERNAL_OPS_REQUEST_MORE_INFO_TEMPLATE_ID        = aws_ssm_parameter.internal_ops_request_more_info_template_id.arn
+    POSTGRES_USER                                     = aws_ssm_parameter.postgres_user.arn
+    REQUEST_S32_DENIED_TEMPLATE_ID                    = aws_ssm_parameter.request_s32_denied_template_id.arn
+    S32_APPROVAL_REQUESTED_TEMPLATE_ID                = aws_ssm_parameter.s32_approval_requested_template_id.arn
+    POSTGRES_DB                                       = aws_ssm_parameter.postgres_db.arn
+    REQUEST_S32_APPROVED_INTERNAL_OPS_TEMPLATE_ID     = aws_ssm_parameter.request_s32_approved_internal_ops_template_id.arn
+    REQUESTOR_S32APPROVAL_PENDING_REVIEW_TEMPLATE_ID  = aws_ssm_parameter.requestor_s32approval_pending_review_template_id.arn
+    SOCIAL_APPLICATION_SECRET_KEY                     = aws_ssm_parameter.social_application_secret_key.arn
+    TESTING_FEATURE_FLAG                              = aws_ssm_parameter.testing_feature_flag.arn
+    SITE_ID                                           = aws_ssm_parameter.site_id.arn
   }
 }
 
