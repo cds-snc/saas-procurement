@@ -68,11 +68,11 @@ variable "proxy_security_group_id" {
 }
 
 variable "sentinel_customer_id" {
-  type      = string
+  type = string
 }
 
 variable "sentinel_shared_key" {
-  type      = string
+  type = string
 }
 
 variable "saas_app_config_arn" {
