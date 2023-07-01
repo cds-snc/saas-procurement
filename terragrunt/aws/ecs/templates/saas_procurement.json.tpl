@@ -32,8 +32,7 @@
         "name": "nofile",
         "softLimit": 1000000
       }
-    ]
-  },
+    ],
   "secrets": [
       {
         "name": "APPROVED_REQUEST_TEMPLATE_ID",
@@ -144,5 +143,5 @@
         "valueFrom": "${SITE_ID}"
       }
     ]
-
+}
 ]
