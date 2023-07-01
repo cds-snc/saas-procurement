@@ -22,7 +22,7 @@ resource "aws_ssm_parameter" "approved_request_template_id" {
 
 resource "aws_ssm_parameter" "request_s32_approved_template_id" {
   name  = "request_s32_approved_template_id"
-  type  = "String"
+  type  = "SecureString"
   value = var.request_s32_approved_template_id
 
   tags = {
