@@ -13,7 +13,7 @@ dependency "ssm" {
   mock_outputs_merge_with_state           = true
   mock_outputs = {
     saas_app_config_arn = "",
-    approved_request_template_idi_arn = "",
+    approved_request_template_id_arn = "",
     request_s32_approved_template_id_arn = "",
     postgres_password_arn = "",
     environment_arn = "",
