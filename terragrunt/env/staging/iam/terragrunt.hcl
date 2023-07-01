@@ -37,6 +37,7 @@ dependency "ssm" {
     postgres_db_arn = "",
     request_s32_approved_internal_ops_template_id_arn = "",
     requestor_s32approval_pending_review_template_id_arn = "",
+    saas_submission_edit_template_id_arn = "",
     social_application_secret_key_arn = "",
     testing_feature_flag_arn = "",
     site_id_arn = "", 
@@ -72,6 +73,7 @@ inputs = {
   social_application_secret_key_arn = dependency.ssm.outputs.social_application_secret_key_arn,
   testing_feature_flag_arn = dependency.ssm.outputs.testing_feature_flag_arn,
   site_id_arn = dependency.ssm.outputs.site_id_arn,
+  saas_submission_edit_template_id_arn = dependency.ssm.outputs.saas_submission_edit_template_id_arn,
 }
 
 include {
