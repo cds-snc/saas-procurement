@@ -5,13 +5,13 @@ module "rds_cluster" {
   source = "github.com/cds-snc/terraform-modules?ref=v5.1.4//rds"
   name   = "saas-procurement-database"
 
-  database_name  = var.database_name
+  database_name  = var.postgres_db
   engine         = "aurora-postgresql"
   engine_version = "14.6"
   instances      = var.database_instances_count
   instance_class = "db.serverless"
-  username       = var.database_username
-  password       = var.database_password
+  username       = var.postgres_user
+  password       = var.postgres_password
 
   serverless_min_capacity = 1.0
   serverless_max_capacity = 2.0

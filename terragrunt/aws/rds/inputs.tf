@@ -4,20 +4,20 @@ variable "database_instances_count" {
   default     = 1
 }
 
-variable "database_name" {
+variable "postgres_db" {
   description = "The database name of the postgresql database"
   type        = string
   sensitive   = true
 }
 
-variable "database_username" {
+variable "postgres_user" {
   description = "The username of the postgresql database"
   type        = string
   sensitive   = true
 }
 
-variable "database_password" {
-  description = "The password for hte postgresql database"
+variable "postgres_password" {
+  description = "The password for the postgresql database"
   type        = string
   sensitive   = true
 }
