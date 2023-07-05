@@ -9,6 +9,7 @@ resource "aws_security_group" "ecs_tasks" {
 
   ingress {
     protocol        = "tcp"
+    description     = "Allow the ecs security group to receive traffic only from the load balancer on port 8000"
     security_groups = ["${var.saas_procurement_load_balancer_sg}"]
     self            = "false"
     from_port       = "8000"
@@ -16,6 +17,7 @@ resource "aws_security_group" "ecs_tasks" {
   }
 
   egress {
+    description = "Allow ecs security group to send all traffic"
     protocol    = "-1"
     from_port   = 0
     to_port     = 0
