@@ -1,4 +1,8 @@
-.PHONY: fmt install install-dev migration migrate superuser run lint test fmt-ci lint-ci
+.PHONY: cov fmt install install-dev migration migrate superuser run lint test fmt-ci lint-ci
+
+cov:
+	coverage run --source='.' manage.py test &&\
+	coverage report -m
 
 fmt:
 	black . $(ARGS) --target-version py310
