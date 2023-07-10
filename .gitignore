@@ -6,8 +6,7 @@ db.sqlite3
 .env
 venv
 /pgdata
-/staticfiles/*
-!/staticfiles/.gitkeep
+saas_app/staticfiles/*
 __pycache__
 *.tfstate*
 secrets*.tfvars
