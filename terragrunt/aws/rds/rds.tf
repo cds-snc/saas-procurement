@@ -2,7 +2,7 @@
 # RDS Postgresql database for the Saas procurement app 
 #
 module "rds_cluster" {
-  source = "github.com/cds-snc/terraform-modules?ref=v5.1.4//rds"
+  source = "github.com/cds-snc/terraform-modules//rds?ref=v6.1.1"
   name   = "saas-procurement-database"
 
   database_name  = var.database_name
