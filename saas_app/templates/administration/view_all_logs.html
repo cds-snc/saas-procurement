@@ -9,16 +9,14 @@
     <h1>{% trans "All login Events with Google credentials" %}</h1>
       <p>{% trans "This is the list of all logins to external apps or products using an individuals CDS google credentials" %}</p>
     </table>
-        <table class="table table-hover table-bordered">
+        <table class="table table-hover table-bordered text-nowrap">
           <thead>
               <tr>
                 <th scope="col">{% trans "Email address" %}</th>
                 <th scope="col">{% trans "Date" %}</th>
                 <th scope="col">{% trans "App name" %}</th>
                 <th scope="col">{% trans "App type" %}</th>
-                <th scope="col">{% trans "Geolocation city" %}</th>
                 <th scope="col">{% trans "Event name" %}</th>
-                <th scope="col">{% trans "Scope" %}</th>
               <tbody class="table-group-divider"></tbody>
               </tr>
             </thead>
@@ -29,11 +27,9 @@
                 <td>{{row.4}}</td>
                 <td>{{row.17}}</td>
                 <td>{{row.18}}</td>
-                <td>{{row.22}}</td>
                 <td>{{row.15}}</td>
-                <td>{{row.20}}</td>
               </tr>
              {% endfor %}
           </tbody>
-    </table> 
+    </table> </div>
 {% endblock %}
