@@ -12,13 +12,16 @@ import pandas as pd
 
 # function to get the azure credentials and get a client to query the logs. Return the client to search for logs.
 def azure_get_credentials():
-    credentials = DefaultAzureCredential()
+    # get the client id 
+    client_id = os.environ["AZURE_CLIENT_ID"]
+    credentials = DefaultAzureCredential(managed_identity_client_id=client_id)
     logs_client = LogsQueryClient(credentials)
     return logs_client
 
 
 # function to get the logs from Sentinel. Return the logs in a dataframe to display in the template as a table
 def get_logs(request):
+    
     # log into azure and get the logs client
     logs_client = azure_get_credentials()
 
