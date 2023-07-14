@@ -111,6 +111,17 @@
         <a href="administration/view" class="btn btn-primary" target="_blank">{% trans "Start" %}</a>
       </div>
     </div>
+    <br>
+    <div class="card">
+      <div class="card-header">
+        {% trans "View SAAS logins" %}
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">{% trans "View External SAAS logins" %}</h5>
+        <p class="card-text">{% trans "View external SAAS logins that have been executed with a google account." %}</p>
+        <a href="administration/view_logs" class="btn btn-primary" target="_blank">{% trans "Start" %}</a>
+      </div>
+    </div>
     {% endif %}
 {% else %}
     <h1>{% trans "Sass Procurement App" %}</h1>
