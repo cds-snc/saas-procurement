@@ -54,10 +54,12 @@ def view_logs(request):
     if request.method == "GET":
         logs = GoogleWorkspaceAppsLogin.objects.all()
         if logs is None:
-            messages.error(request, _("Something went wrong and there are no logs to display!"))
+            messages.error(
+                request, _("Something went wrong and there are no logs to display!")
+            )
         return render(request, "manage_saas/view_all_logs.html", {"all_logs": logs})
-    
-    
+
+
 # function to schedule a daily crontab to retrieve data from sentinel and put it in the database for us
 def daily_import_sentinel_data():
     print("Running daily import of Sentinel data")

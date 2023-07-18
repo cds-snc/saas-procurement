@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Model to store google workspace login information to third party apps
 class GoogleWorkspaceAppsLogin(models.Model):
     time_generated = models.DateTimeField()

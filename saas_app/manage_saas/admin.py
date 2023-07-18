@@ -1,6 +1,7 @@
 from django.contrib import admin
 from .models import GoogleWorkspaceAppsLogin
 
+
 # Register the SaasRequest model to the admin page so that it can be viewed and edited.
 @admin.register(GoogleWorkspaceAppsLogin)
 class GoogleWorkspaceAppsLoginAdmin(admin.ModelAdmin):
