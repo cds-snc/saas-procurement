@@ -18,8 +18,8 @@ def azure_get_credentials():
     return logs_client
 
 
-# function to get the logs from Sentinel. Return the logs in a dataframe to display in the template as a table
-def get_logs(request):
+# function to get the logs from Sentinel for the last day. Return the logs in a dataframe to display in the template as a table.
+def get_sentinel_logs():
     # log into azure and get the logs client
     logs_client = azure_get_credentials()
 
@@ -38,13 +38,6 @@ def get_logs(request):
         if response.status == LogsQueryStatus.PARTIAL:
             error = response.partial_error
             data = response.partial_data
-            # generate an error if the query was not successful
-            messages.error(
-                request,
-                _(
-                    "There was an error retrieving the logs! The query did not execute fully and the results may be incomplete"
-                ),
-            )
             print(error)
         elif response.status == LogsQueryStatus.SUCCESS:
             data = response.tables
@@ -54,36 +47,39 @@ def get_logs(request):
             return df
     except Exception as err:
         print("An error was encountered: ", err)
-        messages.error(
-            request,
-            _("There was an error retrieving the logs! The query was not successful!"),
-        )
 
 
-# function to view all the logs from Sentinel
+# function to view the logs in the Postgres DB
 def view_logs(request):
     if request.method == "GET":
-        logs = get_logs(request)
+        logs = GoogleWorkspaceAppsLogin.objects.all()
+        if logs is None:
+            messages.error(request, _("Something went wrong and there are no logs to display!"))
         return render(request, "manage_saas/view_all_logs.html", {"all_logs": logs})
-
+    
+    
 # function to schedule a daily crontab to retrieve data from sentinel and put it in the database for us
 def daily_import_sentinel_data():
-    logs = get_logs()
+    print("Running daily import of Sentinel data")
+    # get the logs from Sentinel
+    logs = get_sentinel_logs()
+    # for all the logs retrieved from Sentinel, save this in the Postgres database
     for log in logs.itertuples():
         logs = GoogleWorkspaceAppsLogin(
             time_generated=log.TimeGenerated,
             source_system=log.SourceSystem,
-            kind=log.Kind,
-            application_name=log.ApplicationName,
-            user_email=log.UserEmail,
-            user_ip_address=log.UserIPAddress,
-            event_name=log.EventName,
-            client_id=log.ClientId,
-            application_name_id=log.ApplicationNameId,
-            client_type=log.ClientType,
-            scope_data=log.ScopeData,
-            scope=log.Scope,
-            geolocation_country=log.GeolocationCountry,
-            geolocation_city=log.GeolocationCity,
+            kind=log.kind_s,
+            application_name=log.app_name_s,
+            user_email=log.actor_email_s,
+            user_ip_address=log.IPAddress,
+            event_name=log.event_name_s,
+            client_id=log.client_id_s,
+            application_name_id=log.id_applicationName_s,
+            client_type=log.client_type_s,
+            scope_data=log.scope_data_s,
+            scope=log.scope_s,
+            geolocation_country=log.geolocation_country_s,
+            geolocation_city=log.geolocation_city_s,
             type=log.Type,
         )
+        GoogleWorkspaceAppsLogin.save(logs)
