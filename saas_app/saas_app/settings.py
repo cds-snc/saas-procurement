@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     "user",
     "approve",
     "internal_ops",
+    "administration",
+    "manage_saas",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -62,6 +64,7 @@ INSTALLED_APPS = [
     "bootstrapform",
     "crispy_bootstrap4",
     "crispy_forms",
+    "django_crontab",
 ]
 
 MIDDLEWARE = [
@@ -218,3 +221,5 @@ SESSION_ENGINE = "django.contrib.sessions.backends.db"
 
 USE_X_FORWARDED_HOST = True
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+
+CRONJOBS = [('*/5 * * * *', 'manage_saas.views.daily_import_sentinel_data')]

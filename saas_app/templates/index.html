@@ -112,7 +112,7 @@
       </div>
     </div>
     <br>
-    <div class="card">
+    {% comment %} <div class="card">
       <div class="card-header">
         {% trans "View SAAS logins" %}
       </div>
@@ -120,6 +120,17 @@
         <h5 class="card-title">{% trans "View External SAAS logins" %}</h5>
         <p class="card-text">{% trans "View external SAAS logins that have been executed with a google account." %}</p>
         <a href="administration/view_logs" class="btn btn-primary" target="_blank">{% trans "Start" %}</a>
+      </div>
+    </div> {% endcomment %}
+    {% elif role == "ManageSaas" %}
+    <div class="card">
+      <div class="card-header">
+        {% trans "View SAAS logins" %}
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">{% trans "View External SAAS logins" %}</h5>
+        <p class="card-text">{% trans "View external SAAS logins that have been executed with a google account." %}</p>
+        <a href="manage_saas/view_logs" class="btn btn-primary">{% trans "Start" %}</a>
       </div>
     </div>
     {% endif %}

@@ -17,5 +17,6 @@ urlpatterns = i18n_patterns(
     path("search/", views.search, name="search"),
     path("search/<int:pk>/", views.view_request, name="view_request"),
     path("administration/", include("administration.urls"), name="administration"),
+    path("manage_saas/", include("manage_saas.urls"), name="manage_saas"),
     path("i18n/", include("django.conf.urls.i18n")),
 )

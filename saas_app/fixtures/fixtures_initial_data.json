@@ -40,6 +40,14 @@
     }
   },
   {
+    "model": "user.roles",
+    "pk": 6,
+    "fields": {
+      "name": "ManageSaas",
+      "description": "A group that can view details about exisitng saas requests from Sentinel"
+    }
+  },
+  {
     "model": "sites.site",
     "pk": 9,
     "fields": {
