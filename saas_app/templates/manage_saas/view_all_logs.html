@@ -21,13 +21,13 @@
               </tr>
             </thead>
             <tbody>
-             {% for index, row in all_logs.iterrows %}
+            {% for log in all_logs %}
               <tr>
-                <td>{{row.12}}</td>
-                <td>{{row.4}}</td>
-                <td>{{row.17}}</td>
-                <td>{{row.18}}</td>
-                <td>{{row.15}}</td>
+                <td>{{log.user_email}}</td>
+                <td>{{log.time_generated}}</td>
+                <td>{{log.application_name}}</td>
+                <td>{{log.client_type}}</td>
+                <td>{{log.event_name}}</td>
               </tr>
              {% endfor %}
           </tbody>

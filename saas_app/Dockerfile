@@ -7,7 +7,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 	postgresql \
 	gcc \
 	jq \
-	musl-dev
+	musl-dev \
+	cron
 
 WORKDIR /saas_app
 COPY requirements.txt /saas_app/

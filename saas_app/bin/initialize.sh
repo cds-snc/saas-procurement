@@ -51,16 +51,16 @@ else
 fi  
 
 # Load the fixtures data so that the database is populated with some data for testing purposes
-# check to see if Soial account is installed
+# check to see if Social account is installed
 social_account=$(python manage.py shell -c "from allauth.socialaccount.models import SocialApp; print(len(SocialApp.objects.all()))")
 if [ "${social_account}" -eq 0 ]; then
     # get the environment variables and replaces them in the fixtures file for the google social account
     # An extra precaution so that we don't leak the secrets
-    social_app_model=$(jq '.[7].model' -r fixtures/fixtures_initial_data.json)
+    social_app_model=$(jq '.[8].model' -r fixtures/fixtures_initial_data.json)
     if [ "${social_app_model}" = "socialaccount.socialapp" ]; then
         # Make a copy of file temporarily so that we can modify it
         cp fixtures/fixtures_initial_data.json fixtures/original_fixtures_initial_data.json
-        jq '.[7].fields.client_id=env.SOCIAL_APPLICATION_CLIENT_ID | .[7].fields.secret=env.SOCIAL_APPLICATION_SECRET_KEY' fixtures/fixtures_initial_data.json >> tmp.json && mv tmp.json fixtures/fixtures_initial_data.json
+        jq '.[8].fields.client_id=env.SOCIAL_APPLICATION_CLIENT_ID | .[8].fields.secret=env.SOCIAL_APPLICATION_SECRET_KEY' fixtures/fixtures_initial_data.json >> tmp.json && mv tmp.json fixtures/fixtures_initial_data.json
         # Run the loaddata command
         echo "Installing initial database data"
         python manage.py loaddata fixtures/fixtures_initial_data.json
@@ -76,6 +76,27 @@ fi
 # Run collectstatic to generate the static files
 echo "Generating static files"
 python manage.py collectstatic --noinput
+
+# Create teh directory and log file for the cron job
+echo "Creating log file for cron job"
+mkdir -p logs
+touch logs/cronjob.log
+
+# Add the crontab entry so that we can run it every day
+echo "Setting up crontab"
+python manage.py crontab remove 
+python manage.py crontab add
+# print out the value to make sure that we are doing it properly
+python manage.py crontab show
+# Now if we are testing and the database is empty, make sure that we run the cronjob once to populate the database with data
+logs=$(python manage.py shell -c "from manage_saas.models import GoogleWorkspaceAppsLogin; print(len(GoogleWorkspaceAppsLogin.objects.all()))")
+if [ "${logs}" -eq 0 ]; then
+    # Get the cronjob id
+    cronjob_id=$(python manage.py crontab show | grep -o '^[a-f0-9]\{32\}')
+    # now run the cronjob to genearte data
+    python manage.py crontab run ${cronjob_id}
+fi 
+
 
 # Start up the application
 echo "Starting up the application"

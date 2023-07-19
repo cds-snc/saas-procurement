@@ -8,3 +8,4 @@ python3-pip
 vim
 xz-utils
 zsh
+cron

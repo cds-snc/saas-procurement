@@ -38,6 +38,7 @@ class InitTestCase(TestCase):
                     "Internal Ops",
                     "Administrator",
                     "Manager",
+                    "Manage Saas",
                 ],
             }
 
@@ -47,7 +48,14 @@ class InitTestCase(TestCase):
             # Check that the roles were set in the session
             self.assertEqual(
                 mock_request_session["roles"],
-                ["Requestor", "Approver", "Internal Ops", "Administrator", "Manager"],
+                [
+                    "Requestor",
+                    "Approver",
+                    "Internal Ops",
+                    "Administrator",
+                    "Manager",
+                    "Manage Saas",
+                ],
             )
 
     # test successful switch role
@@ -63,6 +71,7 @@ class InitTestCase(TestCase):
                 "Internal Ops",
                 "Administrator",
                 "Manager",
+                "Manage Saas",
             ],
         }
         request.GET = {"role": "Approver"}
@@ -83,7 +92,14 @@ class InitTestCase(TestCase):
         # Check that all the roles are in the session
         self.assertEqual(
             request.session["roles"],
-            ["Requestor", "Approver", "Internal Ops", "Administrator", "Manager"],
+            [
+                "Requestor",
+                "Approver",
+                "Internal Ops",
+                "Administrator",
+                "Manager",
+                "Manage Saas",
+            ],
         )
 
     # test switching roles with no role parameter
@@ -98,6 +114,7 @@ class InitTestCase(TestCase):
             "Internal Ops",
             "Administrator",
             "Manager",
+            "Manage Saas",
         ]
 
         messages = FallbackStorage(request)
