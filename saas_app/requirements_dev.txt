@@ -1,9 +1,9 @@
 asgiref==3.7.2
 attrs==22.2.0
-black==23.3.0
+black==23.7.0
 certifi==2022.12.7
 cffi==1.15.1
-charset-normalizer==3.1.0
+charset-normalizer==3.2.0
 click==8.1.4
 coverage==7.2.7
 cryptography==41.0.2
