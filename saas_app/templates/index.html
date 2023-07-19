@@ -7,7 +7,7 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-    <h1>{% trans "Welcome" %} {{user}}!</h1>
+    <h1>{% trans "Welcome" %} {{user|capfirst}}!</h1>
     <p>{% trans "What do you want to do today?" %}</p></br>
     {% if role == "Requestor" %}
       <div class="card">

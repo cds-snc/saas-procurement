@@ -30,6 +30,7 @@ class ViewRequestForm(ModelForm):
             "submitted_by",
         ]
         labels = {
+            "name": _("Name of Saas"),
             "currency": _("Currency"),
             "frequency": _("Frequency"),
             "units": _("Units"),
@@ -125,6 +126,7 @@ class ViewManagerOldRequestForm(ModelForm):
             "manager_denied",
         ]
         labels = {
+            "name": _("Name of Saas"),
             "status": _("Current status"),
             "currency": _("Currency"),
             "frequency": _("Frequency"),
@@ -225,6 +227,7 @@ class ViewS32ApproverOldRequestForm(ModelForm):
             "s_32_approved",
         ]
         labels = {
+            "name": _("Name of Saas"),
             "status": _("Current status"),
             "currency": _("Currency"),
             "frequency": _("Frequency"),

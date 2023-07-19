@@ -29,6 +29,7 @@ class SubmitRequestForm(ModelForm):
             "comments",
         ]
         labels = {
+            "name": _("Name of Saas"),
             "currency": _("Currency"),
             "frequency": _("Frequency"),
             "units": _("Units"),
@@ -70,7 +71,7 @@ class SubmitRequestForm(ModelForm):
                 readonly=True,
                 style="height: auto;",
             ),
-            "fund_center",
+            Field("fund_center", style="height: auto;"),
             Field("comments", rows="5"),
         )
         self.helper.add_input(
@@ -108,6 +109,7 @@ class ViewRequestForm(ModelForm):
             "comments",
         ]
         labels = {
+            "name": _("Name of Saas"),
             "currency": _("Currency"),
             "frequency": _("Frequency"),
             "units": _("Units"),
@@ -140,7 +142,7 @@ class ViewRequestForm(ModelForm):
                 readonly=True,
                 style="height:auto;",
             ),
-            "fund_center",
+            Field("fund_center", style="height: auto;"),
             Field("comments", rows="5"),
             Submit("save", _("Save changes")),
             Submit(
@@ -185,6 +187,7 @@ class ViewPrevRequestForm(ModelForm):
             "status",
         ]
         labels = {
+            "name": _("Name of Saas"),
             "status": _("Current status"),
             "currency": _("Currency"),
             "frequency": _("Frequency"),
