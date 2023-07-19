@@ -51,7 +51,7 @@ else
 fi  
 
 # Load the fixtures data so that the database is populated with some data for testing purposes
-# check to see if Soial account is installed
+# check to see if Social account is installed
 social_account=$(python manage.py shell -c "from allauth.socialaccount.models import SocialApp; print(len(SocialApp.objects.all()))")
 if [ "${social_account}" -eq 0 ]; then
     # get the environment variables and replaces them in the fixtures file for the google social account
@@ -84,9 +84,18 @@ touch logs/cronjob.log
 
 # Add the crontab entry so that we can run it every day
 echo "Setting up crontab"
+python manage.py crontab remove 
 python manage.py crontab add
 # print out the value to make sure that we are doing it properly
 python manage.py crontab show
+# Now if we are testing and the database is empty, make sure that we run the cronjob once to populate the database with data
+logs=$(python manage.py shell -c "from manage_saas.models import GoogleWorkspaceAppsLogin; print(len(GoogleWorkspaceAppsLogin.objects.all()))")
+if [ "${logs}" -eq 0 ]; then
+    # Get the cronjob id
+    cronjob_id=$(python manage.py crontab show | grep -o '^[a-f0-9]\{32\}')
+    # now run the cronjob to genearte data
+    python manage.py crontab run ${cronjob_id}
+fi 
 
 
 # Start up the application

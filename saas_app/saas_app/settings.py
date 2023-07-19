@@ -222,9 +222,10 @@ SESSION_ENGINE = "django.contrib.sessions.backends.db"
 USE_X_FORWARDED_HOST = True
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
+# Configure the crontab to run at 5am UTC every day
 CRONJOBS = [
     (
-        "0 1 * * *",
+        "0 5 * * *",
         "manage_saas.views.daily_import_sentinel_data",
         ">>" + os.path.join(BASE_DIR, "logs/cronjob.log" + " 2>&1"),
     )
