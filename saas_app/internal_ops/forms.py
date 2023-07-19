@@ -66,14 +66,22 @@ class ViewS32RequestForm(ModelForm):
         self.helper.form_id = "view_request_form"
         self.helper.form_class = "blueForms"
         self.fields["date_info_requested"].label = False
-        self.fields['info_requested'].label = False
+        self.fields["info_requested"].label = False
         self.helper.layout = Layout(
             Field("name", readonly=True),
             Field("url", readonly=True),
             Field("description", readonly=True),
             Field("cost", readonly=True),
-            Field("currency", readonly=True, style="color:black; height:auto; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;"),
-            Field("frequency", readonly=True, style="color:black; height:auto; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;"),
+            Field(
+                "currency",
+                readonly=True,
+                style="color:black; height:auto; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
+            ),
+            Field(
+                "frequency",
+                readonly=True,
+                style="color:black; height:auto; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
+            ),
             Field("units", readonly=True),
             Field("level_of_subscription", readonly=True),
             Field("duration", readonly=True),
@@ -147,12 +155,15 @@ class ViewS32RequestForm(ModelForm):
             )
         # unhide the date requested and information requested if there is data associated with those fields.
         if self.instance.date_info_requested:
-            self.helper.layout[17] = Field("date_info_requested", readonly=True, hidden=False)
-            self.fields["date_info_requested"].label = "Date Info Requested" 
+            self.helper.layout[17] = Field(
+                "date_info_requested", readonly=True, hidden=False
+            )
+            self.fields["date_info_requested"].label = "Date Info Requested"
         if self.instance.info_requested:
-            self.helper.layout[18] = Field("info_requested", readonly=True, hidden=False)
-            self.fields['info_requested'].label = "Info Requested" 
-
+            self.helper.layout[18] = Field(
+                "info_requested", readonly=True, hidden=False
+            )
+            self.fields["info_requested"].label = "Info Requested"
 
 
 class ViewPurchaseRequiredForm(ModelForm):
@@ -212,14 +223,22 @@ class ViewPurchaseRequiredForm(ModelForm):
         self.helper.form_id = "view_request_form"
         self.helper.form_class = "blueForms"
         self.fields["date_info_requested"].label = False
-        self.fields['info_requested'].label = False
+        self.fields["info_requested"].label = False
         self.helper.layout = Layout(
             Field("name", readonly=True),
             Field("url", readonly=True),
             Field("description", readonly=True),
             Field("cost", readonly=True),
-            Field("currency", readonly=True, style="color:black; height:auto; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;"),
-            Field("frequency", readonly=True, style="color:black; height:auto; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;"),
+            Field(
+                "currency",
+                readonly=True,
+                style="color:black; height:auto; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
+            ),
+            Field(
+                "frequency",
+                readonly=True,
+                style="color:black; height:auto; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
+            ),
             Field("units", readonly=True),
             Field("level_of_subscription", readonly=True),
             Field("duration", readonly=True),
@@ -272,11 +291,15 @@ class ViewPurchaseRequiredForm(ModelForm):
             ),
         )
         if self.instance.date_info_requested:
-            self.helper.layout[17] = Field("date_info_requested", readonly=True, hidden=False)
+            self.helper.layout[17] = Field(
+                "date_info_requested", readonly=True, hidden=False
+            )
             self.fields["date_info_requested"].label = "Date Info Requested"
         if self.instance.info_requested:
-            self.helper.layout[18] = Field("info_requested", readonly=True, hidden=False)
-            self.fields['info_requested'].label = "Info Requested"
+            self.helper.layout[18] = Field(
+                "info_requested", readonly=True, hidden=False
+            )
+            self.fields["info_requested"].label = "Info Requested"
 
 
 class ViewOldPurchasedRequestsForm(ModelForm):
@@ -349,14 +372,22 @@ class ViewOldPurchasedRequestsForm(ModelForm):
         self.helper.form_id = "view_request_form"
         self.helper.form_class = "blueForms"
         self.fields["date_info_requested"].label = False
-        self.fields['info_requested'].label = False
+        self.fields["info_requested"].label = False
         self.helper.layout = Layout(
             Field("name", readonly=True),
             Field("url", readonly=True),
             Field("description", readonly=True),
             Field("cost", readonly=True),
-            Field("currency", readonly=True, style="color:black; height:auto; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;"),
-            Field("frequency", readonly=True, style="color:black; height:auto; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;"),
+            Field(
+                "currency",
+                readonly=True,
+                style="color:black; height:auto; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
+            ),
+            Field(
+                "frequency",
+                readonly=True,
+                style="color:black; height:auto; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
+            ),
             Field("units", readonly=True),
             Field("level_of_subscription", readonly=True),
             Field("duration", readonly=True),
@@ -409,11 +440,16 @@ class ViewOldPurchasedRequestsForm(ModelForm):
             ),
         )
         if self.instance.date_info_requested:
-            self.helper.layout[19] = Field("date_info_requested", readonly=True, hidden=False)
+            self.helper.layout[19] = Field(
+                "date_info_requested", readonly=True, hidden=False
+            )
             self.fields["date_info_requested"].label = "Date Info Requested"
         if self.instance.info_requested:
-            self.helper.layout[20] = Field("info_requested", readonly=True, hidden=False)
-            self.fields['info_requested'].label = "Info Requested"
+            self.helper.layout[20] = Field(
+                "info_requested", readonly=True, hidden=False
+            )
+            self.fields["info_requested"].label = "Info Requested"
+
 
 class ViewOldS32ApprovedRequestsForm(ModelForm):
     # Form is generated from the database fields.
@@ -471,14 +507,22 @@ class ViewOldS32ApprovedRequestsForm(ModelForm):
         self.helper.form_id = "view_request_form"
         self.helper.form_class = "blueForms"
         self.fields["date_info_requested"].label = False
-        self.fields['info_requested'].label = False
+        self.fields["info_requested"].label = False
         self.helper.layout = Layout(
             Field("name", readonly=True),
             Field("url", readonly=True),
             Field("description", readonly=True),
             Field("cost", readonly=True),
-            Field("currency", readonly=True, style="color:black; height:auto; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;"),
-            Field("frequency", readonly=True, style="color:black; height:auto; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;"),
+            Field(
+                "currency",
+                readonly=True,
+                style="color:black; height:auto; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
+            ),
+            Field(
+                "frequency",
+                readonly=True,
+                style="color:black; height:auto; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
+            ),
             Field("units", readonly=True),
             Field("level_of_subscription", readonly=True),
             Field("number_of_users", readonly=True),
@@ -500,7 +544,7 @@ class ViewOldS32ApprovedRequestsForm(ModelForm):
                 style="color:black; height:auto; background-color:#e9ecef; opacity:1; font-weight: inherit; font-color: inherit;",
             ),
             Field("date_info_requested", readonly=True, hidden=True),
-            Field("info_requested", readonly=True, hidden=True), 
+            Field("info_requested", readonly=True, hidden=True),
             Field("date_sent_to_s_32_approver", readonly=True),
             Field("fund_center", readonly=True, style="height:auto"),
             Field("approved_by", readonly=True, style="height:auto"),
@@ -513,8 +557,12 @@ class ViewOldS32ApprovedRequestsForm(ModelForm):
             ),
         )
         if self.instance.date_info_requested:
-            self.helper.layout[20] = Field("date_info_requested", readonly=True, hidden=False)
+            self.helper.layout[20] = Field(
+                "date_info_requested", readonly=True, hidden=False
+            )
             self.fields["date_info_requested"].label = "Date Info Requested"
         if self.instance.info_requested:
-            self.helper.layout[21] = Field("info_requested", readonly=True, hidden=False)
-            self.fields['info_requested'].label = "Info Requested"
+            self.helper.layout[21] = Field(
+                "info_requested", readonly=True, hidden=False
+            )
+            self.fields["info_requested"].label = "Info Requested"
