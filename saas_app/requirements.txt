@@ -2,8 +2,8 @@ asgiref==3.7.2
 aws-sns-message-validator==0.0.5
 azure-identity==1.13.0
 azure-monitor-query==1.2.0
-awscli==1.28.1
-boto3==1.27.1
+awscli==1.29.2
+boto3==1.28.2
 Django==4.2.3
 django-crontab==0.7.1
 gunicorn==20.1.0
@@ -11,7 +11,7 @@ psycopg2-binary==2.9.6
 python-dotenv==0.21.1
 sqlparse==0.4.4
 django-allauth==0.54.0
-PyYaml==5.3.1 # need to pin down the PyYaml version since the newest version is currently broken - https://github.com/yaml/pyyaml/issues/724
+PyYaml==5.4.1 # need to pin down the PyYaml version since the newest version is currently broken - https://github.com/yaml/pyyaml/issues/724
 django-bootstrap-form==3.4
 django-crispy-forms==2.0
 crispy-bootstrap4==2022.1
