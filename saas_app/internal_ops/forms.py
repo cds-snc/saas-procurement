@@ -37,7 +37,7 @@ class ViewS32RequestForm(ModelForm):
             "approved_by",
         ]
         labels = {
-            "name": _("Name"),
+            "name": _("Name of Saas"),
             "url": _("URL"),
             "description": _("Description"),
             "cost": _("Cost"),
@@ -194,7 +194,7 @@ class ViewPurchaseRequiredForm(ModelForm):
             "approved_by",
         ]
         labels = {
-            "name": _("Name"),
+            "name": _("Name of Saas"),
             "url": _("URL"),
             "description": _("Description"),
             "cost": _("Cost"),
@@ -210,8 +210,8 @@ class ViewPurchaseRequiredForm(ModelForm):
             "manager": _("Manager"),
             "manager_approved": _("Manager Approved"),
             "Manager_denied": _("Manager Denied"),
-            "date_info_requested": _("Date Info Requested"),
-            "info_requested": _("Info Requested"),
+            # "date_info_requested": _("Date Info Requested"),
+            # "info_requested": _("Info Requested"),
             "submitted_by": _("Submitted By"),
             "fund_center": _("Fund Center"),
             "approved_by": _("S32 Approver"),
@@ -222,8 +222,8 @@ class ViewPurchaseRequiredForm(ModelForm):
         self.helper = FormHelper()
         self.helper.form_id = "view_request_form"
         self.helper.form_class = "blueForms"
-        self.fields["date_info_requested"].label = False
-        self.fields["info_requested"].label = False
+        # self.fields["date_info_requested"].label = False
+        # self.fields["info_requested"].label = False
         self.helper.layout = Layout(
             Field("name", readonly=True),
             Field("url", readonly=True),
@@ -340,7 +340,7 @@ class ViewOldPurchasedRequestsForm(ModelForm):
             "approved_by",
         ]
         labels = {
-            "name": _("Name"),
+            "name": _("Name of Saas"),
             "url": _("URL"),
             "description": _("Description"),
             "cost": _("Cost"),
@@ -371,8 +371,8 @@ class ViewOldPurchasedRequestsForm(ModelForm):
         self.helper = FormHelper()
         self.helper.form_id = "view_request_form"
         self.helper.form_class = "blueForms"
-        self.fields["date_info_requested"].label = False
-        self.fields["info_requested"].label = False
+        # self.fields["date_info_requested"].label = False
+        # self.fields["info_requested"].label = False
         self.helper.layout = Layout(
             Field("name", readonly=True),
             Field("url", readonly=True),
@@ -506,8 +506,8 @@ class ViewOldS32ApprovedRequestsForm(ModelForm):
         self.helper = FormHelper()
         self.helper.form_id = "view_request_form"
         self.helper.form_class = "blueForms"
-        self.fields["date_info_requested"].label = False
-        self.fields["info_requested"].label = False
+        # self.fields["date_info_requested"].label = False
+        # self.fields["info_requested"].label = False
         self.helper.layout = Layout(
             Field("name", readonly=True),
             Field("url", readonly=True),
