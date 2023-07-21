@@ -214,7 +214,7 @@ class ViewPurchaseRequiredForm(ModelForm):
             "date_manager_reviewed": _("Date Manager reviewed the request"),
             "manager_approved": _("Manager Approved"),
             "Manager_denied": _("Manager Denied"),
-            "submitted_by": _("Submitted By 123"),
+            "submitted_by": _("Submitted By"),
             "date_info_requested": _("Date Info Requested"),
             "info_requested": _("Info Requested"),
             "fund_center": _("Fund Center"),
