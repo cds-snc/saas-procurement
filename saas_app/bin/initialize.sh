@@ -83,6 +83,10 @@ mkdir -p logs
 touch logs/cronjob.log
 
 # Add the crontab entry so that we can run it every day
+echo "Starting cron service"
+# Start the cron service
+sudo /etc/init.d/cron start
+# Add the crontab entry
 echo "Setting up crontab"
 python manage.py crontab remove 
 python manage.py crontab add
