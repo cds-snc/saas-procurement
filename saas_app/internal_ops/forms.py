@@ -208,6 +208,7 @@ class ViewPurchaseRequiredForm(ModelForm):
             "account_administrator": _("Account Administrator"),
             "backup_administrator": _("Backup Administrator"),
             "manager": _("Manager"),
+            "comments": _("Comments"),
             "manager_approved": _("Manager Approved"),
             "Manager_denied": _("Manager Denied"),
             # "date_info_requested": _("Date Info Requested"),
