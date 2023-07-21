@@ -104,7 +104,9 @@ class ViewRequestForm(ModelForm):
         )
         # unhide the date requested and information requested if there is data associated with those fields.
         if self.instance.date_info_requested is not None:
-            self.helper["date_info_requested"].update_attributes(type="text", readonly=True)
+            self.helper["date_info_requested"].update_attributes(
+                type="text", readonly=True
+            )
         if self.instance.info_requested is not None:
             self.helper["info_requested"].update_attributes(type="text", readonly=True)
 
@@ -213,7 +215,9 @@ class ViewManagerOldRequestForm(ModelForm):
         )
         # unhide the date requested and information requested if there is data associated with those fields.
         if self.instance.date_info_requested is not None:
-            self.helper["date_info_requested"].update_attributes(type="text", readonly=True)
+            self.helper["date_info_requested"].update_attributes(
+                type="text", readonly=True
+            )
         if self.instance.info_requested is not None:
             self.helper["info_requested"].update_attributes(type="text", readonly=True)
 
@@ -323,6 +327,8 @@ class ViewS32ApproverOldRequestForm(ModelForm):
         )
         # unhide the date requested and information requested if there is data associated with those fields.
         if self.instance.date_info_requested is not None:
-            self.helper["date_info_requested"].update_attributes(type="text", readonly=True)
+            self.helper["date_info_requested"].update_attributes(
+                type="text", readonly=True
+            )
         if self.instance.info_requested is not None:
             self.helper["info_requested"].update_attributes(type="text", readonly=True)

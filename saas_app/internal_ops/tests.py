@@ -211,7 +211,8 @@ class ViewS32RequestFormTest(TestCase):
     def test_name_label(self):
         form = ViewS32RequestForm()
         self.assertTrue(
-            form.fields["name"].label is None or form.fields["name"].label == "Name of Saas"
+            form.fields["name"].label is None
+            or form.fields["name"].label == "Name of Saas"
         )
 
     # Test the url label of the form
@@ -379,7 +380,8 @@ class ViewPurchaseRequiredFormTest(TestCase):
     def test_name_label(self):
         form = ViewPurchaseRequiredForm()
         self.assertTrue(
-            form.fields["name"].label is None or form.fields["name"].label == "Name of Saas"
+            form.fields["name"].label is None
+            or form.fields["name"].label == "Name of Saas"
         )
 
     # Test the url label of the form
@@ -547,7 +549,8 @@ class ViewOldPurchasedRequestsFormTest(TestCase):
     def test_name_label(self):
         form = ViewOldPurchasedRequestsForm()
         self.assertTrue(
-            form.fields["name"].label is None or form.fields["name"].label == "Name of Saas"
+            form.fields["name"].label is None
+            or form.fields["name"].label == "Name of Saas"
         )
 
     # Test the url label of the form
@@ -796,7 +799,8 @@ class ViewOldS32ApprovedRequestsFormTest(TestCase):
     def test_name_label(self):
         form = ViewOldS32ApprovedRequestsForm()
         self.assertTrue(
-            form.fields["name"].label is None or form.fields["name"].label == "Name of Saas"
+            form.fields["name"].label is None
+            or form.fields["name"].label == "Name of Saas"
         )
 
     # Test the url label of the form

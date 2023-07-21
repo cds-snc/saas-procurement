@@ -128,7 +128,8 @@ class SubmitRequestFormTest(TestCase):
     def test_name_label(self):
         form = SubmitRequestForm()
         self.assertTrue(
-            form.fields["name"].label is None or form.fields["name"].label == "Name of Saas"
+            form.fields["name"].label is None
+            or form.fields["name"].label == "Name of Saas"
         )
 
     # Test the url label of the form

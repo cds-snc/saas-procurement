@@ -1,5 +1,5 @@
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Submit, Layout, Button, Field 
+from crispy_forms.layout import Submit, Layout, Button, Field
 from django.forms import ModelForm
 from django.utils.translation import get_language, gettext_lazy as _
 from submit_request.models import SaasRequest
@@ -108,7 +108,7 @@ class ViewS32RequestForm(ModelForm):
             Field("date_info_requested", type="hidden"),
             Field("info_requested", type="hidden"),
             Field("fund_center"),
-            Field("approved_by"), 
+            Field("approved_by"),
             Submit(
                 "send_for_s32_approval",
                 _("Send for S32 Approval"),
@@ -159,9 +159,12 @@ class ViewS32RequestForm(ModelForm):
             )
         # unhide the date requested and information requested if there is data associated with those fields.
         if self.instance.date_info_requested is not None:
-            self.helper["date_info_requested"].update_attributes(type="text", readonly=True)
+            self.helper["date_info_requested"].update_attributes(
+                type="text", readonly=True
+            )
         if self.instance.info_requested is not None:
             self.helper["info_requested"].update_attributes(type="text", readonly=True)
+
 
 class ViewPurchaseRequiredForm(ModelForm):
     # Form is generated from the database fields.
@@ -258,13 +261,19 @@ class ViewPurchaseRequiredForm(ModelForm):
                 "submitted_by",
                 readonly=True,
                 style="color:black; height:auto; background-color:#e9ecef; opacity:1; font-weight: inherit; font-color: inherit;",
-            ), 
+            ),
             Field("date_info_requested", type="hidden"),
             Field("info_requested", type="hidden"),
-            Field("fund_center", readonly=True,
-                style="color:black; height:auto; background-color:#e9ecef; opacity:1; font-weight: inherit; font-color: inherit;"),
-            Field("approved_by", readonly=True,
-                style="color:black; height:auto; background-color:#e9ecef; opacity:1; font-weight: inherit; font-color: inherit;"),
+            Field(
+                "fund_center",
+                readonly=True,
+                style="color:black; height:auto; background-color:#e9ecef; opacity:1; font-weight: inherit; font-color: inherit;",
+            ),
+            Field(
+                "approved_by",
+                readonly=True,
+                style="color:black; height:auto; background-color:#e9ecef; opacity:1; font-weight: inherit; font-color: inherit;",
+            ),
             Button(
                 "request_info",
                 _("Request Additional Information"),
@@ -293,12 +302,14 @@ class ViewPurchaseRequiredForm(ModelForm):
                 + "/internal_ops/view'",
             ),
         )
-          # unhide the date requested and information requested if there is data associated with those fields.
+        # unhide the date requested and information requested if there is data associated with those fields.
         if self.instance.date_info_requested is not None:
-            self.helper["date_info_requested"].update_attributes(type="text", readonly=True)
+            self.helper["date_info_requested"].update_attributes(
+                type="text", readonly=True
+            )
         if self.instance.info_requested is not None:
             self.helper["info_requested"].update_attributes(type="text", readonly=True)
-            
+
 
 class ViewOldPurchasedRequestsForm(ModelForm):
     # Form is generated from the database fields.
@@ -437,9 +448,11 @@ class ViewOldPurchasedRequestsForm(ModelForm):
                 + "/internal_ops/view'",
             ),
         )
-          # unhide the date requested and information requested if there is data associated with those fields.
+        # unhide the date requested and information requested if there is data associated with those fields.
         if self.instance.date_info_requested is not None:
-            self.helper["date_info_requested"].update_attributes(type="text", readonly=True)
+            self.helper["date_info_requested"].update_attributes(
+                type="text", readonly=True
+            )
         if self.instance.info_requested is not None:
             self.helper["info_requested"].update_attributes(type="text", readonly=True)
 
@@ -549,8 +562,10 @@ class ViewOldS32ApprovedRequestsForm(ModelForm):
                 onclick="history.back()",
             ),
         )
-          # unhide the date requested and information requested if there is data associated with those fields.
+        # unhide the date requested and information requested if there is data associated with those fields.
         if self.instance.date_info_requested is not None:
-            self.helper["date_info_requested"].update_attributes(type="text", readonly=True)
+            self.helper["date_info_requested"].update_attributes(
+                type="text", readonly=True
+            )
         if self.instance.info_requested is not None:
             self.helper["info_requested"].update_attributes(type="text", readonly=True)
