@@ -181,9 +181,6 @@ class ViewPrevRequestForm(ModelForm):
             "manager",
             "fund_center",
             "comments",
-            "date_manager_reviewed",
-            "manager_approved",
-            "manager_denied",
             "status",
         ]
         labels = {
@@ -195,9 +192,6 @@ class ViewPrevRequestForm(ModelForm):
             "duration": _("Duration"),
             "fund_center": _("Fund Center"),
             "comments": _("Comments"),
-            "date_manager_reviewed": _("Date manager reviewed the request"),
-            "manager_approved": _("Manager approved the request"),
-            "manager_denied": _("Manager denied the request"),
         }
 
     def __init__(self, *args, **kwargs):
@@ -238,9 +232,6 @@ class ViewPrevRequestForm(ModelForm):
                 style="color:black; height:auto; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
             ),
             Field("comments", readonly=True, rows="5"),
-            Field("date_manager_reviewed", readonly=True),
-            Field("manager_approved", readonly=True),
-            Field("manager_denied", readonly=True),
             Field("status", readonly=True),
             Button(
                 "cancel",
