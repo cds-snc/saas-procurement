@@ -27,7 +27,7 @@ variable "ecr_repository_url" {
 variable "fargate_cpu" {
   description = "Fargate CPU units"
   type        = number
-  default     = 512 
+  default     = 512
 }
 
 variable "fargate_memory" {
