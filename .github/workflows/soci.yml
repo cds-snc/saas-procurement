@@ -38,7 +38,7 @@ jobs:
 
       - name: Run SOCI
         run: |
-          sudo soci create $REGISTRY:latest
+          sudo soci create $REGISTRY:8a7f65aa86c4d0297656dc5126929cced1a67508
           
       - name: Show SOCI index
         run: |
