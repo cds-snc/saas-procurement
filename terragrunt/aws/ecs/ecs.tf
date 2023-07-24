@@ -44,7 +44,7 @@ resource "aws_ecs_service" "saas-procurement-app-service" {
   name             = "saas_procurement-service"
   cluster          = aws_ecs_cluster.saas_procurement.id
   task_definition  = aws_ecs_task_definition.saas_procurement.arn
-  desired_count    = 2
+  desired_count    = 1
   launch_type      = "FARGATE"
   platform_version = "1.4.0"
   propagate_tags   = "SERVICE"
