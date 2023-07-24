@@ -222,10 +222,18 @@ SESSION_ENGINE = "django.contrib.sessions.backends.db"
 USE_X_FORWARDED_HOST = True
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
+# envs = []
+# for envkey in os.environ.keys():
+#     envs.append(envkey + '=' + os.environ[envkey])
+# CRONTAB_COMMAND_PREFIX = 'env $(echo ' + '\n'.join(envs) + ' | xargs)'
+
+# CRONTAB_COMMAND_PREFIX = ("AZURE_CLIENT_ID=" + os.environ.get('AZURE_CLIENT_ID'))
+# ENV_FILE = os.path.join(BASE_DIR, ".env")
+
 # Configure the crontab to run at 5am UTC every day
 CRONJOBS = [
     (
-        "0 5 * * *",
+        "0 5 * * * (source .env || true) &&",
         "manage_saas.views.daily_import_sentinel_data",
         ">>" + os.path.join(BASE_DIR, "logs/cronjob.log" + " 2>&1"),
     )
