@@ -1,0 +1,50 @@
+name: SOCI Test
+
+on:
+  workflow_dispatch:
+  pull_request:
+
+env:
+  GITHUB_SHA: ${{ github.sha }}
+  REGISTRY: 394954348146.dkr.ecr.ca-central-1.amazonaws.com/saas-procurement
+
+permissions:
+  id-token: write
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3.5.3
+
+      - name: Install SOCI
+        working-directory: ./
+        run: |
+          wget https://github.com/awslabs/soci-snapshotter/releases/download/v0.3.0/soci-snapshotter-0.3.0-linux-amd64.tar.gz
+          sudo tar -C /usr/local/bin -xvf soci-snapshotter-0.3.0-linux-amd64.tar.gz soci
+
+      - name: Configure aws credentials using OIDC
+        uses: aws-actions/configure-aws-credentials@master
+        with:
+          role-to-assume: arn:aws:iam::394954348146:role/gh_plan_role
+          role-session-name: GitHubActions
+          aws-region: "ca-central-1"
+
+      - name: Set up containerd
+        uses: crazy-max/ghaction-setup-containerd@v2
+
+      - name: Download image
+        run: |
+          DOCKER_PASSWORD=$(aws ecr get-login-password --region ca-central-1)
+          echo "::add-mask::$DOCKER_PASSWORD"
+          sudo ctr i pull --all-platforms -u "AWS:$DOCKER_PASSWORD" $REGISTRY:latest
+
+      - name: Run SOCI
+        run: |
+          sudo soci create $REGISTRY:latest
+          
+      - name: Show SOCI index
+        run: |
+          sudo soci index list
