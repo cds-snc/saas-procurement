@@ -33,7 +33,13 @@ jobs:
           aws-region: "ca-central-1"
 
       - name: Set up containerd
-        uses: crazy-max/ghaction-setup-containerd@v2
+        run: |
+          sudo wget https://github.com/containerd/containerd/releases/download/v1.7.2/containerd-1.7.2-linux-amd64.tar.gz
+          mkdir containerd
+          sudo tar -zxf ./containerd-1.7.2-linux-amd64.tar.gz -C ./containerd
+          sudo mv ./containerd/bin/* /usr/bin/
+          sudo wget https://github.com/opencontainers/runc/releases/download/v1.1.8/runc.amd64 -O /usr/bin/runc
+          sudo chmod +x /usr/bin/runc
 
       - name: Download image
         run: |
