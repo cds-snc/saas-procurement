@@ -42,6 +42,12 @@
 		"ghcr.io/devcontainers/features/terraform:1": {
 			"version": "1.0.3",
 			"terragrunt": "0.31.1"
+		},
+		"ghcr.io/devcontainers/features/node": {
+			"version": "1.2.0"
+		},
+		"ghcr.io/devcontainers/features/docker-in-docker:2": {
+			"version": "2.2.1"
 		}
 	},
 	"containerEnv": {
@@ -49,7 +55,7 @@
 		"POSTGRES_DB": "postgres",
 		"POSTGRES_USER": "postgres",
 		"POSTGRES_PASSWORD": "postgres",
-		"ENVIRONMENT": "dev"   // Sets local development vs production/staging 
+		"ENVIRONMENT": "dev" // Sets local development vs production/staging 
 	},
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// This can be used to network with other containers or the host.
