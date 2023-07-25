@@ -15,12 +15,11 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    uses: cds-snc/workflows/.github/workflows/setup-soci-snapshotter.yml@main
+    
     steps:
       - name: Checkout
         uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3.5.3
-
-      - name: Install SOCI
-        uses: cds-snc/workflows/.github/workflows/setup-soci-snapshotter.yml@main
 
       - name: Configure aws credentials using OIDC
         uses: aws-actions/configure-aws-credentials@master
