@@ -12,7 +12,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 WORKDIR /saas_app
 COPY requirements.txt /saas_app/
-RUN pip install -r requirements.txt
+RUN pip install --no-cache-dir --upgrade pip \
+  && pip install --no-cache-dir -r requirements.txt
 COPY . /saas_app/
 EXPOSE 8000
 ENTRYPOINT ./bin/initialize.sh

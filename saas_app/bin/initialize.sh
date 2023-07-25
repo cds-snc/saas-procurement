@@ -2,21 +2,6 @@
 # Script that validates if the project is properly initilized for development purposes.
 # If not, initializes the project.
 
-#Update pip
-pip install --upgrade pip
-
-# Check if django is installed, if not, install requirements_dev.txt
-django_installed=$(pip3 list  | grep -c django)
-if [ "${django_installed}" -eq 0 ]; then
-    echo "Django is not installed"
-    echo  "Installing requirements_dev.txt"
-    python -m pip install -r requirements.txt
-    python -m pip install -r requirements_dev.txt
-else
-    echo "Django is installed, skipping requirements_dev.txt"
-    echo "If you want to manually update the project packages, run: pip install -r requirements_dev.txt"
-fi
-
 echo "Retrieving environment parameters and put them in an .env file"
 python bin/get_parameters.py
 
@@ -85,22 +70,23 @@ touch logs/cronjob.log
 # Add the crontab entry so that we can run it every day
 echo "Starting cron service"
 # Start the cron service
-/etc/init.d/cron start
+service cron start
+# Get the status of the cron service
+service cron status
+
 # Add the crontab entry
 echo "Setting up crontab"
 python manage.py crontab remove 
-python manage.py crontab add
-# print out the value to make sure that we are doing it properly
-python manage.py crontab show
+cronjob_id=$(python manage.py crontab add | grep -o '\([a-f0-9]\{32\}\)')
 # Now if we are testing and the database is empty, make sure that we run the cronjob once to populate the database with data
 logs=$(python manage.py shell -c "from manage_saas.models import GoogleWorkspaceAppsLogin; print(len(GoogleWorkspaceAppsLogin.objects.all()))")
 if [ "${logs}" -eq 0 ]; then
-    # Get the cronjob id
-    cronjob_id=$(python manage.py crontab show | grep -o '^[a-f0-9]\{32\}')
     # now run the cronjob to genearte data
     python manage.py crontab run ${cronjob_id}
 fi 
 
+# See if the cron is running
+crontab -l
 
 # Start up the application
 echo "Starting up the application"

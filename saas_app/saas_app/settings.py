@@ -225,7 +225,7 @@ SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 # Configure the crontab to run at 5am UTC every day
 CRONJOBS = [
     (
-        "0 5 * * * (source .env || true) &&",
+        "0 5 * * * (source .env || true) &&", 
         "manage_saas.views.daily_import_sentinel_data",
         ">>" + os.path.join(BASE_DIR, "logs/cronjob.log" + " 2>&1"),
     )
