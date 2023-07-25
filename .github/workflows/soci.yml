@@ -41,11 +41,23 @@ jobs:
           sudo wget https://github.com/opencontainers/runc/releases/download/v1.1.8/runc.amd64 -O /usr/bin/runc
           sudo chmod +x /usr/bin/runc
 
-      - name: Download image
+      - name: Build image
+        working-directory: ./saas_app
         run: |
-          DOCKER_PASSWORD=$(aws ecr get-login-password --region ca-central-1)
-          echo "::add-mask::$DOCKER_PASSWORD"
-          sudo ctr i pull --all-platforms -u "AWS:$DOCKER_PASSWORD" $REGISTRY:latest
+          docker build \
+          --build-arg GIT_SHA=${{ github.sha }} \
+          -t $REGISTRY:latest .
+
+      - name: Export image into CTX
+        run: |
+          docker save -o saas_app.tar $REGISTRY:latest
+          sudo ctr i import saas_app.tar
+
+      #- name: Download image
+      #  run: |
+      #    DOCKER_PASSWORD=$(aws ecr get-login-password --region ca-central-1)
+      #    echo "::add-mask::$DOCKER_PASSWORD"
+      #    sudo ctr i pull --all-platforms -u "AWS:$DOCKER_PASSWORD" $REGISTRY:latest
 
       - name: Run SOCI
         run: |
