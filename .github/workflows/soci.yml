@@ -20,10 +20,7 @@ jobs:
         uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3.5.3
 
       - name: Install SOCI
-        working-directory: ./
-        run: |
-          wget https://github.com/awslabs/soci-snapshotter/releases/download/v0.3.0/soci-snapshotter-0.3.0-linux-amd64.tar.gz
-          sudo tar -C /usr/local/bin -xvf soci-snapshotter-0.3.0-linux-amd64.tar.gz soci
+        uses: cds-snc/workflows/.github/workflows/setup-soci-snapshotter.yml@main
 
       - name: Configure aws credentials using OIDC
         uses: aws-actions/configure-aws-credentials@master
@@ -32,15 +29,6 @@ jobs:
           role-session-name: GitHubActions
           aws-region: "ca-central-1"
 
-      - name: Set up containerd
-        run: |
-          sudo wget https://github.com/containerd/containerd/releases/download/v1.7.2/containerd-1.7.2-linux-amd64.tar.gz
-          mkdir containerd
-          sudo tar -zxf ./containerd-1.7.2-linux-amd64.tar.gz -C ./containerd
-          sudo mv ./containerd/bin/* /usr/bin/
-          sudo wget https://github.com/opencontainers/runc/releases/download/v1.1.8/runc.amd64 -O /usr/bin/runc
-          sudo chmod +x /usr/bin/runc
-
       - name: Build image
         working-directory: ./saas_app
         run: |
@@ -48,7 +36,7 @@ jobs:
           --build-arg GIT_SHA=${{ github.sha }} \
           -t $REGISTRY:latest .
 
-      - name: Export image into CTX
+      - name: Export image into CTR
         run: |
           docker save -o saas_app.tar $REGISTRY:latest
           sudo ctr i import saas_app.tar
@@ -63,6 +51,8 @@ jobs:
         run: |
           sudo soci create $REGISTRY:latest
           
-      - name: Show SOCI index
+      - name: Push SOCI index
         run: |
-          sudo soci index list
+          DOCKER_PASSWORD=$(aws ecr get-login-password --region ca-central-1)
+          echo "::add-mask::$DOCKER_PASSWORD"
+          sudo soci push --user AWS:$DOCKER_PASSWORD $REGISTRY:latest
