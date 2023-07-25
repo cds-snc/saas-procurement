@@ -56,32 +56,40 @@ jobs:
         run: |
           docker build \
           --build-arg GIT_SHA=$GITHUB_SHA \
-          -t $REGISTRY:$GITHUB_SHA \
           -t $REGISTRY:latest .
 
       - name: Export image into CTR
         run: |
           docker save -o saas_app.tar $REGISTRY:latest
           sudo ctr i import saas_app.tar
+          sudo ctr i tag $REGISTRY:latest $REGISTRY:$GITHUB_SHA
 
       - name: Run SOCI
         run: |
           sudo soci create $REGISTRY:latest
+          sudo soci create $REGISTRY:$GITHUB_SHA
 
       - name: Push image to ECR
         run: |
           DOCKER_PASSWORD=$(aws ecr get-login-password --region ca-central-1)
+          echo "::add-mask::$DOCKER_PASSWORD"
           sudo ctr i push --user AWS:$DOCKER_PASSWORD --platform linux/amd64 $REGISTRY:latest
+          sudo ctr i push --user AWS:$DOCKER_PASSWORD --platform linux/amd64 $REGISTRY:$GITHUB_SHA
 
       - name: Push SOCI index
         run: |
           DOCKER_PASSWORD=$(aws ecr get-login-password --region ca-central-1)
           echo "::add-mask::$DOCKER_PASSWORD"
           sudo soci push --user AWS:$DOCKER_PASSWORD $REGISTRY:latest
+          sudo soci push --user AWS:$DOCKER_PASSWORD $REGISTRY:$GITHUB_SHA
 
       - name: Restart ECS
         run: |
           aws ecs update-service --cluster saas-procurement-cluster --service saas_procurement-service --force-new-deployment > /dev/null 2>&1
+
+      - name: Login to ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@fc3959cb4cf5a821ab7a5a636ea4f1e855b05180 # v1.6.2
 
       - name: Docker generate SBOM
         uses: cds-snc/security-tools/.github/actions/generate-sbom@cfec0943e40dbb78cee115bbbe89dc17f07b7a0f # v2.1.3
