@@ -30,6 +30,21 @@ jobs:
       - name: Checkout
         uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3.5.3
 
+      - name: Install SOCI
+        working-directory: ./
+        run: |
+          wget https://github.com/awslabs/soci-snapshotter/releases/download/v0.3.0/soci-snapshotter-0.3.0-linux-amd64.tar.gz
+          sudo tar -C /usr/local/bin -xvf soci-snapshotter-0.3.0-linux-amd64.tar.gz soci
+
+      - name: Set up containerd
+        run: |
+          sudo wget https://github.com/containerd/containerd/releases/download/v1.7.2/containerd-1.7.2-linux-amd64.tar.gz
+          mkdir containerd
+          sudo tar -zxf ./containerd-1.7.2-linux-amd64.tar.gz -C ./containerd
+          sudo mv ./containerd/bin/* /usr/bin/
+          sudo wget https://github.com/opencontainers/runc/releases/download/v1.1.8/runc.amd64 -O /usr/bin/runc
+          sudo chmod +x /usr/bin/runc
+
       - name: Configure AWS credentials using OIDC
         uses: aws-actions/configure-aws-credentials@5fd3084fc36e372ff1fff382a39b10d03659f355 # v2.2.0
         with:
@@ -45,6 +60,15 @@ jobs:
           -t $REGISTRY:$GITHUB_SHA \
           -t $REGISTRY:latest .
 
+      - name: Export image into CTR
+        run: |
+          docker save -o saas_app.tar $REGISTRY:latest
+          sudo ctr i import saas_app.tar
+
+      - name: Run SOCI
+        run: |
+          sudo soci create $REGISTRY:latest
+
       - name: Login to ECR
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@fc3959cb4cf5a821ab7a5a636ea4f1e855b05180 # v1.6.2
@@ -53,6 +77,12 @@ jobs:
         run: |
           docker push $REGISTRY:$GITHUB_SHA
           docker push $REGISTRY:latest
+
+      - name: Push SOCI index
+        run: |
+          DOCKER_PASSWORD=$(aws ecr get-login-password --region ca-central-1)
+          echo "::add-mask::$DOCKER_PASSWORD"
+          sudo soci push --user AWS:$DOCKER_PASSWORD $REGISTRY:latest
           
       - name: Restart ECS
         run: |
