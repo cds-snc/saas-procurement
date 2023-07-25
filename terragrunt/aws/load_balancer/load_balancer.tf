@@ -50,7 +50,7 @@ resource "aws_lb_target_group" "saas_procurement" {
     enabled             = true
     interval            = 60
     path                = "/health"
-    timeout             = 30 
+    timeout             = 30
     healthy_threshold   = 2
     unhealthy_threshold = 2
   }
