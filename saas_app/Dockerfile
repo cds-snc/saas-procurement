@@ -20,7 +20,7 @@ RUN pip install --no-cache-dir --upgrade pip \
 # Copy the rest of the application
 COPY . /saas_app/
 
-Build variables
+#Build variables
 ARG GIT_SHA
 ARG BUILD_DATE
 ENV GIT_SHA=$GIT_SHA
