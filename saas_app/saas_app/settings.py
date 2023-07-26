@@ -96,9 +96,9 @@ TEMPLATES = [
                 "django.contrib.messages.context_processors.messages",
                 "saas_app.context_processors.testing_feature_flag",
             ],
-            'libraries': {
-                'version': 'saas_app.templatetags.version',
-            }
+            "libraries": {
+                "version": "saas_app.templatetags.version",
+            },
         },
     },
 ]

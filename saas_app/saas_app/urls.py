@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
-from django.contrib.auth.views import LogoutView 
+from django.contrib.auth.views import LogoutView
 from django.views.generic import TemplateView
 from django.conf.urls.i18n import i18n_patterns
 from . import views
@@ -19,6 +19,10 @@ urlpatterns = i18n_patterns(
     path("search/<int:pk>/", views.view_request, name="view_request"),
     path("administration/", include("administration.urls"), name="administration"),
     path("manage_saas/", include("manage_saas.urls"), name="manage_saas"),
-    path("version/", lambda request: TemplateView.as_view(template_name='version.html')(request), name='version'),
+    path(
+        "version/",
+        lambda request: TemplateView.as_view(template_name="version.html")(request),
+        name="version",
+    ),
     path("i18n/", include("django.conf.urls.i18n")),
 )
