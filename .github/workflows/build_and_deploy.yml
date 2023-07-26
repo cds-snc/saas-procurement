@@ -61,8 +61,7 @@ jobs:
           docker build \
            -t $REGISTRY:latest \
           --build-arg GIT_SHA=$GITHUB_SHA \
-          --build-arg BUILD_DATE=${{ steps.date.outputs.date }} \
-          --no-cache .
+          --build-arg BUILD_DATE=${{ steps.date.outputs.date }} . 
 
       - name: Export image into CTR
         run: |

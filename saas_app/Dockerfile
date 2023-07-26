@@ -20,11 +20,11 @@ RUN pip install --no-cache-dir --upgrade pip \
 # Copy the rest of the application
 COPY . /saas_app/
 
-# Build variables
-# ARG GIT_SHA
-# ARG BUILD_DATE
-# ENV GIT_SHA=$GIT_SHA
-# ENV BUILD_DATE=$BUILD_DATE
+Build variables
+ARG GIT_SHA
+ARG BUILD_DATE
+ENV GIT_SHA=$GIT_SHA
+ENV BUILD_DATE=$BUILD_DATE
 
 # Expose port and run the application
 EXPOSE 8000
