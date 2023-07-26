@@ -12,10 +12,12 @@ ENV PYTHONDONTWRITEBYTECODE=1
 # Turns off buffering for easier container logging
 ENV PYTHONUNBUFFERED 1
 
-# [Optional] If your requirements rarely change, uncomment this section to add them to the image.
-# COPY requirements.txt /tmp/pip-tmp/
-# RUN pip3 --disable-pip-version-check --no-cache-dir install -r /tmp/pip-tmp/requirements.txt \
-#    && rm -rf /tmp/pip-tmp
+# upgrade pip
+RUN pip install --upgrade pip
+# copy requirements files and install them
+COPY saas_app/requirements.txt saas_app/requirements_dev.txt tmp/pip-tmp/
+RUN pip install -r /tmp/pip-tmp/requirements.txt \
+    pip install -r /tmp/pip-tmp/requirements_dev.txt
 
 # [Optional] Uncomment this section to install additional OS packages.
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \

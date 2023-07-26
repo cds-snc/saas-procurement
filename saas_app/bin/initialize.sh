@@ -101,7 +101,21 @@ if [ "${logs}" -eq 0 ]; then
     python manage.py crontab run ${cronjob_id}
 fi 
 
+# Change directory to the ../../frontend folder
+cd ../../frontend || exit
+
+ . "${NVM_DIR}"/nvm.sh && nvm install --lts
+
+#Echo multiline string
+cat << EOF 
+Installation completed
+---
+To start the django server, run: 
+python manage.py runserver
+EOF
+
+exit 0
 
 # Start up the application
-echo "Starting up the application"
-python manage.py runserver 0.0.0.0:8000
+# echo "Starting up the application"
+# python manage.py runserver 0.0.0.0:8000
