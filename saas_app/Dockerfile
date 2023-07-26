@@ -22,8 +22,8 @@ COPY . /saas_app/
 
 # Build variables
 ARG GIT_SHA
-ENV GIT_SHA=$GIT_SHA
 ARG BUILD_DATE
+ENV GIT_SHA=$GIT_SHA
 ENV BUILD_DATE=$BUILD_DATE
 
 # Expose port and run the application
