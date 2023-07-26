@@ -44,6 +44,7 @@ CSRF_TRUSTED_ORIGINS = ["https://saas.cdssandbox.xyz"]
 # Application definition
 
 INSTALLED_APPS = [
+    "corsheaders",
     "submit_request",
     "user",
     "approve",
@@ -68,6 +69,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -79,6 +81,9 @@ MIDDLEWARE = [
     "saas_app.middleware.HealthCheckMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
+
+CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_WHITELIST = ["http://127.0.0.1:5173", "http://localhost:5173"]  # Matches the port that Vue.js is using
 
 ROOT_URLCONF = "saas_app.urls"
 

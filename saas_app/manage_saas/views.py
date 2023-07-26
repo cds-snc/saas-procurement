@@ -5,8 +5,12 @@ import django.contrib.messages as messages
 from azure.identity import DefaultAzureCredential
 from azure.monitor.query import LogsQueryClient, LogsQueryStatus
 from datetime import datetime, timezone, timedelta
+from django.http import JsonResponse
+from django.core.serializers import serialize
+from django.views.decorators.csrf import csrf_exempt
 import os
 import pandas as pd
+import json
 
 
 # function to get the azure credentials and get a client to query the logs. Return the client to search for logs.
@@ -58,6 +62,16 @@ def view_logs(request):
                 request, _("Something went wrong and there are no logs to display!")
             )
         return render(request, "manage_saas/view_all_logs.html", {"all_logs": logs})
+
+# function to provide logs when a REST api call is made to the view
+def google_logs(request):
+    if request.method == "GET":
+        logs = GoogleWorkspaceAppsLogin.objects.all()
+        if logs is None:
+            messages.error(
+                request, _("Something went wrong and there are no logs to display!")
+            )
+        return JsonResponse(serialize("json", logs), safe=False)
 
 
 # function to schedule a daily crontab to retrieve data from sentinel and put it in the database for us

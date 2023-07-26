@@ -2,6 +2,8 @@
 # Script that validates if the project is properly initilized for development purposes.
 # If not, initializes the project.
 
+set -euo pipefail
+
 #Update pip
 pip install --upgrade pip
 
@@ -112,7 +114,13 @@ Installation completed
 ---
 To start the django server, run: 
 python manage.py runserver
+---
+
+Press any key to exit
 EOF
+
+# Wait for user input before exiting
+read -r -n 1 -s
 
 exit 0
 
