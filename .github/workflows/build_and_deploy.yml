@@ -51,7 +51,7 @@ jobs:
           role-session-name: ECRPush
           aws-region: ${{ env.AWS_REGION }}
 
-      - name: Get current date
+      - name: Get current date and time
         id: date
         run: echo "::set-output name=date::$(date +'%Y-%m-%d %H:%M:%S')"
 
