@@ -10,7 +10,8 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+      '~bootstrap': fileURLToPath(new URL('./node_modules/bootstrap', import.meta.url)),
     }
   }
 })
