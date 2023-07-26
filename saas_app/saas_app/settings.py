@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     "internal_ops",
     "administration",
     "manage_saas",
+    "saas_app",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -95,6 +96,9 @@ TEMPLATES = [
                 "django.contrib.messages.context_processors.messages",
                 "saas_app.context_processors.testing_feature_flag",
             ],
+            "libraries": {
+                "version": "saas_app.templatetags.version",
+            },
         },
     },
 ]
