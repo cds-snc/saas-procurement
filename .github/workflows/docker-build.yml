@@ -42,5 +42,5 @@ jobs:
           docker build \
           -t ${{ matrix.image }}:latest \
           --build-arg GIT_SHA=${{ github.sha }} \
-          --build-arg BUILD_DATE=${{ steps.date.outputs.date }} 
+          --build-arg BUILD_DATE=${{ steps.date.outputs.date }} \ 
           --no-cache .
