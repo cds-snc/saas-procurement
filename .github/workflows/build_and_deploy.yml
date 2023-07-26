@@ -59,9 +59,10 @@ jobs:
         working-directory: ./saas_app
         run: |
           docker build \
-           -t $REGISTRY:latest . \
+           -t $REGISTRY:latest \
           --build-arg GIT_SHA=$GITHUB_SHA \
           --build-arg BUILD_DATE=${{ steps.date.outputs.date }}
+          --no-cache .
 
       - name: Export image into CTR
         run: |
