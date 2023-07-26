@@ -183,36 +183,40 @@ def view_request(request, pk):
         saas_object = SaasRequest.objects.get(pk=pk)
         # initialize the instance to get teh id in the form
         form = ViewS32RequestForm(request.POST, instance=saas_object)
-        # if the save button was clicked
-        if request.POST.get("save"):
-            if form.is_valid():
-                # update the fund center and the approved by fields
-                if (
-                    form.cleaned_data["fund_center"] is not None
-                    and form.cleaned_data["approved_by"] is not None
-                ):
-                    saas_object.fund_center = form.cleaned_data["fund_center"]
-                    saas_object.approved_by = form.cleaned_data["approved_by"]
-                    saas_object.status = _("Waiting to be sent for S32 Approval")
-                    saas_object.internal_ops = Users.objects.get(user=request.user)
-
-                    try:
-                        # Save the data to the database
-                        saas_object = form.save()
-                        messages.success(request, _("The form was successfully saved."))
-                    except Exception as e:
-                        print(e)
-                        messages.error(
-                            request, _("There was an error saving the form.")
-                        )
-                else:
-                    messages.error(
-                        request, _("Please add the fund center and the approver.")
-                    )
-            return render(request, "internal_ops/view_request.html", {"form": form})
-        elif request.POST.get("send_for_s32_approval"):
+        # if the send for s32 approval button was clicked
+        if request.POST.get("send_for_s32_approval"):
             # update the status
             try:
+                if form.is_valid():
+                    # update the fund center and the approved by fields
+                    if (
+                        form.cleaned_data["fund_center"] is not None
+                        and form.cleaned_data["approved_by"] is not None
+                    ):
+                        saas_object.fund_center = form.cleaned_data["fund_center"]
+                        saas_object.approved_by = form.cleaned_data["approved_by"]
+                        saas_object.status = _("Waiting to be sent for S32 Approval")
+                        saas_object.internal_ops = Users.objects.get(user=request.user)
+
+                        try:
+                            # Save the data to the database
+                            saas_object = form.save()
+                        except Exception as e:
+                            print(e)
+                            messages.error(
+                                request,
+                                _(
+                                    "There was an error adding the fund center or the approver."
+                                ),
+                            )
+                    else:
+                        messages.error(
+                            request, _("Please add the fund center and the approver.")
+                        )
+                        return render(
+                            request, "internal_ops/view_request.html", {"form": form}
+                        )
+
                 saas_object.status = _("Sent to S32 Approver for Approval")
                 saas_object.date_sent_to_s_32_approver = timezone.now()
                 if saas_object.internal_ops is None:
@@ -224,16 +228,6 @@ def view_request(request, pk):
                 messages.error(
                     request, _("There was an error updating the status of the form.")
                 )
-
-            # if the approver or fund center is not set, then return an error
-            if saas_object.fund_center is None or saas_object.approved_by is None:
-                messages.error(
-                    request,
-                    _(
-                        "Please add the fund center and the approver and then save the form."
-                    ),
-                )
-                return render(request, "internal_ops/view_request.html", {"form": form})
 
             # Email the S32 approver to review the form and the requestor that the form has been sent for s32 approval
             try:

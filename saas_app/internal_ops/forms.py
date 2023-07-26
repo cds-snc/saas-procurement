@@ -30,6 +30,8 @@ class ViewS32RequestForm(ModelForm):
             "manager",
             "comments",
             "date_manager_reviewed",
+            "manager_approved",
+            "manager_denied",
             "submitted_by",
             "date_info_requested",
             "info_requested",
@@ -37,7 +39,7 @@ class ViewS32RequestForm(ModelForm):
             "approved_by",
         ]
         labels = {
-            "name": _("Name"),
+            "name": _("Name of Saas"),
             "url": _("URL"),
             "description": _("Description"),
             "cost": _("Cost"),
@@ -72,8 +74,16 @@ class ViewS32RequestForm(ModelForm):
             Field("url", readonly=True),
             Field("description", readonly=True),
             Field("cost", readonly=True),
-            Field("currency", readonly=True, style="height: auto;"),
-            Field("frequency", readonly=True, style="height: auto;"),
+            Field(
+                "currency",
+                readonly=True,
+                style="color:black; height:auto; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
+            ),
+            Field(
+                "frequency",
+                readonly=True,
+                style="color:black; height:auto; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
+            ),
             Field("units", readonly=True),
             Field("level_of_subscription", readonly=True),
             Field("duration", readonly=True),
@@ -88,19 +98,17 @@ class ViewS32RequestForm(ModelForm):
             ),
             Field("comments", readonly=True, rows="5"),
             Field("date_manager_reviewed", readonly=True),
+            Field("manager_approved", readonly=True),
+            Field("manager_denied", readonly=True),
             Field(
                 "submitted_by",
                 readonly=True,
                 style="color:black; height:auto; background-color:#e9ecef; opacity:1; font-weight: inherit; font-color: inherit;",
             ),
-            Field("date_info_requested", readonly=True),
-            Field("info_requested", readonly=True),
+            Field("date_info_requested", type="hidden"),
+            Field("info_requested", type="hidden"),
             Field("fund_center"),
-            Field("approved_by", style="height:auto"),
-            Submit(
-                "save",
-                _("Update fund center and/or add s32 approver"),
-            ),
+            Field("approved_by"),
             Submit(
                 "send_for_s32_approval",
                 _("Send for S32 Approval"),
@@ -149,6 +157,13 @@ class ViewS32RequestForm(ModelForm):
                 data_target="#purchase_modal",
                 data_dismiss="modal",
             )
+        # unhide the date requested and information requested if there is data associated with those fields.
+        if self.instance.date_info_requested is not None:
+            self.helper["date_info_requested"].update_attributes(
+                type="text", readonly=True
+            )
+        if self.instance.info_requested is not None:
+            self.helper["info_requested"].update_attributes(type="text", readonly=True)
 
 
 class ViewPurchaseRequiredForm(ModelForm):
@@ -172,6 +187,8 @@ class ViewPurchaseRequiredForm(ModelForm):
             "manager",
             "comments",
             "date_manager_reviewed",
+            "manager_approved",
+            "manager_denied",
             "submitted_by",
             "date_info_requested",
             "info_requested",
@@ -179,7 +196,7 @@ class ViewPurchaseRequiredForm(ModelForm):
             "approved_by",
         ]
         labels = {
-            "name": _("Name"),
+            "name": _("Name of Saas"),
             "url": _("URL"),
             "description": _("Description"),
             "cost": _("Cost"),
@@ -193,13 +210,13 @@ class ViewPurchaseRequiredForm(ModelForm):
             "account_administrator": _("Account Administrator"),
             "backup_administrator": _("Backup Administrator"),
             "manager": _("Manager"),
+            "comments": _("Comments"),
+            "date_manager_reviewed": _("Date Manager reviewed the request"),
             "manager_approved": _("Manager Approved"),
             "Manager_denied": _("Manager Denied"),
+            "submitted_by": _("Submitted By"),
             "date_info_requested": _("Date Info Requested"),
             "info_requested": _("Info Requested"),
-            "date_sent_to_s_32_approver": _("Date Sent to S32 Approver"),
-            "date_manager_reviewed": _("Date Manager reviewed the request"),
-            "submitted_by": _("Submitted By"),
             "fund_center": _("Fund Center"),
             "approved_by": _("S32 Approver"),
         }
@@ -214,8 +231,16 @@ class ViewPurchaseRequiredForm(ModelForm):
             Field("url", readonly=True),
             Field("description", readonly=True),
             Field("cost", readonly=True),
-            Field("currency", readonly=True, style="height: auto;"),
-            Field("frequency", readonly=True, style="height: auto;"),
+            Field(
+                "currency",
+                readonly=True,
+                style="color:black; height:auto; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
+            ),
+            Field(
+                "frequency",
+                readonly=True,
+                style="color:black; height:auto; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
+            ),
             Field("units", readonly=True),
             Field("level_of_subscription", readonly=True),
             Field("duration", readonly=True),
@@ -230,15 +255,25 @@ class ViewPurchaseRequiredForm(ModelForm):
             ),
             Field("comments", readonly=True, rows="5"),
             Field("date_manager_reviewed", readonly=True),
+            Field("manager_approved", readonly=True),
+            Field("manager_denied", readonly=True),
             Field(
                 "submitted_by",
                 readonly=True,
                 style="color:black; height:auto; background-color:#e9ecef; opacity:1; font-weight: inherit; font-color: inherit;",
             ),
-            Field("date_info_requested", readonly=True),
-            Field("info_requested", readonly=True),
-            Field("fund_center"),
-            Field("approved_by", style="height:auto"),
+            Field("date_info_requested", type="hidden"),
+            Field("info_requested", type="hidden"),
+            Field(
+                "fund_center",
+                readonly=True,
+                style="color:black; height:auto; background-color:#e9ecef; opacity:1; font-weight: inherit; font-color: inherit;",
+            ),
+            Field(
+                "approved_by",
+                readonly=True,
+                style="color:black; height:auto; background-color:#e9ecef; opacity:1; font-weight: inherit; font-color: inherit;",
+            ),
             Button(
                 "request_info",
                 _("Request Additional Information"),
@@ -267,6 +302,13 @@ class ViewPurchaseRequiredForm(ModelForm):
                 + "/internal_ops/view'",
             ),
         )
+        # unhide the date requested and information requested if there is data associated with those fields.
+        if self.instance.date_info_requested is not None:
+            self.helper["date_info_requested"].update_attributes(
+                type="text", readonly=True
+            )
+        if self.instance.info_requested is not None:
+            self.helper["info_requested"].update_attributes(type="text", readonly=True)
 
 
 class ViewOldPurchasedRequestsForm(ModelForm):
@@ -307,7 +349,7 @@ class ViewOldPurchasedRequestsForm(ModelForm):
             "approved_by",
         ]
         labels = {
-            "name": _("Name"),
+            "name": _("Name of Saas"),
             "url": _("URL"),
             "description": _("Description"),
             "cost": _("Cost"),
@@ -345,8 +387,16 @@ class ViewOldPurchasedRequestsForm(ModelForm):
             Field("url", readonly=True),
             Field("description", readonly=True),
             Field("cost", readonly=True),
-            Field("currency", readonly=True, style="height: auto;"),
-            Field("frequency", readonly=True, style="height: auto;"),
+            Field(
+                "currency",
+                readonly=True,
+                style="color:black; height:auto; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
+            ),
+            Field(
+                "frequency",
+                readonly=True,
+                style="color:black; height:auto; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
+            ),
             Field("units", readonly=True),
             Field("level_of_subscription", readonly=True),
             Field("duration", readonly=True),
@@ -368,8 +418,8 @@ class ViewOldPurchasedRequestsForm(ModelForm):
                 readonly=True,
                 style="color:black; height:auto; background-color:#e9ecef; opacity:1; font-weight: inherit; font-color: inherit;",
             ),
-            Field("date_info_requested", readonly=True),
-            Field("info_requested", readonly=True),
+            Field("date_info_requested", type="hidden"),
+            Field("info_requested", type="hidden"),
             Field("date_sent_to_s_32_approver", readonly=True),
             Field("s_32_review_date", readonly=True),
             Field("s_32_approved", readonly=True),
@@ -398,6 +448,13 @@ class ViewOldPurchasedRequestsForm(ModelForm):
                 + "/internal_ops/view'",
             ),
         )
+        # unhide the date requested and information requested if there is data associated with those fields.
+        if self.instance.date_info_requested is not None:
+            self.helper["date_info_requested"].update_attributes(
+                type="text", readonly=True
+            )
+        if self.instance.info_requested is not None:
+            self.helper["info_requested"].update_attributes(type="text", readonly=True)
 
 
 class ViewOldS32ApprovedRequestsForm(ModelForm):
@@ -431,6 +488,7 @@ class ViewOldS32ApprovedRequestsForm(ModelForm):
             "approved_by",
         ]
         labels = {
+            "name": _("Name of Saas"),
             "url": _("URL"),
             "submitted_by": _("Submitted By"),
             "level_of_subscription": _("Level of Subscription"),
@@ -461,8 +519,16 @@ class ViewOldS32ApprovedRequestsForm(ModelForm):
             Field("url", readonly=True),
             Field("description", readonly=True),
             Field("cost", readonly=True),
-            Field("currency", readonly=True, style="height: auto;"),
-            Field("frequency", readonly=True, style="height: auto;"),
+            Field(
+                "currency",
+                readonly=True,
+                style="color:black; height:auto; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
+            ),
+            Field(
+                "frequency",
+                readonly=True,
+                style="color:black; height:auto; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
+            ),
             Field("units", readonly=True),
             Field("level_of_subscription", readonly=True),
             Field("number_of_users", readonly=True),
@@ -483,10 +549,10 @@ class ViewOldS32ApprovedRequestsForm(ModelForm):
                 readonly=True,
                 style="color:black; height:auto; background-color:#e9ecef; opacity:1; font-weight: inherit; font-color: inherit;",
             ),
-            Field("date_info_requested", readonly=True),
-            Field("info_requested", readonly=True),
+            Field("date_info_requested", type="hidden"),
+            Field("info_requested", type="hidden"),
             Field("date_sent_to_s_32_approver", readonly=True),
-            Field("fund_center", readonly=True),
+            Field("fund_center", readonly=True, style="height:auto"),
             Field("approved_by", readonly=True, style="height:auto"),
             Button(
                 "cancel",
@@ -496,3 +562,10 @@ class ViewOldS32ApprovedRequestsForm(ModelForm):
                 onclick="history.back()",
             ),
         )
+        # unhide the date requested and information requested if there is data associated with those fields.
+        if self.instance.date_info_requested is not None:
+            self.helper["date_info_requested"].update_attributes(
+                type="text", readonly=True
+            )
+        if self.instance.info_requested is not None:
+            self.helper["info_requested"].update_attributes(type="text", readonly=True)

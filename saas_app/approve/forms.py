@@ -26,16 +26,21 @@ class ViewRequestForm(ModelForm):
             "backup_administrator",
             "manager",
             "fund_center",
+            "date_info_requested",
+            "info_requested",
             "comments",
             "submitted_by",
         ]
         labels = {
+            "name": _("Name of Saas"),
             "currency": _("Currency"),
             "frequency": _("Frequency"),
             "units": _("Units"),
             "duration": _("Duration"),
             "fund_center": _("Fund Center"),
             "comments": _("Comments"),
+            "date_info_requested": _("Date Info Requested"),
+            "info_requested": _("Info Requested"),
         }
 
     def __init__(self, *args, **kwargs):
@@ -76,6 +81,8 @@ class ViewRequestForm(ModelForm):
                 style="height: auto; color:black; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
             ),
             Field("comments", disabled=True, rows="5"),
+            Field("info_requested", type="hidden"),
+            Field("date_info_requested", type="hidden"),
             Field(
                 "submitted_by",
                 disabled=True,
@@ -95,6 +102,13 @@ class ViewRequestForm(ModelForm):
                 onclick="history.back()",
             ),
         )
+        # unhide the date requested and information requested if there is data associated with those fields.
+        if self.instance.date_info_requested is not None:
+            self.helper["date_info_requested"].update_attributes(
+                type="text", readonly=True
+            )
+        if self.instance.info_requested is not None:
+            self.helper["info_requested"].update_attributes(type="text", readonly=True)
 
 
 class ViewManagerOldRequestForm(ModelForm):
@@ -123,8 +137,11 @@ class ViewManagerOldRequestForm(ModelForm):
             "date_manager_reviewed",
             "manager_approved",
             "manager_denied",
+            "info_requested",
+            "date_info_requested",
         ]
         labels = {
+            "name": _("Name of Saas"),
             "status": _("Current status"),
             "currency": _("Currency"),
             "frequency": _("Frequency"),
@@ -135,6 +152,8 @@ class ViewManagerOldRequestForm(ModelForm):
             "manager_approved": _("Manager approved the request"),
             "manager_denied": _("Manager denied the request"),
             "comments": _("Comments"),
+            "date_info_requested": _("Date Info Requested"),
+            "info_requested": _("Info Requested"),
         }
 
     def __init__(self, *args, **kwargs):
@@ -184,6 +203,8 @@ class ViewManagerOldRequestForm(ModelForm):
             Field("date_manager_reviewed", disabled=True),
             Field("manager_approved", disabled=True),
             Field("manager_denied", disabled=True),
+            Field("info_requested", type="hidden"),
+            Field("date_info_requested", type="hidden"),
             Button(
                 "cancel",
                 _("Cancel"),
@@ -192,6 +213,13 @@ class ViewManagerOldRequestForm(ModelForm):
                 onclick="history.back()",
             ),
         )
+        # unhide the date requested and information requested if there is data associated with those fields.
+        if self.instance.date_info_requested is not None:
+            self.helper["date_info_requested"].update_attributes(
+                type="text", readonly=True
+            )
+        if self.instance.info_requested is not None:
+            self.helper["info_requested"].update_attributes(type="text", readonly=True)
 
 
 class ViewS32ApproverOldRequestForm(ModelForm):
@@ -220,11 +248,14 @@ class ViewS32ApproverOldRequestForm(ModelForm):
             "date_manager_reviewed",
             "manager_approved",
             "manager_denied",
+            "info_requested",
+            "date_info_requested",
             "date_sent_to_s_32_approver",
             "s_32_review_date",
             "s_32_approved",
         ]
         labels = {
+            "name": _("Name of Saas"),
             "status": _("Current status"),
             "currency": _("Currency"),
             "frequency": _("Frequency"),
@@ -238,6 +269,8 @@ class ViewS32ApproverOldRequestForm(ModelForm):
             "s_32_review_date": _("Date S32 approver reviewed the request"),
             "s_32_approved": _("S32 approver approved the request"),
             "comments": _("Comments"),
+            "date_info_requested": _("Date Info Requested"),
+            "info_requested": _("Info Requested"),
         }
 
     def __init__(self, *args, **kwargs):
@@ -279,6 +312,8 @@ class ViewS32ApproverOldRequestForm(ModelForm):
             Field("date_manager_reviewed", disabled=True),
             Field("manager_approved", disabled=True),
             Field("manager_denied", disabled=True),
+            Field("info_requested", type="hidden"),
+            Field("date_info_requested", type="hidden"),
             Field("date_sent_to_s_32_approver", disabled=True),
             Field("s_32_review_date", disabled=True),
             Field("s_32_approved", disabled=True),
@@ -290,3 +325,10 @@ class ViewS32ApproverOldRequestForm(ModelForm):
                 onclick="history.back()",
             ),
         )
+        # unhide the date requested and information requested if there is data associated with those fields.
+        if self.instance.date_info_requested is not None:
+            self.helper["date_info_requested"].update_attributes(
+                type="text", readonly=True
+            )
+        if self.instance.info_requested is not None:
+            self.helper["info_requested"].update_attributes(type="text", readonly=True)
