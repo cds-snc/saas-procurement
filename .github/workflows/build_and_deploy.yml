@@ -53,7 +53,7 @@ jobs:
 
       - name: Get current date and time
         id: date
-        run: echo "::set-output name=date::$(date +'%Y-%m-%d %H:%M:%S')"
+        run: echo "::set-output name=date::$(date +'%Y-%m-%d-%H:%M:%S')"
 
       - name: Build image
         working-directory: ./saas_app
