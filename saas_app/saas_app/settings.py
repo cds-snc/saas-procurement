@@ -234,3 +234,19 @@ CRONJOBS = [
         ">>" + os.path.join(BASE_DIR, "logs/cronjob.log" + " 2>&1"),
     )
 ]
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+        },
+    },
+    "root": {
+        "handlers": ["console"],
+        "level": "INFO",
+    },
+}
+
+DJANGO_LOG_LEVEL=DEBUG 

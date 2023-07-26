@@ -3,9 +3,11 @@ from django.utils.translation import gettext as _
 from .forms import SubmitRequestForm, ViewRequestForm, ViewPrevRequestForm
 from .models import SaasRequest
 import os
+import logging
 import common.util.utils as utils
 import django.contrib.messages as messages
 
+logger = logging.getLogger(__name__)
 
 # Send an email to the requestor
 def send_requestor_email(request, saas_object, template_id):
@@ -105,6 +107,7 @@ def view_all_requests(request):
 # function to view a single request and save or delete it
 def view_request(request, pk):
     if request.method == "GET":
+        logger.info("Viewing request with pk: " + str(pk))
         # search for the request with the given primary key
         saas_request = SaasRequest.objects.get(pk=pk)
         if saas_request.date_manager_reviewed is not None:

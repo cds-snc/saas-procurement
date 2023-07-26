@@ -7,7 +7,10 @@ from azure.monitor.query import LogsQueryClient, LogsQueryStatus
 from datetime import datetime, timezone, timedelta
 import os
 import pandas as pd
+import logging
 
+# get the logger
+logger = logging.getLogger(__name__)
 
 # function to get the azure credentials and get a client to query the logs. Return the client to search for logs.
 def azure_get_credentials():
@@ -63,10 +66,13 @@ def view_logs(request):
 # function to schedule a daily crontab to retrieve data from sentinel and put it in the database for us
 def daily_import_sentinel_data():
     print("Running daily import of Sentinel data")
+    logger.info("Running daily import of Sentinel data")
     # get the logs from Sentinel
     logs = get_sentinel_logs()
+    logger.info("Logs retrieved from Sentinel", logs)
     # for all the logs retrieved from Sentinel, save this in the Postgres database
     for log in logs.itertuples():
+        logger.info("Saving logs to Postgres DB", log)
         logs = GoogleWorkspaceAppsLogin(
             time_generated=log.TimeGenerated,
             source_system=log.SourceSystem,
