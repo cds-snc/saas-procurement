@@ -10,14 +10,15 @@ register = template.Library()
 @register.simple_tag
 def version():
     # set the commit and time to unknown
-    commit = time = "Unknown"
-    print(os.getenv("GIT_SHA"))
+    commit = date_time = "Unknown"
 
     # get commit sha
-    if (os.getenv("ENVIRONMENT") == "dev"):
-         # the the commit 
+    if os.getenv("ENVIRONMENT") == "dev":
+        # the the commit
         commit = (
-            subprocess.check_output(["git", "rev-parse", "HEAD"]).decode("utf-8").strip()
+            subprocess.check_output(["git", "rev-parse", "HEAD"])
+            .decode("utf-8")
+            .strip()
         )
 
         # get the time and format it locally
@@ -26,12 +27,13 @@ def version():
             .decode("utf-8")
             .strip()
         )
-        parsed_date_time = datetime.datetime.strptime(date_time, "%a %b %d %H:%M:%S %Y %z")
+        parsed_date_time = datetime.datetime.strptime(
+            date_time, "%a %b %d %H:%M:%S %Y %z"
+        )
         formatted_date_time = parsed_date_time.strftime("%a %b %d %H:%M:%S %Y")
     else:
-
         commit = os.getenv("GIT_SHA")
         formatted_date_time = os.getenv("BUILD_DATE")
-    
+
     # return the formatted time and git sha
-    return f"{formatted_date_time}, Git SHA: {commit}"
+    return f"{formatted_date_time} (UTC), Git SHA: {commit}"

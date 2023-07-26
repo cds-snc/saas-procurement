@@ -1,8 +1,9 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% load version %}
 
 {% block content %}
 <div class="alert alert-info" role="alert">
-    <span class='version'>Last Updated: {% version %}</span>
+    <span class='version'>{% trans "Last Updated:" %} {% version %}</span>
 </div>
 {% endblock %}
