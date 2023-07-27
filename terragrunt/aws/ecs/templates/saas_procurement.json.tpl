@@ -1,4 +1,5 @@
 [
+    "image": "${image}",
     "logConfiguration": {
       "logDriver": "awslogs",
       "options": {
