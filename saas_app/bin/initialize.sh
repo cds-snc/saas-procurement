@@ -62,11 +62,6 @@ fi
 echo "Generating static files"
 python manage.py collectstatic --noinput
 
-# Create teh directory and log file for the cron job
-echo "Creating log file for cron job"
-mkdir -p logs
-touch logs/cronjob.log
-
 # Add the crontab entry so that we can run it every day
 echo "Starting cron service"
 # Start the cron service
@@ -85,7 +80,7 @@ if [ "${logs}" -eq 0 ]; then
     python manage.py crontab run ${cronjob_id}
 fi 
 
-# See if the cron is running
+# See if the cron is set correctly 
 crontab -l
 
 # Start up the application
