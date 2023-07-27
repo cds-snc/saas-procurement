@@ -1,13 +1,6 @@
 [
   {
     "image": "${image}",
-    "linuxParameters": {
-      "capabilities": {
-        "drop": [
-          "ALL"
-        ]
-      }
-    },
     "logConfiguration": {
       "logDriver": "awslogs",
       "options": {
