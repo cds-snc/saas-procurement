@@ -51,12 +51,17 @@ jobs:
           role-session-name: ECRPush
           aws-region: ${{ env.AWS_REGION }}
 
+      - name: Get current date and time
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y-%m-%d-%H:%M:%S')"
+
       - name: Build image
         working-directory: ./saas_app
         run: |
           docker build \
+           -t $REGISTRY:latest \
           --build-arg GIT_SHA=$GITHUB_SHA \
-          -t $REGISTRY:latest .
+          --build-arg BUILD_DATE=${{ steps.date.outputs.date }} . 
 
       - name: Export image into CTR
         run: |

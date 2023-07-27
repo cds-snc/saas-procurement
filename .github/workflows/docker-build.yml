@@ -32,9 +32,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3.5.3
 
+      - name: Get current date and time
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y-%m-%d-%H:%M:%S')"
+
       - name: Build image
         working-directory: ./${{ matrix.image }}
         run: |
           docker build \
+          -t ${{ matrix.image }}:latest \
           --build-arg GIT_SHA=${{ github.sha }} \
-          -t ${{ matrix.image }}:latest .
+          --build-arg BUILD_DATE=${{ steps.date.outputs.date }} . 
