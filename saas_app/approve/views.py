@@ -8,8 +8,12 @@ from .forms import (
     ViewS32ApproverOldRequestForm,
 )
 import datetime
+import logging
 import common.util.utils as utils
 from django.utils.translation import gettext as _
+
+# Initialize logger
+logger = logging.getLogger(__name__)
 
 
 def send_requestor_email(request, saas_object, template_id):
@@ -136,7 +140,7 @@ def view_request(request, pk):
                 )
                 messages.success(request, _("Request has been successfully approved"))
             except Exception as e:
-                print(e)
+                logger.error(e)
                 messages.error(
                     request, _("An error occurred while approving the request")
                 )
@@ -158,7 +162,7 @@ def view_request(request, pk):
                 )
                 messages.success(request, _("Request has been successfully denied"))
             except Exception as e:
-                print(e)
+                logger.error(e)
                 messages.error(
                     request, _("An error occurred while denying the request")
                 )
@@ -247,7 +251,7 @@ def view_request_s32_approver(request, pk):
                 )
                 messages.success(request, _("Request has been successfully approved"))
             except Exception as e:
-                print(e)
+                logger.error(e)
                 messages.error(
                     request, _("An error occurred while approving the request")
                 )
@@ -277,7 +281,7 @@ def view_request_s32_approver(request, pk):
                 )
                 messages.success(request, _("Request has been successfully denied"))
             except Exception as e:
-                print(e)
+                logger.error(e)
                 messages.error(
                     request, _("An error occurred while denying the request")
                 )

@@ -21,6 +21,7 @@ class GoogleWorkspaceAppsLoginAdmin(admin.ModelAdmin):
         "geolocation_country",
         "geolocation_city",
         "type",
+        "date_inserted",
     )
     list_filter = (
         "time_generated",
@@ -38,6 +39,7 @@ class GoogleWorkspaceAppsLoginAdmin(admin.ModelAdmin):
         "geolocation_country",
         "geolocation_city",
         "type",
+        "date_inserted",
     )
     search_fields = (
         "time_generated",
@@ -55,6 +57,7 @@ class GoogleWorkspaceAppsLoginAdmin(admin.ModelAdmin):
         "geolocation_country",
         "geolocation_city",
         "type",
+        "date_inserted",
     )
     ordering = (
         "time_generated",
@@ -72,4 +75,5 @@ class GoogleWorkspaceAppsLoginAdmin(admin.ModelAdmin):
         "geolocation_country",
         "geolocation_city",
         "type",
+        "date_inserted",
     )

@@ -6,6 +6,9 @@ from submit_request.models import SaasRequest
 from user.models import Users, Roles
 from django.db.models import Q
 import os
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 # Get the search term from the GET request and search the database for it
@@ -22,7 +25,7 @@ def search(request):
                 | Q(level_of_subscription__icontains=search_term)
             )
         except Exception as e:
-            print(e)
+            logger.error(e)
             messages.error(
                 request, _("Something went wrong with the search. Please try again.")
             )
@@ -101,7 +104,7 @@ def switch_role(request):
 def create_groups(sender, user, request, **kwargs):
     # if we are testing then we need to add each user to each group for testing purposes
     if os.getenv("TESTING_FEATURE_FLAG"):
-        print("Adding user to groups")
+        logger.info("Adding user to groups")
         # if user does not exist, then create it and append every role to it
         results = Users.objects.filter(user__username=request.user.username)
 

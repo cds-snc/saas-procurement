@@ -5,6 +5,9 @@ from .models import SaasRequest
 import os
 import common.util.utils as utils
 import django.contrib.messages as messages
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 # Send an email to the requestor
