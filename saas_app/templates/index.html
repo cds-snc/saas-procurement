@@ -118,9 +118,20 @@
         {% trans "View SAAS logins" %}
       </div>
       <div class="card-body">
-        <h5 class="card-title">{% trans "View External SAAS logins" %}</h5>
-        <p class="card-text">{% trans "View external SAAS logins that have been executed with a google account." %}</p>
+        <h5 class="card-title">{% trans "View a list of all External SAAS logins" %}</h5>
+        <p class="card-text">{% trans "View all external SAAS logins that have been executed with a google account." %}</p>
         <a href="manage_saas/view_logs" class="btn btn-primary">{% trans "Start" %}</a>
+      </div>
+    </div>
+    <br>
+     <div class="card">
+      <div class="card-header">
+        {% trans "View user SAAS logins/usage" %}
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">{% trans "View a specific user saas trends and usage" %}</h5>
+        <p class="card-text">{% trans "View a specific user saas usage and trends" %}</p>
+        <a href="manage_saas/view_user_logs" class="btn btn-primary">{% trans "Start" %}</a>
       </div>
     </div>
     {% endif %}

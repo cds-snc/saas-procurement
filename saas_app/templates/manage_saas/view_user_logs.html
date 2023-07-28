@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load socialaccount %}
+{% load i18n %}
+{% load static %}
+
+{% block head_title %}{% trans "Saas Procurement App" %}{% endblock %}
+
+{% block content %}
+    <h1>{% trans "All User login Events with Google credentials" %}</h1>
+    <p>{% trans "This is the list of all logins to external apps or products using an individuals CDS google credentials" %}</p>
+     <select class="form-select" aria-label="Default select example">
+    <option selected>Select User</option>
+    {% for email in emails %}
+    <option value="{{ email.id }}">{{ email.user_email}}</option>
+    {% endfor %}
+    </select>
+    </table>
+        <table class="table table-hover table-bordered text-nowrap">
+          <thead>
+              <tr>
+                <th scope="col">{% trans "Email address" %}</th>
+                <th scope="col">{% trans "Date" %}</th>
+                <th scope="col">{% trans "App name" %}</th>
+                <th scope="col">{% trans "App type" %}</th>
+                <th scope="col">{% trans "Event name" %}</th>
+              <tbody class="table-group-divider"></tbody>
+              </tr>
+            </thead>
+            <tbody>
+            {% for log in all_logs %}
+              <tr>
+                <td>{{log.user_email}}</td>
+                <td>{{log.time_generated}}</td>
+                <td>{{log.application_name}}</td>
+                <td>{{log.client_type}}</td>
+                <td>{{log.event_name}}</td>
+              </tr>
+             {% endfor %}
+          </tbody>
+    </table> </div>
+{% endblock %}

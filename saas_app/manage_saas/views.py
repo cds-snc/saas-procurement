@@ -57,8 +57,14 @@ def view_logs(request):
             messages.error(
                 request, _("Something went wrong and there are no logs to display!")
             )
-        return render(request, "manage_saas/view_all_logs.html", {"all_logs": logs})
+        emails = list(get_distinct_users())
+        return render(request, "manage_saas/view_all_logs.html", {"all_logs": logs, "emails": emails})
 
+def get_distinct_users():
+    return GoogleWorkspaceAppsLogin.objects.order_by().values('user_email').distinct()
+
+def get_distinct_applications():
+    return GoogleWorkspaceAppsLogin.objects.all().distinct('application_name')
 
 # function to schedule a daily crontab to retrieve data from sentinel and put it in the database for us
 def daily_import_sentinel_data():
