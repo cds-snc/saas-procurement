@@ -5,15 +5,10 @@
 echo "Retrieving environment parameters and put them in an .env file"
 python bin/get_parameters.py
 
-# Check if there are migrations to apply, if there are store their count to a variable
-migration_count=$(python manage.py showmigrations | grep -c "\[ \]")
-# If migration_count is greater than 0, there are migrations to apply
-if [ "${migration_count}" -gt 0 ]; then
-    echo "There are migrations to apply"
-    python manage.py migrate
-else
-    echo "There are no migrations to apply"
-fi
+# Apply all migrations. 
+echo "Applying migrations"
+python manage.py migrate
+echo "Finished applying migrations"
 
 # Variable storing the number of users in the django database
 users_length=$(python manage.py shell -c "from django.contrib.auth.models import User; print(len(User.objects.all()))")

@@ -18,6 +18,7 @@ class GoogleWorkspaceAppsLogin(models.Model):
     geolocation_country = models.CharField(max_length=100)
     geolocation_city = models.CharField(max_length=100)
     type = models.CharField(max_length=100)
+    date_inserted = models.DateTimeField(auto_now_add=True)
 
     # return the string representation of the model
     def __str__(self):
