@@ -29,4 +29,3 @@ No modules.
 | Name | Description |
 |------|-------------|
 | <a name="output_saas_app_config_arn"></a> [saas\_app\_config\_arn](#output\_saas\_app\_config\_arn) | Arn of the saas app config parameter |
-| <a name="output_saas_app_config_value"></a> [saas\_app\_config\_value](#output\_saas\_app\_config\_value) | The value of the saas app config parameter |
