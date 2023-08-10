@@ -14,7 +14,7 @@ module "rds_cluster" {
   password       = var.database_password
 
   serverless_min_capacity = 1.0
-  serverless_max_capacity = 2.0
+  serverless_max_capacity = 1.0
 
   backup_retention_period = 14
   preferred_backup_window = "02:00-04:00"

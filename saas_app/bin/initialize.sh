@@ -58,25 +58,25 @@ echo "Generating static files"
 python manage.py collectstatic --noinput
 
 # Add the crontab entry so that we can run it every day
-echo "Starting cron service"
+#echo "Starting cron service"
 # Start the cron service
-service cron start
+#service cron start
 # Get the status of the cron service
-service cron status
+#service cron status
 
 # Add the crontab entry
-echo "Setting up crontab"
-python manage.py crontab remove 
-cronjob_id=$(python manage.py crontab add | grep -o '\([a-f0-9]\{32\}\)')
+#echo "Setting up crontab"
+#python manage.py crontab remove 
+#cronjob_id=$(python manage.py crontab add | grep -o '\([a-f0-9]\{32\}\)')
 # Now if we are testing and the database is empty, make sure that we run the cronjob once to populate the database with data
-logs=$(python manage.py shell -c "from manage_saas.models import GoogleWorkspaceAppsLogin; print(len(GoogleWorkspaceAppsLogin.objects.all()))")
-if [ "${logs}" -eq 0 ]; then
+#logs=$(python manage.py shell -c "from manage_saas.models import GoogleWorkspaceAppsLogin; print(len(GoogleWorkspaceAppsLogin.objects.all()))")
+#if [ "${logs}" -eq 0 ]; then
     # now run the cronjob to genearte data
-    python manage.py crontab run ${cronjob_id}
-fi 
+#    python manage.py crontab run ${cronjob_id}
+#fi 
 
 # See if the cron is set correctly 
-crontab -l
+#crontab -l
 
 # Start up the application
 echo "Starting up the application"
