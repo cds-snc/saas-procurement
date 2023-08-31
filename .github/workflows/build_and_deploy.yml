@@ -101,7 +101,7 @@ jobs:
         with:
           docker_image: "${{ env.REGISTRY }}:latest"
           dockerfile_path: "saas_app/Dockerfile"
-          platform: "linux/arm64"
+          platform: "linux/amd64"
           sbom_name: "saas_procurement"
           token: "${{ secrets.GITHUB_TOKEN }}"
 
