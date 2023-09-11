@@ -24,6 +24,8 @@ class ViewRequestForm(ModelForm):
             "names_of_users",
             "account_administrator",
             "backup_administrator",
+            "certification",
+            "google_sign_in",
             "manager",
             "fund_center",
             "date_info_requested",
@@ -37,6 +39,10 @@ class ViewRequestForm(ModelForm):
             "frequency": _("Frequency"),
             "units": _("Units"),
             "duration": _("Duration"),
+            "certification": _(
+                "Does the application have a SOC 2 Type II or ISO 27001 certification? (Hint: this can easily be googled)"
+            ),
+            "google_sign_in": _("Does the application support 'Sign in with Google'?"),
             "fund_center": _("Fund Center"),
             "comments": _("Comments"),
             "date_info_requested": _("Date Info Requested"),
@@ -70,6 +76,16 @@ class ViewRequestForm(ModelForm):
             Field("names_of_users", disabled=True),
             Field("account_administrator", disabled=True),
             Field("backup_administrator", disabled=True),
+            Field(
+                "certification",
+                disabled=True,
+                style="color:black; height:auto; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
+            ),
+            Field(
+                "google_sign_in",
+                disabled=True,
+                style="color:black; height:auto; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
+            ),
             Field(
                 "manager",
                 disabled=True,
@@ -129,6 +145,8 @@ class ViewManagerOldRequestForm(ModelForm):
             "names_of_users",
             "account_administrator",
             "backup_administrator",
+            "certification",
+            "google_sign_in",
             "manager",
             "fund_center",
             "comments",
@@ -148,6 +166,10 @@ class ViewManagerOldRequestForm(ModelForm):
             "units": _("Units"),
             "duration": _("Duration"),
             "fund_center": _("Fund Center"),
+            "certification": _(
+                "Does the application have a SOC 2 Type II or ISO 27001 certification? (Hint: this can easily be googled)"
+            ),
+            "google_sign_in": _("Does the application support 'Sign in with Google'?"),
             "date_manager_reviewed": _("Date manager reviewed the request"),
             "manager_approved": _("Manager approved the request"),
             "manager_denied": _("Manager denied the request"),
@@ -183,6 +205,16 @@ class ViewManagerOldRequestForm(ModelForm):
             Field("names_of_users", disabled=True),
             Field("account_administrator", disabled=True),
             Field("backup_administrator", disabled=True),
+            Field(
+                "certification",
+                disabled=True,
+                style="color:black; height:auto; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
+            ),
+            Field(
+                "google_sign_in",
+                disabled=True,
+                style="color:black; height:auto; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
+            ),
             Field(
                 "manager",
                 disabled=True,
@@ -240,6 +272,8 @@ class ViewS32ApproverOldRequestForm(ModelForm):
             "names_of_users",
             "account_administrator",
             "backup_administrator",
+            "certification",
+            "google_sign_in",
             "manager",
             "fund_center",
             "comments",
@@ -262,6 +296,10 @@ class ViewS32ApproverOldRequestForm(ModelForm):
             "units": _("Units"),
             "duration": _("Duration"),
             "fund_center": _("Fund Center"),
+            "certification": _(
+                "Does the application have a SOC 2 Type II or ISO 27001 certification? (Hint: this can easily be googled)"
+            ),
+            "google_sign_in": _("Does the application support 'Sign in with Google'?"),
             "date_manager_reviewed": _("Date manager reviewed the request"),
             "manager_approved": _("Manager approved the request"),
             "manager_denied": _("Manager denied the request"),
@@ -283,8 +321,16 @@ class ViewS32ApproverOldRequestForm(ModelForm):
             Field("url", disabled=True),
             Field("description", disabled=True),
             Field("cost", disabled=True),
-            Field("currency", disabled=True, style="height: auto;"),
-            Field("frequency", disabled=True, style="height: auto;"),
+            Field(
+                "currency",
+                disabled=True,
+                style="color:black; height:auto; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
+            ),
+            Field(
+                "frequency",
+                disabled=True,
+                style="color:black; height:auto; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
+            ),
             Field("units", disabled=True),
             Field("level_of_subscription", disabled=True),
             Field("duration", disabled=True),
@@ -292,6 +338,16 @@ class ViewS32ApproverOldRequestForm(ModelForm):
             Field("names_of_users", disabled=True),
             Field("account_administrator", disabled=True),
             Field("backup_administrator", disabled=True),
+            Field(
+                "certification",
+                disabled=True,
+                style="color:black; height:auto; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
+            ),
+            Field(
+                "google_sign_in",
+                disabled=True,
+                style="color:black; height:auto; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
+            ),
             Field(
                 "manager",
                 disabled=True,

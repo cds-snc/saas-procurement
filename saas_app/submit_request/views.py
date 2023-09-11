@@ -139,6 +139,8 @@ def view_request(request, pk):
                 saas_object.backup_administrator = form.cleaned_data[
                     "backup_administrator"
                 ]
+                saas_object.certification = form.cleaned_data["certification"]
+                saas_object.google_sign_in = form.cleaned_data["google_sign_in"]
                 saas_object.manager = form.cleaned_data["manager"]
                 saas_object.fund_center = form.cleaned_data["fund_center"]
                 saas_object.comments = form.cleaned_data["comments"]
