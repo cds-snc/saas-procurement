@@ -480,7 +480,7 @@ msgid ""
 "If Saas is to be used for all of CDS, select FC 110804. If the Saas is to be "
 "used specifically for your BU, please select the appropriate FC."
 msgstr ""
-"Si Saas doit être utilisé pour tous les CDS, sélectionnez FC 110804. Si le "
+"Si ce SaaS doit être utilisé par tous le personnel du SNC, sélectionnez FC 110804. Si le"
 "Saas doit être utiliséutilisé spécifiquement pour votre BU, veuillez "
 "sélectionner le FC approprié."
 
