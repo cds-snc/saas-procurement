@@ -97,6 +97,8 @@ class SaasRequest(models.Model):
     confirmation_number = models.CharField(max_length=100, null=True, blank=True)
     purchase_notes = models.CharField(max_length=500, null=True, blank=True)
     comments = models.TextField(null=True, blank=True)
+    certification = models.BooleanField(default=False, null=True, blank=True)
+    google_sign_in = models.BooleanField(default=False, null=True, blank=True)
 
     # return the string representation of the model
     def __str__(self):

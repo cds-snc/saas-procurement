@@ -24,6 +24,8 @@ class SubmitRequestForm(ModelForm):
             "names_of_users",
             "account_administrator",
             "backup_administrator",
+            "certification",
+            "google_sign_in",
             "manager",
             "fund_center",
             "comments",
@@ -34,12 +36,19 @@ class SubmitRequestForm(ModelForm):
             "frequency": _("Frequency"),
             "units": _("Units"),
             "duration": _("Duration"),
+            "certification": _(
+                "Does the application have a SOC 2 Type II or ISO 27001 certification? (Hint: this can easily be googled)"
+            ),
+            "google_sign_in": _("Does the application support 'Sign in with Google'?"),
             "fund_center": _("Fund Center"),
             "comments": _("Comments"),
         }
         help_texts = {
             "fund_center": _(
                 "If Saas is to be used for all of CDS, select FC 110804. If the Saas is to be used specifically for your BU, please select the appropriate FC."
+            ),
+            "certification": _(
+                "If you cannot find this information, please select unknown and we can enter it later."
             ),
         }
 
@@ -66,6 +75,8 @@ class SubmitRequestForm(ModelForm):
             "names_of_users",
             "account_administrator",
             "backup_administrator",
+            "certification",
+            "google_sign_in",
             Field(
                 "manager",
                 readonly=True,
@@ -104,6 +115,8 @@ class ViewRequestForm(ModelForm):
             "names_of_users",
             "account_administrator",
             "backup_administrator",
+            "certification",
+            "google_sign_in",
             "manager",
             "fund_center",
             "comments",
@@ -114,6 +127,10 @@ class ViewRequestForm(ModelForm):
             "frequency": _("Frequency"),
             "units": _("Units"),
             "duration": _("Duration"),
+            "certification": _(
+                "Does the application have a SOC 2 Type II or ISO 27001 certification? (Hint: this can easily be googled)"
+            ),
+            "google_sign_in": _("Does the application support 'Sign in with Google'?"),
             "fund_center": _("Fund Center"),
             "comments": _("Comments"),
         }
@@ -137,6 +154,8 @@ class ViewRequestForm(ModelForm):
             "names_of_users",
             "account_administrator",
             "backup_administrator",
+            "certification",
+            "google_sign_in",
             Field(
                 "manager",
                 readonly=True,
@@ -178,6 +197,8 @@ class ViewPrevRequestForm(ModelForm):
             "names_of_users",
             "account_administrator",
             "backup_administrator",
+            "certification",
+            "google_sign_in",
             "manager",
             "fund_center",
             "comments",
@@ -190,6 +211,10 @@ class ViewPrevRequestForm(ModelForm):
             "frequency": _("Frequency"),
             "units": _("Units"),
             "duration": _("Duration"),
+            "certification": _(
+                "Does the application have a SOC 2 Type II or ISO 27001 certification? (Hint: this can easily be googled)"
+            ),
+            "google_sign_in": _("Does the application support 'Sign in with Google'?"),
             "fund_center": _("Fund Center"),
             "comments": _("Comments"),
         }
@@ -221,6 +246,8 @@ class ViewPrevRequestForm(ModelForm):
             Field("names_of_users", readonly=True),
             Field("account_administrator", readonly=True),
             Field("backup_administrator", readonly=True),
+            Field("certification", readonly=True),
+            Field("google_sign_in", readonly=True),
             Field(
                 "manager",
                 readonly=True,

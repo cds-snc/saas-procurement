@@ -27,6 +27,8 @@ class ViewS32RequestForm(ModelForm):
             "names_of_users",
             "account_administrator",
             "backup_administrator",
+            "certification",
+            "google_sign_in",
             "manager",
             "comments",
             "date_manager_reviewed",
@@ -53,6 +55,10 @@ class ViewS32RequestForm(ModelForm):
             "account_administrator": _("Account Administrator"),
             "backup_administrator": _("Backup Administrator"),
             "manager": _("Manager"),
+            "certification": _(
+                "Does the application have a SOC 2 Type II or ISO 27001 certification? (Hint: this can easily be googled)"
+            ),
+            "google_sign_in": _("Does the application support 'Sign in with Google'?"),
             "comments": _("Comments"),
             "date_manager_reviewed": _("Date Manager reviewed the request"),
             "manager_approved": _("Manager Approved"),
@@ -91,6 +97,16 @@ class ViewS32RequestForm(ModelForm):
             Field("names_of_users", readonly=True),
             Field("account_administrator", readonly=True),
             Field("backup_administrator", readonly=True),
+            Field(
+                "certification",
+                readonly=True,
+                style="color:black; height:auto; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
+            ),
+            Field(
+                "google_sign_in",
+                readonly=True,
+                style="color:black; height:auto; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
+            ),
             Field(
                 "manager",
                 readonly=True,
@@ -184,6 +200,8 @@ class ViewPurchaseRequiredForm(ModelForm):
             "names_of_users",
             "account_administrator",
             "backup_administrator",
+            "certification",
+            "google_sign_in",
             "manager",
             "comments",
             "date_manager_reviewed",
@@ -209,6 +227,10 @@ class ViewPurchaseRequiredForm(ModelForm):
             "names_of_users": _("Names of Users"),
             "account_administrator": _("Account Administrator"),
             "backup_administrator": _("Backup Administrator"),
+            "certification": _(
+                "Does the application have a SOC 2 Type II or ISO 27001 certification? (Hint: this can easily be googled)"
+            ),
+            "google_sign_in": _("Does the application support 'Sign in with Google'?"),
             "manager": _("Manager"),
             "comments": _("Comments"),
             "date_manager_reviewed": _("Date Manager reviewed the request"),
@@ -248,6 +270,16 @@ class ViewPurchaseRequiredForm(ModelForm):
             Field("names_of_users", readonly=True),
             Field("account_administrator", readonly=True),
             Field("backup_administrator", readonly=True),
+            Field(
+                "certification",
+                readonly=True,
+                style="color:black; height:auto; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
+            ),
+            Field(
+                "google_sign_in",
+                readonly=True,
+                style="color:black; height:auto; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
+            ),
             Field(
                 "manager",
                 readonly=True,
@@ -329,6 +361,8 @@ class ViewOldPurchasedRequestsForm(ModelForm):
             "names_of_users",
             "account_administrator",
             "backup_administrator",
+            "certification",
+            "google_sign_in",
             "manager",
             "comments",
             "date_manager_reviewed",
@@ -353,6 +387,8 @@ class ViewOldPurchasedRequestsForm(ModelForm):
             "url": _("URL"),
             "description": _("Description"),
             "cost": _("Cost"),
+            "currency": _("Currency"),
+            "frequency": _("Frequency"),
             "level_of_subscription": _("Level of Subscription"),
             "number_of_users": _("Number of Users"),
             "names_of_users": _("Names of Users"),
@@ -361,6 +397,10 @@ class ViewOldPurchasedRequestsForm(ModelForm):
             "status": _("Current status"),
             "submitted_by": _("Submitted By"),
             "date_manager_reviewed": _("Date Manager reviewed the request"),
+            "certification": _(
+                "Does the application have a SOC 2 Type II or ISO 27001 certification? (Hint: this can easily be googled)"
+            ),
+            "google_sign_in": _("Does the application support 'Sign in with Google'?"),
             "manager_approved": _("Manager Approved"),
             "manager_denied": _("Manager Denied"),
             "date_info_requested": _("Date Info Requested"),
@@ -404,6 +444,16 @@ class ViewOldPurchasedRequestsForm(ModelForm):
             Field("names_of_users", readonly=True),
             Field("account_administrator", readonly=True),
             Field("backup_administrator", readonly=True),
+            Field(
+                "certification",
+                readonly=True,
+                style="color:black; height:auto; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
+            ),
+            Field(
+                "google_sign_in",
+                readonly=True,
+                style="color:black; height:auto; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
+            ),
             Field(
                 "manager",
                 readonly=True,
@@ -475,6 +525,8 @@ class ViewOldS32ApprovedRequestsForm(ModelForm):
             "names_of_users",
             "account_administrator",
             "backup_administrator",
+            "certification",
+            "google_sign_in",
             "manager",
             "comments",
             "submitted_by",
@@ -490,6 +542,8 @@ class ViewOldS32ApprovedRequestsForm(ModelForm):
         labels = {
             "name": _("Name of Saas"),
             "url": _("URL"),
+            "currency": _("Currency"),
+            "frequency": _("Frequency"),
             "submitted_by": _("Submitted By"),
             "level_of_subscription": _("Level of Subscription"),
             "number_of_users": _("Number of Users"),
@@ -500,6 +554,10 @@ class ViewOldS32ApprovedRequestsForm(ModelForm):
             "date_manager_reviewed": _("Date Manager reviewed the request"),
             "manager_approved": _("Manager Approved"),
             "manager_denied": _("Manager Denied"),
+            "certification": _(
+                "Does the application have a SOC 2 Type II or ISO 27001 certification? (Hint: this can easily be googled)"
+            ),
+            "google_sign_in": _("Does the application support 'Sign in with Google'?"),
             "date_info_requested": _("Date Info Requested"),
             "info_requested": _("Info Requested"),
             "date_sent_to_s_32_approver": _("Date Sent to S32 Approver"),
@@ -535,6 +593,16 @@ class ViewOldS32ApprovedRequestsForm(ModelForm):
             Field("names_of_users", readonly=True),
             Field("account_administrator", readonly=True),
             Field("backup_administrator", readonly=True),
+            Field(
+                "certification",
+                readonly=True,
+                style="color:black; height:auto; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
+            ),
+            Field(
+                "google_sign_in",
+                readonly=True,
+                style="color:black; height:auto; background-color:#e9ecef; opacity:1;font-weight: inherit;font-color: inherit;",
+            ),
             Field(
                 "manager",
                 readonly=True,
