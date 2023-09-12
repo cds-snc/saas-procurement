@@ -53,6 +53,9 @@ class SaasRequestAdmin(admin.ModelAdmin):
         "purchase_method",
         "confirmation_number",
         "purchase_notes",
+        "certification",
+        "google_sign_in",
+        
     )
     list_filter = (
         "name",
@@ -83,6 +86,8 @@ class SaasRequestAdmin(admin.ModelAdmin):
         "purchase_method",
         "confirmation_number",
         "purchase_notes",
+        "certification",
+        "google_sign_in",
     )
     search_fields = (
         "name",
@@ -113,6 +118,8 @@ class SaasRequestAdmin(admin.ModelAdmin):
         "purchase_method",
         "confirmation_number",
         "purchase_notes",
+        "certification",
+        "google_sign_in"
     )
     ordering = (
         "name",
@@ -142,4 +149,6 @@ class SaasRequestAdmin(admin.ModelAdmin):
         "purchase_method",
         "confirmation_number",
         "purchase_notes",
+        "certification",
+        "google_sign_in"
     )

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-11 22:48+0000\n"
+"POT-Creation-Date: 2023-09-12 16:32+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -54,8 +54,8 @@ msgstr "Sauvegarder"
 #: administration/forms.py:57 approve/forms.py:115 approve/forms.py:242
 #: approve/forms.py:378 internal_ops/forms.py:154 internal_ops/forms.py:329
 #: internal_ops/forms.py:493 internal_ops/forms.py:627
-#: submit_request/forms.py:88 submit_request/forms.py:171
-#: submit_request/forms.py:262 templates/administration/view_all_users.html:38
+#: submit_request/forms.py:89 submit_request/forms.py:172
+#: submit_request/forms.py:263 templates/administration/view_all_users.html:38
 #: templates/approve/view_all_prev_requests.html:44
 #: templates/approve/view_all_requests.html:45
 #: templates/internal_ops/view_all_prev_requests.html:74
@@ -75,7 +75,7 @@ msgstr "Les données utilisateur n'ont pas été enregistrées avec succès !"
 #: approve/forms.py:37 approve/forms.py:162 approve/forms.py:292
 #: internal_ops/forms.py:44 internal_ops/forms.py:217 internal_ops/forms.py:386
 #: internal_ops/forms.py:543 submit_request/forms.py:34
-#: submit_request/forms.py:122 submit_request/forms.py:205
+#: submit_request/forms.py:123 submit_request/forms.py:206
 #: templates/approve/view_all_prev_requests.html:15
 #: templates/approve/view_all_requests.html:15
 #: templates/internal_ops/view_all_prev_requests.html:15
@@ -89,35 +89,35 @@ msgstr "Nom de Saas"
 #: approve/forms.py:38 approve/forms.py:164 approve/forms.py:294
 #: internal_ops/forms.py:48 internal_ops/forms.py:221 internal_ops/forms.py:390
 #: internal_ops/forms.py:545 submit_request/forms.py:35
-#: submit_request/forms.py:123 submit_request/forms.py:207
+#: submit_request/forms.py:124 submit_request/forms.py:208
 msgid "Currency"
 msgstr "Monnaie"
 
 #: approve/forms.py:39 approve/forms.py:165 approve/forms.py:295
 #: internal_ops/forms.py:49 internal_ops/forms.py:222 internal_ops/forms.py:391
 #: internal_ops/forms.py:546 submit_request/forms.py:36
-#: submit_request/forms.py:124 submit_request/forms.py:208
+#: submit_request/forms.py:125 submit_request/forms.py:209
 msgid "Frequency"
 msgstr "Fréquence"
 
 #: approve/forms.py:40 approve/forms.py:166 approve/forms.py:296
 #: internal_ops/forms.py:50 internal_ops/forms.py:223
-#: submit_request/forms.py:37 submit_request/forms.py:125
-#: submit_request/forms.py:209
+#: submit_request/forms.py:37 submit_request/forms.py:126
+#: submit_request/forms.py:210
 msgid "Units"
 msgstr "Unités"
 
 #: approve/forms.py:41 approve/forms.py:167 approve/forms.py:297
 #: internal_ops/forms.py:52 internal_ops/forms.py:225
-#: submit_request/forms.py:38 submit_request/forms.py:126
-#: submit_request/forms.py:210
+#: submit_request/forms.py:38 submit_request/forms.py:127
+#: submit_request/forms.py:211
 msgid "Duration"
 msgstr "Durée"
 
 #: approve/forms.py:43 approve/forms.py:170 approve/forms.py:300
 #: internal_ops/forms.py:59 internal_ops/forms.py:231 internal_ops/forms.py:401
 #: internal_ops/forms.py:558 submit_request/forms.py:40
-#: submit_request/forms.py:128 submit_request/forms.py:212
+#: submit_request/forms.py:129 submit_request/forms.py:213
 msgid ""
 "Does the application have a SOC 2 Type II or ISO 27001 certification? (Hint: "
 "this can easily be googled)"
@@ -128,21 +128,21 @@ msgstr ""
 #: approve/forms.py:45 approve/forms.py:172 approve/forms.py:302
 #: internal_ops/forms.py:61 internal_ops/forms.py:233 internal_ops/forms.py:403
 #: internal_ops/forms.py:560 submit_request/forms.py:42
-#: submit_request/forms.py:130 submit_request/forms.py:214
+#: submit_request/forms.py:131 submit_request/forms.py:215
 msgid "Does the application support 'Sign in with Google'?"
 msgstr "L'application prend-elle en charge « Se connecter avec Google » ?"
 
 #: approve/forms.py:46 approve/forms.py:168 approve/forms.py:298
 #: internal_ops/forms.py:69 internal_ops/forms.py:242 internal_ops/forms.py:409
 #: internal_ops/forms.py:564 submit_request/forms.py:43
-#: submit_request/forms.py:131 submit_request/forms.py:215
+#: submit_request/forms.py:132 submit_request/forms.py:216
 msgid "Fund Center"
 msgstr "Centre de fonds"
 
 #: approve/forms.py:47 approve/forms.py:176 approve/forms.py:309
 #: internal_ops/forms.py:62 internal_ops/forms.py:235
-#: submit_request/forms.py:44 submit_request/forms.py:132
-#: submit_request/forms.py:216
+#: submit_request/forms.py:44 submit_request/forms.py:133
+#: submit_request/forms.py:217
 msgid "Comments"
 msgstr "commentaires"
 
@@ -167,7 +167,7 @@ msgid "Deny"
 msgstr "Refuser"
 
 #: approve/forms.py:163 approve/forms.py:293 internal_ops/forms.py:397
-#: submit_request/forms.py:206
+#: submit_request/forms.py:207
 msgid "Current status"
 msgstr "Statut actuel"
 
@@ -480,16 +480,25 @@ msgid ""
 "If Saas is to be used for all of CDS, select FC 110804. If the Saas is to be "
 "used specifically for your BU, please select the appropriate FC."
 msgstr ""
+"Si Saas doit être utilisé pour tous les CDS, sélectionnez FC 110804. Si le "
+"Saas doit être utiliséutilisé spécifiquement pour votre BU, veuillez "
+"sélectionner le FC approprié."
 
-#: submit_request/forms.py:59
+#: submit_request/forms.py:50
+msgid ""
+"If you cannot find this information, please select unknown and we can enter "
+"it later."
+msgstr "Si vous ne trouvez pas cette information, veuillez sélectionner Inconnu et nous pourrons la saisir plus tard."
+
+#: submit_request/forms.py:60
 msgid "Submit"
 msgstr "Soumettre"
 
-#: submit_request/forms.py:163
+#: submit_request/forms.py:164
 msgid "Save changes"
 msgstr "Sauvegarder les modifications"
 
-#: submit_request/forms.py:166
+#: submit_request/forms.py:167
 msgid "Delete"
 msgstr "Supprimer"
 
