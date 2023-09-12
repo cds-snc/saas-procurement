@@ -55,7 +55,6 @@ class SaasRequestAdmin(admin.ModelAdmin):
         "purchase_notes",
         "certification",
         "google_sign_in",
-        
     )
     list_filter = (
         "name",
@@ -119,7 +118,7 @@ class SaasRequestAdmin(admin.ModelAdmin):
         "confirmation_number",
         "purchase_notes",
         "certification",
-        "google_sign_in"
+        "google_sign_in",
     )
     ordering = (
         "name",
@@ -150,5 +149,5 @@ class SaasRequestAdmin(admin.ModelAdmin):
         "confirmation_number",
         "purchase_notes",
         "certification",
-        "google_sign_in"
+        "google_sign_in",
     )

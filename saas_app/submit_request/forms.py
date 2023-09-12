@@ -47,7 +47,9 @@ class SubmitRequestForm(ModelForm):
             "fund_center": _(
                 "If Saas is to be used for all of CDS, select FC 110804. If the Saas is to be used specifically for your BU, please select the appropriate FC."
             ),
-            "certification": _("If you cannot find this information, please select unknown and we can enter it later."),
+            "certification": _(
+                "If you cannot find this information, please select unknown and we can enter it later."
+            ),
         }
 
     def __init__(self, *args, **kwargs):
