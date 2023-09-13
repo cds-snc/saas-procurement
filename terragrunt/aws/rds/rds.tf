@@ -8,12 +8,10 @@ module "rds_cluster" {
   database_name  = var.database_name
   engine         = "aurora-postgresql"
   engine_version = "14.6"
+  instance_class = "db.t3.medium"
   instances      = var.database_instances_count
   username       = var.database_username
   password       = var.database_password
-
-  serverless_min_capacity = 1.0
-  serverless_max_capacity = 1.0
 
   backup_retention_period = 14
   preferred_backup_window = "02:00-04:00"
