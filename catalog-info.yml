@@ -1,0 +1,9 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: saas-procurement
+  annotations:
+    github.com/project-slug: cds-snc/saas-procurement
+spec:
+  type: other
+  lifecycle: unknown
