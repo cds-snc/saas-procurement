@@ -5,6 +5,6 @@ metadata:
   annotations:
     github.com/project-slug: cds-snc/saas-procurement
 spec:
-  type: other
-  lifecycle: unknown
-  owner: sre
+  type: website 
+  lifecycle: experimental 
+  wner: internal-sre
