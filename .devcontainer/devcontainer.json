@@ -40,8 +40,8 @@
 			"version": "2.2.29"
 		},
 		"ghcr.io/devcontainers/features/terraform:1": {
-			"version": "1.0.3",
-			"terragrunt": "0.31.1"
+			"version": "1.6.2",
+			"terragrunt": "0.52.4"
 		}
 	},
 	"containerEnv": {
