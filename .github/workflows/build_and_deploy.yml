@@ -90,7 +90,7 @@ jobs:
 
       - name: Restart ECS
         run: |
-          aws ecs update-service --cluster saas-procurement-cluster --service saas_procurement-service --force-new-deployment > /dev/null 2>&1
+          aws ecs update-service --cluster saas-procurement-cluster --service saas_procurement-app-service --force-new-deployment > /dev/null 2>&1
 
       - name: Login to ECR
         id: login-ecr
