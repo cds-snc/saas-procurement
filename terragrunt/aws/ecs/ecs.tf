@@ -24,6 +24,7 @@ module "saas_procurement" {
       "softLimit" : 1000000
     }
   ]
+  container_read_only_root_filesystem = false
 
   # Task definition
   task_name          = "saas-procurement-task"
