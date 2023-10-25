@@ -10,18 +10,18 @@ module "saas_procurement" {
   ]
 
   # Task/Container definition
-  container_image     = "${var.ecr_repository_url}:latest"
-  container_name      = "saas-procurement"
-  task_cpu            = var.fargate_cpu
-  task_memory         = var.fargate_memory
-  container_port      = 8000
-  container_host_port = 8000
+  container_image            = "${var.ecr_repository_url}:latest"
+  container_name             = "saas-procurement"
+  task_cpu                   = var.fargate_cpu
+  task_memory                = var.fargate_memory
+  container_port             = 8000
+  container_host_port        = 8000
   container_linux_parameters = {}
-  container_ulimits   = [
+  container_ulimits = [
     {
-      "hardLimit": 1000000,
-      "name": "nofile",
-      "softLimit": 1000000
+      "hardLimit" : 1000000,
+      "name" : "nofile",
+      "softLimit" : 1000000
     }
   ]
 
@@ -40,8 +40,8 @@ module "saas_procurement" {
   subnet_ids          = var.vpc_private_subnet_ids
 
   # Forward logs to Sentinel
-  sentinel_forwarder = true
-  sentinel_forwarder_layer_arn = "arn:aws:lambda:ca-central-1:283582579564:layer:aws-sentinel-connector-layer:100" 
+  sentinel_forwarder           = true
+  sentinel_forwarder_layer_arn = "arn:aws:lambda:ca-central-1:283582579564:layer:aws-sentinel-connector-layer:100"
 
   billing_tag_value = var.billing_code
 }
