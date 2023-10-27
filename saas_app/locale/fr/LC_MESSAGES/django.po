@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-09-12 16:32+0000\n"
-"PO-Revision-Date: 2023-10-27 17:39+0000\n"
-"Last-Translator: Patrick Heard <patrick.heard@cds-snc.ca>\n"
+"PO-Revision-Date: 2023-10-27 17:41+0000\n"
+"Last-Translator: Calvin Rodo <calvin.rodo@cds-snc.ca>\n"
 "Language-Team: French <https://localisation.cdssandbox.xyz/projects/"
 "saas-procurement/app/fr/>\n"
 "Language: fr\n"
@@ -928,7 +928,7 @@ msgstr "Ajouter/modifier les données utilisateur."
 
 #: templates/index.html:118
 msgid "View SAAS logins"
-msgstr ""
+msgstr "Afficher les connexions SAAS"
 
 #: templates/index.html:121
 msgid "View External SAAS logins"
