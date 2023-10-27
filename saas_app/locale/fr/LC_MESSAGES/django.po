@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-09-12 16:32+0000\n"
-"PO-Revision-Date: 2023-10-27 01:42+0000\n"
+"PO-Revision-Date: 2023-10-27 17:39+0000\n"
 "Last-Translator: Patrick Heard <patrick.heard@cds-snc.ca>\n"
 "Language-Team: French <https://localisation.cdssandbox.xyz/projects/"
 "saas-procurement/app/fr/>\n"
@@ -718,7 +718,7 @@ msgstr "Soumission de demande de logiciel en tant que service"
 #: templates/internal_ops/view_request.html:13
 #: templates/request/view_request.html:15
 msgid "Case number:"
-msgstr "Numéro de dossier:"
+msgstr "Numéro de dossier :"
 
 #: templates/base.html:81
 msgid "Home"
