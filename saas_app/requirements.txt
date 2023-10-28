@@ -2,8 +2,8 @@ asgiref==3.7.2
 aws-sns-message-validator==0.0.5
 azure-identity==1.14.1
 azure-monitor-query==1.2.0
-awscli==1.29.64
-boto3==1.28.64
+awscli==1.29.68
+boto3==1.28.68
 Django==4.2.6
 django-crontab==0.7.1
 gunicorn==20.1.0
