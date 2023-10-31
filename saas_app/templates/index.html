@@ -10,6 +10,28 @@
     <h1>{% trans "Welcome" %} {{user|capfirst}}!</h1>
     <p>{% trans "What do you want to do today?" %}</p></br>
     {% if role == "Requestor" %}
+     <div class="card">
+        <div class="card-header">
+          {% trans "Submit a Training Request" %}
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{% trans "Training Request Form" %}</h5>
+          <p class="card-text">{% trans "Please fill out this form if you would like to request training or courses related to your job." %}</p>
+          <a href="training_request" class="btn btn-primary">{% trans "Start" %}</a>
+        </div>
+      </div>
+      <br>
+       <div class="card">
+        <div class="card-header">
+          {% trans "View Training Requests" %}
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{% trans "View your submitted training requests" %}</h5>
+          <p class="card-text">{% trans "Click here to view all of your submitted training requests." %}</p>
+          <a href="training_request" class="btn btn-primary">{% trans "Start" %}</a>
+        </div>
+      </div>
+      <br>
       <div class="card">
         <div class="card-header">
           {% trans "Submit a SAAS Request" %}
@@ -23,7 +45,7 @@
       <br>
       <div class="card">
         <div class="card-header">
-          {% trans "View requests" %}
+          {% trans "View Saas requests" %}
         </div>
         <div class="card-body">
           <h5 class="card-title">{% trans "View your submitted requests" %}</h5>
