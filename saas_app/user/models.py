@@ -21,6 +21,7 @@ class Users(models.Model):
     user_roles = models.ManyToManyField(Roles)
     title = models.CharField(max_length=100, blank=True, null=True)
     business_unit = models.CharField(max_length=100, blank=True, null=True)
+    email = models.EmailField(max_length=100, blank=True, null=True)
 
     # return the string representation of the model
     def __str__(self):

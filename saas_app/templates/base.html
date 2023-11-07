@@ -14,9 +14,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
     <!-- Google fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
@@ -71,36 +70,39 @@
          </div> 
          {% block page_content %}
            {% if user.is_authenticated %}
-                <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                  </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                  <a class="nav-link" href="{% url 'home' %}">{% trans "Home" %}<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                {% trans "Switch Roles" %} 
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+           <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+               <a class="nav-link active" href="{% url 'home' %}">{% trans "Home" %}</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                {% trans "Switch Roles" %}  
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 {% for role in request.session.roles %}
-                  <a class="dropdown-item" href="{% url 'switch_role' %}?role={{role}}">{% trans role %}</a>
+                  <li><a class="dropdown-item" href="{% url 'switch_role' %}?role={{role}}">{% trans role %}</a></li>
                 {% endfor %}
-                <a class="dropdown-item" href="{% url 'switch_role' %}?role=all">{% trans "Restore all Roles" %}</a>
-                </div>
-              </li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="{% url 'switch_role' %}?role=all">{% trans "Restore all Roles" %}</a></li>
+              </ul>
+            </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'account_logout' %}">{% trans "Sign Out" %}</a>
             </li>
-            </ul>
-            <form name="search" class="form-inline my-2 my-lg-0" action="{% url 'search' %}">
-              <input name="search" class="form-control mr-sm-2" type="search" placeholder={% trans "Search" %}  aria-label="Search">
-              <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">{% trans "Search" %}</button>
-            </form>
-          </div>
-          </nav>
+          </ul>
+          <form name="search" class="d-flex" action="{% url 'search' %}">
+            <input name="search" class="form-control me-2" type="search" placeholder={% trans "Search" %} aria-label="Search">
+            <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">{% trans "Search" %}</button>
+          </form>
+        </div>
+      </div>
+  </nav>
           <br>
           {% endif %}
           {% endblock %}

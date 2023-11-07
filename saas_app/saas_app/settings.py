@@ -45,6 +45,7 @@ CSRF_TRUSTED_ORIGINS = ["https://saas.cdssandbox.xyz"]
 
 INSTALLED_APPS = [
     "submit_request",
+    "training_request",
     "user",
     "approve",
     "internal_ops",
@@ -63,7 +64,7 @@ INSTALLED_APPS = [
     "allauth.socialaccount",
     "allauth.socialaccount.providers.google",
     "bootstrapform",
-    "crispy_bootstrap4",
+    "crispy_bootstrap5",
     "crispy_forms",
     "django_crontab",
 ]
@@ -215,7 +216,9 @@ ACCOUNT_LOGOUT_ON_GET = True
 ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_EMAIL_REQUIRED = True
 
-CRISPY_TEMPLATE_PACK = "bootstrap4"
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 # Set up a feature flag for testing the app without needing to create many accounts. We want to be able to switch roles so that we can test the app from the perspective of different users.
 TESTING_FEATURE_FLAG = os.environ.get("TESTING_FEATURE_FLAG")
@@ -249,3 +252,6 @@ LOGGING = {
         },
     },
 }
+
+# Setup a feature flag here so that we can do gradual developement of the app
+TRAINING_FORM_FEATURE_FLAG = False

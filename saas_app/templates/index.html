@@ -10,50 +10,64 @@
     <h1>{% trans "Welcome" %} {{user|capfirst}}!</h1>
     <p>{% trans "What do you want to do today?" %}</p></br>
     {% if role == "Requestor" %}
-     <div class="card">
-        <div class="card-header">
-          {% trans "Submit a Training Request" %}
-        </div>
+      <div class="accordion" id="accordionExample">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            <h5>Saas Requests</h5>
+          </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+        <div class="card">
         <div class="card-body">
-          <h5 class="card-title">{% trans "Training Request Form" %}</h5>
+          <h5 class="card-title">{% trans "Submit a SAAS Request" %}</h5>
+          <p class="card-text">{% trans "Please fill out this form if you would like to request the purchase of an unclassified software subscription service." %}</p>
+          <a href="submit_request" class="btn btn-primary">{% trans "Submit Saas request" %}</a>
+        </div>
+        </div>
+        <br>
+        <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{% trans "View your submitted requests" %}</h5>
+          <p class="card-text">{% trans "Click here to view all of your submitted SAAS requests." %}</p>
+          <a href="submit_request/view" class="btn btn-primary">{% trans "View Saas requests" %}</a>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingTwo">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+       <h5>Training Requests</h5> 
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+       <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{% trans "Submit a Training Request Form" %}</h5>
           <p class="card-text">{% trans "Please fill out this form if you would like to request training or courses related to your job." %}</p>
-          <a href="training_request" class="btn btn-primary">{% trans "Start" %}</a>
+          <a href="training_request" class="btn btn-primary">{% trans "Submit training request" %}</a>
         </div>
       </div>
       <br>
        <div class="card">
-        <div class="card-header">
-          {% trans "View Training Requests" %}
-        </div>
         <div class="card-body">
           <h5 class="card-title">{% trans "View your submitted training requests" %}</h5>
           <p class="card-text">{% trans "Click here to view all of your submitted training requests." %}</p>
-          <a href="training_request" class="btn btn-primary">{% trans "Start" %}</a>
+          <a href="training_request/view" class="btn btn-primary">{% trans "View training request" %}</a>
         </div>
       </div>
-      <br>
-      <div class="card">
-        <div class="card-header">
-          {% trans "Submit a SAAS Request" %}
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">{% trans "Software as a Service Request Form" %}</h5>
-          <p class="card-text">{% trans "Please fill out this form if you would like to request the purchase of an unclassified software subscription service." %}</p>
-          <a href="submit_request" class="btn btn-primary">{% trans "Start" %}</a>
-        </div>
       </div>
+    </div>
+  </div>
       <br>
-      <div class="card">
-        <div class="card-header">
-          {% trans "View Saas requests" %}
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">{% trans "View your submitted requests" %}</h5>
-          <p class="card-text">{% trans "Click here to view all of your submitted SAAS requests." %}</p>
-          <a href="submit_request/view" class="btn btn-primary">{% trans "Start" %}</a>
-        </div>
       </div>
-      <br>
+    </div>
+  </div>
+</div>
     {% elif role == "Manager" %}
     <div class="card">
       <div class="card-header">
