@@ -8,7 +8,7 @@ from submit_request.models import Currency
 # DB Model for the course
 class Course(models.Model):
     title = models.CharField(max_length=100)
-    description = models.CharField(max_length=100)
+    description = models.CharField(max_length=2000)
     provider = models.CharField(max_length=100)
     language = models.CharField(max_length=100)
     start_date = models.DateField()
