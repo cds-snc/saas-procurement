@@ -13,6 +13,7 @@ logger = logging.getLogger(__name__)
 
 # Get the search term from the GET request and search the database for it
 def search(request):
+    print("HELLO")
     if request.method == "GET":
         search_term = request.GET.get("search")
         try:
