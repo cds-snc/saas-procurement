@@ -252,6 +252,3 @@ LOGGING = {
         },
     },
 }
-
-# Setup a feature flag here so that we can do gradual developement of the app
-TRAINING_FORM_FEATURE_FLAG = False

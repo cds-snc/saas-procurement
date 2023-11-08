@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% load socialaccount %}
+{% load i18n %}
+{% load static %}
+
+{% block head_title %}{% trans "Saas Procurement App" %}{% endblock %}
+
+{% block content %}
+    <h1>{% trans "Submitted Training Requests" %}</h1>
+      <p>{% trans "This is the list of training requests that you have submitted. Click on the request name to view more information." %}</p>
+      <p>{% trans "Note: You can only modify requests that have not yet been reviewed." %}</p><br>
+    {% if submitted_requests %}
+        <h4>{% trans "Active requests that you can still modify" %}</h4><br>
+        <table class="table table-hover table-bordered">
+          <thead>
+              <tr>
+                <th scope="col">{% trans "Name of Course" %}</th>
+                <th scope="col">{% trans "Description" %}</th>
+                <th scope="col">{% trans "Cost" %}</th>
+                <th scope="col">{% trans "Date Submitted" %}</th>
+                <th scope="col">{% trans "Status" %}</th>
+              <tbody class="table-group-divider"></tbody>
+              </tr>
+            </thead>
+            <tbody>
+              {% for request in submitted_requests %}
+              <tr>
+                <td><a href="{{request.pk}}">{{ request.course.title}} </a></td>
+                <td>{{ request.course.description }}</td>
+                <td>{{ request.course.cost }}</td>
+                <td>{{ request.date_submitted }}</td>
+                <td>{% trans request.status %}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+    </table>
+    {% endif %}
+    <br>
+    {% if prev_submitted_requests %}
+      <h4>{% trans "Previous requests" %}</h4>
+        <table class="table table-hover table-bordered">
+          <thead>
+              <tr>
+                <th scope="col">{% trans "Course Name" %}</th>
+                <th scope="col">{% trans "Description" %}</th>
+                <th scope="col">{% trans "Cost" %}</th>
+                <th scope="col">{% trans "Date Submitted" %}</th>
+                <th scope="col">{% trans "Status" %}</th>
+              <tbody class="table-group-divider"></tbody>
+              </tr>
+            </thead>
+            <tbody>
+              {% for request in prev_submitted_requests %}
+              <tr>
+                <td><a href="{{request.pk}}">{{ request.course.title}} </a></td>
+                <td>{{ request.course.description }}</td>
+                <td>{{ request.course.cost }}</td>
+                <td>{{ request.date_submitted }}</td>
+               <td>{% trans request.status %}</td> 
+            </tr>
+              {% endfor %}
+          </tbody>
+      </table>
+    {% endif %}
+    {% if not submitted_requests and not prev_submitted_requests %}
+      <p>{% trans "You have no submitted requests." %}</p>
+    {% endif %}
+    <button type="button" class="btn btn-primary" name="home" onclick="location.href='{% url 'home' %}'">{% trans "Cancel" %}</button>
+{% endblock %}

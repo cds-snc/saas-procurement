@@ -12,6 +12,12 @@
 <p>{% trans "Please fill out this form to apply for training." %}</p>
 <form method="post" novalidate>
         {% csrf_token %}
+        {% crispy course_form %}
         {% crispy form %}
+        <button type="button submit" class="btn btn-primary">Submit</button>
+        <button type="button" class="btn btn-primary" onclick="history.back()">Back</button>
+
+
+
 </form>
 {% endblock %}
