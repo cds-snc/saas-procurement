@@ -5,7 +5,7 @@ from .models import TrainingRequest
 import django.contrib.messages as messages
 
 
-# Process the request form
+# Process the training request form
 def process_requests(request):
     if request.method == "POST":
         course_form = CourseForm(request.POST)
@@ -23,7 +23,6 @@ def process_requests(request):
             messages.success(
                 request, _("Your training form was submitted successfully!")
             )
-
             # redirect to a new URL:
             return render(request, "request/training_thanks.html")
     else:

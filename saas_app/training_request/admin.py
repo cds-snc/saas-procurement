@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import TrainingRequest, Course
 
 
-# Set up the appropriate display fields, list fields and search fields for the admin page
+# Set up the appropriate display fields, list fields and search fields for the admin page for the Course model
 @admin.register(Course)
 class CourseAdmin(admin.ModelAdmin):
     list_display = (
@@ -40,6 +40,7 @@ class CourseAdmin(admin.ModelAdmin):
     )
 
 
+# Set up the appropriate display fields, list fields and search fields for the admin page for the Training Request model
 @admin.register(TrainingRequest)
 class TrainingRequestAdmin(admin.ModelAdmin):
     list_display = (
