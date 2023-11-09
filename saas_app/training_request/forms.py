@@ -1,6 +1,5 @@
 from crispy_forms.helper import FormHelper
 from django.utils.translation import gettext_lazy as _
-from django.forms import ModelForm
 from .models import TrainingRequest, Course
 from django.forms import ModelForm, TextInput
 
