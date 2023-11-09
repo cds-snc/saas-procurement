@@ -55,6 +55,7 @@ class TrainingRequestAdmin(admin.ModelAdmin):
         "s32_approved_by",
         "date_s32_reviewed",
         "comments",
+        "pdf_form",
     )
     list_filter = (
         "course",
@@ -68,6 +69,7 @@ class TrainingRequestAdmin(admin.ModelAdmin):
         "s32_approved_by",
         "date_s32_reviewed",
         "comments",
+        "pdf_form"
     )
     search_fields = (
         "course",
@@ -81,4 +83,5 @@ class TrainingRequestAdmin(admin.ModelAdmin):
         "s32_approved_by",
         "date_s32_reviewed",
         "comments",
+        "pdf_form"
     )

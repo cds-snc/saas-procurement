@@ -3,7 +3,40 @@ from django.utils.translation import gettext as _
 from .forms import TrainingForm, CourseForm
 from .models import TrainingRequest
 import django.contrib.messages as messages
+import io
+from django.http import FileResponse
+from reportlab.pdfgen import canvas
+from django.http import HttpResponse
 
+
+def generate_pdf2(request):
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="hello.pdf"'
+    p=canvas.Canvas(response)
+    p.drawString(100, 100, "Hello World")
+    p.showPage()
+    p.save()
+    return response
+
+
+def generate_pdf():
+    # Create the pdf buffer
+    
+    print("In generate_pdf")
+    buffer = io.BytesIO()
+    # Create the PDF object
+    
+    p = canvas.Canvas(buffer)
+    # Draw the data onto the PDF
+    p.drawString(100, 100, "Hello World")
+    
+    # Close the PDF object 
+    p.showPage()
+    p.save()
+    
+    # Set the content-disposition header to force the browser to download the file
+    buffer.seek(0)
+    return FileResponse(buffer, as_attachment=True, filename="hello.pdf")
 
 # Process the training request form
 def process_requests(request):
@@ -12,9 +45,12 @@ def process_requests(request):
         form = TrainingForm(request.POST)
         if form.is_valid() and course_form.is_valid():
             # Save the data to the database
+            # generate the pdf
+            filename = generate_pdf()
             course_object = course_form.save(commit=False)
             course_object.save()
             training_object = form.save(commit=False)
+            training_object.pdf_form = filename.filename 
             training_object.submitted_by = request.user
             # Save the course object to the training object
             training_object.course = course_object
@@ -23,8 +59,12 @@ def process_requests(request):
             messages.success(
                 request, _("Your training form was submitted successfully!")
             )
+            # filename = generate_pdf2(request)
+            # filename = generate_pdf()
+            return filename
+            print("Filename: ", filename)
             # redirect to a new URL:
-            return render(request, "request/training_thanks.html")
+            return render(request, "training/training_thanks.html", {"filename": "hello.pdf"})
     else:
         # Clear the forms so that we can display them
         form = TrainingForm()

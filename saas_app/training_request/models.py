@@ -59,6 +59,7 @@ class TrainingRequest(models.Model):
     )
     date_s32_reviewed = models.DateTimeField(null=True, blank=True)
     comments = models.TextField(null=True, blank=True)
+    pdf_form = models.FileField(upload_to="pdfs/", null=True, blank=True) 
 
     # return the string representation of the Training request model
     def __str__(self):

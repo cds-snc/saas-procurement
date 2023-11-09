@@ -17,4 +17,5 @@ django-crispy-forms
 crispy-bootstrap5
 notifications-python-client==8.0.1
 pandas==2.0.3
+reportlab
 whitenoise==6.5.0
