@@ -12,9 +12,9 @@ python-dotenv==0.21.1
 sqlparse==0.4.4
 django-allauth==0.54.0
 PyYaml==5.3.1 # need to pin down the PyYaml version since the newest version is currently broken - https://github.com/yaml/pyyaml/issues/724
-django-bootstrap-form==3.4
-django-crispy-forms==2.0
-crispy-bootstrap4==2022.1
+django-bootstrap-form
+django-crispy-forms
+crispy-bootstrap5
 notifications-python-client==8.0.1
 pandas==2.0.3
 whitenoise==6.5.0
