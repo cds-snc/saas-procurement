@@ -67,6 +67,10 @@ button.link {
   color: #284162;
 }
 
+a.btn.btn-primary:visited {
+  color: #fff;
+}
+
 h1,
 h2,
 h3,
