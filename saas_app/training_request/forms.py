@@ -2,12 +2,16 @@ from crispy_forms.helper import FormHelper
 from django.utils.translation import gettext_lazy as _
 from django.forms import ModelForm
 from .models import TrainingRequest, Course
+from django.forms import ModelForm, TextInput
 
 
 # Create the form for the Course that the user wants to take
 class CourseForm(ModelForm):
     class Meta:
         model = Course
+        widgets = {
+            "start_date": TextInput(attrs={"class": "datepicker", "type": "date"}),
+        }
         fields = [
             "title",
             "description",
