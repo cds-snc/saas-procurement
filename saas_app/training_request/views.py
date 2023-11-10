@@ -6,19 +6,74 @@ import django.contrib.messages as messages
 import io
 from django.http import FileResponse
 from reportlab.pdfgen import canvas
+from reportlab.lib import colors
+from reportlab.lib.pagesizes import letter
+from reportlab.platypus import SimpleDocTemplate, Table, TableStyle
 from django.http import HttpResponse
+from reportlab.lib.units import cm, inch
+
+
+def generate_table():
+    # Sample data
+    data = [
+        ["Name", "Age", "City"],
+        ["John Doe", 30, "New York"],
+        ["Jane Doe", 25, "San Francisco"],
+        ["Bob Smith", 35, "Chicago"],
+    ]
+
+    # Create a PDF document
+    pdf_filename = "table_example.pdf"
+    document = SimpleDocTemplate(pdf_filename, pagesize=letter)
+
+    # Create a table and set style
+    table = Table(data)
+    style = TableStyle([('BACKGROUND', (0, 0), (-1, 0), colors.grey),
+                        ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),
+                        ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
+                        ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
+                        ('BOTTOMPADDING', (0, 0), (-1, 0), 12),
+                        ('BACKGROUND', (0, 1), (-1, -1), colors.beige),
+                        ('GRID', (0, 0), (-1, -1), 1, colors.black)])
+
+    table.setStyle(style)
+
+    # Build the PDF
+    document.build([table])
 
 
 def generate_pdf2(request):
     response = HttpResponse(content_type='application/pdf')
     response['Content-Disposition'] = 'attachment; filename="hello.pdf"'
     p=canvas.Canvas(response)
+
     p.drawString(100, 100, "Hello World")
     p.showPage()
     p.save()
     return response
 
 
+def generate_training_form():
+    buffer = io.BytesIO()
+    p = canvas.Canvas(buffer, pagesize=letter)
+    width, height = letter
+    p.translate(0, height)
+    p.setFont('Arial', 12) 
+    p.setTitle('TBS Training Application and Authorization Form')
+    p.drawString(5*inch, 0.5*inch, "Protected B")
+
+    # p.drawString(750, 750, "PROTECTED B")
+    # p.drawString(75, 750, "TBS Training Application and Authorization Form")
+    p.line(50, 700, 550, 700)
+
+    p.showPage()
+    p.save()
+    
+    buffer.seek(0)
+    return FileResponse(buffer, as_attachment=True, filename="hello.pdf")
+
+
+    
 def generate_pdf():
     # Create the pdf buffer
     
@@ -46,7 +101,8 @@ def process_requests(request):
         if form.is_valid() and course_form.is_valid():
             # Save the data to the database
             # generate the pdf
-            filename = generate_pdf()
+            #filename = generate_pdf2(request)
+            filename = generate_training_form() 
             course_object = course_form.save(commit=False)
             course_object.save()
             training_object = form.save(commit=False)
