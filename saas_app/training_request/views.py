@@ -11,6 +11,8 @@ from reportlab.lib.pagesizes import letter
 from reportlab.platypus import SimpleDocTemplate, Table, TableStyle
 from django.http import HttpResponse
 from reportlab.lib.units import cm, inch
+from reportlab.pdfbase import pdfmetrics
+from reportlab.pdfbase.ttfonts import TTFont
 
 
 def generate_table():
@@ -53,19 +55,113 @@ def generate_pdf2(request):
     return response
 
 
-def generate_training_form():
+def generate_training_form(form_data):
+    # Register the Ariel font
+    # pdfmetrics.registerFont(TTFont('Arial', 'Arial.ttf'))
+    # pdfmetrics.registerFont(TTFont('Arial-Bold', 'Arial-Bold.ttf'))
+    # pdfmetrics.registerFont(TTFont('Arial-Italic', 'Arial-Italic.ttf'))
+    # pdfmetrics.registerFont(TTFont('Arial-BoldItalic', 'Arial-BoldItalic.ttf'))
+    
     buffer = io.BytesIO()
     p = canvas.Canvas(buffer, pagesize=letter)
     width, height = letter
-    p.translate(0, height)
-    p.setFont('Arial', 12) 
+    print("Width: ", width)
+    print("Height: ", height)
+    # p.translate(0, height)
+    p.setFont('Helvetica', 10)
+    # # p.setFont('Arial', 12) 
     p.setTitle('TBS Training Application and Authorization Form')
-    p.drawString(5*inch, 0.5*inch, "Protected B")
+    p.drawString(6.5*inch, 10.5*inch,"Protected B")
+    p.setFont('Helvetica-Bold', 12)
+    p.drawString(2.1*inch, 10*inch,"TBS Training Application and Authorization Form /")
+    p.drawString(1.6*inch, 9.8*inch,"Formulaire de demande et d’autorisation de formation du SCT")
+    p.setFont('Helvetica-Bold', 10)
+    p.line(0.5*inch, 9.5*inch, 8.0*inch, 9.5*inch)
+    # set the background color to gray
+    # p.setFillColorRGB(211, 211, 211)
+    # p.rect(0.5*inch, 9.5*inch, 8.0*inch, 9.0*inch, fill=1)
+    p.drawString(0.7*inch, 9.3*inch,"Please complete fields or select an option from the drop down menu. / Veuillez remplir les champs ou ")
+    p.drawString(0.7*inch, 9.1*inch,"sélectionner une option dans le menu déroulant.")
+    p.line(0.5*inch, 9.0*inch, 8.0*inch, 9.0*inch)
+    
+    # Requestor Information
+    p.drawString(0.8*inch, 8.6*inch,"Name / Nom")
+    p.setFont('Helvetica', 10)
+    p.drawString(2*inch, 8.6*inch, form_data['title'])
+    p.setFont('Helvetica-Bold', 10)
+    p.drawString(0.8*inch, 8.3*inch, "Position title / Titre du poste") 
+    p.setFont('Helvetica', 10)
+    p.drawString(3.2*inch, 8.3*inch, form_data['title'])
+    p.setFont('Helvetica-Bold', 10)
+    p.drawString(0.8*inch, 8.0*inch, "E-Mail / Courrier électronique")
+    p.setFont('Helvetica', 10)
+    p.drawString(3.2*inch, 8.0*inch, form_data['title'])
+    p.setFont('Helvetica-Bold', 10)
+    p.drawString(0.8*inch, 7.7*inch, "Telephone No. / No de téléphone")
+    p.setFont('Helvetica', 10)
+    p.drawString(3.3*inch, 7.7*inch, form_data['title'])
+    p.setFont('Helvetica-Bold', 10)
+    p.drawString(0.8*inch, 7.4*inch, "Sector / Secteur ")
+    p.setFont('Helvetica', 10)
+    p.drawString(2.0*inch, 7.4*inch, form_data['title'])
+    p.setFont('Helvetica-Bold', 10)
+    p.drawString(0.8*inch, 7.1*inch, "Personal Record Identifier (PRI) / Code d’identification de dossier personnel (CIDP)")
+    p.drawString(0.8*inch, 6.8*inch, "Group and Level / Groupe et niveau")
+    p.setFont('Helvetica', 10)
+    p.drawString(3.4*inch, 6.8*inch, form_data['title'])
+    p.setFont('Helvetica-Bold', 10)
+    p.drawString(0.8*inch, 6.5*inch, "Employment Status / Statut d'emploi")
+    p.setFont('Helvetica', 10)
+    p.drawString(3.4*inch, 6.5*inch, form_data['title'])
+    p.line(0.5*inch, 6.2*inch, 8.0*inch, 6.2*inch)
 
-    # p.drawString(750, 750, "PROTECTED B")
-    # p.drawString(75, 750, "TBS Training Application and Authorization Form")
-    p.line(50, 700, 550, 700)
-
+    # Course Information
+    p.setFont('Helvetica-Bold', 10)
+    p.drawString(0.8*inch, 5.8*inch, "Course Title / Titre du cours")
+    p.setFont('Helvetica', 10)
+    p.drawString(3.2*inch, 5.8*inch, form_data['title'])
+    p.setFont('Helvetica-Bold', 10)
+    p.drawString(0.8*inch, 5.5*inch, "Training Description / Description de la formation") 
+    p.setFont('Helvetica', 10)
+    if (len(form_data['description']) > 50):
+        p.drawString(4.2*inch, 5.5*inch, form_data['description'][:65])
+        p.drawString(0.8*inch, 5.35*inch, form_data['description'][65:])
+    else:
+        p.drawString(4.2*inch, 5.5*inch, form_data['description'])
+    p.setFont('Helvetica-Bold', 10)
+    p.drawString(0.8*inch, 5.2*inch, "Provider / Fournisseur")
+    p.setFont('Helvetica', 10)
+    p.drawString(3.2*inch, 5.2*inch, form_data['provider'])
+    p.setFont('Helvetica-Bold', 10)
+    p.drawString(0.8*inch, 4.9*inch, "Language of course / Langue du cours")
+    p.setFont('Helvetica', 10)
+    p.drawString(3.2*inch, 4.9*inch, form_data['language'])
+    p.setFont('Helvetica-Bold', 10)
+    p.drawString(0.8*inch, 4.6*inch, "Start date / Date de début")
+    p.setFont('Helvetica', 10)
+    p.drawString(3.2*inch, 4.6*inch, form_data['title'])
+    #p.drawString(3.2*inch, 4.6*inch, form_data['start_date'].strftime("%d/%m/%Y"))
+    p.setFont('Helvetica-Bold', 10)
+    p.drawString(0.8*inch, 4.3*inch, "Duration / Durée")
+    p.setFont('Helvetica', 10)
+    p.drawString(3.2*inch, 4.3*inch, form_data['duration'])
+    p.setFont('Helvetica-Bold', 10)
+    p.drawString(0.8*inch, 4.0*inch, "Location / Lieu")
+    p.setFont('Helvetica', 10)
+    p.drawString(3.2*inch, 4.0*inch, form_data['location'])
+    p.line(0.5*inch, 3.7*inch, 8.0*inch, 3.7*inch)
+    
+    # Cost Information
+    p.setFont('Helvetica-Bold', 10)
+    p.drawString(0.8*inch, 3.3*inch, "Costs* / Couts*")
+    p.setFont('Helvetica', 10)
+    p.drawString(3.2*inch, 3.3*inch, str(form_data['cost']))
+    p.setFont('Helvetica-Bold', 10)
+    p.drawString(0.8*inch, 3.0*inch, "Fund centre / Centre financier")
+    p.setFont('Helvetica', 10)
+    p.linkURL('http://google.com', (3.2*inch, 3.0*inch, 6.0*inch, 3.0*inch), relative=1)
+    p.drawString(3.2*inch, 3.0*inch, form_data['fund_centre'])
+    p.setFont('Helvetica-Bold', 10)
     p.showPage()
     p.save()
     
@@ -99,10 +195,13 @@ def process_requests(request):
         course_form = CourseForm(request.POST)
         form = TrainingForm(request.POST)
         if form.is_valid() and course_form.is_valid():
+            # Combine the data from the two forms
+            form_data = {**form.cleaned_data, **course_form.cleaned_data}
+            print("All data: ", form_data)
             # Save the data to the database
             # generate the pdf
             #filename = generate_pdf2(request)
-            filename = generate_training_form() 
+            filename = generate_training_form(form_data) 
             course_object = course_form.save(commit=False)
             course_object.save()
             training_object = form.save(commit=False)
