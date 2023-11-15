@@ -1,8 +1,36 @@
 from crispy_forms.helper import FormHelper
 from django.utils.translation import gettext_lazy as _
-from .models import TrainingRequest, Course
+from .models import TrainingRequest, Course, Users
 from django.forms import ModelForm, TextInput
 
+
+# Create teh form for hte User information
+class UserForm(ModelForm):
+    class Meta:
+        model = Users
+        fields = [
+            "first_name",
+            "last_name",
+            "title",
+            "dept_email",
+            "telephone",
+            "sector",
+            "group",
+            "level",
+            "employment_status",
+        ]
+        labels = {
+            "title": _("Position Title"),
+            "dept_email": _("E-Mail"),
+        }
+
+    # Constructor to initialize the form
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_id = "user_form"
+        self.helper.form_tag = False
+        self.helper.disable_csrf = True
 
 # Create the form for the Course that the user wants to take
 class CourseForm(ModelForm):
