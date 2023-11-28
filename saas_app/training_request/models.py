@@ -7,7 +7,7 @@ from submit_request.models import Currency
 
 # DB Model for the course
 class Course(models.Model):
-    title = models.CharField(max_length=100)
+    course_title = models.CharField(max_length=100)
     description = models.CharField(max_length=2000)
     provider = models.CharField(max_length=100)
     language = models.CharField(max_length=100)
@@ -25,7 +25,7 @@ class Course(models.Model):
 
     # return the string representation of the Training request model
     def __str__(self):
-        return self.title
+        return self.course_title
 
 
 # DB Model for a training request
@@ -63,4 +63,4 @@ class TrainingRequest(models.Model):
 
     # return the string representation of the Training request model
     def __str__(self):
-        return self.course.title
+        return self.course.course_title

@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.utils.translation import gettext as _
 from .forms import TrainingForm, CourseForm, UserForm
-from .models import TrainingRequest
+from .models import TrainingRequest, Users
 import django.contrib.messages as messages
 import io
 from django.http import FileResponse
@@ -18,7 +18,7 @@ from reportlab.lib.colors import HexColor
 
 def generate_pdf2(request):
     response = HttpResponse(content_type='application/pdf')
-    response['Content-Disposition'] = 'attachment; filename="hello.pdf"'
+    response['Content-Disposition'] = 'attachment; filename="training_form.pdf"'
     p=canvas.Canvas(response)
 
     p.drawString(100, 100, "Hello World")
@@ -28,12 +28,7 @@ def generate_pdf2(request):
 
 
 def generate_training_form(form_data):
-    # Register the Ariel font
-    # pdfmetrics.registerFont(TTFont('Arial', 'Arial.ttf'))
-    # pdfmetrics.registerFont(TTFont('Arial-Bold', 'Arial-Bold.ttf'))
-    # pdfmetrics.registerFont(TTFont('Arial-Italic', 'Arial-Italic.ttf'))
-    # pdfmetrics.registerFont(TTFont('Arial-BoldItalic', 'Arial-BoldItalic.ttf'))
-    
+    # create teh buffer, canvas and set up the title
     buffer = io.BytesIO()
     p = canvas.Canvas(buffer, pagesize=letter)
     width, height = letter
@@ -63,7 +58,8 @@ def generate_training_form(form_data):
     # Requestor Information
     p.drawString(0.8*inch, 8.7*inch,"Name / Nom")
     p.setFont('Helvetica', 10)
-    p.drawString(2*inch, 8.7*inch, form_data['title'])
+    full_name = form_data['first_name'] + " " + form_data['last_name']
+    p.drawString(2*inch, 8.7*inch, full_name) 
     p.setFont('Helvetica-Bold', 10)
     p.drawString(0.8*inch, 8.45*inch, "Position title / Titre du poste") 
     p.setFont('Helvetica', 10)
@@ -71,31 +67,32 @@ def generate_training_form(form_data):
     p.setFont('Helvetica-Bold', 10)
     p.drawString(0.8*inch, 8.2*inch, "E-Mail / Courrier électronique")
     p.setFont('Helvetica', 10)
-    p.drawString(3.2*inch, 8.2*inch, form_data['title'])
+    p.drawString(3.2*inch, 8.2*inch, form_data['dept_email'])
     p.setFont('Helvetica-Bold', 10)
     p.drawString(0.8*inch, 7.95*inch, "Telephone No. / No de téléphone")
     p.setFont('Helvetica', 10)
-    p.drawString(3.3*inch, 7.95*inch, form_data['title'])
+    p.drawString(3.3*inch, 7.95*inch, str(form_data['telephone']))
     p.setFont('Helvetica-Bold', 10)
     p.drawString(0.8*inch, 7.7*inch, "Sector / Secteur ")
     p.setFont('Helvetica', 10)
-    p.drawString(2.0*inch, 7.7*inch, form_data['title'])
+    p.drawString(2.0*inch, 7.7*inch, form_data['sector'])
     p.setFont('Helvetica-Bold', 10)
     p.drawString(0.8*inch, 7.45*inch, "Personal Record Identifier (PRI) / Code d’identification de dossier personnel (CIDP)")
     p.drawString(0.8*inch, 7.2*inch, "Group and Level / Groupe et niveau")
     p.setFont('Helvetica', 10)
-    p.drawString(3.4*inch, 7.2*inch, form_data['title'])
+    group_level = form_data['group'] + " " + form_data['level']
+    p.drawString(3.4*inch, 7.2*inch, group_level) 
     p.setFont('Helvetica-Bold', 10)
     p.drawString(0.8*inch, 6.95*inch, "Employment Status / Statut d'emploi")
     p.setFont('Helvetica', 10)
-    p.drawString(3.4*inch, 6.95*inch, form_data['title'])
+    p.drawString(3.4*inch, 6.95*inch, form_data['employment_status'])
     p.line(0.5*inch, 6.7*inch, 8.0*inch, 6.7*inch)
 
     # Course Information
     p.setFont('Helvetica-Bold', 10)
     p.drawString(0.8*inch, 6.45*inch, "Course Title / Titre du cours")
     p.setFont('Helvetica', 10)
-    p.drawString(3.2*inch, 6.45*inch, form_data['title'])
+    p.drawString(3.2*inch, 6.45*inch, form_data['course_title'])
     p.setFont('Helvetica-Bold', 10)
     p.drawString(0.8*inch, 6.2*inch, "Training Description / Description de la formation") 
     p.setFont('Helvetica', 10)
@@ -115,8 +112,7 @@ def generate_training_form(form_data):
     p.setFont('Helvetica-Bold', 10)
     p.drawString(0.8*inch, 5.35*inch, "Start date / Date de début")
     p.setFont('Helvetica', 10)
-    p.drawString(3.2*inch, 5.35*inch, form_data['title'])
-    #p.drawString(3.2*inch, 4.6*inch, form_data['start_date'].strftime("%d/%m/%Y"))
+    p.drawString(3.2*inch, 5.35*inch, str(form_data['start_date']))
     p.setFont('Helvetica-Bold', 10)
     p.drawString(0.8*inch, 5.1*inch, "Duration / Durée")
     p.setFont('Helvetica', 10)
@@ -135,25 +131,22 @@ def generate_training_form(form_data):
     p.setFont('Helvetica-Bold', 10)
     p.drawString(0.8*inch, 4.2*inch, "Fund centre / Centre financier")
     p.setFont('Helvetica', 10)
-    # p.linkURL('http://google.com', (3.2*inch, 3.0*inch, 6.0*inch, 3.0*inch), relative=1)
-    p.drawString(3.2*inch, 4.2*inch, form_data['title'])
-    #p.drawString(3.2*inch, 3.0*inch, form_data['fund_centre'])
+    p.drawString(3.2*inch, 4.2*inch, str(form_data['fund_center']))
     p.setFont('Helvetica-Bold', 10)
     p.setFillColor(HexColor('#1F51FF'))
     p.drawString(0.8*inch, 3.95*inch, "Travel")
     p.linkURL('https://infosite.tbs-sct.gc.ca/services/fm-gf/asmp/tra-voy_e.aspx', (0.8*inch, 3.95*inch, 1.6*inch, 8*inch), relative=1)
     p.setFillColor(HexColor('#000000'))
     p.drawString(1.27*inch, 3.95*inch, "or living costs / Couts de voyage ou de subsistance")
-    # p.linkURL('http://google.com', (inch, 2.7*inch, 5.0*inch, 0.5*inch), relative=1)
     p.setFont('Helvetica', 10)
-    p.drawString(3.2*inch, 4.95*inch, form_data['travel_living_costs'])
+    p.drawString(4.9*inch, 3.95*inch, form_data['travel_living_costs'])
     p.line(0.5*inch, 3.7*inch, 8.0*inch, 3.7*inch)
     
     # Supervisors signature
     p.setFont('Helvetica-Bold', 10)
     p.drawString(0.8*inch, 3.45*inch, "Performance delegated supervisor’s name / Nom du superviseur délégué du rendement")
     p.setFont('Helvetica', 10)
-    p.drawString(0.8*inch, 3.25*inch, form_data['title'])
+    p.drawString(0.8*inch, 3.25*inch, str(form_data['manager']))
     p.setFont('Helvetica-Bold', 10)
     p.drawString(0.8*inch, 3.0*inch, "Supervisor’s signature / Signature du superviseur")
     p.setFont('Helvetica', 10)
@@ -171,7 +164,7 @@ def generate_training_form(form_data):
     p.drawString(0.8*inch, 2.4*inch, "centre financier (Attestation de la disponibilité des fonds aux termes de l’article 32(1) LGPF)")
     p.drawString(0.8*inch, 2.15*inch, "Name / Nom")
     p.setFont('Helvetica', 10)
-    p.drawString(3.2*inch, 2.15*inch, form_data['title'])
+    p.drawString(3.2*inch, 2.15*inch, str(form_data['s32_approved_by']))
     p.setFont('Helvetica-Bold', 10)
     p.drawString(4.8*inch, 2.15*inch, "Date")
     p.drawString(0.8*inch, 1.9*inch, "Signature Section 32(1) FAA / Signature article 32(1) LGPF")
@@ -201,32 +194,13 @@ def generate_training_form(form_data):
     p.line(8.0*inch, 9.5*inch, 8.0*inch, 0.30*inch)
 
 
+    # Save the PDF
     p.showPage()
     p.save()
-    
     buffer.seek(0)
-    return FileResponse(buffer, as_attachment=True, filename="hello.pdf")
+    # Return the training form so that the user can save it
+    return FileResponse(buffer, as_attachment=True, filename="training_form.pdf")
 
-
-    
-def generate_pdf():
-    # Create the pdf buffer
-    
-    print("In generate_pdf")
-    buffer = io.BytesIO()
-    # Create the PDF object
-    
-    p = canvas.Canvas(buffer)
-    # Draw the data onto the PDF
-    p.drawString(100, 100, "Hello World")
-    
-    # Close the PDF object 
-    p.showPage()
-    p.save()
-    
-    # Set the content-disposition header to force the browser to download the file
-    buffer.seek(0)
-    return FileResponse(buffer, as_attachment=True, filename="hello.pdf")
 
 # Process the training request form
 def process_requests(request):
@@ -240,10 +214,21 @@ def process_requests(request):
             print("All data: ", form_data)
             # Save the data to the database
             # generate the pdf
-            #filename = generate_pdf2(request)
             filename = generate_training_form(form_data) 
-            user_object = user_form.save(commit=False)
+            # get the user object
+            user_object = Users.objects.get(user = request.user)
+            # update all the fields
+            user_object.first_name = user_form.cleaned_data["first_name"]
+            user_object.last_name = user_form.cleaned_data["last_name"]
+            user_object.title = user_form.cleaned_data["title"]
+            user_object.email = user_form.cleaned_data["dept_email"]
+            user_object.telephone = user_form.cleaned_data["telephone"]
+            user_object.sector = user_form.cleaned_data["sector"]
+            user_object.group = user_form.cleaned_data["group"]
+            user_object.level = user_form.cleaned_data["level"]
+            user_object.employment_status = user_form.cleaned_data["employment_status"]
             user_object.save()
+            
             course_object = course_form.save(commit=False)
             course_object.save()
             training_object = form.save(commit=False)
@@ -252,16 +237,17 @@ def process_requests(request):
             # Save the course object to the training object
             training_object.course = course_object
             training_object.status = _("Request submitted")
+            training_object.pdf_form = filename.filename
             training_object.save()
             messages.success(
                 request, _("Your training form was submitted successfully!")
             )
-            # filename = generate_pdf2(request)
             # filename = generate_pdf()
-            return filename
-            print("Filename: ", filename)
+            #return filename
+            print("Filename: ", filename.filename)
             # redirect to a new URL:
-            return render(request, "training/training_thanks.html", {"filename": "hello.pdf"})
+            return render(request, "training/training_thanks.html", {"filename": filename.filename})
+            #return render(request, "training/training_thanks.html", {"filename": filename})
     else:
         # Clear the forms so that we can display them
         form = TrainingForm()

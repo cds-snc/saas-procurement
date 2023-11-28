@@ -6,7 +6,7 @@ from .models import TrainingRequest, Course
 @admin.register(Course)
 class CourseAdmin(admin.ModelAdmin):
     list_display = (
-        "title",
+        "course_title",
         "description",
         "provider",
         "language",
@@ -17,7 +17,7 @@ class CourseAdmin(admin.ModelAdmin):
         "currency",
     )
     list_filter = (
-        "title",
+        "course_title",
         "description",
         "provider",
         "language",
@@ -28,7 +28,7 @@ class CourseAdmin(admin.ModelAdmin):
         "currency",
     )
     search_fields = (
-        "title",
+        "course_title",
         "description",
         "provider",
         "language",

@@ -31,6 +31,14 @@ class UserForm(ModelForm):
         self.helper.form_id = "user_form"
         self.helper.form_tag = False
         self.helper.disable_csrf = True
+        self.fields['title'].required = True
+        self.fields['dept_email'].required = True
+        self.fields['telephone'].required = True
+        self.fields['sector'].required = True
+        self.fields['group'].required = True
+        self.fields['level'].required = True
+        self.fields['employment_status'].required = True
+        
 
 # Create the form for the Course that the user wants to take
 class CourseForm(ModelForm):
@@ -40,7 +48,7 @@ class CourseForm(ModelForm):
             "start_date": TextInput(attrs={"class": "datepicker", "type": "date"}),
         }
         fields = [
-            "title",
+            "course_title",
             "description",
             "provider",
             "language",
@@ -51,7 +59,7 @@ class CourseForm(ModelForm):
             "currency",
         ]
         labels = {
-            "title": _("Name of Course"),
+            "course_title": _("Name of Course"),
             "description": _("Description of Course"),
             "provider": _("Course Provider"),
             "language": _("Language of Course"),
@@ -67,6 +75,8 @@ class CourseForm(ModelForm):
         self.helper.form_id = "course_form"
         self.helper.form_tag = False
         self.helper.disable_csrf = True
+        self.fields['currency'].required = True
+        
 
 
 # Training Request Form
@@ -76,11 +86,13 @@ class TrainingForm(ModelForm):
         model = TrainingRequest
         fields = [
             "fund_center",
+            "s32_approved_by",
             "travel_living_costs",
             "manager",
             "comments",
         ]
         labels = {
+            "s32_approved_by": _("Fund Center Manager"),
             "manager": _("Your Manager"),
         }
 
@@ -91,3 +103,5 @@ class TrainingForm(ModelForm):
         self.helper.form_id = "training_request_form"
         self.helper.form_tag = False
         self.helper.disable_csrf = True
+        self.fields['fund_center'].required = True
+        self.fields['s32_approved_by'].required = True
