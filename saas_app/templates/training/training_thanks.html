@@ -8,11 +8,7 @@
 {% block content %}
     <h1>{% trans "Thank you for submitting your Training Form!" %}</h1>
     <p>{% trans "Your manager has received notification of the form and will review it. If approved, the form will go to the S32 Approver to be signed and finalized. Throughout the process you will receive notifications of the progress of your training form." %}</p>
-    {{ filename }}
-    {{ pk }}
-    <embed height="100%" width="100%"  name="plugin" src={filename} type="application/pdf">
-    <td><a  href="{{ filename }}" download> Download Files</a></td>
-    <a href="{% url 'training_request:download' %}">Click me to call the view</a>
+    <a id=download href="{% url 'training_request:download' %}?pk={{ pk }}">Click me to download the completed training form</a>
 
 
 

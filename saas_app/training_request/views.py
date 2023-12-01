@@ -289,9 +289,10 @@ def process_requests(request):
 def thanks(request):
     return FileResponse(as_attachment=True, filename="training_form.pdf")
 
-def download(request,pk):
+def download(request):
     print("IN FILE DOWNLOAD")
-    file_obj = TrainingRequest.objects.get(pk=pk)
+    print("Request is: ", request)
+    file_obj = TrainingRequest.objects.get(pk=request.GET.get('pk'))
     print("File obj: ", file_obj)
     print("TYpe of file obj: ", type(file_obj.pdf_form))
     print("File name is: ", file_obj.pdf_form.name)
