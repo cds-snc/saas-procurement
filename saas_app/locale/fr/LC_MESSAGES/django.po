@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-12 16:32+0000\n"
+"POT-Creation-Date: 2023-12-01 23:40+0000\n"
 "PO-Revision-Date: 2023-10-27 01:42+0000\n"
 "Last-Translator: Patrick Heard <patrick.heard@cds-snc.ca>\n"
-"Language-Team: French <https://localisation.cdssandbox.xyz/projects/"
-"saas-procurement/app/fr/>\n"
+"Language-Team: French <https://localisation.cdssandbox.xyz/projects/saas-"
+"procurement/app/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,11 +23,11 @@ msgstr ""
 msgid "User Roles:"
 msgstr "Rôles d'utilisateur:"
 
-#: administration/forms.py:33
+#: administration/forms.py:33 training_request/forms.py:25
 msgid "First Name"
 msgstr "Prénom"
 
-#: administration/forms.py:34
+#: administration/forms.py:34 training_request/forms.py:26
 msgid "Last Name"
 msgstr "Nom de famille"
 
@@ -56,13 +56,14 @@ msgstr "Sauvegarder"
 #: administration/forms.py:57 approve/forms.py:115 approve/forms.py:242
 #: approve/forms.py:378 internal_ops/forms.py:154 internal_ops/forms.py:329
 #: internal_ops/forms.py:493 internal_ops/forms.py:627
-#: submit_request/forms.py:89 submit_request/forms.py:172
-#: submit_request/forms.py:263 templates/administration/view_all_users.html:38
+#: submit_request/forms.py:91 submit_request/forms.py:174
+#: submit_request/forms.py:265 templates/administration/view_all_users.html:38
 #: templates/approve/view_all_prev_requests.html:44
 #: templates/approve/view_all_requests.html:45
 #: templates/internal_ops/view_all_prev_requests.html:74
 #: templates/internal_ops/view_all_requests.html:75
 #: templates/request/view_all_requests.html:72
+#: templates/training/view_all_requests.html:68
 msgid "Cancel"
 msgstr "Annuler"
 
@@ -77,7 +78,7 @@ msgstr "Les données utilisateur n'ont pas été enregistrées avec succès !"
 #: approve/forms.py:37 approve/forms.py:162 approve/forms.py:292
 #: internal_ops/forms.py:44 internal_ops/forms.py:217 internal_ops/forms.py:386
 #: internal_ops/forms.py:543 submit_request/forms.py:34
-#: submit_request/forms.py:123 submit_request/forms.py:206
+#: submit_request/forms.py:125 submit_request/forms.py:208
 #: templates/approve/view_all_prev_requests.html:15
 #: templates/approve/view_all_requests.html:15
 #: templates/internal_ops/view_all_prev_requests.html:15
@@ -91,35 +92,36 @@ msgstr "Nom de Saas"
 #: approve/forms.py:38 approve/forms.py:164 approve/forms.py:294
 #: internal_ops/forms.py:48 internal_ops/forms.py:221 internal_ops/forms.py:390
 #: internal_ops/forms.py:545 submit_request/forms.py:35
-#: submit_request/forms.py:124 submit_request/forms.py:208
+#: submit_request/forms.py:126 submit_request/forms.py:210
+#: training_request/forms.py:83
 msgid "Currency"
 msgstr "Monnaie"
 
 #: approve/forms.py:39 approve/forms.py:165 approve/forms.py:295
 #: internal_ops/forms.py:49 internal_ops/forms.py:222 internal_ops/forms.py:391
 #: internal_ops/forms.py:546 submit_request/forms.py:36
-#: submit_request/forms.py:125 submit_request/forms.py:209
+#: submit_request/forms.py:127 submit_request/forms.py:211
 msgid "Frequency"
 msgstr "Fréquence"
 
 #: approve/forms.py:40 approve/forms.py:166 approve/forms.py:296
 #: internal_ops/forms.py:50 internal_ops/forms.py:223
-#: submit_request/forms.py:37 submit_request/forms.py:126
-#: submit_request/forms.py:210
+#: submit_request/forms.py:37 submit_request/forms.py:128
+#: submit_request/forms.py:212 training_request/forms.py:78
 msgid "Units"
 msgstr "Unités"
 
 #: approve/forms.py:41 approve/forms.py:167 approve/forms.py:297
 #: internal_ops/forms.py:52 internal_ops/forms.py:225
-#: submit_request/forms.py:38 submit_request/forms.py:127
-#: submit_request/forms.py:211
+#: submit_request/forms.py:38 submit_request/forms.py:129
+#: submit_request/forms.py:213 training_request/forms.py:79
 msgid "Duration"
 msgstr "Durée"
 
 #: approve/forms.py:43 approve/forms.py:170 approve/forms.py:300
 #: internal_ops/forms.py:59 internal_ops/forms.py:231 internal_ops/forms.py:401
 #: internal_ops/forms.py:558 submit_request/forms.py:40
-#: submit_request/forms.py:129 submit_request/forms.py:213
+#: submit_request/forms.py:131 submit_request/forms.py:215
 msgid ""
 "Does the application have a SOC 2 Type II or ISO 27001 certification? (Hint: "
 "this can easily be googled)"
@@ -130,21 +132,22 @@ msgstr ""
 #: approve/forms.py:45 approve/forms.py:172 approve/forms.py:302
 #: internal_ops/forms.py:61 internal_ops/forms.py:233 internal_ops/forms.py:403
 #: internal_ops/forms.py:560 submit_request/forms.py:42
-#: submit_request/forms.py:131 submit_request/forms.py:215
+#: submit_request/forms.py:133 submit_request/forms.py:217
 msgid "Does the application support 'Sign in with Google'?"
 msgstr "L'application prend-elle en charge « Se connecter avec Google » ?"
 
 #: approve/forms.py:46 approve/forms.py:168 approve/forms.py:298
 #: internal_ops/forms.py:69 internal_ops/forms.py:242 internal_ops/forms.py:409
 #: internal_ops/forms.py:564 submit_request/forms.py:43
-#: submit_request/forms.py:132 submit_request/forms.py:216
+#: submit_request/forms.py:134 submit_request/forms.py:218
+#: training_request/forms.py:111
 msgid "Fund Center"
 msgstr "Centre de fonds"
 
 #: approve/forms.py:47 approve/forms.py:176 approve/forms.py:309
 #: internal_ops/forms.py:62 internal_ops/forms.py:235
-#: submit_request/forms.py:44 submit_request/forms.py:133
-#: submit_request/forms.py:217
+#: submit_request/forms.py:44 submit_request/forms.py:135
+#: submit_request/forms.py:219 training_request/forms.py:113
 msgid "Comments"
 msgstr "commentaires"
 
@@ -169,7 +172,7 @@ msgid "Deny"
 msgstr "Refuser"
 
 #: approve/forms.py:163 approve/forms.py:293 internal_ops/forms.py:397
-#: submit_request/forms.py:207
+#: submit_request/forms.py:209
 msgid "Current status"
 msgstr "Statut actuel"
 
@@ -247,6 +250,8 @@ msgstr "URL"
 #: templates/internal_ops/view_all_requests.html:49
 #: templates/request/view_all_requests.html:18
 #: templates/request/view_all_requests.html:47
+#: templates/training/view_all_requests.html:18
+#: templates/training/view_all_requests.html:45
 msgid "Description"
 msgstr "Description"
 
@@ -259,6 +264,8 @@ msgstr "Description"
 #: templates/internal_ops/view_all_requests.html:51
 #: templates/request/view_all_requests.html:20
 #: templates/request/view_all_requests.html:49
+#: templates/training/view_all_requests.html:19
+#: templates/training/view_all_requests.html:46 training_request/forms.py:82
 msgid "Cost"
 msgstr "Coût"
 
@@ -319,7 +326,7 @@ msgid "Submitted By"
 msgstr "Proposé par"
 
 #: internal_ops/forms.py:70 internal_ops/forms.py:243 internal_ops/forms.py:410
-#: internal_ops/forms.py:565 templates/index.html:84
+#: internal_ops/forms.py:565 templates/index.html:120
 msgid "S32 Approver"
 msgstr "Approbateur S32"
 
@@ -372,7 +379,7 @@ msgstr "Notes d'achat"
 msgid "Current Status"
 msgstr "Statut actuel"
 
-#: internal_ops/models.py:7 submit_request/models.py:30 user/models.py:8
+#: internal_ops/models.py:7 submit_request/models.py:30 user/models.py:9
 msgid "name"
 msgstr "nom"
 
@@ -482,25 +489,27 @@ msgid ""
 "If Saas is to be used for all of CDS, select FC 110804. If the Saas is to be "
 "used specifically for your BU, please select the appropriate FC."
 msgstr ""
-"Si ce SaaS doit être utilisé par tous le personnel du SNC, sélectionnez FC 110804. Si le"
-"Saas doit être utiliséutilisé spécifiquement pour votre BU, veuillez "
-"sélectionner le FC approprié."
+"Si ce SaaS doit être utilisé par tous le personnel du SNC, sélectionnez FC "
+"110804. Si leSaas doit être utiliséutilisé spécifiquement pour votre BU, "
+"veuillez sélectionner le FC approprié."
 
-#: submit_request/forms.py:50
+#: submit_request/forms.py:51
 msgid ""
 "If you cannot find this information, please select unknown and we can enter "
 "it later."
-msgstr "Si vous ne trouvez pas cette information, veuillez sélectionner Inconnu et nous pourrons la saisir plus tard."
+msgstr ""
+"Si vous ne trouvez pas cette information, veuillez sélectionner Inconnu et "
+"nous pourrons la saisir plus tard."
 
-#: submit_request/forms.py:60
+#: submit_request/forms.py:62 templates/training/training_request.html:18
 msgid "Submit"
 msgstr "Soumettre"
 
-#: submit_request/forms.py:164
+#: submit_request/forms.py:166
 msgid "Save changes"
 msgstr "Sauvegarder les modifications"
 
-#: submit_request/forms.py:167
+#: submit_request/forms.py:169
 msgid "Delete"
 msgstr "Supprimer"
 
@@ -509,7 +518,7 @@ msgid "frequency"
 msgstr "fréquence"
 
 #: submit_request/models.py:11 submit_request/models.py:21
-#: submit_request/models.py:32 user/models.py:9
+#: submit_request/models.py:32 user/models.py:10
 msgid "description"
 msgstr "description"
 
@@ -561,7 +570,7 @@ msgstr "Proposé par"
 msgid "date submitted"
 msgstr "Date de soumission"
 
-#: submit_request/views.py:64
+#: submit_request/views.py:64 training_request/views.py:297
 msgid "Request submitted"
 msgstr "Demande soumise"
 
@@ -594,7 +603,8 @@ msgstr "Une erreur s'est produite lors de la suppression de la demande"
 #: templates/manage_saas/view_all_logs.html:6
 #: templates/request/saas_deleted.html:6 templates/request/saas_edited.html:6
 #: templates/request/thanks.html:6 templates/request/view_all_requests.html:6
-#: templates/search.html:6
+#: templates/search.html:6 templates/training/training_thanks.html:6
+#: templates/training/view_all_requests.html:6
 msgid "Saas Procurement App"
 msgstr "Application d'approvisionnement Saas"
 
@@ -650,6 +660,8 @@ msgid "The person who has submitted the request will be notified."
 msgstr "La personne qui a soumis la demande en sera avisée."
 
 #: templates/approve/saas_status.html:16 templates/approve/saas_status.html:18
+#: templates/training/training_request.html:19
+#: templates/training/view_request.html:18
 msgid "Back"
 msgstr "Retour"
 
@@ -683,6 +695,8 @@ msgstr "Url"
 #: templates/internal_ops/view_all_requests.html:52
 #: templates/request/view_all_requests.html:21
 #: templates/request/view_all_requests.html:50
+#: templates/training/view_all_requests.html:20
+#: templates/training/view_all_requests.html:47
 msgid "Date Submitted"
 msgstr "Date de soumission"
 
@@ -694,6 +708,8 @@ msgstr "Date de soumission"
 #: templates/internal_ops/view_all_requests.html:54
 #: templates/request/view_all_requests.html:22
 #: templates/request/view_all_requests.html:51
+#: templates/training/view_all_requests.html:21
+#: templates/training/view_all_requests.html:48
 msgid "Status"
 msgstr "Statut"
 
@@ -717,6 +733,7 @@ msgstr "Soumission de demande de logiciel en tant que service"
 #: templates/approve/view_request.html:14
 #: templates/internal_ops/view_request.html:13
 #: templates/request/view_request.html:15
+#: templates/training/view_request.html:14
 msgid "Case number:"
 msgstr "Numéro de dossier:"
 
@@ -728,15 +745,15 @@ msgstr "Page d'accueil"
 msgid "Switch Roles"
 msgstr "Changer de rôle"
 
-#: templates/base.html:91
+#: templates/base.html:92
 msgid "Restore all Roles"
 msgstr "Restaurer tous les rôles"
 
-#: templates/base.html:95
+#: templates/base.html:96
 msgid "Sign Out"
 msgstr "se déconnecter"
 
-#: templates/base.html:99 templates/base.html:100
+#: templates/base.html:100 templates/base.html:101
 msgid "Search"
 msgstr "Recherche"
 
@@ -816,16 +833,15 @@ msgstr "Bienvenue"
 msgid "What do you want to do today?"
 msgstr "Que voulez-vous faire aujourd'hui?"
 
-#: templates/index.html:15
+#: templates/index.html:17
+msgid "Saas Requests"
+msgstr "Demandes SaaS"
+
+#: templates/index.html:24
 msgid "Submit a SAAS Request"
 msgstr "Soumettre une demande SAAS"
 
-#: templates/index.html:18 templates/request/saas_request.html:11
-#: templates/request/view_request.html:11
-msgid "Software as a Service Request Form"
-msgstr "Logiciel en tant que formulaire de demande de service"
-
-#: templates/index.html:19
+#: templates/index.html:25
 msgid ""
 "Please fill out this form if you would like to request the purchase of an "
 "unclassified software subscription service."
@@ -833,61 +849,96 @@ msgstr ""
 "Veuillez remplir ce formulaire si vous souhaitez demander l'achat d'un "
 "service d'abonnement à des logiciels non classifiés."
 
-#: templates/index.html:20 templates/index.html:31 templates/index.html:43
-#: templates/index.html:54 templates/index.html:66 templates/index.html:77
-#: templates/index.html:89 templates/index.html:100 templates/index.html:111
-#: templates/index.html:123
-msgid "Start"
-msgstr "Commencer"
-
 #: templates/index.html:26
-msgid "View requests"
-msgstr "Afficher les demandes"
+msgid "Submit Saas request"
+msgstr "Soumettre une demande SAAS"
 
-#: templates/index.html:29
+#: templates/index.html:32
 msgid "View your submitted requests"
 msgstr "Afficher vos demandes soumises"
 
-#: templates/index.html:30
+#: templates/index.html:33
 msgid "Click here to view all of your submitted SAAS requests."
 msgstr "Cliquez ici pour afficher toutes vos demandes SAAS soumises."
 
-#: templates/index.html:38
+#: templates/index.html:34
+msgid "View Saas requests"
+msgstr "Afficher les demandes Saas"
+
+#: templates/index.html:43
+msgid "Training Requests"
+msgstr "Demandes de formation"
+
+#: templates/index.html:50
+msgid "Submit a Training Request Form"
+msgstr "Soumettre un formulaire de demande de formation"
+
+#: templates/index.html:51
+msgid ""
+"Please fill out this form if you would like to request training or courses "
+"related to your job."
+msgstr ""
+"Veuillez remplir ce formulaire si vous souhaitez demander une formation ou "
+"des courslié à votre travail."
+
+#: templates/index.html:52
+msgid "Submit training request"
+msgstr "Soumettre une demande de formation"
+
+#: templates/index.html:58
+msgid "View your submitted training requests"
+msgstr "Consultez vos demandes de formation soumises"
+
+#: templates/index.html:59
+msgid "Click here to view all of your submitted training requests."
+msgstr "Cliquez ici pour voir toutes vos demandes de formation soumises."
+
+#: templates/index.html:60
+msgid "View training request"
+msgstr "Consulter la demande de formation"
+
+#: templates/index.html:74
 msgid "Manager Approve/Deny"
 msgstr "Le responsable approuve/refuse"
 
-#: templates/index.html:41
+#: templates/index.html:77
 msgid "Manager - Approve/Deny requests"
 msgstr "Gestionnaire - Approuver/Refuser les demandes"
 
-#: templates/index.html:42
+#: templates/index.html:78
 msgid "For manager, click here to approve/deny existing requests."
 msgstr ""
 "Pour le gestionnaire, cliquez ici pour approuver/refuser les demandes "
 "existantes."
 
-#: templates/index.html:49
+#: templates/index.html:79 templates/index.html:90 templates/index.html:102
+#: templates/index.html:113 templates/index.html:125 templates/index.html:136
+#: templates/index.html:147 templates/index.html:159
+msgid "Start"
+msgstr "Commencer"
+
+#: templates/index.html:85
 msgid "Manager view previous requests"
 msgstr "Gestionnaire voir les demandes précédentes"
 
-#: templates/index.html:52 templates/index.html:75 templates/index.html:98
+#: templates/index.html:88 templates/index.html:111 templates/index.html:134
 msgid "View your previously reviewed requests"
 msgstr "Afficher vos demandes précédemment examinées"
 
-#: templates/index.html:53 templates/index.html:76 templates/index.html:99
+#: templates/index.html:89 templates/index.html:112 templates/index.html:135
 msgid "Click here to view all requests that you have previously reviewed."
 msgstr ""
 "Cliquez ici pour afficher toutes les demandes que vous avez déjà examinées."
 
-#: templates/index.html:61
+#: templates/index.html:97
 msgid "Internal Ops action required"
 msgstr "Action des opérations internes requise"
 
-#: templates/index.html:64
+#: templates/index.html:100
 msgid "View requests that need your action"
 msgstr "Afficher les demandes qui nécessitent votre action"
 
-#: templates/index.html:65
+#: templates/index.html:101
 msgid ""
 "For internal ops, click here to view requests that require action, such as "
 "selecting S32 approver or recording a purchase."
@@ -896,54 +947,54 @@ msgstr ""
 "nécessitant une action, telles que sélectionner l'approbateur S32 ou "
 "enregistrer un achat."
 
-#: templates/index.html:72
+#: templates/index.html:108
 msgid "Internal Ops view previous requests"
 msgstr "Les opérations internes voient les demandes précédentes"
 
-#: templates/index.html:87
+#: templates/index.html:123
 msgid "Approve/Deny requests"
 msgstr "Approuver/Refuser les demandes"
 
-#: templates/index.html:88
+#: templates/index.html:124
 msgid "For S32 Approver - click here to approve or deny requests."
 msgstr ""
 "Pour le gestionnaire, cliquez ici pour approuver/refuser les demandes "
 "existantes."
 
-#: templates/index.html:95
+#: templates/index.html:131
 msgid "S32 Approver view previous requests"
 msgstr "Approbateur S32 voir les demandes précédentes`"
 
-#: templates/index.html:106
+#: templates/index.html:142
 msgid "Change User's Data"
 msgstr "Modifier les données de l'utilisateur"
 
-#: templates/index.html:109
+#: templates/index.html:145
 msgid "Change User's Attributes"
 msgstr "Modifier les attributs de l'utilisateur"
 
-#: templates/index.html:110
+#: templates/index.html:146
 msgid "Add/change user data."
 msgstr "Ajouter/modifier les données utilisateur."
 
-#: templates/index.html:118
+#: templates/index.html:154
 msgid "View SAAS logins"
 msgstr ""
 
-#: templates/index.html:121
+#: templates/index.html:157
 msgid "View External SAAS logins"
 msgstr ""
 
-#: templates/index.html:122
+#: templates/index.html:158
 msgid ""
 "View external SAAS logins that have been executed with a google account."
 msgstr ""
 
-#: templates/index.html:128
+#: templates/index.html:164
 msgid "Sass Procurement App"
 msgstr "Application d'approvisionnement Sass"
 
-#: templates/index.html:129
+#: templates/index.html:165
 msgid ""
 "You are about to use your Google account to login to\n"
 "    the Saas procurement app. "
@@ -1029,20 +1080,25 @@ msgstr "Notes d'achat :"
 #: templates/manage_saas/view_all_logs.html:9
 msgid "All login Events with Google credentials"
 msgstr ""
+"Tous les événements de connexion avec les informations d'identification "
+"Google"
 
 #: templates/manage_saas/view_all_logs.html:10
 msgid ""
 "This is the list of all logins to external apps or products using an "
 "individuals CDS google credentials"
 msgstr ""
+"Il s'agit de la liste de toutes les connexions à des applications ou à des "
+"produits externes utilisant les informations d'identification Google CDS "
+"d'un individu."
 
 #: templates/manage_saas/view_all_logs.html:15
 msgid "Email address"
-msgstr ""
+msgstr "Adresse e-mail"
 
 #: templates/manage_saas/view_all_logs.html:16
 msgid "Date"
-msgstr ""
+msgstr "Date"
 
 #: templates/manage_saas/view_all_logs.html:17
 msgid "App name"
@@ -1078,6 +1134,11 @@ msgstr ""
 #: templates/request/saas_edited.html:10
 msgid "The request has been upated and the approver will be notified."
 msgstr "La demande a été mise à jour et l'approbateur en sera informé."
+
+#: templates/request/saas_request.html:11
+#: templates/request/view_request.html:11
+msgid "Software as a Service Request Form"
+msgstr "Logiciel en tant que formulaire de demande de service"
 
 #: templates/request/saas_request.html:12
 msgid ""
@@ -1135,16 +1196,19 @@ msgstr ""
 "demande nom pour afficher plus d'informations."
 
 #: templates/request/view_all_requests.html:11
+#: templates/training/view_all_requests.html:11
 msgid "Note: You can only modify requests that have not yet been reviewed."
 msgstr ""
 "Remarque : Vous ne pouvez modifier que les demandes qui n'ont pas encore été "
 "examinées."
 
 #: templates/request/view_all_requests.html:13
+#: templates/training/view_all_requests.html:13
 msgid "Active requests that you can still modify"
 msgstr "Requêtes actives que vous pouvez encore modifier"
 
 #: templates/request/view_all_requests.html:42
+#: templates/training/view_all_requests.html:40
 msgid "Previous requests"
 msgstr "Demandes précédentes"
 
@@ -1153,6 +1217,7 @@ msgid "Name"
 msgstr "Nom"
 
 #: templates/request/view_all_requests.html:70
+#: templates/training/view_all_requests.html:66
 msgid "You have no submitted requests."
 msgstr "Vous n'avez pas soumis de demandes."
 
@@ -1173,9 +1238,135 @@ msgstr "Résultats de recherche"
 msgid "No results found"
 msgstr "Aucun résultat trouvé"
 
+#: templates/training/training_request.html:8
+#: templates/training/view_request.html:8
+msgid "Training Form Request"
+msgstr "Demande de formulaire de formation"
+
+#: templates/training/training_request.html:11
+#: templates/training/view_request.html:11
+msgid "Training Request Form"
+msgstr "Demande de formulaire de formation"
+
+#: templates/training/training_request.html:12
+msgid "Please fill out this form to apply for training."
+msgstr "Veuillez remplir ce formulaire pour postuler à une formation."
+
+#: templates/training/training_thanks.html:9
+msgid "Thank you for submitting your Training Form!"
+msgstr "Merci d'avoir soumis votre formulaire de formation !"
+
+#: templates/training/training_thanks.html:10
+msgid ""
+"Your manager has received notification of the form and will review it. If "
+"approved, the form will go to the S32 Approver to be signed and finalized. "
+"Throughout the process you will receive notifications of the progress of "
+"your training form."
+msgstr ""
+"Votre responsable a reçu une notification du formulaire et va l'examiner. Si "
+"approuvé, le formulaire sera envoyé à l'approbateur S32 pour être signé et "
+"finalisé. Tout au long du processus, vous recevrez des notifications sur "
+"l'avancement de votre formulaire de formation."
+
+#: templates/training/training_thanks.html:17
+msgid "Download completed form"
+msgstr ""
+
+#: templates/training/view_all_requests.html:9
+msgid "Submitted Training Requests"
+msgstr "Demandes de formation soumises"
+
+#: templates/training/view_all_requests.html:10
+msgid ""
+"This is the list of training requests that you have submitted. Click on the "
+"request name to view more information."
+msgstr ""
+"Voici la liste des demandes de formation que vous avez soumises. Cliquez sur "
+"le bouton demander un nom pour afficher plus d'informations."
+
+#: templates/training/view_all_requests.html:17 training_request/forms.py:74
+msgid "Name of Course"
+msgstr "Nom du cours"
+
+#: templates/training/view_all_requests.html:44
+msgid "Course Name"
+msgstr "Nom du cours"
+
 #: templates/version.html:7
 msgid "Last Updated:"
 msgstr "Dernière mise à jour:"
+
+#: training_request/forms.py:23
+msgid "Position Title"
+msgstr "Titre du poste"
+
+#: training_request/forms.py:24
+msgid "E-Mail"
+msgstr "E-Mail"
+
+#: training_request/forms.py:27
+msgid "Sector"
+msgstr "Secteur"
+
+#: training_request/forms.py:28
+msgid "Telephone"
+msgstr "Téléphone"
+
+#: training_request/forms.py:29
+msgid "Group"
+msgstr "Groupe"
+
+#: training_request/forms.py:30
+msgid "Level"
+msgstr "Niveau"
+
+#: training_request/forms.py:31
+msgid "Employment Status"
+msgstr "Statut d'emploi"
+
+#: training_request/forms.py:35
+msgid ""
+"Valid phone numbers of the form +1 + area code + phone number (e.g. "
+"+12125552368)."
+msgstr ""
+"Numéros de téléphone valides de la forme +1 + indicatif régional + numéro de "
+"téléphone (par exemple +12125552368)."
+
+#: training_request/forms.py:75
+msgid "Description of Course"
+msgstr "Description du cours"
+
+#: training_request/forms.py:76
+msgid "Course Provider"
+msgstr "Fournisseur de cours"
+
+#: training_request/forms.py:77
+msgid "Language of Course"
+msgstr "Langue du cours"
+
+#: training_request/forms.py:80
+msgid "Course Location"
+msgstr "Lieu du cours"
+
+#: training_request/forms.py:81
+msgid "Start Date"
+msgstr "Date de début"
+
+#: training_request/forms.py:109
+msgid "Fund Center Manager"
+msgstr "Gestionnaire du centre financier"
+
+#: training_request/forms.py:110
+msgid "Your Manager"
+msgstr "Votre Directeur/Directrice"
+
+#: training_request/forms.py:112
+msgid "Travel Living Costs"
+msgstr "Coûts de la vie en voyage"
+
+#: training_request/views.py:317
+msgid "Your training form was submitted successfully!"
+msgstr "Votre formulaire a été soumis avec succès!"
 
 #~ msgid "Update fund center and/or add s32 approver"
 #~ msgstr "Mettre à jour le centre financier et/ou ajouter un approbateur s32."
@@ -1206,9 +1397,6 @@ msgstr "Dernière mise à jour:"
 
 #~ msgid " %(role)s "
 #~ msgstr "%(role)"
-
-#~ msgid "Requestor"
-#~ msgstr "Demandeur"
 
 #~ msgid "Internal Ops"
 #~ msgstr "Opérations internes"
