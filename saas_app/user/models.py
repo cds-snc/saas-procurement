@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from phonenumber_field.modelfields import PhoneNumberField
 from django.utils.translation import gettext_lazy as _
 
 
@@ -21,6 +22,13 @@ class Users(models.Model):
     user_roles = models.ManyToManyField(Roles)
     title = models.CharField(max_length=100, blank=True, null=True)
     business_unit = models.CharField(max_length=100, blank=True, null=True)
+    position = models.CharField(max_length=100, blank=True, null=True)
+    dept_email = models.EmailField(max_length=100, blank=True, null=True)
+    telephone = PhoneNumberField(blank=True, null=True)
+    sector = models.CharField(max_length=100, blank=True, null=True)
+    group = models.CharField(max_length=100, blank=True, null=True)
+    level = models.CharField(max_length=100, blank=True, null=True)
+    employment_status = models.CharField(max_length=100, blank=True, null=True)
     email = models.EmailField(max_length=100, blank=True, null=True)
 
     # return the string representation of the model

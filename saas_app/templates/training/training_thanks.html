@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load socialaccount %}
+{% load i18n %}
+{% load static %}
+
+{% block head_title %}{% trans "Saas Procurement App" %}{% endblock %}
+
+{% block content %}
+    <h1>{% trans "Thank you for submitting your Training Form!" %}</h1>
+    <p>{% trans "Your manager has received notification of the form and will review it. If approved, the form will go to the S32 Approver to be signed and finalized. Throughout the process you will receive notifications of the progress of your training form." %}</p>
+    <br>
+    <button type="button" class="btn-lg btn-primary" onclick="window.location.href='{% url 'training_request:download' %}?pk={{ pk }}'">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+        <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>
+        <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+        </svg> 
+        Download completed form
+        </button>
+{% endblock %}

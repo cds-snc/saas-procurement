@@ -6,7 +6,9 @@ awscli==1.29.79
 boto3==1.28.79
 Django==4.2.7
 django-crontab==0.7.1
+django-phonenumber-field
 gunicorn==20.1.0
+phonenumbers
 psycopg2-binary==2.9.9
 python-dotenv==0.21.1
 sqlparse==0.4.4
@@ -17,4 +19,5 @@ django-crispy-forms
 crispy-bootstrap5
 notifications-python-client==8.0.1
 pandas==2.0.3
+reportlab
 whitenoise==6.5.0
