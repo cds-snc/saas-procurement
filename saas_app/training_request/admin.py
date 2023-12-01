@@ -15,6 +15,7 @@ class CourseAdmin(admin.ModelAdmin):
         "location",
         "cost",
         "currency",
+
     )
     list_filter = (
         "course_title",
@@ -56,6 +57,7 @@ class TrainingRequestAdmin(admin.ModelAdmin):
         "date_s32_reviewed",
         "comments",
         "pdf_form",
+        "file_link"
     )
     list_filter = (
         "course",

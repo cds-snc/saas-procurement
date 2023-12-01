@@ -4,7 +4,9 @@ from .forms import TrainingForm, CourseForm, UserForm
 from .models import TrainingRequest, Users
 import django.contrib.messages as messages
 import io
-from django.http import FileResponse
+import os
+import base64
+from django.http import FileResponse, Http404
 from reportlab.pdfgen import canvas
 from reportlab.lib import colors
 from reportlab.lib.pagesizes import letter
@@ -14,6 +16,8 @@ from reportlab.lib.units import cm, inch
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.lib.colors import HexColor
+from django.core.files.base import ContentFile
+from django.core.files import File
 
 
 def generate_pdf2(request):
@@ -36,6 +40,7 @@ def generate_training_form(form_data):
     print("Height: ", height)
     p.setFont('Helvetica', 10)
     p.setTitle('TBS Training Application and Authorization Form')
+    # p._filename = 'training_form.pdf'
 
     p.setFillColor(HexColor('#1F51FF'))
     p.drawString(6.5*inch, 10.5*inch,"PROTECTED B / PROTÉGÉ B")
@@ -198,8 +203,11 @@ def generate_training_form(form_data):
     p.showPage()
     p.save()
     buffer.seek(0)
+    #pdf: bytes = buffer.getvalue()
     # Return the training form so that the user can save it
-    return FileResponse(buffer, as_attachment=True, filename="training_form.pdf")
+    # return FileResponse(buffer, as_attachment=True, filename="training_form.pdf")
+    return buffer 
+    #return FileResponse(buffer, as_attachment=True, filename="training_form.pdf")
 
 
 # Process the training request form
@@ -214,7 +222,13 @@ def process_requests(request):
             print("All data: ", form_data)
             # Save the data to the database
             # generate the pdf
-            filename = generate_training_form(form_data) 
+            pdf = generate_training_form(form_data)
+            #return FileResponse(pdf, as_attachment=True, filename="training_form.pdf")
+            #return pdf
+            print("PDF: ", pdf)
+            #filename = ContentFile(generate_training_form(form_data))
+            #filename = ContentFile(base64.b64decode(generate_training_form(form_data)))
+
             # get the user object
             user_object = Users.objects.get(user = request.user)
             # update all the fields
@@ -232,21 +246,33 @@ def process_requests(request):
             course_object = course_form.save(commit=False)
             course_object.save()
             training_object = form.save(commit=False)
-            training_object.pdf_form = filename.filename 
+            #training_object.pdf_form = filename.filename 
+            # training_object.file.save(filename.filename, filename, save=False)
             training_object.submitted_by = request.user
             # Save the course object to the training object
             training_object.course = course_object
             training_object.status = _("Request submitted")
-            training_object.pdf_form = filename.filename
+            # training_object.pdf_form.save("training_form.pdf", filename)
+            pdf_file = pdf.getvalue()
+            file_data = ContentFile(pdf_file)
+            print("File data: ", file_data)
+            training_object.pdf_form.save("training_form.pdf", file_data)
+            # training_object.pdf_form = file_data
+            filename = training_object.pdf_form.name
+            print("Filename: ", filename)
             training_object.save()
             messages.success(
                 request, _("Your training form was submitted successfully!")
             )
             # filename = generate_pdf()
             #return filename
-            print("Filename: ", filename.filename)
             # redirect to a new URL:
-            return render(request, "training/training_thanks.html", {"filename": filename.filename})
+            #response = FileResponse(pdf, as_attachment=True, filename=filename)
+            response = FileResponse(pdf, as_attachment=True, filename="training_request.pdf")
+            #return response 
+            #print("Response is ", response)
+            print("Filename is ", filename)
+            return render(request, "training/training_thanks.html", {"filename": filename, "pk": training_object.pk})
             #return render(request, "training/training_thanks.html", {"filename": filename})
     else:
         # Clear the forms so that we can display them
@@ -260,6 +286,35 @@ def process_requests(request):
         {"form": form, "course_form": course_form, "user_form": user_form},
     )
 
+def thanks(request):
+    return FileResponse(as_attachment=True, filename="training_form.pdf")
+
+def download(request,pk):
+    print("IN FILE DOWNLOAD")
+    file_obj = TrainingRequest.objects.get(pk=pk)
+    print("File obj: ", file_obj)
+    print("TYpe of file obj: ", type(file_obj.pdf_form))
+    print("File name is: ", file_obj.pdf_form.name)
+    filename = file_obj.pdf_form.name
+    # Create a FileResponse
+    response = FileResponse(file_obj.pdf_form.open(), as_attachment=True, filename=file_obj.pdf_form.name)
+    response['Content-Disposition'] = f'attachment; filename= {filename}'
+    return response
+    # try:
+    #     return FileResponse(open(path, 'rb'), content_type='application/pdf')
+    # except FileNotFoundError:
+    #     raise Http404()
+
+def open_file(request, *args, **kwargs):
+    path = str(kwargs['p'])
+
+    file_path = '/pdfs'
+    if os.path.exists(file_path):
+        with open(file_path, 'rb') as fh:
+            response = HttpResponse(fh.read(), content_type="application/pdf")
+            response['Content-Disposition'] = 'inline; filename=' + os.path.basename(file_path)
+            return response
+    raise Http404
 
 # function to return the list of submitted training requests for the logged in user
 def view_all_requests(request):

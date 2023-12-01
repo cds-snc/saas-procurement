@@ -3,6 +3,8 @@ from django.contrib.auth.models import User
 from user.models import Users
 from internal_ops.models import FundCenter
 from submit_request.models import Currency
+from django.utils.html import format_html
+
 
 
 # DB Model for the course
@@ -64,3 +66,11 @@ class TrainingRequest(models.Model):
     # return the string representation of the Training request model
     def __str__(self):
         return self.course.course_title
+
+    def file_link(self):
+        if self.pdf_form:
+            return format_html("<a href='%s'>download</a>" % (self.pdf_form.url,))
+        else:
+            return "No attachment"
+    
+    file_link.allow_tags = True
