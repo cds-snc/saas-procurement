@@ -12,6 +12,7 @@
 <form method="post" novalidate>
         {% csrf_token %}
         <p><b>{% trans "Case number:" %} {{form.instance.id}}</b></p>
+        {% crispy user_form %}
         {% crispy course_form %}
         {% crispy form %}
         <button type="button" class="btn btn-primary" onclick="history.back()">Back</button>

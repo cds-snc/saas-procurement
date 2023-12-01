@@ -25,7 +25,7 @@
             <tbody>
               {% for request in submitted_requests %}
               <tr>
-                <td><a href="{{request.pk}}">{{ request.course.title}} </a></td>
+                <td><a href="{{request.pk}}">{{ request.course.course_title}} </a></td>
                 <td>{{ request.course.description }}</td>
                 <td>{{ request.course.cost }}</td>
                 <td>{{ request.date_submitted }}</td>

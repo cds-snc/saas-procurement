@@ -31,14 +31,14 @@ class UserForm(ModelForm):
         self.helper.form_id = "user_form"
         self.helper.form_tag = False
         self.helper.disable_csrf = True
-        self.fields['title'].required = True
-        self.fields['dept_email'].required = True
-        self.fields['telephone'].required = True
-        self.fields['sector'].required = True
-        self.fields['group'].required = True
-        self.fields['level'].required = True
-        self.fields['employment_status'].required = True
-        
+        self.fields["title"].required = True
+        self.fields["dept_email"].required = True
+        self.fields["telephone"].required = True
+        self.fields["sector"].required = True
+        self.fields["group"].required = True
+        self.fields["level"].required = True
+        self.fields["employment_status"].required = True
+
 
 # Create the form for the Course that the user wants to take
 class CourseForm(ModelForm):
@@ -75,8 +75,7 @@ class CourseForm(ModelForm):
         self.helper.form_id = "course_form"
         self.helper.form_tag = False
         self.helper.disable_csrf = True
-        self.fields['currency'].required = True
-        
+        self.fields["currency"].required = True
 
 
 # Training Request Form
@@ -103,5 +102,5 @@ class TrainingForm(ModelForm):
         self.helper.form_id = "training_request_form"
         self.helper.form_tag = False
         self.helper.disable_csrf = True
-        self.fields['fund_center'].required = True
-        self.fields['s32_approved_by'].required = True
+        self.fields["fund_center"].required = True
+        self.fields["s32_approved_by"].required = True

@@ -6,7 +6,6 @@ from submit_request.models import Currency
 from django.utils.html import format_html
 
 
-
 # DB Model for the course
 class Course(models.Model):
     course_title = models.CharField(max_length=100)
@@ -61,7 +60,7 @@ class TrainingRequest(models.Model):
     )
     date_s32_reviewed = models.DateTimeField(null=True, blank=True)
     comments = models.TextField(null=True, blank=True)
-    pdf_form = models.FileField(upload_to="pdfs/", null=True, blank=True) 
+    pdf_form = models.FileField(upload_to="pdfs/", null=True, blank=True)
 
     # return the string representation of the Training request model
     def __str__(self):
@@ -72,5 +71,5 @@ class TrainingRequest(models.Model):
             return format_html("<a href='%s'>download</a>" % (self.pdf_form.url,))
         else:
             return "No attachment"
-    
+
     file_link.allow_tags = True
