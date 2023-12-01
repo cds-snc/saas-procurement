@@ -23,6 +23,11 @@ class UserForm(ModelForm):
             "title": _("Position Title"),
             "dept_email": _("E-Mail"),
         }
+        help_texts = {
+            "telephone": _(
+                "Valid phone numbers of the form +1 + area code + phone number (e.g. +12125552368)."
+            )
+        }
 
     # Constructor to initialize the form
     def __init__(self, *args, **kwargs):
