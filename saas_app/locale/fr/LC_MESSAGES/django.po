@@ -490,7 +490,7 @@ msgid ""
 "used specifically for your BU, please select the appropriate FC."
 msgstr ""
 "Si ce SaaS doit être utilisé par tous le personnel du SNC, sélectionnez FC "
-"110804. Si leSaas doit être utiliséutilisé spécifiquement pour votre BU, "
+"110804. Si le Saas doit être utilisé spécifiquement pour votre BU, "
 "veuillez sélectionner le FC approprié."
 
 #: submit_request/forms.py:51
@@ -879,7 +879,7 @@ msgid ""
 "related to your job."
 msgstr ""
 "Veuillez remplir ce formulaire si vous souhaitez demander une formation ou "
-"des courslié à votre travail."
+"des cours lié à votre travail."
 
 #: templates/index.html:52
 msgid "Submit training request"
@@ -1246,7 +1246,7 @@ msgstr "Demande de formulaire de formation"
 #: templates/training/training_request.html:11
 #: templates/training/view_request.html:11
 msgid "Training Request Form"
-msgstr "Demande de formulaire de formation"
+msgstr "Formulaire de demande de formation"
 
 #: templates/training/training_request.html:12
 msgid "Please fill out this form to apply for training."
@@ -1270,7 +1270,7 @@ msgstr ""
 
 #: templates/training/training_thanks.html:17
 msgid "Download completed form"
-msgstr ""
+msgstr "Télécharger le formulaire complété"
 
 #: templates/training/view_all_requests.html:9
 msgid "Submitted Training Requests"
@@ -1282,7 +1282,7 @@ msgid ""
 "request name to view more information."
 msgstr ""
 "Voici la liste des demandes de formation que vous avez soumises. Cliquez sur "
-"le bouton demander un nom pour afficher plus d'informations."
+"le nom de la demande pour afficher plus d'informations."
 
 #: templates/training/view_all_requests.html:17 training_request/forms.py:74
 msgid "Name of Course"
@@ -1362,7 +1362,7 @@ msgstr "Votre Directeur/Directrice"
 
 #: training_request/forms.py:112
 msgid "Travel Living Costs"
-msgstr "Coûts de la vie en voyage"
+msgstr "Dépenses liés aux déplacements"
 
 #: training_request/views.py:317
 msgid "Your training form was submitted successfully!"
