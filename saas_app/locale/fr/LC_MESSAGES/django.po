@@ -1138,7 +1138,7 @@ msgstr "La demande a été mise à jour et l'approbateur en sera informé."
 #: templates/request/saas_request.html:11
 #: templates/request/view_request.html:11
 msgid "Software as a Service Request Form"
-msgstr "Logiciel en tant que formulaire de demande de service"
+msgstr "Formulaire de logiciel en tant que service"
 
 #: templates/request/saas_request.html:12
 msgid ""
@@ -1302,7 +1302,7 @@ msgstr "Titre du poste"
 
 #: training_request/forms.py:24
 msgid "E-Mail"
-msgstr "E-Mail"
+msgstr "Courriel"
 
 #: training_request/forms.py:27
 msgid "Sector"
