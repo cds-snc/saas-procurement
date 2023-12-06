@@ -1250,7 +1250,7 @@ msgstr "Formulaire de demande de formation"
 
 #: templates/training/training_request.html:12
 msgid "Please fill out this form to apply for training."
-msgstr "Veuillez remplir ce formulaire pour postuler à une formation."
+msgstr "Veuillez remplir ce formulaire pour faire une demande de à une formation."
 
 #: templates/training/training_thanks.html:9
 msgid "Thank you for submitting your Training Form!"
