@@ -17,7 +17,7 @@ class UserForm(ModelForm):
             "sector",
             "group",
             "level",
-            "employment_status",
+            "city",
         ]
         labels = {
             "title": _("Position Title"),
@@ -42,7 +42,7 @@ class UserForm(ModelForm):
         self.fields["sector"].required = True
         self.fields["group"].required = True
         self.fields["level"].required = True
-        self.fields["employment_status"].required = True
+        self.fields["city"].required = True
 
 
 # Create the form for the Course that the user wants to take
