@@ -28,8 +28,8 @@ class Users(models.Model):
     sector = models.CharField(max_length=100, blank=True, null=True)
     group = models.CharField(max_length=100, blank=True, null=True)
     level = models.CharField(max_length=100, blank=True, null=True)
-    employment_status = models.CharField(max_length=100, blank=True, null=True)
     email = models.EmailField(max_length=100, blank=True, null=True)
+    city = models.CharField(max_length=100, blank=True, null=True)
 
     # return the string representation of the model
     def __str__(self):

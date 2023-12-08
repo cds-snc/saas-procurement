@@ -17,7 +17,7 @@ class UserForm(ModelForm):
             "sector",
             "group",
             "level",
-            "employment_status",
+            "city",
         ]
         labels = {
             "title": _("Position Title"),
@@ -42,7 +42,7 @@ class UserForm(ModelForm):
         self.fields["sector"].required = True
         self.fields["group"].required = True
         self.fields["level"].required = True
-        self.fields["employment_status"].required = True
+        self.fields["city"].required = True
 
 
 # Create the form for the Course that the user wants to take
@@ -70,8 +70,9 @@ class CourseForm(ModelForm):
             "language": _("Language of Course"),
             "units": _("Units"),
             "duration": _("Duration"),
-            "location": _("Course Location"),
+            "location": _("Location"),
         }
+        help_texts = {"location": _("If in person, please add the address.")}
 
     # Constructor to initialize the form
     def __init__(self, *args, **kwargs):
@@ -98,6 +99,11 @@ class TrainingForm(ModelForm):
         labels = {
             "s32_approved_by": _("Fund Center Manager"),
             "manager": _("Your Manager"),
+        }
+        help_texts = {
+            "travel_living_costs": _(
+                "Add travel or living cost if any (n/a for non-applicable)."
+            )
         }
 
     # Initial constructor to initialize the form

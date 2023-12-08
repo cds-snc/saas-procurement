@@ -4,12 +4,34 @@ from .forms import TrainingForm, CourseForm, UserForm
 from .models import TrainingRequest, Users
 import django.contrib.messages as messages
 import io
+import os
 from django.http import FileResponse
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import letter
 from reportlab.lib.units import inch
 from reportlab.lib.colors import HexColor
 from django.core.files.base import ContentFile
+import common.util.utils as utils
+
+
+# Send an email to the requestor
+def email_requestor(request, template_id):
+    # get the requester's email address
+    requestor_email = request.user.email
+    # get the requestors's name
+    requestor_name = request.user.first_name
+    # get the url
+    url = utils.get_current_site(request)
+
+    # send an email to the requestor
+    utils.send_email(
+        requestor_email,
+        template_id,
+        {
+            "name": requestor_name,
+            "url": url,
+        },
+    )
 
 
 # Generate the PDF training from using data from the Form
@@ -21,7 +43,7 @@ def generate_training_form(form_data):
     print("Width: ", width)
     print("Height: ", height)
     p.setFont("Helvetica", 10)
-    p.setTitle("TBS Training Application and Authorization Form")
+    p.setTitle("CDS Training Application and Authorization Form")
 
     # set Protected B heading and title of the document.
     p.setFillColor(HexColor("#1F51FF"))
@@ -29,12 +51,12 @@ def generate_training_form(form_data):
     p.setFillColor(HexColor("#000000"))
     p.setFont("Helvetica-Bold", 12)
     p.drawString(
-        2.1 * inch, 10 * inch, "TBS Training Application and Authorization Form /"
+        2.1 * inch, 10 * inch, "CDS Training Application and Authorization Form /"
     )
     p.drawString(
         1.6 * inch,
         9.8 * inch,
-        "Formulaire de demande et d’autorisation de formation du SCT",
+        "Formulaire de demande et d’autorisation de formation du SNC",
     )
     p.setFont("Helvetica-Bold", 10)
     p.line(0.5 * inch, 9.5 * inch, 8.0 * inch, 9.5 * inch)
@@ -86,9 +108,9 @@ def generate_training_form(form_data):
     group_level = form_data["group"] + " " + form_data["level"]
     p.drawString(3.4 * inch, 7.2 * inch, group_level)
     p.setFont("Helvetica-Bold", 10)
-    p.drawString(0.8 * inch, 6.95 * inch, "Employment Status / Statut d'emploi")
+    p.drawString(0.8 * inch, 6.95 * inch, "City/Ville")
     p.setFont("Helvetica", 10)
-    p.drawString(3.4 * inch, 6.95 * inch, form_data["employment_status"])
+    p.drawString(3.0 * inch, 6.95 * inch, form_data["city"])
     p.line(0.5 * inch, 6.7 * inch, 8.0 * inch, 6.7 * inch)
 
     # Course Information
@@ -123,7 +145,11 @@ def generate_training_form(form_data):
     p.setFont("Helvetica", 10)
     p.drawString(3.2 * inch, 5.1 * inch, form_data["duration"])
     p.setFont("Helvetica-Bold", 10)
-    p.drawString(0.8 * inch, 4.85 * inch, "Location / Lieu")
+    p.drawString(
+        0.8 * inch,
+        4.85 * inch,
+        "Location (Virtual/In-person?)/ Lieu (virtuel/en personne ?)",
+    )
     p.setFont("Helvetica", 10)
     p.drawString(3.2 * inch, 4.85 * inch, form_data["location"])
     p.line(0.5 * inch, 4.7 * inch, 8.0 * inch, 4.7 * inch)
@@ -281,7 +307,7 @@ def process_requests(request):
             user_object.sector = user_form.cleaned_data["sector"]
             user_object.group = user_form.cleaned_data["group"]
             user_object.level = user_form.cleaned_data["level"]
-            user_object.employment_status = user_form.cleaned_data["employment_status"]
+            user_object.city = user_form.cleaned_data["city"]
             user_object.save()
 
             # update all the fields for the course
@@ -311,6 +337,9 @@ def process_requests(request):
 
             # Save the training object
             training_object.save()
+
+            # Email the requestor and also send an email to internal ops
+            email_requestor(request, os.getenv("TRAINING_FORM_REQUESTOR_TEMPLATE_ID"))
 
             # Tell the user that the form was submitted successfully
             messages.success(
