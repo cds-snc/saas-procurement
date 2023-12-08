@@ -5,7 +5,6 @@ from .models import TrainingRequest, Users
 import django.contrib.messages as messages
 import io
 import os
-import base64
 from django.http import FileResponse
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import letter
@@ -13,6 +12,7 @@ from reportlab.lib.units import inch
 from reportlab.lib.colors import HexColor
 from django.core.files.base import ContentFile
 import common.util.utils as utils
+
 
 # Send an email to the requestor
 def email_requestor(request, template_id):
@@ -27,9 +27,13 @@ def email_requestor(request, template_id):
     utils.send_email(
         requestor_email,
         template_id,
-        {"name": requestor_name, "url": url, }
+        {
+            "name": requestor_name,
+            "url": url,
+        },
     )
-    
+
+
 # Generate the PDF training from using data from the Form
 def generate_training_form(form_data):
     # create teh buffer, canvas and set up the title
@@ -333,11 +337,6 @@ def process_requests(request):
 
             # Save the training object
             training_object.save()
-            file_name_location = "media/pdfs/" + file_name
-
-            with open(file_name_location, "rb") as pdf_file:
-                file_encoded_string = base64.b64encode(pdf_file.read())
-            
 
             # Email the requestor and also send an email to internal ops
             email_requestor(request, os.getenv("TRAINING_FORM_REQUESTOR_TEMPLATE_ID"))

@@ -72,11 +72,7 @@ class CourseForm(ModelForm):
             "duration": _("Duration"),
             "location": _("Location"),
         }
-        help_texts = {
-            "location": _(
-                "If in person, please add the address."
-            )
-        } 
+        help_texts = {"location": _("If in person, please add the address.")}
 
     # Constructor to initialize the form
     def __init__(self, *args, **kwargs):
