@@ -22,6 +22,13 @@ class UserForm(ModelForm):
         labels = {
             "title": _("Position Title"),
             "dept_email": _("E-Mail"),
+            "first_name": _("First Name"),
+            "last_name": _("Last Name"),
+            "sector": _("Sector"),
+            "telephone": _("Telephone"),
+            "group": _("Group"),
+            "level": _("Level"),
+            "employment_status": _("Employment Status"),
         }
         help_texts = {
             "telephone": _(
@@ -70,7 +77,10 @@ class CourseForm(ModelForm):
             "language": _("Language of Course"),
             "units": _("Units"),
             "duration": _("Duration"),
-            "location": _("Location"),
+            "location": _("Course Location"),
+            "start_date": _("Start Date"),
+            "cost": _("Cost"),
+            "currency": _("Currency"),
         }
         help_texts = {"location": _("If in person, please add the address.")}
 
@@ -99,6 +109,9 @@ class TrainingForm(ModelForm):
         labels = {
             "s32_approved_by": _("Fund Center Manager"),
             "manager": _("Your Manager"),
+            "fund_center": _("Fund Center"),
+            "travel_living_costs": _("Travel Living Costs"),
+            "comments": _("Comments"),
         }
         help_texts = {
             "travel_living_costs": _(
