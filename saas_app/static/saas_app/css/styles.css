@@ -49,6 +49,14 @@ ul {
   }
 }
 
+tbody, td, tfoot, th, thead, tr {
+  border-color: inherit;
+  border-style: solid;
+  border-width: 0;
+  max-width: 650px;
+  word-wrap: break-word;
+}
+
 ol,
 ul {
   padding-left: 30px;
