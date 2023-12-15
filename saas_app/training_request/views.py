@@ -33,6 +33,26 @@ def email_requestor(request, template_id):
         },
     )
 
+def email(request, template_id, recipient):
+    # get the requester's email address
+    requestor_email = request.user.email
+    # get the requestors's name
+    requestor_name = request.user.first_name
+    # get the url
+    url = utils.get_current_site(request)
+
+    # send the email based on the recipient
+    if recipient == ("requestor" or "internal_ops"):
+        # send an email to the requestor
+        utils.send_email(
+            requestor_email,
+            template_id,
+            {
+                "name": requestor_name,
+                "url": url,
+            },
+        )
+
 
 # Generate the PDF training from using data from the Form
 def generate_training_form(form_data):
@@ -339,7 +359,11 @@ def process_requests(request):
             training_object.save()
 
             # Email the requestor and also send an email to internal ops
-            email_requestor(request, os.getenv("TRAINING_FORM_REQUESTOR_TEMPLATE_ID"))
+            # email_requestor(request, os.getenv("TRAINING_FORM_REQUESTOR_TEMPLATE_ID"))
+            email(request, os.getenv("TRAINING_REQUEST_REQUESTOR_TEMPLATE_ID"), "requestor")
+            email(request, os.getenv("TRAINING_REQUEST_INTERNAL_OPS_TEMPLATE_ID"), "internal_ops")
+
+            
 
             # Tell the user that the form was submitted successfully
             messages.success(
