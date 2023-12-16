@@ -14,7 +14,6 @@ from django.core.files.base import ContentFile
 import common.util.utils as utils
 
 
-
 def email(request, template_id, recipient):
     # get the requester's email address
     requestor_email = request.user.email
@@ -24,7 +23,7 @@ def email(request, template_id, recipient):
     url = utils.get_current_site(request)
 
     # send the email based on the recipient
-    if recipient == "requestor": 
+    if recipient == "requestor":
         # send an email to the requestor
         utils.send_email(
             requestor_email,
@@ -36,7 +35,7 @@ def email(request, template_id, recipient):
         )
     elif recipient == "internal_ops":
         # send an eamil to internal_ops
-         utils.send_email(
+        utils.send_email(
             os.getenv("INTERNAL_OPS_EMAIL"),
             template_id,
             {
@@ -44,8 +43,6 @@ def email(request, template_id, recipient):
                 "url": url,
             },
         )
-        
-        
 
 
 # Generate the PDF training from using data from the Form
@@ -353,8 +350,16 @@ def process_requests(request):
             training_object.save()
 
             # Email the requestor and also send an email to internal ops
-            email(request, os.getenv("TRAINING_REQUEST_REQUESTOR_TEMPLATE_ID"), "requestor")
-            email(request, os.getenv("TRAINING_REQUEST_INTERNAL_OPS_TEMPLATE_ID"), "internal_ops")
+            email(
+                request,
+                os.getenv("TRAINING_REQUEST_REQUESTOR_TEMPLATE_ID"),
+                "requestor",
+            )
+            email(
+                request,
+                os.getenv("TRAINING_REQUEST_INTERNAL_OPS_TEMPLATE_ID"),
+                "internal_ops",
+            )
 
             # Tell the user that the form was submitted successfully
             messages.success(
