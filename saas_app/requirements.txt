@@ -4,7 +4,7 @@ azure-identity==1.14.1
 azure-monitor-query==1.2.0
 awscli==1.29.79
 boto3==1.28.79
-Django==4.2.7
+Django==4.2.8
 django-crontab==0.7.1
 django-phonenumber-field
 gunicorn==20.1.0
