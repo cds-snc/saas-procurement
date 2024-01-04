@@ -254,10 +254,6 @@ LOGGING = {
     },
 }
 
-# # Session Timeout settings
-# SESSION_EXPIRE_SECONDS = 50  # 300 seconds = 5 minutes
-
-SESSION_COOKIE_AGE = 40 #60 * 60 * 24  # 24 hours
-# # expire the session after the last activity, otherwise it will expire the session after 5 minutes from the start of the session. 
- #SESSION_EXPIRE_AFTER_LAST_ACTIVITY = True
+# Change the session cookie age to 1 hour. 
+SESSION_COOKIE_AGE = 60 * 60 # 1 hour 
 
