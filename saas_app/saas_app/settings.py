@@ -254,6 +254,5 @@ LOGGING = {
     },
 }
 
-# Change the session cookie age to 1 hour. 
-SESSION_COOKIE_AGE = 60 * 60 # 1 hour 
-
+# Change the session cookie age to 1 hour.
+SESSION_COOKIE_AGE = 60 * 60  # 1 hour
