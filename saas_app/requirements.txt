@@ -1,9 +1,9 @@
 asgiref==3.7.2
 aws-sns-message-validator==0.0.5
-azure-identity==1.14.1
+azure-identity==1.15.0
 azure-monitor-query==1.2.0
-awscli==1.29.79
-boto3==1.28.79
+awscli==1.32.11
+boto3==1.34.11
 Django==4.2.8
 django-crontab==0.7.1
 django-phonenumber-field
@@ -12,12 +12,12 @@ phonenumbers
 psycopg2-binary==2.9.9
 python-dotenv==0.21.1
 sqlparse==0.4.4
-django-allauth==0.54.0
-PyYaml==5.3.1 # need to pin down the PyYaml version since the newest version is currently broken - https://github.com/yaml/pyyaml/issues/724
+django-allauth==0.59.0
+PyYaml==5.4.1 # need to pin down the PyYaml version since the newest version is currently broken - https://github.com/yaml/pyyaml/issues/724
 django-bootstrap-form
 django-crispy-forms
 crispy-bootstrap5
-notifications-python-client==8.0.1
-pandas==2.0.3
+notifications-python-client==8.2.0
+pandas==2.1.4
 reportlab
-whitenoise==6.5.0
+whitenoise==6.6.0
