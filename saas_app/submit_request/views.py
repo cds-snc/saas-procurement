@@ -63,7 +63,7 @@ def process_requests(request):
             saas_object.submitted_by = request.user
             saas_object.status = _("Request submitted")
             saas_object.save()
-            
+
             # send an email to the requestor and the manager
             send_requestor_email(
                 request, saas_object, os.getenv("SAAS_SUBMISSION_TEMPLATE_ID")
