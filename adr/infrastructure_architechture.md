@@ -1,4 +1,4 @@
-# API infrastructure architecture
+# Saas App infrastructure architecture
 
 Date: `2024-01-09`
 
