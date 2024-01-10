@@ -134,9 +134,9 @@ class ViewS32RequestForm(ModelForm):
                 _("Request Additional Information"),
                 css_id="submit",
                 css_class="btn btn-primary",
-                data_toggle="modal",
-                data_target="#request_info_modal",
-                data_dismiss="modal",
+                data_bs_toggle="modal",
+                data_bs_target="#request_info_modal",
+                data_bs_dismiss="modal",
             ),
             # hide the purchase button for now. It will be shown if the request is approved by an s32 approver.
             Button(
@@ -144,9 +144,9 @@ class ViewS32RequestForm(ModelForm):
                 _("Record Purchase Information"),
                 css_id="submit",
                 css_class="btn btn-primary",
-                data_toggle="modal",
-                data_target="#purchase_modal",
-                data_dismiss="modal",
+                data_bs_toggle="modal",
+                data_bs_target="#purchase_modal",
+                data_bs_dismiss="modal",
                 hidden=True,
             ),
             Button(
@@ -169,9 +169,9 @@ class ViewS32RequestForm(ModelForm):
                 _("Record Purchase Information"),
                 css_id="submit",
                 css_class="btn btn-primary",
-                data_toggle="modal",
-                data_target="#purchase_modal",
-                data_dismiss="modal",
+                data_bs_toggle="modal",
+                data_bs_target="#purchase_modal",
+                data_bs_dismiss="modal",
             )
         # unhide the date requested and information requested if there is data associated with those fields.
         if self.instance.date_info_requested is not None:
@@ -311,18 +311,18 @@ class ViewPurchaseRequiredForm(ModelForm):
                 _("Request Additional Information"),
                 css_id="submit",
                 css_class="btn btn-primary",
-                data_toggle="modal",
-                data_target="#request_info_modal",
-                data_dismiss="modal",
+                data_bs_toggle="modal",
+                data_bs_target="#request_info_modal",
+                data_bs_dismiss="modal",
             ),
             Button(
                 "purchase",
                 _("Record Purchase Information"),
                 css_id="submit",
                 css_class="btn btn-primary",
-                data_toggle="modal",
-                data_target="#purchase_modal",
-                data_dismiss="modal",
+                data_bs_toggle="modal",
+                data_bs_target="#purchase_modal",
+                data_bs_dismiss="modal",
             ),
             Button(
                 "cancel",
