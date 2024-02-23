@@ -15,6 +15,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 WORKDIR /saas_app
 COPY requirements.txt /saas_app/
 RUN pip install --no-cache-dir --upgrade pip \
+  && pip install --upgrade setuptools \
   && pip install --no-cache-dir -r requirements.txt
 
 # Copy the rest of the application
