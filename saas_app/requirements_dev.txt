@@ -5,10 +5,10 @@ certifi==2023.11.17
 cffi==1.16.0
 charset-normalizer==3.3.2
 click==8.1.7
-coverage==7.4.0
+coverage==7.4.3
 cryptography==41.0.7
 defusedxml==0.7.1
-Django==4.2.8
+Django==4.2.10
 django-allauth==0.59.0
 django-bootstrap-form==3.4
 exceptiongroup==1.2.0
@@ -28,7 +28,7 @@ pycodestyle==2.11.1
 pycparser==2.21
 pyflakes==3.1.0
 PyJWT==2.8.0
-pytest==7.4.3
+pytest==7.4.4
 python-dotenv==0.21.1
 python3-openid==3.2.0
 requests==2.31.0
