@@ -13,7 +13,7 @@ django-allauth==0.59.0
 django-bootstrap-form==3.4
 exceptiongroup==1.2.0
 flake8==6.1.0
-gunicorn==20.1.0
+gunicorn==22.0.0
 idna==3.7
 iniconfig==2.0.0
 mccabe==0.7.0
