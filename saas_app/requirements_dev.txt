@@ -6,12 +6,12 @@ cffi==1.16.0
 charset-normalizer==3.3.2
 click==8.1.7
 coverage==7.4.4
-cryptography==42.0.5
+cryptography==42.0.7
 defusedxml==0.7.1
-Django==4.2.11
+Django==4.2.13
 django-allauth==0.59.0
 django-bootstrap-form==3.4
-exceptiongroup==1.2.0
+exceptiongroup==1.2.1
 flake8==6.1.0
 gunicorn==22.0.0
 idna==3.7
