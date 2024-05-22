@@ -36,10 +36,10 @@
 	},
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	"features": {
-		"ghcr.io/devcontainers/features/aws-cli:1": {
+		"ghcr.io/devcontainers/features/aws-cli:1@sha256:8d39e89cc98291953fb03cf7ef540dc1a7c78c3162f0eee9b61c800e4838f807": {
 			"version": "2.2.29"
 		},
-		"ghcr.io/devcontainers/features/terraform:1": {
+		"ghcr.io/devcontainers/features/terraform:1@sha256:403fe3406aaf4618d9ca5b79cd1bd4a3576eac8816b18419650ab2f87026bb09": {
 			"version": "1.6.2",
 			"terragrunt": "0.52.4"
 		}
