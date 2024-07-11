@@ -8,7 +8,7 @@ click==8.1.7
 coverage==7.4.4
 cryptography==42.0.7
 defusedxml==0.7.1
-Django==4.2.13
+Django==4.2.14
 django-allauth==0.59.0
 django-bootstrap-form==3.4
 exceptiongroup==1.2.1
