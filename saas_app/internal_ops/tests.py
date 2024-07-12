@@ -1,5 +1,4 @@
 from django.test import TestCase
-from django.utils import timezone
 from submit_request.models import SaasRequest, User, Users, Currency, Frequency
 from user.models import Roles
 from .models import FundCenter
@@ -43,6 +42,7 @@ class SubmitRequestModelTestCase(TestCase):
             name="Test Fund Center Name",
             number="Test Fund Center Number",
         )
+        utc_time = datetime.timezone.utc
 
         SaasRequest.objects.create(
             name="Test Name",
@@ -59,21 +59,17 @@ class SubmitRequestModelTestCase(TestCase):
             account_administrator="Test Account Administrator",
             backup_administrator="Test Backup Administrator",
             date_manager_reviewed=datetime.datetime(
-                2020, 1, 1, 0, 0, 0, tzinfo=timezone.utc
+                2020, 1, 1, 0, 0, 0, tzinfo=utc_time
             ),
-            date_info_requested=datetime.datetime(
-                2020, 1, 1, 0, 0, 0, tzinfo=timezone.utc
-            ),
+            date_info_requested=datetime.datetime(2020, 1, 1, 0, 0, 0, tzinfo=utc_time),
             info_requested="Test Info Requested",
             fund_center=fund_center,
             date_sent_to_s_32_approver=datetime.datetime(
-                2020, 1, 1, 0, 0, 0, tzinfo=timezone.utc
+                2020, 1, 1, 0, 0, 0, tzinfo=utc_time
             ),
-            s_32_review_date=datetime.datetime(
-                2020, 1, 1, 0, 0, 0, tzinfo=timezone.utc
-            ),
+            s_32_review_date=datetime.datetime(2020, 1, 1, 0, 0, 0, tzinfo=utc_time),
             s_32_approved=True,
-            purchase_date=datetime.datetime(2020, 1, 1, 0, 0, 0, tzinfo=timezone.utc),
+            purchase_date=datetime.datetime(2020, 1, 1, 0, 0, 0, tzinfo=utc_time),
             purchase_amount=100,
             purchase_method="Test Purchase Method",
             confirmation_number="Test Confirmation Number",
