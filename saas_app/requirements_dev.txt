@@ -1,6 +1,6 @@
 asgiref
 attrs
-black
+black==24.4.1
 certifi
 cffi
 charset-normalizer
