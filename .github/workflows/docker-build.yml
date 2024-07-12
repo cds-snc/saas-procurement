@@ -43,9 +43,3 @@ jobs:
           -t ${{ matrix.image }}:latest \
           --build-arg GIT_SHA=${{ github.sha }} \
           --build-arg BUILD_DATE=${{ steps.date.outputs.date }} .
-
-      - name: Dive into image
-        uses: cds-snc/dive-action@main
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          IMAGE_NAME: ${{ matrix.image }}:latest
