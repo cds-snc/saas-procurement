@@ -4,7 +4,7 @@ locals {
 }
 
 module "gh_oidc_roles" {
-  source = "github.com/cds-snc/terraform-modules//gh_oidc_role?ref=v9.6.1"
+  source = "github.com/cds-snc/terraform-modules//gh_oidc_role?ref=v3.0.20"
   roles = [
     {
       name      = local.plan_name
