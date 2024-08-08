@@ -1,19 +1,19 @@
 terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 4.52"
+    required_providers {
+      aws = {
+        source  = "hashicorp/aws"
+        version = "~> 5.39"
+      }
     }
   }
-}
-
-provider "aws" {
-  region              = var.region
-  allowed_account_ids = [var.account_id]
-}
-
-provider "aws" {
-  alias               = "us-east-1"
-  region              = "us-east-1"
-  allowed_account_ids = [var.account_id]
-}
+  
+  provider "aws" {
+    region              = "ca-central-1" 
+    allowed_account_ids = [ var.accout_id ]
+  }
+  
+  provider "aws" {
+    alias               = "us-east-1"
+    region              = "us-east-1"
+    allowed_account_ids = [ var.account_id ]
+  }

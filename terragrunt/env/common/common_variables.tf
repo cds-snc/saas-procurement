@@ -8,18 +8,18 @@ variable "cbs_satellite_bucket_name" {
   type        = string
 }
 
-variable "domain" {
-  description = "(Required) Domain name to deploy to"
-  type        = string
-}
-
 variable "env" {
   description = "The current running environment"
   type        = string
 }
 
 variable "product_name" {
-  description = "(Required) The name of the product you are deploying."
+  description = "The name of the product you are deploying."
+  type        = string
+}
+
+variable "domain" {
+  description = "The domain name to deploy to"
   type        = string
 }
 
