@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.utils.translation import gettext as _
 from .forms import SubmitRequestForm, ViewRequestForm, ViewPrevRequestForm
 from .models import SaasRequest
@@ -63,7 +63,7 @@ def process_requests(request):
             saas_object.submitted_by = request.user
             saas_object.status = _("Request submitted")
             saas_object.save()
-            messages.success(request, _("Your form was submitted successfully!"))
+
             # send an email to the requestor and the manager
             send_requestor_email(
                 request, saas_object, os.getenv("SAAS_SUBMISSION_TEMPLATE_ID")
@@ -75,10 +75,14 @@ def process_requests(request):
             )
 
             # redirect to a new URL:
-            return render(request, "request/thanks.html")
+            return redirect('thanks/')
     else:
         form = SubmitRequestForm()
     return render(request, "request/saas_request.html", {"form": form})
+
+
+def thank_you_view(request):
+    return render(request, "request/thanks.html")
 
 
 # function to return the list of submitted requests for the logged in user
