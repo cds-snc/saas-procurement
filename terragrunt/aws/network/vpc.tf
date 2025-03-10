@@ -3,7 +3,7 @@
 #
 
 module "saas_procurement_vpc" {
-  source            = "github.com/cds-snc/terraform-modules//vpc?ref=v9.6.1"
+  source            = "github.com/cds-snc/terraform-modules//vpc?ref=v9.6.8"
   name              = var.product_name
   billing_tag_value = var.billing_code
   high_availability = true

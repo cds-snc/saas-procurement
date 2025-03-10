@@ -1,5 +1,5 @@
 module "saas_procurement" {
-  source = "github.com/cds-snc/terraform-modules//ecs?ref=v9.6.1"
+  source = "github.com/cds-snc/terraform-modules//ecs?ref=v9.6.8"
 
   # Cluster and service
   cluster_name = "saas-procurement-cluster"
