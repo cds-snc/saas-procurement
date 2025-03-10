@@ -13,7 +13,7 @@ psycopg2-binary
 python-dotenv
 sqlparse
 django-allauth
-PyYaml==6.0.1 # pin it to version 6.0.1, avoid 6.0.0, 5.4.0 and 5.4.1
+PyYaml==6.0.2 # pin it to version 6.0.1, avoid 6.0.0, 5.4.0 and 5.4.1
 django-bootstrap-form
 django-crispy-forms
 crispy-bootstrap5
