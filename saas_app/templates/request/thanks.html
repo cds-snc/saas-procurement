@@ -6,6 +6,12 @@
 {% block head_title %}{% trans "Saas Procurement App" %}{% endblock %}
 
 {% block content %}
+    <div class="alert alert-success" role="alert">
+        <span><strong>Messages:</strong></span>
+        <ul>
+            <li>{% trans "Your form was submitted successfully!" %}</li>
+        </ul>
+    </div>
     <h1>{% trans "Thank you for submitting the Software as a Service Request Form!" %}</h1>
     <p>{% trans "This is the overall process that can be expected." %}</p>
     <img src="{% static 'saas_app/img/approval_flow.png' %}" alt="Saas Process" width="750">
